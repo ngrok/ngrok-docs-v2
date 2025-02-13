@@ -1,0 +1,13 @@
+node_modules
+
+/build
+/public/build
+.env
+
+.cache
+.vercel
+.output
+/api
+/app/styles/*.css
+
+.DS_STORE
