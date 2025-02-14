@@ -4,7 +4,7 @@ import type {
   LoaderFunction,
   V2_MetaFunction,
 } from "@vercel/remix";
-import { json } from "@vercel/remix";
+import { json, redirect } from "@vercel/remix";
 import {
   Links,
   useLoaderData,
