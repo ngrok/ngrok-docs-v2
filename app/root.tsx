@@ -44,8 +44,8 @@ export const meta: V2_MetaFunction = ({ data, matches }) => {
 
   return [
     getSeo({
-      title: config.title,
-      description: config.description,
+      title: config?.title,
+      description: config?.description,
       url: data.canonical ? data.canonical : "",
     }),
   ];
