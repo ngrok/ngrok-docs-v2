@@ -1,6 +1,6 @@
 import type {
-  LoaderArgs,
-  V2_MetaFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
   HeadersFunction,
   SerializeFrom,
 } from "@vercel/remix";
@@ -17,7 +17,7 @@ import { getContent } from "~/utils/blog.server";
 import { CacheControl } from "~/utils/cache-control.server";
 import { getSeo } from "~/seo";
 
-export const loader = async ({ params }: LoaderArgs) => {
+export const loader = async ({ params }: LoaderFunctionArgs) => {
   let path = params["*"];
 
   invariant(path, "BlogPost: path is required");
@@ -56,7 +56,7 @@ export const headers: HeadersFunction = ({ loaderHeaders }) => {
   };
 };
 
-export const meta: V2_MetaFunction = ({ data, matches }) => {
+export const meta: MetaFunction = ({ data, matches }) => {
   if (!data) return [];
 
   const parentData = matches.flatMap((match) => match.data ?? []);
@@ -64,7 +64,6 @@ export const meta: V2_MetaFunction = ({ data, matches }) => {
   const {
     post: { frontmatter },
   } = data;
-  console.error("Post info", data.post);
 
   return [
     getSeo({
