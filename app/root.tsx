@@ -1,4 +1,9 @@
-import type { HeadersFunction, LinksFunction, LoaderFunction, V2_MetaFunction } from "@vercel/remix";
+import type {
+  HeadersFunction,
+  LinksFunction,
+  LoaderFunction,
+  V2_MetaFunction,
+} from "@vercel/remix";
 import { json } from "@vercel/remix";
 import {
   Links,
@@ -22,49 +27,52 @@ import type { Theme } from "~/utils/theme-provider";
 import { getThemeSession } from "~/utils/theme.server";
 
 import { CacheControl } from "~/utils/cache-control.server";
-import ErrorPage from '~/components/ErrorPage'
+import ErrorPage from "~/components/ErrorPage";
 
-import tailwindStyles from "./tailwind.css"
+import tailwindStyles from "./tailwind.css";
 
 //import type {SideBarItem, SidebarGroup} from '~/utils/docs.server';
 import Container from "~/components/layout/Container";
 
-import {getDomainUrl, removeTrailingSlash} from '~/utils'
+import { getDomainUrl, removeTrailingSlash } from "~/utils";
 
-import config from '~/docs.config';
-import { getSeo}  from '~/seo'
+import config from "~/docs.config";
+import { getSeo } from "~/seo";
 
 export const meta: V2_MetaFunction = ({ data, matches }) => {
-  if(!data) return [];
+  if (!data) return [];
 
   return [
     getSeo({
       title: config.title,
       description: config.description,
-      url: data.canonical ? data.canonical : '',
-    }),  
-  ]
-}
+      url: data.canonical ? data.canonical : "",
+    }),
+  ];
+};
 
 export const handle = {
-  id: 'root',
-}
+  id: "root",
+};
 
 export type LoaderData = {
   theme: Theme | null;
   canonical?: string;
   requestInfo: {
     url: string;
-    origin: string
-    path: string
+    origin: string;
+    path: string;
   } | null;
 };
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "//fonts.gstatic.com", crossOrigin: "anonymous" },
-  {rel: "stylesheet", href: tailwindStyles},
-  { rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en" },
-]
+  { rel: "stylesheet", href: tailwindStyles },
+  {
+    rel: "stylesheet",
+    href: "//fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en",
+  },
+];
 
 export const headers: HeadersFunction = () => {
   return { "Cache-Control": new CacheControl("swr").toString() };
@@ -96,12 +104,14 @@ function App() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
-        {data.requestInfo && <link
-          rel="canonical"
-          href={removeTrailingSlash(
-            `${data.requestInfo.origin}${data.requestInfo.path}`,
-          )}
-        />}
+        {data.requestInfo && (
+          <link
+            rel="canonical"
+            href={removeTrailingSlash(
+              `${data.requestInfo.origin}${data.requestInfo.path}`
+            )}
+          />
+        )}
         <Links />
         <ThemeHead ssrTheme={Boolean(data.theme)} />
       </head>
@@ -130,36 +140,32 @@ export default function AppWithProviders() {
 
 export function ErrorBoundary() {
   let error = useRouteError();
-  let status = '500';
-  let message = '';
+  let status = "500";
+  let message = "";
   let stacktrace;
 
   // when true, this is what used to go to `CatchBoundary`
-  if ( error.status === 404 ) {
+  if (error.status === 404) {
     status = 404;
-    message = 'Page Not Found';
+    message = "Page Not Found";
   } else if (error instanceof Error) {
-    status = '500';
+    status = "500";
     message = error.message;
     stacktrace = error.stack;
   } else {
-    status = '500';
-    message = 'Unknown Error';
+    status = "500";
+    message = "Unknown Error";
   }
   return (
     <ErrorDocument title="Error!">
-      <ErrorPage
-        code={status}
-        title={`There was an error`}
-        message={message}
-      />
+      <ErrorPage code={status} title={`There was an error`} message={message} />
     </ErrorDocument>
   );
 }
 
 function ErrorDocument({
   children,
-  title
+  title,
 }: {
   children: React.ReactNode;
   title?: string;
