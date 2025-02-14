@@ -4,10 +4,10 @@
   "sideEffects": false,
   "scripts": {
     "build": "run-s build:*",
-    "build:posts": "npx ts-node scripts/cachePosts.ts",
+    "build:posts": "tsx scripts/cachePosts.ts",
     "build:remix": "remix build",
     "dev": "run-p dev:*",
-    "dev:posts": "npx ts-node scripts/cachePosts.ts watch",
+    "dev:posts": "tsx scripts/cachePosts.ts watch",
     "dev:remix": "remix dev",
     "postinstall": "npm run build:posts"
   },
@@ -42,6 +42,7 @@
     "remix-utils": "^6.6.0",
     "spin-delay": "^1.2.0",
     "tiny-invariant": "^1.3.1",
+    "tsx": "^4.19.2",
     "yarn": "^1.22.19",
     "zod": "^3.21.4"
   },
@@ -59,7 +60,6 @@
     "npm-run-all": "^4.1.5",
     "rimraf": "^5.0.1",
     "tailwindcss": "^3.3.3",
-    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "engines": {

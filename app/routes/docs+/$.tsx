@@ -64,7 +64,6 @@ export const meta: V2_MetaFunction = ({ data, matches }) => {
   const {
     post: { frontmatter },
   } = data;
-  console.error("Post info", data.post);
 
   return [
     getSeo({
