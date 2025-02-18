@@ -20,12 +20,9 @@ import { getSeo } from "~/seo";
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   let path = params["*"];
 
-  // const contentPath = path ? `docs/${path}` : "pages/index";
-
   const files = await getContent(`docs/${path}`);
   let post = files && parseMarkdown(files[0].content);
 
-  //invariant(post, "Not found");
   if (!post) {
     throw json(
       {},
