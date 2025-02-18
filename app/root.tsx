@@ -2,13 +2,12 @@ import type {
   HeadersFunction,
   LinksFunction,
   LoaderFunction,
-  V2_MetaFunction,
+  MetaFunction,
 } from "@vercel/remix";
 import { json } from "@vercel/remix";
 import {
   Links,
   useLoaderData,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -39,7 +38,7 @@ import { getDomainUrl, removeTrailingSlash } from "~/utils";
 import config from "~/docs.config";
 import { getSeo } from "~/seo";
 
-export const meta: V2_MetaFunction = ({ data, matches }) => {
+export const meta: MetaFunction = ({ data, matches }) => {
   if (!data) return [];
 
   return [
@@ -122,7 +121,6 @@ function App() {
         <ThemeBody ssrTheme={Boolean(data.theme)} />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
@@ -183,7 +181,6 @@ function ErrorDocument({
         {children}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>
   );

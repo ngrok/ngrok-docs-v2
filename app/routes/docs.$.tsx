@@ -2,31 +2,30 @@ import type {
   LoaderFunctionArgs,
   MetaFunction,
   HeadersFunction,
+  SerializeFrom,
 } from "@vercel/remix";
 import { json, redirect } from "@vercel/remix";
 import { useLoaderData } from "@remix-run/react";
 import { parseISO, format } from "date-fns";
+
 import invariant from "tiny-invariant";
-import { getContent } from "~/utils/docs.server";
-import { CacheControl } from "~/utils/cache-control.server";
-import { getSeo } from "~/seo";
 
 import { MarkdownView } from "~/components/Markdown";
 import { parseMarkdown } from "~/utils/markdoc.server";
 
+import { getContent } from "~/utils/docs.server";
+import { CacheControl } from "~/utils/cache-control.server";
+import { getSeo } from "~/seo";
+
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   let path = params["*"];
 
-  invariant(path, "BlogPost: path is required");
+  // const contentPath = path ? `docs/${path}` : "pages/index";
 
-  //if (!path) return redirect("/blog");
-  if (!path) {
-    throw new Error("path is not defined");
-  }
-
-  const files = await getContent(`posts/${path}`);
-
+  const files = await getContent(`docs/${path}`);
   let post = files && parseMarkdown(files[0].content);
+
+  //invariant(post, "Not found");
   if (!post) {
     throw json(
       {},
@@ -53,44 +52,63 @@ export const headers: HeadersFunction = ({ loaderHeaders }) => {
   };
 };
 
-export const meta: MetaFunction = ({ data, matches }) => {
+export const meta: MetaFunction = ({
+  data,
+  matches,
+}: {
+  data: { post: any };
+  matches: any;
+}) => {
   if (!data) return [];
 
   const parentData = matches.flatMap((match) => match.data ?? []);
 
+  const {
+    post: { frontmatter },
+  } = data;
+
   return [
     getSeo({
-      title: data.post.attributes.meta.title,
-      description: data.post.attributes.meta.description,
+      title: frontmatter?.meta?.title ?? frontmatter?.title,
+      description: frontmatter?.meta?.description ?? frontmatter?.description,
       url: `${parentData[0].requestInfo.url}`,
     }),
   ];
 };
 
-export default function BlogPost() {
+export default function DocsPage() {
   const { post } = useLoaderData<typeof loader>();
 
+  const { frontmatter, body } = post;
   return (
     <div className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-          {post.attributes.meta.title}
+          {frontmatter?.meta?.title ?? frontmatter?.title}
         </h1>
         <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
           <div className="flex items-center space-x-2">
-            {post.attributes.date && (
+            {frontmatter?.date && (
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                {post.attributes.date &&
-                  format(parseISO(post.attributes.date), "MMMM dd, yyyy")}
+                {"Created: "}
+                {frontmatter?.date &&
+                  format(parseISO(frontmatter?.date), "MMMM dd, yyyy")}
+              </p>
+            )}
+            {frontmatter?.updated && (
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {"Last updated: "}
+                {frontmatter?.updated &&
+                  format(parseISO(frontmatter?.updated), "MMMM dd, yyyy")}
               </p>
             )}
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-            {post.readTime.text}
+            {frontmatter?.readTime && frontmatter.readTime.text}
           </p>
         </div>
         <div className="w-full mt-4 prose dark:prose-dark max-w-none">
-          {post.body && <MarkdownView content={post.body} />}
+          {body && <MarkdownView content={body} />}
         </div>
       </article>
     </div>
