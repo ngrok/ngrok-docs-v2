@@ -84,6 +84,9 @@ export const loader: LoaderFunction = async ({ request }) => {
   const url = getDomainUrl(request);
   const path = new URL(request.url).pathname;
 
+  if (path !== "/docs/getting-started")
+    throw redirect("/docs/getting-started", 301);
+
   return json({
     theme: themeSession.getTheme(),
     canonical: removeTrailingSlash(`${url}${path}`),
