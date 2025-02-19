@@ -1,9 +1,11 @@
 ---
-title: Quickstart
-pagination_next: universal-gateway/http
+meta:
+  title: Blog
+  name: blah
+  pagination_next: universal-gateway/http
 ---
 
-# Quickstart
+# blog
 
 This quickstart will use the [ngrok agent](/agent/) to put your application on
 the internet and secure it so that only you can access it. It assumes you already have your
@@ -11,15 +13,9 @@ own application running locally.
 
 ## Step 1: Install
 
-<Tabs groupId="os" queryString="os">
-<TabItem value="macos" label="Mac OS" default>
-
 ```bash
 brew install ngrok
 ```
-
-</TabItem>
-<TabItem value="linux" label="Debian Linux">
 
 ```bash
 curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | \
@@ -29,17 +25,11 @@ curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | \
   sudo apt update && sudo apt install ngrok
 ```
 
-</TabItem>
-<TabItem value="windows" label="Windows">
-
 ```bash
 choco install ngrok
 ```
 
 Run this in an Administrator Command Prompt.
-
-</TabItem>
-</Tabs>
 
 Or [download the ngrok agent from our Download
 page](https://download.ngrok.com) if you can't use one of the options above.

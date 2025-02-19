@@ -17,6 +17,9 @@ import { getContent } from "~/utils/docs.server";
 import { CacheControl } from "~/utils/cache-control.server";
 import { getSeo } from "~/seo";
 
+/**
+ *
+ */
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   let path = params["*"];
 
