@@ -21,12 +21,14 @@
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "~/*": ["./app/*"]
+      "~": ["./app/*"],
+      "@components": ["/app/components/*"]
     },
 
     // Vite takes care of building everything, not tsc.
     "noEmit": true
-  }
+  },
+  "exclude": ["node_modules", "build"]
 }

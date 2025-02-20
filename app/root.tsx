@@ -10,6 +10,7 @@ import {
   useLoaderData,
   Meta,
   Outlet,
+  LiveReload,
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
@@ -26,7 +27,7 @@ import type { Theme } from "~/utils/theme-provider";
 import { getThemeSession } from "~/utils/theme.server";
 
 import { CacheControl } from "~/utils/cache-control.server";
-import ErrorPage from "~/components/ErrorPage";
+import ErrorPage from "~@components/ErrorPage";
 
 import tailwindStyles from "./tailwind.css";
 
@@ -65,6 +66,16 @@ export type LoaderData = {
 };
 
 export const links: LinksFunction = () => [
+  {
+    rel: "icon",
+    // Use different favicon in development so it's easier to differentiate
+    // localhost tabs vs prod tabs in your browser
+    href:
+      process.env.NODE_ENV === "development"
+        ? "/dev-favicon.ico"
+        : "/favicon.ico",
+    type: "image/x-icon",
+  },
   { rel: "preconnect", href: "//fonts.gstatic.com", crossOrigin: "anonymous" },
   { rel: "stylesheet", href: tailwindStyles },
   {
@@ -117,6 +128,7 @@ function App() {
       <body>
         <Container>
           <Outlet />
+          <LiveReload />
         </Container>
         <ThemeBody ssrTheme={Boolean(data.theme)} />
         <ScrollRestoration />
