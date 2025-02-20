@@ -34,28 +34,28 @@ importers:
         version: 2.15.3(typescript@5.7.3)
       '@remix-run/v1-route-convention':
         specifier: ^0.1.4
-        version: 0.1.4(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))
+        version: 0.1.4(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))
       '@remix-run/vercel':
         specifier: ^1.19
-        version: 1.19.3(@vercel/node@5.1.7(rollup@4.34.8))
+        version: 1.19.3(@vercel/node@5.1.7(@swc/core@1.10.18)(rollup@4.34.8))
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
-        version: 0.4.2(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)))
+        version: 0.4.2(tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)))
       '@tailwindcss/forms':
         specifier: ^0.5.10
-        version: 0.5.10(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)))
+        version: 0.5.10(tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)))
       '@tailwindcss/typography':
         specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)))
+        version: 0.5.16(tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)))
       '@types/node':
         specifier: ^22.13.4
         version: 22.13.4
       '@vercel/node':
         specifier: ^5.1.7
-        version: 5.1.7(rollup@4.34.8)
+        version: 5.1.7(@swc/core@1.10.18)(rollup@4.34.8)
       '@vercel/remix':
         specifier: ^2.15.3
-        version: 2.15.3(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))(@remix-run/node@2.15.3(typescript@5.7.3))(@remix-run/server-runtime@2.15.3(typescript@5.7.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 2.15.3(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))(@remix-run/node@2.15.3(typescript@5.7.3))(@remix-run/server-runtime@2.15.3(typescript@5.7.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       add:
         specifier: ^2.0.6
         version: 2.0.6
@@ -118,7 +118,7 @@ importers:
         version: 11.0.5
       vite-plugin-require:
         specifier: ^1.2.14
-        version: 1.2.14(esbuild@0.17.6)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
+        version: 1.2.14(@swc/core@1.10.18)(esbuild@0.17.6)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
       zod:
         specifier: ^3.24.2
         version: 3.24.2
@@ -131,7 +131,7 @@ importers:
         version: 7.1.5(@react-router/dev@7.1.5(@types/node@22.13.4)(react-router@6.29.0(react@18.3.1))(terser@5.39.0)(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))(typescript@5.7.3)
       '@remix-run/dev':
         specifier: ^2.15.3
-        version: 2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
+        version: 2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
       '@types/react':
         specifier: ^18.2.20
         version: 18.3.18
@@ -144,6 +144,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.7.4
         version: 6.21.0(eslint@8.57.1)(typescript@5.7.3)
+      '@vitejs/plugin-react-swc':
+        specifier: ^3.8.0
+        version: 3.8.0(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.20(postcss@8.5.2)
@@ -179,7 +182,7 @@ importers:
         version: 0.8.5
       tailwindcss:
         specifier: ^3.4.4
-        version: 3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))
+        version: 3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))
       typescript:
         specifier: ^5.1.6
         version: 5.7.3
@@ -1110,6 +1113,81 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
+  '@swc/core-darwin-arm64@1.10.18':
+    resolution: {integrity: sha512-FdGqzAIKVQJu8ROlnHElP59XAUsUzCFSNsou+tY/9ba+lhu8R9v0OI5wXiPErrKGZpQFMmx/BPqqhx3X4SuGNg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@swc/core-darwin-x64@1.10.18':
+    resolution: {integrity: sha512-RZ73gZRituL/ZVLgrW6BYnQ5g8tuStG4cLUiPGJsUZpUm0ullSH6lHFvZTCBNFTfpQChG6eEhi2IdG6DwFp1lw==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@swc/core-linux-arm-gnueabihf@1.10.18':
+    resolution: {integrity: sha512-8iJqI3EkxJuuq21UHoen1VS+QlS23RvynRuk95K+Q2HBjygetztCGGEc+Xelx9a0uPkDaaAtFvds4JMDqb9SAA==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@swc/core-linux-arm64-gnu@1.10.18':
+    resolution: {integrity: sha512-8f1kSktWzMB6PG+r8lOlCfXz5E8Qhsmfwonn77T/OfjvGwQaWrcoASh2cdjpk3dydbf8jsKGPQE1lSc7GyjXRQ==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-arm64-musl@1.10.18':
+    resolution: {integrity: sha512-4rv+E4VLdgQw6zjbTAauCAEExxChvxMpBUMCiZweTNPKbJJ2dY6BX2WGJ1ea8+RcgqR/Xysj3AFbOz1LBz6dGA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-x64-gnu@1.10.18':
+    resolution: {integrity: sha512-vTNmyRBVP+sZca+vtwygYPGTNudTU6Gl6XhaZZ7cEUTBr8xvSTgEmYXoK/2uzyXpaTUI4Bmtp1x81cGN0mMoLQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-linux-x64-musl@1.10.18':
+    resolution: {integrity: sha512-1TZPReKhFCeX776XaT6wegknfg+g3zODve+r4oslFHI+g7cInfWlxoGNDS3niPKyuafgCdOjme2g3OF+zzxfsQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-win32-arm64-msvc@1.10.18':
+    resolution: {integrity: sha512-o/2CsaWSN3bkzVQ6DA+BiFKSVEYvhWGA1h+wnL2zWmIDs2Knag54sOEXZkCaf8YQyZesGeXJtPEy9hh/vjJgkA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@swc/core-win32-ia32-msvc@1.10.18':
+    resolution: {integrity: sha512-eTPASeJtk4mJDfWiYEiOC6OYUi/N7meHbNHcU8e+aKABonhXrIo/FmnTE8vsUtC6+jakT1TQBdiQ8fzJ1kJVwA==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+
+  '@swc/core-win32-x64-msvc@1.10.18':
+    resolution: {integrity: sha512-1Dud8CDBnc34wkBOboFBQud9YlV1bcIQtKSg7zC8LtwR3h+XAaCayZPkpGmmAlCv1DLQPvkF+s0JcaVC9mfffQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@swc/core@1.10.18':
+    resolution: {integrity: sha512-IUWKD6uQYGRy8w2X9EZrtYg1O3SCijlHbCXzMaHQYc1X7yjijQh4H3IVL9ssZZyVp2ZDfQZu4bD5DWxxvpyjvg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@swc/helpers': '*'
+    peerDependenciesMeta:
+      '@swc/helpers':
+        optional: true
+
+  '@swc/counter@0.1.3':
+    resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
+
+  '@swc/types@0.1.17':
+    resolution: {integrity: sha512-V5gRru+aD8YVyCOMAjMpWR1Ui577DD5KSJsHP8RAxopAH22jFz6GZd/qxqjO6MJHQhcsjvjOFXyDhyLQUnMveQ==}
+
   '@tailwindcss/aspect-ratio@0.4.2':
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
     peerDependencies:
@@ -1337,6 +1415,11 @@ packages:
 
   '@vercel/static-config@3.0.0':
     resolution: {integrity: sha512-2qtvcBJ1bGY0dYGYh3iM7yGKkk971FujLEDXzuW5wcZsPr1GSEjO/w2iSr3qve6nDDtBImsGoDEnus5FI4+fIw==}
+
+  '@vitejs/plugin-react-swc@3.8.0':
+    resolution: {integrity: sha512-T4sHPvS+DIqDP51ifPqa9XIRAz/kIvIi8oXcnOZZgHmMotgmmdxe/DD5tMFlt5nuIRzT0/QuiwmKlH0503Aapw==}
+    peerDependencies:
+      vite: ^4 || ^5 || ^6
 
   '@vue/compiler-core@3.5.13':
     resolution: {integrity: sha512-oOdAkwqUfW1WqpwSYJce06wvt6HljgY3fGeM9NcVA1HaYOij3mZG9Rkysn0OHuyUAGMbEbARIpsG+LPVlBJ5/Q==}
@@ -5641,7 +5724,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.7.3
 
-  '@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))':
+  '@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))':
     dependencies:
       '@babel/core': 7.26.9
       '@babel/generator': 7.26.9
@@ -5685,7 +5768,7 @@ snapshots:
       pidtree: 0.6.0
       postcss: 8.5.2
       postcss-discard-duplicates: 5.1.0(postcss@8.5.2)
-      postcss-load-config: 4.0.2(postcss@8.5.2)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))
+      postcss-load-config: 4.0.2(postcss@8.5.2)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))
       postcss-modules: 6.0.1(postcss@8.5.2)
       prettier: 2.8.8
       pretty-ms: 7.0.1
@@ -5801,15 +5884,15 @@ snapshots:
     optionalDependencies:
       typescript: 5.7.3
 
-  '@remix-run/v1-route-convention@0.1.4(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))':
+  '@remix-run/v1-route-convention@0.1.4(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))':
     dependencies:
-      '@remix-run/dev': 2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
+      '@remix-run/dev': 2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
       minimatch: 7.4.6
 
-  '@remix-run/vercel@1.19.3(@vercel/node@5.1.7(rollup@4.34.8))':
+  '@remix-run/vercel@1.19.3(@vercel/node@5.1.7(@swc/core@1.10.18)(rollup@4.34.8))':
     dependencies:
       '@remix-run/node': 1.19.3
-      '@vercel/node': 5.1.7(rollup@4.34.8)
+      '@vercel/node': 5.1.7(@swc/core@1.10.18)(rollup@4.34.8)
 
   '@remix-run/web-blob@3.1.0':
     dependencies:
@@ -5906,22 +5989,74 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)))':
-    dependencies:
-      tailwindcss: 3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))
+  '@swc/core-darwin-arm64@1.10.18':
+    optional: true
 
-  '@tailwindcss/forms@0.5.10(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)))':
+  '@swc/core-darwin-x64@1.10.18':
+    optional: true
+
+  '@swc/core-linux-arm-gnueabihf@1.10.18':
+    optional: true
+
+  '@swc/core-linux-arm64-gnu@1.10.18':
+    optional: true
+
+  '@swc/core-linux-arm64-musl@1.10.18':
+    optional: true
+
+  '@swc/core-linux-x64-gnu@1.10.18':
+    optional: true
+
+  '@swc/core-linux-x64-musl@1.10.18':
+    optional: true
+
+  '@swc/core-win32-arm64-msvc@1.10.18':
+    optional: true
+
+  '@swc/core-win32-ia32-msvc@1.10.18':
+    optional: true
+
+  '@swc/core-win32-x64-msvc@1.10.18':
+    optional: true
+
+  '@swc/core@1.10.18':
+    dependencies:
+      '@swc/counter': 0.1.3
+      '@swc/types': 0.1.17
+    optionalDependencies:
+      '@swc/core-darwin-arm64': 1.10.18
+      '@swc/core-darwin-x64': 1.10.18
+      '@swc/core-linux-arm-gnueabihf': 1.10.18
+      '@swc/core-linux-arm64-gnu': 1.10.18
+      '@swc/core-linux-arm64-musl': 1.10.18
+      '@swc/core-linux-x64-gnu': 1.10.18
+      '@swc/core-linux-x64-musl': 1.10.18
+      '@swc/core-win32-arm64-msvc': 1.10.18
+      '@swc/core-win32-ia32-msvc': 1.10.18
+      '@swc/core-win32-x64-msvc': 1.10.18
+
+  '@swc/counter@0.1.3': {}
+
+  '@swc/types@0.1.17':
+    dependencies:
+      '@swc/counter': 0.1.3
+
+  '@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)))':
+    dependencies:
+      tailwindcss: 3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))
+
+  '@tailwindcss/forms@0.5.10(tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)))':
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))
+      tailwindcss: 3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))
 
-  '@tailwindcss/typography@0.5.16(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)))':
+  '@tailwindcss/typography@0.5.16(tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)))':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))
+      tailwindcss: 3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))
 
   '@tanstack/react-virtual@3.13.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -6200,7 +6335,7 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vercel/node@5.1.7(rollup@4.34.8)':
+  '@vercel/node@5.1.7(@swc/core@1.10.18)(rollup@4.34.8)':
     dependencies:
       '@edge-runtime/node-utils': 2.3.0
       '@edge-runtime/primitives': 4.1.0
@@ -6220,7 +6355,7 @@ snapshots:
       path-to-regexp: 6.1.0
       path-to-regexp-updated: path-to-regexp@6.3.0
       ts-morph: 12.0.0
-      ts-node: 10.9.1(@types/node@16.18.11)(typescript@4.9.5)
+      ts-node: 10.9.1(@swc/core@1.10.18)(@types/node@16.18.11)(typescript@4.9.5)
       typescript: 4.9.5
       undici: 5.28.4
     transitivePeerDependencies:
@@ -6230,9 +6365,9 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vercel/remix@2.15.3(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))(@remix-run/node@2.15.3(typescript@5.7.3))(@remix-run/server-runtime@2.15.3(typescript@5.7.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@vercel/remix@2.15.3(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)))(@remix-run/node@2.15.3(typescript@5.7.3))(@remix-run/server-runtime@2.15.3(typescript@5.7.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@remix-run/dev': 2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
+      '@remix-run/dev': 2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.4)(terser@5.39.0)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))
       '@remix-run/node': 2.15.3(typescript@5.7.3)
       '@remix-run/server-runtime': 2.15.3(typescript@5.7.3)
       '@vercel/static-config': 3.0.0
@@ -6246,6 +6381,13 @@ snapshots:
       ajv: 8.6.3
       json-schema-to-ts: 1.6.4
       ts-morph: 12.0.0
+
+  '@vitejs/plugin-react-swc@3.8.0(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0))':
+    dependencies:
+      '@swc/core': 1.10.18
+      vite: 5.4.14(@types/node@22.13.4)(terser@5.39.0)
+    transitivePeerDependencies:
+      - '@swc/helpers'
 
   '@vue/compiler-core@3.5.13':
     dependencies:
@@ -9348,13 +9490,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.5.2
 
-  postcss-load-config@4.0.2(postcss@8.5.2)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)):
+  postcss-load-config@4.0.2(postcss@8.5.2)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.7.0
     optionalDependencies:
       postcss: 8.5.2
-      ts-node: 10.9.1(@types/node@22.13.4)(typescript@5.7.3)
+      ts-node: 10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)
 
   postcss-modules-extract-imports@3.1.0(postcss@8.5.2):
     dependencies:
@@ -10084,7 +10226,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  tailwindcss@3.4.17(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3)):
+  tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -10103,7 +10245,7 @@ snapshots:
       postcss: 8.5.2
       postcss-import: 15.1.0(postcss@8.5.2)
       postcss-js: 4.0.1(postcss@8.5.2)
-      postcss-load-config: 4.0.2(postcss@8.5.2)(ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3))
+      postcss-load-config: 4.0.2(postcss@8.5.2)(ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))
       postcss-nested: 6.2.0(postcss@8.5.2)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.10
@@ -10146,15 +10288,16 @@ snapshots:
       mkdirp: 3.0.1
       yallist: 5.0.0
 
-  terser-webpack-plugin@5.3.11(esbuild@0.17.6)(webpack@5.98.0(esbuild@0.17.6)):
+  terser-webpack-plugin@5.3.11(@swc/core@1.10.18)(esbuild@0.17.6)(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.17.6)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 4.3.0
       serialize-javascript: 6.0.2
       terser: 5.39.0
-      webpack: 5.98.0(esbuild@0.17.6)
+      webpack: 5.98.0(@swc/core@1.10.18)(esbuild@0.17.6)
     optionalDependencies:
+      '@swc/core': 1.10.18
       esbuild: 0.17.6
 
   terser@5.39.0:
@@ -10217,7 +10360,7 @@ snapshots:
       '@ts-morph/common': 0.11.1
       code-block-writer: 10.1.1
 
-  ts-node@10.9.1(@types/node@16.18.11)(typescript@4.9.5):
+  ts-node@10.9.1(@swc/core@1.10.18)(@types/node@16.18.11)(typescript@4.9.5):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -10234,8 +10377,10 @@ snapshots:
       typescript: 4.9.5
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
+    optionalDependencies:
+      '@swc/core': 1.10.18
 
-  ts-node@10.9.1(@types/node@22.13.4)(typescript@5.7.3):
+  ts-node@10.9.1(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -10252,6 +10397,8 @@ snapshots:
       typescript: 5.7.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
+    optionalDependencies:
+      '@swc/core': 1.10.18
     optional: true
 
   ts-toolbelt@6.15.5: {}
@@ -10539,7 +10686,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-require@1.2.14(esbuild@0.17.6)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)):
+  vite-plugin-require@1.2.14(@swc/core@1.10.18)(esbuild@0.17.6)(vite@5.4.14(@types/node@22.13.4)(terser@5.39.0)):
     dependencies:
       '@babel/generator': 7.26.9
       '@babel/parser': 7.26.9
@@ -10547,8 +10694,8 @@ snapshots:
       '@babel/types': 7.26.9
       '@vue/compiler-sfc': 3.5.13
       vite: 5.4.14(@types/node@22.13.4)(terser@5.39.0)
-      vue-loader: 17.4.2(@vue/compiler-sfc@3.5.13)(webpack@5.98.0(esbuild@0.17.6))
-      webpack: 5.98.0(esbuild@0.17.6)
+      vue-loader: 17.4.2(@vue/compiler-sfc@3.5.13)(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.17.6))
+      webpack: 5.98.0(@swc/core@1.10.18)(esbuild@0.17.6)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
@@ -10578,12 +10725,12 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.39.0
 
-  vue-loader@17.4.2(@vue/compiler-sfc@3.5.13)(webpack@5.98.0(esbuild@0.17.6)):
+  vue-loader@17.4.2(@vue/compiler-sfc@3.5.13)(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.17.6)):
     dependencies:
       chalk: 4.1.2
       hash-sum: 2.0.0
       watchpack: 2.4.2
-      webpack: 5.98.0(esbuild@0.17.6)
+      webpack: 5.98.0(@swc/core@1.10.18)(esbuild@0.17.6)
     optionalDependencies:
       '@vue/compiler-sfc': 3.5.13
 
@@ -10608,7 +10755,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack@5.98.0(esbuild@0.17.6):
+  webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.17.6):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.6
@@ -10630,7 +10777,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.11(esbuild@0.17.6)(webpack@5.98.0(esbuild@0.17.6))
+      terser-webpack-plugin: 5.3.11(@swc/core@1.10.18)(esbuild@0.17.6)(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.17.6))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:

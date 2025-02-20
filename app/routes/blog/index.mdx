@@ -5,8 +5,6 @@ meta:
   pagination_next: universal-gateway/http
 ---
 
-# blog
-
 This quickstart will use the [ngrok agent](/agent/) to put your application on
 the internet and secure it so that only you can access it. It assumes you already have your
 own application running locally.
@@ -123,16 +121,12 @@ account will be allowed to access it. Keep in mind that when you restart ngrok,
 if you don't specify the `--url` flag that your app's URL changed, so make
 sure to visit the new one.
 
-<img width="400" height="400" src="/docs/img/docs/ngrok-oauth.png" />
-
 If you don't have a Google account or you want a simpler form of auth, you can
 protect your app with a username and password like so:
 
 ```
 ngrok http http://localhost:8080 --basic-auth 'username:a-very-secure-password'
 ```
-
-<img width="450" height="450" src="/docs/img/docs/ngrok-basic-auth.png" />
 
 ngrok supports many forms of authentication including:
 
