@@ -13,8 +13,8 @@ export default {
     {
       title: "Introduction",
       links: [
-        { title: "Getting started", href: "/docs/getting-started" },
-        { title: "Installation", href: "/docs/installation" },
+        { title: "Example", href: "/docs/example" },
+        { title: "Home", href: "/docs/" },
       ],
     },
     {

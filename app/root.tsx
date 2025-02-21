@@ -15,8 +15,11 @@ import {
   ScrollRestoration,
   isRouteErrorResponse,
   useRouteError,
+  useNavigate,
+  useLocation,
+  ClientLoaderFunctionArgs,
 } from "@remix-run/react";
-
+import type { ActionFunctionArgs } from "@remix-run/node";
 import {
   ThemeBody,
   ThemeHead,
@@ -38,6 +41,7 @@ import { getDomainUrl, removeTrailingSlash } from "~/utils";
 
 import config from "~/docs.config";
 import { getSeo } from "~/seo";
+import { shouldRedirect } from "~/utils/redirects/redirectMethods";
 
 export const meta: MetaFunction = ({ data, matches }) => {
   if (!data) return [];
@@ -94,8 +98,11 @@ export const loader: LoaderFunction = async ({ request }) => {
   const url = getDomainUrl(request);
   const path = new URL(request.url).pathname;
 
-  if (path !== "/docs/getting-started")
-    throw redirect("/docs/getting-started", 301);
+  
+  const {result, newPath} = shouldRedirect(path);
+  if (result) {
+    return redirect(newPath as string);
+  }
 
   return json({
     theme: themeSession.getTheme(),
@@ -107,6 +114,24 @@ export const loader: LoaderFunction = async ({ request }) => {
     },
   });
 };
+
+export const clientLoader = async ({
+  request,
+}: ClientLoaderFunctionArgs) => {  
+    const url = new URL(request.url);
+    const path = url.pathname;
+    const hash = url.hash;
+    console.log("Location is", path);
+    console.log("Hash is", hash);
+    if(hash){
+      const {result, newPath} = shouldRedirect(path);
+      if (result) {
+        return redirect(newPath as string);
+      }
+    }
+};
+
+clientLoader.hydrate = true as const;
 
 function App() {
   const data = useLoaderData<LoaderData>();
@@ -143,6 +168,8 @@ function App() {
 
 export default function AppWithProviders() {
   const data = useLoaderData<LoaderData>();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <ThemeProvider specifiedTheme={data.theme}>
