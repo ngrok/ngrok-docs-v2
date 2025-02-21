@@ -1,4 +1,20 @@
-import ErrorPage from "~@components/ErrorPage";
+---
+title: yo
+---
+
+export const meta = [
+  { title: frontmatter.title },
+  { name: "description", content: "Hello" },
+  { name: "keywords", content: "seoKeywords" },
+  { property: "og:title", content: "Error page example" },
+  { property: "og:description", content: "seoDescription" },
+  { property: "twitter::title", content: "`${title} | ${config.title}`" },
+  { property: "twitter::description", content: "seoDescription" },
+  { name: "robots", content: "index,follow" },
+  { name: "googlebot", content: "index,follow" },
+];
+
+import ErrorPage from "@components/ErrorPage";
 
 # Example
 

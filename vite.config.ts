@@ -21,6 +21,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    tsconfigPaths(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     }),
@@ -45,6 +46,5 @@ export default defineConfig({
       },
     }),
     vitePluginRequire.default(),
-    tsconfigPaths(),
   ],
 });

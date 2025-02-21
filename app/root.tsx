@@ -27,7 +27,7 @@ import type { Theme } from "~/utils/theme-provider";
 import { getThemeSession } from "~/utils/theme.server";
 
 import { CacheControl } from "~/utils/cache-control.server";
-import ErrorPage from "~@components/ErrorPage";
+import ErrorPage from "@components/ErrorPage";
 
 import tailwindStyles from "./tailwind.css";
 
