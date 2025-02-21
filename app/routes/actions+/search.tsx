@@ -1,9 +1,9 @@
-import type { LoaderArgs } from "@vercel/remix";
+import type { LoaderFunctionArgs } from "@vercel/remix";
 import { json } from "@vercel/remix";
-import { getPosts, getDocs } from "~/utils/blog.server";
+import { getPosts, getDocs } from "~/utils/docs.server";
 import { getDomainUrl } from "~/utils";
 
-export let loader = async ({ request }: LoaderArgs) => {
+export let loader = async ({ request }: LoaderFunctionArgs) => {
   const blogUrl = `${getDomainUrl(request)}`;
 
   let url = new URL(request.url);
