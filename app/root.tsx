@@ -25,6 +25,14 @@ import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 
 export const links: LinksFunction = () => [
+  {
+    rel: "icon",
+    href:
+      process.env.NODE_ENV === "development"
+        ? "/dev-favicon.ico"
+        : "/favicon.ico",
+    type: "image/png",
+  },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -33,7 +41,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?fashaquil/doc-111-upgrade-to-remix-2-retrymily=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
 ];
 
