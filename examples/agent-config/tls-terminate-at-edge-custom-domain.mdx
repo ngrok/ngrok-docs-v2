@@ -1,0 +1,12 @@
+```yaml
+version: 3
+endpoints:
+  - name: example
+    url: tls://your-name.ngrok.app
+    upstream:
+      url: 80
+    traffic_policy:
+      on_tcp_connect:
+        - actions:
+            - type: terminate-tls
+```

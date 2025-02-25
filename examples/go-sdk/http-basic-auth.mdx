@@ -1,0 +1,32 @@
+```go
+import (
+	"context"
+	"net"
+
+	"golang.ngrok.com/ngrok"
+	"golang.ngrok.com/ngrok/config"
+)
+
+trafficPolicy := `
+on_http_request:
+  - actions:
+      - type: basic-auth
+        config:
+          credentials:
+            - username1:password1
+            - username2:password2
+`
+
+func ngrokListener(ctx context.Context) (net.Listener, error) {
+	return ngrok.Listen(ctx,
+		config.HTTPEndpoint(
+			config.WithTrafficPolicy(trafficPolicy)
+		),
+		ngrok.WithAuthtokenFromEnv(),
+	)
+}
+```
+
+Go Package Docs:
+
+- [https://pkg.go.dev/golang.ngrok.com/ngrok/config#WithTrafficPolicy](https://pkg.go.dev/golang.ngrok.com/ngrok/config#WithTrafficPolicy)

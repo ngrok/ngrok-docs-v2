@@ -1,0 +1,35 @@
+```go
+import (
+	"context"
+	"net"
+
+	"golang.ngrok.com/ngrok"
+	"golang.ngrok.com/ngrok/config"
+)
+
+trafficPolicy := `
+on_http_request:
+  - actions:
+      - type: add-headers
+        config:
+          headers:
+            is-ngrok: 1
+            country: ${conn.geo.country_code}
+      - type: remove-headers
+        config:
+          headers: ["referrer"]
+`
+
+func ngrokListener(ctx context.Context) (net.Listener, error) {
+	return ngrok.Listen(ctx,
+		config.HTTPEndpoint(
+			config.WithTrafficPolicy(trafficPolicy),
+		),
+		ngrok.WithAuthtokenFromEnv(),
+	)
+}
+```
+
+Go Package Docs:
+
+- [https://pkg.go.dev/golang.ngrok.com/ngrok/config#WithTrafficPolicy](https://pkg.go.dev/golang.ngrok.com/ngrok/config#WithTrafficPolicy)
