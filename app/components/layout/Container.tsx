@@ -2,10 +2,9 @@ import clsx from "clsx";
 import { Link, NavLink } from "@remix-run/react";
 import * as React from "react";
 
-import { Theme, Themed, useTheme } from "~/utils/theme-provider";
 import MobileNavigation from "~/components/layout/MobileNavigation";
 import Navigation from "~/components/layout/Navigation";
-import config from "~/docs.config";
+import config from "~/utils/docs.config";
 
 import { SearchPalette } from "~/components/Search";
 
@@ -23,13 +22,13 @@ export default function Container({ children }) {
   let [isScrolled, setIsScrolled] = React.useState(false);
   let [isSearching, setIsSearching] = React.useState(false);
 
-  const [, setTheme] = useTheme();
+  // const [, setTheme] = useTheme();
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) =>
-      prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
-    );
-  };
+  // const toggleTheme = () => {
+  //   setTheme((prevTheme) =>
+  //     prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+  //   );
+  // };
 
   React.useEffect(() => {
     function onScroll() {
@@ -122,7 +121,7 @@ export default function Container({ children }) {
               )}
             </>
           )}
-          <button
+          {/* <button
             onClick={toggleTheme}
             aria-label="Toggle Dark Mode"
             type="button"
@@ -154,7 +153,7 @@ export default function Container({ children }) {
                 }
               />
             </svg>
-          </button>
+          </button> */}
         </div>
       </header>
       <div className="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12 bg-white dark:bg-gray-800">

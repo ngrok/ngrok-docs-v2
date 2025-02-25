@@ -9,7 +9,7 @@ import { fromIncludes, toReplace, fromExact, toExact } from "../pathMethods";
 
 //  [1 - to]:  (path, from) => string (returned value becomes the new path)
 export const generalRedirects = [
-  [fromIncludes(`/docs/example#test`), `/docs/example/quickstart`],
+  [fromIncludes(`/docs/example/#test`), `/docs/example/quickstart`],
   [fromIncludes(`/docs/1`), `/docs/`],
   [fromIncludes(`/docs/2`), `/docs/`],
   [fromIncludes(`/docs/ngrok-link`), `/docs/universal-gateway/overview/`],

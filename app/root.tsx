@@ -1,66 +1,43 @@
-import type {
-  HeadersFunction,
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from "@vercel/remix";
-import { json, redirect } from "@vercel/remix";
 import {
+  json,
   Links,
-  useLoaderData,
+  Location,
   Meta,
+  NavigateFunction,
   Outlet,
-  LiveReload,
+  redirect,
   Scripts,
   ScrollRestoration,
-  isRouteErrorResponse,
-  useRouteError,
-  useNavigate,
+  useLoaderData,
   useLocation,
-  ClientLoaderFunctionArgs,
+  useNavigate,
 } from "@remix-run/react";
-import type { ActionFunctionArgs } from "@remix-run/node";
-import {
-  ThemeBody,
-  ThemeHead,
-  ThemeProvider,
-  useTheme,
-} from "~/utils/theme-provider";
-import type { Theme } from "~/utils/theme-provider";
-import { getThemeSession } from "~/utils/theme.server";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  LoaderFunctionArgs,
+} from "@remix-run/node";
 
-import { CacheControl } from "~/utils/cache-control.server";
-import ErrorPage from "@components/ErrorPage";
+import "./tailwind.css";
+import { shouldRedirect } from "./utils/redirects/redirectMethods";
+import { useEffect } from "react";
+import Container from "./components/layout/Container";
+import { getDomainUrl, removeTrailingSlash } from "./utils";
 
-import tailwindStyles from "./tailwind.css";
-
-//import type {SideBarItem, SidebarGroup} from '~/utils/docs.server';
-import Container from "~/components/layout/Container";
-
-import { getDomainUrl, removeTrailingSlash } from "~/utils";
-
-import config from "~/docs.config";
-import { getSeo } from "~/seo";
-import { shouldRedirect } from "~/utils/redirects/redirectMethods";
-
-export const meta: MetaFunction = ({ data, matches }) => {
-  if (!data) return [];
-
-  return [
-    getSeo({
-      title: config?.title,
-      description: config?.description,
-      url: data.canonical ? data.canonical : "",
-    }),
-  ];
-};
-
-export const handle = {
-  id: "root",
-};
+export const links: LinksFunction = () => [
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+  },
+];
 
 export type LoaderData = {
-  theme: Theme | null;
   canonical?: string;
   requestInfo: {
     url: string;
@@ -69,43 +46,18 @@ export type LoaderData = {
   } | null;
 };
 
-export const links: LinksFunction = () => [
-  {
-    rel: "icon",
-    // Use different favicon in development so it's easier to differentiate
-    // localhost tabs vs prod tabs in your browser
-    href:
-      process.env.NODE_ENV === "development"
-        ? "/dev-favicon.ico"
-        : "/favicon.ico",
-    type: "image/x-icon",
-  },
-  { rel: "preconnect", href: "//fonts.gstatic.com", crossOrigin: "anonymous" },
-  { rel: "stylesheet", href: tailwindStyles },
-  {
-    rel: "stylesheet",
-    href: "//fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en",
-  },
-];
-
-export const headers: HeadersFunction = () => {
-  return { "Cache-Control": new CacheControl("swr").toString() };
-};
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const themeSession = await getThemeSession(request);
-
+export const loader: LoaderFunction = async ({
+  request,
+}: LoaderFunctionArgs) => {
   const url = getDomainUrl(request);
   const path = new URL(request.url).pathname;
 
-  
-  const {result, newPath} = shouldRedirect(path);
+  const { result, newPath } = shouldRedirect(path);
   if (result) {
     return redirect(newPath as string);
   }
 
   return json({
-    theme: themeSession.getTheme(),
     canonical: removeTrailingSlash(`${url}${path}`),
     requestInfo: {
       url: removeTrailingSlash(`${url}${path}`),
@@ -115,29 +67,28 @@ export const loader: LoaderFunction = async ({ request }) => {
   });
 };
 
-export const clientLoader = async ({
-  request,
-}: ClientLoaderFunctionArgs) => {  
-    const url = new URL(request.url);
-    const path = url.pathname;
-    const hash = url.hash;
-    console.log("Location is", path);
-    console.log("Hash is", hash);
-    if(hash){
-      const {result, newPath} = shouldRedirect(path);
-      if (result) {
-        return redirect(newPath as string);
-      }
+const processClientSideRedirect = (
+  location: Location,
+  navigate: NavigateFunction
+) => {
+  const { pathname, hash } = location;
+  if (hash) {
+    const { result, newPath } = shouldRedirect(pathname + hash);
+    if (result) {
+      navigate(newPath as string, { replace: true });
     }
+  }
 };
 
-clientLoader.hydrate = true as const;
-
-function App() {
+export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const data = useLoaderData<LoaderData>();
-  const [theme] = useTheme();
+  useEffect(() => {
+    processClientSideRedirect(location, navigate);
+  }, []);
   return (
-    <html lang="en" className={theme ?? ""}>
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -151,14 +102,11 @@ function App() {
           />
         )}
         <Links />
-        <ThemeHead ssrTheme={Boolean(data.theme)} />
       </head>
       <body>
         <Container>
           <Outlet />
-          <LiveReload />
         </Container>
-        <ThemeBody ssrTheme={Boolean(data.theme)} />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -166,64 +114,6 @@ function App() {
   );
 }
 
-export default function AppWithProviders() {
-  const data = useLoaderData<LoaderData>();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  return (
-    <ThemeProvider specifiedTheme={data.theme}>
-      <App />
-    </ThemeProvider>
-  );
-}
-
-export function ErrorBoundary() {
-  let error = useRouteError();
-  let status = "500";
-  let message = "";
-  let stacktrace;
-
-  // when true, this is what used to go to `CatchBoundary`
-  if (error.status === 404) {
-    status = 404;
-    message = "Page Not Found";
-  } else if (error instanceof Error) {
-    status = "500";
-    message = error.message;
-    stacktrace = error.stack;
-  } else {
-    status = "500";
-    message = "Unknown Error";
-  }
-  return (
-    <ErrorDocument title="Error!">
-      <ErrorPage code={status} title={`There was an error`} message={message} />
-    </ErrorDocument>
-  );
-}
-
-function ErrorDocument({
-  children,
-  title,
-}: {
-  children: React.ReactNode;
-  title?: string;
-}) {
-  return (
-    <html className="h-full" lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        {title ? <title>{title}</title> : null}
-        <Meta />
-        <Links />
-      </head>
-      <body className="h-full">
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
-  );
+export default function App() {
+  return <Outlet />;
 }

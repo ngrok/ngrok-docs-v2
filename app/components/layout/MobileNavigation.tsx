@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "@remix-run/react";
-import { Dialog } from '@headlessui/react'
-import Navigation from '~/components/layout/Navigation'
-import config from '~/docs.config';
-import clsx from 'clsx';
+import { Dialog } from "@headlessui/react";
+import Navigation from "~/components/layout/Navigation";
+import config from "~/utils/docs.config";
+import clsx from "clsx";
 
 function MenuIcon(props) {
   return (
@@ -17,7 +17,7 @@ function MenuIcon(props) {
     >
       <path d="M4 7h16M4 12h16M4 17h16" />
     </svg>
-  )
+  );
 }
 
 function CloseIcon(props) {
@@ -32,19 +32,19 @@ function CloseIcon(props) {
     >
       <path d="M5 5l14 14M19 5l-14 14" />
     </svg>
-  )
+  );
 }
 
 export default function MobileNavigation() {
-  let [isOpen, setIsOpen] = useState(false)
+  let [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen) return;
 
     function onRouteChange() {
-      setIsOpen(false)
+      setIsOpen(false);
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   return (
     <>
@@ -75,44 +75,48 @@ export default function MobileNavigation() {
               {config.title}
             </Link>
           </div>
-          <ul
-                role="list"
-                className="mt-2 space-y-2 lg:mt-4 lg:space-y-4"
-              >
-          <li  className="relative">
-            <NavLink 
+          <ul role="list" className="mt-2 space-y-2 lg:mt-4 lg:space-y-4">
+            <li className="relative">
+              <NavLink
                 to="/"
-                prefetch="intent" 
+                prefetch="intent"
                 aria-label="Home"
-                className={({ isActive }) =>  clsx(
-                  'block w-full pl-3.5',
-                  isActive
-                  ? 'font-semibold text-sky-500 before:bg-sky-500'
-                  : 'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300'
-                )}  
-            >Home</NavLink>
-          </li>
-          {config.nav && config.nav.map( nav => (
-            <li key={nav.link} className="relative">
-              <NavLink 
-                  to={nav.link} 
-                  prefetch="intent" 
-                  aria-label={nav.link}
-                  className={({ isActive }) =>  clsx(
-                    'block w-full pl-3.5',
+                className={({ isActive }) =>
+                  clsx(
+                    "block w-full pl-3.5",
                     isActive
-                    ? 'font-semibold text-sky-500 before:bg-sky-500'
-                    : 'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300'
-                  )}  
+                      ? "font-semibold text-sky-500 before:bg-sky-500"
+                      : "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
+                  )
+                }
               >
-                  {nav.text}
+                Home
               </NavLink>
             </li>
-          ))}
+            {config.nav &&
+              config.nav.map((nav) => (
+                <li key={nav.link} className="relative">
+                  <NavLink
+                    to={nav.link}
+                    prefetch="intent"
+                    aria-label={nav.link}
+                    className={({ isActive }) =>
+                      clsx(
+                        "block w-full pl-3.5",
+                        isActive
+                          ? "font-semibold text-sky-500 before:bg-sky-500"
+                          : "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
+                      )
+                    }
+                  >
+                    {nav.text}
+                  </NavLink>
+                </li>
+              ))}
           </ul>
           <Navigation navigation={config.sidebar} className="mt-5 px-1" />
         </Dialog.Panel>
       </Dialog>
     </>
-  )
+  );
 }

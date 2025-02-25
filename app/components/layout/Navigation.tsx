@@ -3,7 +3,7 @@ import { Link, NavLink } from "@remix-run/react";
 import * as React from "react";
 
 import { Dialog } from "@headlessui/react";
-import config from "~/docs.config";
+import config from "~/utils/docs.config";
 
 export default function Navigation({ navigation, className }) {
   return (
