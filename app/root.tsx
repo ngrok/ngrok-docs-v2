@@ -23,6 +23,7 @@ import { shouldRedirect } from "./utils/redirects/redirectMethods";
 import { useEffect } from "react";
 import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
+import ErrorPage from "@components/ErrorPage";
 
 export const links: LinksFunction = () => [
   {
@@ -95,6 +96,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     processClientSideRedirect(location, navigate);
   }, []);
+  if (!data) return <ErrorPage />;
   return (
     <html lang="en">
       <head>

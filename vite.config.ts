@@ -9,7 +9,9 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { flatRoutes } from "remix-flat-routes";
 import path from "path";
 import { installGlobals } from "@remix-run/node";
+import remarkGfm from "remark-gfm";
 
+installGlobals();
 declare module "@remix-run/node" {
   interface Future {
     v3_singleFetch: true;
@@ -21,11 +23,14 @@ export default defineConfig({
     alias: {
       "~": path.resolve(__dirname, "./app"),
       "@components": path.resolve(__dirname, "./app/components/"),
+      "@shared": path.resolve(__dirname, "./app/shared/"),
     },
   },
   plugins: [
     tsconfigPaths(),
-    mdx(),
+    mdx({
+      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+    }),
     remix({
       routes(defineRoutes) {
         return flatRoutes("routes", defineRoutes, {
