@@ -1,8 +1,8 @@
-import { useLocation } from "@docusaurus/router";
+import { useLocation } from "@remix-run/react";
 import { useMemo, type ReactNode } from "react";
 
 type Props = {
-	fallback?: ReactNode;
+  fallback?: ReactNode;
 };
 
 const searchParamKey = "endpoint_url";
@@ -13,8 +13,8 @@ const searchParamKey = "endpoint_url";
  * Provide a `fallback` to render when the search param is not present.
  */
 function EndpointUrlHostname({ fallback }: Props) {
-	const endpointUrl = useEndpointUrlFromSearchParams();
-	return endpointUrl?.hostname ?? fallback;
+  const endpointUrl = useEndpointUrlFromSearchParams();
+  return endpointUrl?.hostname ?? fallback;
 }
 
 /**
@@ -23,38 +23,38 @@ function EndpointUrlHostname({ fallback }: Props) {
  * Provide a `fallback` to render when the search param is not present.
  */
 function EndpointUrlOrigin({ fallback }: Props) {
-	const endpointUrl = useEndpointUrlFromSearchParams();
-	return endpointUrl?.origin ?? fallback;
+  const endpointUrl = useEndpointUrlFromSearchParams();
+  return endpointUrl?.origin ?? fallback;
 }
 
 /**
  * Returns the `endpoint_url` search param as a URL, if present.
  */
 function useEndpointUrlFromSearchParams() {
-	const location = useLocation();
-	const searchParams = new URLSearchParams(location.search);
-	const endpointUrl = toUrl(searchParams.get(searchParamKey));
-	return useMemo(() => endpointUrl, [endpointUrl]);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const endpointUrl = toUrl(searchParams.get(searchParamKey));
+  return useMemo(() => endpointUrl, [endpointUrl]);
 }
 
 export {
-	//,
-	EndpointUrlHostname,
-	EndpointUrlOrigin,
-	useEndpointUrlFromSearchParams,
+  //,
+  EndpointUrlHostname,
+  EndpointUrlOrigin,
+  useEndpointUrlFromSearchParams,
 };
 
 /**
  * Converts a string to a URL, or `undefined` if the given value is not a valid URL.
  */
 function toUrl(value: string | undefined | null) {
-	if (!value) {
-		return undefined;
-	}
+  if (!value) {
+    return undefined;
+  }
 
-	try {
-		return new URL(value);
-	} catch (_) {
-		return undefined;
-	}
+  try {
+    return new URL(value);
+  } catch (_) {
+    return undefined;
+  }
 }

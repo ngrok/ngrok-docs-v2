@@ -1,7 +1,6 @@
 import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { vitePlugin as remix } from "@remix-run/dev";
 import vitePluginRequire from "vite-plugin-require";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";

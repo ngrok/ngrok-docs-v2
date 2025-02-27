@@ -1,4 +1,4 @@
-import BrowserOnly from "@docusaurus/BrowserOnly";
+import { clientOnly$ } from "vite-env-only/macros"
 import { useMDXComponents } from "@mdx-js/react";
 import TabItem from "@components/Tabs/TabItem";
 import Tabs from "@components/Tabs";
@@ -22,12 +22,8 @@ const showExample = (
   return (
     <Tabs className="mb-4" groupId="config_example" queryString="config">
       <TabItem value="YAML" label="YAML">
-        <BrowserOnly
-          fallback={
-            <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>
-          }
-        >
-          {() => (
+        {
+          clientOnly$(
             <DocsCodeBlock
               language="yaml"
               metastring={yamlMetastring}
@@ -36,26 +32,25 @@ const showExample = (
             >
               {snippetText ? `# ${snippetText}\n` + yamlConfig : yamlConfig}
             </DocsCodeBlock>
-          )}
-        </BrowserOnly>
+          )
+          || <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>
+        }
       </TabItem>
       <TabItem value="JSON" label="JSON">
-        <BrowserOnly
-          fallback={
-            <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>
-          }
-        >
-          {() => (
+        {
+          clientOnly$(
             <DocsCodeBlock
-              language="json"
-              metastring={jsonMetastring}
-              title={titleToUse + ".json"}
-              icon={icon}
-            >
-              {snippetText ? `// ${snippetText}\n` + jsonConfig : jsonConfig}
-            </DocsCodeBlock>
-          )}
-        </BrowserOnly>
+            language="json"
+            metastring={jsonMetastring}
+            title={titleToUse + ".json"}
+            icon={icon}
+          >
+            {snippetText ? `// ${snippetText}\n` + jsonConfig : jsonConfig}
+          </DocsCodeBlock>
+          ) ||
+          <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>
+
+        }
       </TabItem>
     </Tabs>
   );

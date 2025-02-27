@@ -17,6 +17,9 @@ importers:
       '@mdx-js/mdx':
         specifier: ^3.1.0
         version: 3.1.0(acorn@8.14.0)
+      '@mdx-js/react':
+        specifier: ^3.1.0
+        version: 3.1.0(@types/react@18.3.18)(react@18.3.1)
       '@mdx-js/rollup':
         specifier: ^3.1.0
         version: 3.1.0(acorn@8.14.0)(rollup@4.34.8)
@@ -50,12 +53,21 @@ importers:
       isbot:
         specifier: ^4.1.0
         version: 4.4.0
+      prettier:
+        specifier: ^3.5.2
+        version: 3.5.2
       react:
         specifier: ^18.2.0
         version: 18.3.1
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
+      react-error-boundary:
+        specifier: ^5.0.0
+        version: 5.0.0(react@18.3.1)
+      react-loadable:
+        specifier: ^5.5.0
+        version: 5.5.0(react@18.3.1)
       remark:
         specifier: ^15.0.1
         version: 15.0.1
@@ -71,12 +83,21 @@ importers:
       remark-parse-frontmatter:
         specifier: ^1.0.3
         version: 1.0.3
+      remark-prettier:
+        specifier: ^2.0.0
+        version: 2.0.0(prettier@3.5.2)
       remix-flat-routes:
         specifier: ^0.8.5
         version: 0.8.5
+      vite-env-only:
+        specifier: ^3.0.3
+        version: 3.0.3(vite@5.4.14(@types/node@22.13.5)(terser@5.39.0))
       vite-plugin-require:
         specifier: ^1.2.14
         version: 1.2.14(esbuild@0.17.6)(vite@5.4.14(@types/node@22.13.5)(terser@5.39.0))
+      yaml:
+        specifier: ^2.7.0
+        version: 2.7.0
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.15.3
@@ -660,6 +681,12 @@ packages:
 
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
+
+  '@mdx-js/react@3.1.0':
+    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
+    peerDependencies:
+      '@types/react': '>=16'
+      react: '>=16'
 
   '@mdx-js/rollup@3.1.0':
     resolution: {integrity: sha512-q4xOtUXpCzeouE8GaJ8StT4rDxm/U5j6lkMHL2srb2Q3Y7cobE0aXyPzXVVlbeIMBi+5R5MpbiaVE5/vJUdnHg==}
@@ -1432,6 +1459,9 @@ packages:
   '@types/node@22.13.5':
     resolution: {integrity: sha512-+lTU0PxZXn0Dr1NBtC7Y8cR21AJr87dLLU953CWA6pMxxv/UDc7jYAY90upcrie1nRcD6XNG5HOYEDtgW5TxAg==}
 
+  '@types/prettier@2.7.3':
+    resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
+
   '@types/prop-types@15.7.14':
     resolution: {integrity: sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==}
 
@@ -1766,6 +1796,9 @@ packages:
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
     engines: {node: '>= 0.4'}
+
+  babel-dead-code-elimination@1.0.9:
+    resolution: {integrity: sha512-JLIhax/xullfInZjtu13UJjaLHDeTzt3vOeomaSUdO/nAMEL/pWC/laKrSvWylXMnVWyL5bpmG9njqBZlUQOdg==}
 
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -2417,6 +2450,9 @@ packages:
 
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+
+  fast-diff@1.3.0:
+    resolution: {integrity: sha512-VxPP4NqbUjj6MaAOafWeUn2cXWLcCtljklUtZf0Ind4XQ+QPtmA0b18zZy0jIQx+ExRVCR/ZQpBmik5lXshNsw==}
 
   fast-glob@3.3.3:
     resolution: {integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==}
@@ -3784,9 +3820,18 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
+  prettier-linter-helpers@1.0.0:
+    resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
+    engines: {node: '>=6.0.0'}
+
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
+    hasBin: true
+
+  prettier@3.5.2:
+    resolution: {integrity: sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==}
+    engines: {node: '>=14'}
     hasBin: true
 
   pretty-ms@7.0.1:
@@ -3871,8 +3916,18 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-error-boundary@5.0.0:
+    resolution: {integrity: sha512-tnjAxG+IkpLephNcePNA7v6F/QpWLH8He65+DmedchDwg162JZqx4NmbXj0mlAYVVEd81OW7aFhmbsScYfiAFQ==}
+    peerDependencies:
+      react: '>=16.13.1'
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  react-loadable@5.5.0:
+    resolution: {integrity: sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg==}
+    peerDependencies:
+      react: '*'
 
   react-refresh@0.14.2:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
@@ -3996,6 +4051,13 @@ packages:
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
+
+  remark-prettier@2.0.0:
+    resolution: {integrity: sha512-66v8KoqnBivhcfjtahHmHU7qkQuVPq/JIsqTW8suqI8mVuHCpxjapoY2XIBLjC5J7suYICVtNRBXRwrRX7a1hA==}
+    engines: {node: '>=14.0.0'}
+    deprecated: Use unified-consistency and unified-prettier instead
+    peerDependencies:
+      prettier: ^2
 
   remark-rehype@10.1.0:
     resolution: {integrity: sha512-EFmR5zppdBp0WQeDVZ/b66CWJipB2q2VLNFMabzDSGR66Z2fQii83G5gTBbgGEnEEA0QRussvrFHxk1HWGJskw==}
@@ -4632,6 +4694,9 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
+  vfile-location@4.1.0:
+    resolution: {integrity: sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw==}
+
   vfile-message@3.1.4:
     resolution: {integrity: sha512-fa0Z6P8HUrQN4BZaX05SIVXic+7kE3b05PWAtPuYP9QLHsLKYR7/AlLW3NtOrpXRLeawpDLMsVkmk5DG0NXgWw==}
 
@@ -4643,6 +4708,11 @@ packages:
 
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
+
+  vite-env-only@3.0.3:
+    resolution: {integrity: sha512-iAb7cTXRrvFShaF1n+G8f6Yqq7sRJcxipNYNQQu0DN5N9P55vJMmLG5lNU5moYGpd+ZH1WhBHdkWi5WjrfImHg==}
+    peerDependencies:
+      vite: '*'
 
   vite-node@1.6.1:
     resolution: {integrity: sha512-YAXkfvGtuTzwWbDSACdJSg4A4DZiAqckWe90Zapc/sEX3XvHcw1NdurM/6od8J207tSDqNbSsgdCacBgvJKFuA==}
@@ -5328,6 +5398,12 @@ snapshots:
     transitivePeerDependencies:
       - acorn
       - supports-color
+
+  '@mdx-js/react@3.1.0(@types/react@18.3.18)(react@18.3.1)':
+    dependencies:
+      '@types/mdx': 2.0.13
+      '@types/react': 18.3.18
+      react: 18.3.1
 
   '@mdx-js/rollup@3.1.0(acorn@8.14.0)(rollup@4.34.8)':
     dependencies:
@@ -6220,6 +6296,8 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
+  '@types/prettier@2.7.3': {}
+
   '@types/prop-types@15.7.14': {}
 
   '@types/react-dom@18.3.5(@types/react@18.3.18)':
@@ -6684,6 +6762,15 @@ snapshots:
   axe-core@4.10.2: {}
 
   axobject-query@4.1.0: {}
+
+  babel-dead-code-elimination@1.0.9:
+    dependencies:
+      '@babel/core': 7.26.9
+      '@babel/parser': 7.26.9
+      '@babel/traverse': 7.26.9
+      '@babel/types': 7.26.9
+    transitivePeerDependencies:
+      - supports-color
 
   bail@2.0.2: {}
 
@@ -7539,6 +7626,8 @@ snapshots:
   extend@3.0.2: {}
 
   fast-deep-equal@3.1.3: {}
+
+  fast-diff@1.3.0: {}
 
   fast-glob@3.3.3:
     dependencies:
@@ -9400,7 +9489,13 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
+  prettier-linter-helpers@1.0.0:
+    dependencies:
+      fast-diff: 1.3.0
+
   prettier@2.8.8: {}
+
+  prettier@3.5.2: {}
 
   pretty-ms@7.0.1:
     dependencies:
@@ -9482,7 +9577,17 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
+  react-error-boundary@5.0.0(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.26.9
+      react: 18.3.1
+
   react-is@16.13.1: {}
+
+  react-loadable@5.5.0(react@18.3.1):
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.3.1
 
   react-refresh@0.14.2: {}
 
@@ -9692,6 +9797,15 @@ snapshots:
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
+
+  remark-prettier@2.0.0(prettier@3.5.2):
+    dependencies:
+      '@types/mdast': 3.0.15
+      '@types/prettier': 2.7.3
+      mdast-util-to-markdown: 1.5.0
+      prettier: 3.5.2
+      prettier-linter-helpers: 1.0.0
+      vfile-location: 4.1.0
 
   remark-rehype@10.1.0:
     dependencies:
@@ -10476,6 +10590,11 @@ snapshots:
 
   vary@1.1.2: {}
 
+  vfile-location@4.1.0:
+    dependencies:
+      '@types/unist': 2.0.11
+      vfile: 5.3.7
+
   vfile-message@3.1.4:
     dependencies:
       '@types/unist': 2.0.11
@@ -10497,6 +10616,19 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
+
+  vite-env-only@3.0.3(vite@5.4.14(@types/node@22.13.5)(terser@5.39.0)):
+    dependencies:
+      '@babel/core': 7.26.9
+      '@babel/generator': 7.26.9
+      '@babel/parser': 7.26.9
+      '@babel/traverse': 7.26.9
+      '@babel/types': 7.26.9
+      babel-dead-code-elimination: 1.0.9
+      micromatch: 4.0.8
+      vite: 5.4.14(@types/node@22.13.5)(terser@5.39.0)
+    transitivePeerDependencies:
+      - supports-color
 
   vite-node@1.6.1(@types/node@22.13.5)(terser@5.39.0):
     dependencies:
