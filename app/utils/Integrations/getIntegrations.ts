@@ -16,8 +16,9 @@ export type Integration = {
 };
 
 export const getIntegrations = async (): Promise<Integration[] | undefined> => {
-  const docsRouteString = "/app/routes/docs+";
-  const integrationsDir = path.join(docsRouteString, "integrations");
+  const remixPathString = "./app/routes/docs+";
+  const plainPathString = "/docs";
+  const integrationsDir = path.join(remixPathString, "integrations+");
   const integrationList = [];
 
   const dir = await fs.promises.opendir(integrationsDir);
@@ -29,7 +30,7 @@ export const getIntegrations = async (): Promise<Integration[] | undefined> => {
     }
     const integration: Integration = {
       name: dirent.name,
-      path: path.join(docsRouteString, "integrations", dirent.name),
+      path: dirent.name,
       docs: [],
       metadata: null,
     };
@@ -67,7 +68,7 @@ export const getIntegrations = async (): Promise<Integration[] | undefined> => {
       // Add file details as doc on integration
       integration.docs.push({
         // clean up things like .md
-        path: path.join(integration.path, pathOfX),
+        path: path.join(plainPathString, "integrations", pathOfX),
         ...fileOfRemark.data,
       });
     });

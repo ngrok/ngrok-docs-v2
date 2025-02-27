@@ -7,7 +7,7 @@ type ErrorDetailsProps = {
 
 export default function ErrorDetails({ error }: ErrorDetailsProps) {
   const Error = Loadable({
-    loader: () => import(`/app/routes/docs+/errors/details/_${error}.md`),
+    loader: () => import(`../routes/docs+/errors/details/_${error}.md`),
     loading: <br />,
   });
   return (
