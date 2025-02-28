@@ -24,6 +24,13 @@ import { useEffect } from "react";
 import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
+import { liteClient as algoliasearch } from "algoliasearch/lite";
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch";
+
+const searchClient = algoliasearch(
+  "8D7MHVMLBR",
+  "2a1bbbf2894c399133c99758c0cb4bae"
+);
 
 export const links: LinksFunction = () => [
   {
@@ -89,6 +96,16 @@ const processClientSideRedirect = (
   }
 };
 
+function Hit({ hit }: { hit: any }) {
+  return (
+    <article>
+      <p>{JSON.stringify(hit, null, 2)}</p>
+      <br />
+      <br />
+    </article>
+  );
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -115,6 +132,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Container>
+          <InstantSearch indexName="ngrok" searchClient={searchClient}>
+            <SearchBox />
+            <Hits hitComponent={Hit} />
+          </InstantSearch>
           <Outlet />
         </Container>
         <ScrollRestoration />
