@@ -127,7 +127,9 @@ export default function ActionHub({ actions }: Props) {
             <SelectContent width="trigger">
               <SelectItem value={DefaultPhaseValue}>All Phases</SelectItem>
               {Phases.map((phase) => (
-                <SelectItem value={phase}>{phase}</SelectItem>
+                <SelectItem key={phase} value={phase}>
+                  {phase}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -139,7 +141,7 @@ export default function ActionHub({ actions }: Props) {
           {filteredActions.map((action) => (
             <Link
               key={action.name}
-              to={`/traffic-policy/actions/${action.type}`}
+              to={`/docs/traffic-policy/actions/${action.type}`}
               className="col-span-1"
             >
               <Card className="flex h-full flex-col divide-y-0 hover:bg-card-hover">
@@ -157,19 +159,31 @@ export default function ActionHub({ actions }: Props) {
                         switch (phase) {
                           case "on_tcp_connect":
                             return (
-                              <Badge appearance="muted" color="blue">
+                              <Badge
+                                key={phase + "blue"}
+                                appearance="muted"
+                                color="blue"
+                              >
                                 {phase}
                               </Badge>
                             );
                           case "on_http_request":
                             return (
-                              <Badge appearance="muted" color="pink">
+                              <Badge
+                                key={phase + "pink"}
+                                appearance="muted"
+                                color="pink"
+                              >
                                 {phase}
                               </Badge>
                             );
                           case "on_http_response":
                             return (
-                              <Badge appearance="muted" color="pink">
+                              <Badge
+                                key={phase + "pinkresponse"}
+                                appearance="muted"
+                                color="pink"
+                              >
                                 {phase}
                               </Badge>
                             );

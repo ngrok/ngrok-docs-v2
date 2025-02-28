@@ -1,13 +1,13 @@
-import { Fragment, useState, useEffect } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { Combobox, Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState, useEffect } from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import { Combobox, Dialog, Transition } from "@headlessui/react";
 
 import { useFetcher } from "@remix-run/react";
 
 import { loader } from "~/routes/actions/search";
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export function SearchPalette({ open, setOpen }) {
@@ -25,14 +25,18 @@ export function SearchPalette({ open, setOpen }) {
 
   useEffect(
     function getFilteredPosts() {
-        console.log(query);
       load(`/actions/search?term=${query}`);
     },
     [load, query]
   );
 
   return (
-    <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery('')} appear>
+    <Transition.Root
+      show={open}
+      as={Fragment}
+      afterLeave={() => setQuery("")}
+      appear
+    >
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
@@ -71,22 +75,30 @@ export function SearchPalette({ open, setOpen }) {
                 </div>
 
                 {posts.length > 0 && (
-                  <Combobox.Options static className="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800">
+                  <Combobox.Options
+                    static
+                    className="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800"
+                  >
                     {posts.map((post) => (
                       <Combobox.Option
                         key={post.title}
                         value={post}
                         className={({ active }) =>
-                          classNames('cursor-default select-none px-4 py-2', active && 'bg-indigo-600 text-white')
+                          classNames(
+                            "cursor-default select-none px-4 py-2",
+                            active && "bg-indigo-600 text-white"
+                          )
                         }
                       >
-                        {post.type}{' / '}{post.title}
+                        {post.type}
+                        {" / "}
+                        {post.title}
                       </Combobox.Option>
                     ))}
                   </Combobox.Options>
                 )}
 
-                {query !== '' && posts.length === 0 && (
+                {query !== "" && posts.length === 0 && (
                   <p className="p-4 text-sm text-gray-500">No Matches found.</p>
                 )}
               </Combobox>
@@ -95,5 +107,5 @@ export function SearchPalette({ open, setOpen }) {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

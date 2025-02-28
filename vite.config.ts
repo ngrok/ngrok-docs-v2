@@ -9,6 +9,7 @@ import { flatRoutes } from "remix-flat-routes";
 import path from "path";
 import { installGlobals } from "@remix-run/node";
 import remarkGfm from "remark-gfm";
+import { envOnlyMacros } from "vite-env-only";
 
 installGlobals();
 declare module "@remix-run/node" {
@@ -26,6 +27,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    envOnlyMacros(),
     tsconfigPaths(),
     mdx({
       remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],

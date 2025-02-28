@@ -1,8 +1,8 @@
-import { clientOnly$ } from "vite-env-only/macros"
-import { useMDXComponents } from "@mdx-js/react";
+import { clientOnly$ } from "vite-env-only/macros";
+// import { useMDXComponents } from "@mdx-js/react";
 import TabItem from "@components/Tabs/TabItem";
 import Tabs from "@components/Tabs";
-import { createElement, type ReactNode } from "react";
+// import { createElement, type ReactNode } from "react";
 import YAML, { type ToStringOptions } from "yaml";
 import DocsCodeBlock, { CodeBlockFallback } from "./code-block";
 
@@ -22,24 +22,20 @@ const showExample = (
   return (
     <Tabs className="mb-4" groupId="config_example" queryString="config">
       <TabItem value="YAML" label="YAML">
-        {
-          clientOnly$(
-            <DocsCodeBlock
-              language="yaml"
-              metastring={yamlMetastring}
-              title={titleToUse + ".yml"}
-              icon={icon}
-            >
-              {snippetText ? `# ${snippetText}\n` + yamlConfig : yamlConfig}
-            </DocsCodeBlock>
-          )
-          || <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>
-        }
+        {clientOnly$(
+          <DocsCodeBlock
+            language="yaml"
+            metastring={yamlMetastring}
+            title={titleToUse + ".yml"}
+            icon={icon}
+          >
+            {snippetText ? `# ${snippetText}\n` + yamlConfig : yamlConfig}
+          </DocsCodeBlock>
+        ) || <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>}
       </TabItem>
       <TabItem value="JSON" label="JSON">
-        {
-          clientOnly$(
-            <DocsCodeBlock
+        {clientOnly$(
+          <DocsCodeBlock
             language="json"
             metastring={jsonMetastring}
             title={titleToUse + ".json"}
@@ -47,10 +43,7 @@ const showExample = (
           >
             {snippetText ? `// ${snippetText}\n` + jsonConfig : jsonConfig}
           </DocsCodeBlock>
-          ) ||
-          <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>
-
-        }
+        ) || <CodeBlockFallback className="mb-4">Loading…</CodeBlockFallback>}
       </TabItem>
     </Tabs>
   );
@@ -91,7 +84,7 @@ export type ConfigExampleProps = {
 
 export default function ConfigExample(props: ConfigExampleProps) {
   const { config, showAgentConfig } = props;
-  const components = useMDXComponents();
+  // const components = useMDXComponents();
 
   const yamlOptions = {
     indent: 2,
@@ -128,19 +121,32 @@ export default function ConfigExample(props: ConfigExampleProps) {
     agentConfig.yamlConfig,
     agentConfig.jsonConfig
   );
-  if (!components.h3) return <p>Error rendering config example.</p>;
+  // This code previously existed so we could add the H3s
+  // created below to the TOC. That was docusaurus-specific.
+  // Must find a new way to do this for remix.
+  // if (!components.h3) {
+  //   console.log("Components", components);
+  //   return <p>Error rendering config example.</p>;
+  // }
   return (
     <>
       {showAgentConfig && (
         <>
           <p>You can use one of the following:</p>
-          {createElement(components.h3, { id: "policy" }, "Policy")}
+          <h3>Policy</h3>
+          {/* The following code existed previously so the H3 labeling this code block
+          would be added to the toc. That was required for docusaurus. I assume that
+          for remix there'll be another way forward.
+          As of now, these H3s don't go in the TOC and can't be linked to */}
+          {/* {createElement(components.h3, { id: "policy" }, "Policy")} */}
         </>
       )}
       {policySnippet}
       {showAgentConfig ? (
         <>
-          {createElement(components.h3, { id: "agent-config" }, "Agent Config")}
+          <h3>Agent Config</h3>
+          {/* See comment above */}
+          {/* {createElement(components.h3, { id: "agent-config" }, "Agent Config")} */}
           {agentConfigSnippet}
         </>
       ) : null}

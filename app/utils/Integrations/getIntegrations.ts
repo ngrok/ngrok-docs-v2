@@ -54,8 +54,6 @@ export const getIntegrations = async (): Promise<Integration[] | undefined> => {
         .use(remarkParseFrontmatter)
         .processSync(fileContent);
 
-      console.log(fileOfRemark.data.frontmatter);
-
       // Add file details as metadata information on integration
       if (x === "index.mdx") {
         integration.metadata = fileOfRemark.data.frontmatter;
@@ -63,7 +61,6 @@ export const getIntegrations = async (): Promise<Integration[] | undefined> => {
       }
 
       const pathOfX = fileToPath(x);
-      console.log("Path of x", pathOfX);
 
       // Add file details as doc on integration
       integration.docs.push({
