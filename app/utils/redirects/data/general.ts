@@ -9,9 +9,8 @@ import { fromIncludes, toReplace, fromExact, toExact } from "../pathMethods";
 
 //  [1 - to]:  (path, from) => string (returned value becomes the new path)
 export const generalRedirects = [
-  [fromIncludes(`/docs/example/#test`), `/docs/example/quickstart`],
-  [fromIncludes(`/docs/1`), `/docs/`],
-  [fromIncludes(`/docs/2`), `/docs/`],
+  [fromIncludes(`/docs/1`), `/docs/overview`],
+  [fromIncludes(`/docs/2`), `/docs/overview`],
   [fromIncludes(`/docs/ngrok-link`), `/docs/universal-gateway/overview/`],
   [fromIncludes(`/docs/api/api-clients`), `/docs/api/#client-libraries`],
   [fromIncludes(`/docs/api/client-libraries`), `/docs/api/#client-libraries`],
@@ -707,7 +706,7 @@ export const generalRedirects = [
     fromIncludes("/docs/tls/termination/agent-tls-termination/"),
     "/docs/agent/agent-tls-termination/",
   ],
-  [fromIncludes("/docs/concepts/"), "/docs/"],
+  [fromIncludes("/docs/concepts/"), "/docs/overview"],
   // HTTP Redirects
   [
     fromIncludes("/docs/http/basic-auth"),
