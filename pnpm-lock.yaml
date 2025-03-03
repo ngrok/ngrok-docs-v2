@@ -41,6 +41,9 @@ importers:
       '@remix-run/serve':
         specifier: ^2.15.3
         version: 2.15.3(typescript@5.7.3)
+      '@types/react-instantsearch':
+        specifier: ^6.10.4
+        version: 6.10.4
       '@vercel/remix':
         specifier: ^2.15.3
         version: 2.15.3(@remix-run/dev@2.15.3(@remix-run/react@2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))(@remix-run/serve@2.15.3(typescript@5.7.3))(@types/node@22.13.5)(terser@5.39.0)(typescript@5.7.3)(vite@5.4.14(@types/node@22.13.5)(terser@5.39.0)))(@remix-run/node@2.15.3(typescript@5.7.3))(@remix-run/server-runtime@2.15.3(typescript@5.7.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1795,6 +1798,18 @@ packages:
     resolution: {integrity: sha512-P4t6saawp+b/dFrUr2cvkVsfvPguwsxtH6dNIYRllMsefqFzkZk5UIjzyDOv5g1dXIPdG4Sp1yCR4Z6RCUsG/Q==}
     peerDependencies:
       '@types/react': ^18.0.0
+
+  '@types/react-instantsearch-core@6.26.10':
+    resolution: {integrity: sha512-izn21BqXtO3GA5Tx3x7SP6kfk1GJppkVdowuenKIOUj1sCJ3VHwoggsqVWv1DYVcsS8wydjR8Ra91XtI2a12rw==}
+
+  '@types/react-instantsearch-dom@6.12.8':
+    resolution: {integrity: sha512-LKrV3yqtar29TqkG76sfw7k6s95BXRvESKIarNiniXdC+6pioZ23KOx71WJNnwiWbHfeyeSILsKStwDpVWry4A==}
+
+  '@types/react-instantsearch-native@6.3.5':
+    resolution: {integrity: sha512-Zc37ufbTZVEvZlp+yWGcl298kgsz0leUhC1My2LQHsMayXqES4Y7XuVJSXyHaMOItOyLnJM+yUOS/JdHeLDVGw==}
+
+  '@types/react-instantsearch@6.10.4':
+    resolution: {integrity: sha512-I2at92uSs4ZDMb2Tplh6HMCC23WvJ5684i8BNOD8Rwl/a+P7UpfnJDYpaFE9uyGerIrhArHmRe8oIFPGRSe5sA==}
 
   '@types/react@18.3.18':
     resolution: {integrity: sha512-t4yC+vtgnkYjNSKlFx1jkAhH8LgTo2N/7Qvi83kdEaUtMDiwpbLAktKDaAMlRcJ5eSxZkH74eEGt1ky31d7kfQ==}
@@ -7066,6 +7081,28 @@ snapshots:
   '@types/react-dom@18.3.5(@types/react@18.3.18)':
     dependencies:
       '@types/react': 18.3.18
+
+  '@types/react-instantsearch-core@6.26.10':
+    dependencies:
+      '@types/react': 18.3.18
+      algoliasearch: 5.20.3
+      algoliasearch-helper: 3.24.1(algoliasearch@5.20.3)
+
+  '@types/react-instantsearch-dom@6.12.8':
+    dependencies:
+      '@types/react': 18.3.18
+      '@types/react-instantsearch-core': 6.26.10
+
+  '@types/react-instantsearch-native@6.3.5':
+    dependencies:
+      '@types/react': 18.3.18
+      '@types/react-instantsearch-core': 6.26.10
+
+  '@types/react-instantsearch@6.10.4':
+    dependencies:
+      '@types/react-instantsearch-core': 6.26.10
+      '@types/react-instantsearch-dom': 6.12.8
+      '@types/react-instantsearch-native': 6.3.5
 
   '@types/react@18.3.18':
     dependencies:

@@ -22,6 +22,7 @@
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
     "@remix-run/serve": "^2.15.3",
+    "@types/react-instantsearch": "^6.10.4",
     "@vercel/remix": "^2.15.3",
     "algoliasearch": "^5.20.3",
     "clsx": "^2.1.1",
