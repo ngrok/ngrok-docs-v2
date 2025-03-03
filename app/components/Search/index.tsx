@@ -18,7 +18,6 @@ import { SearchInput } from "@components/Search/SearchInput";
 import { SearchHits } from "@components/Search/SearchHits";
 import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { Button } from "@ngrok/mantle/button";
-import { useState } from "react";
 
 const searchClient = algoliasearch(
   "8D7MHVMLBR",
@@ -26,13 +25,13 @@ const searchClient = algoliasearch(
 );
 
 export function Search() {
-  const [showDialog, setShowDialog] = useState(false);
-
   return (
     <InstantSearch indexName="ngrok" searchClient={searchClient}>
-      <Dialog open={showDialog}>
+      <Dialog>
         <DialogTrigger asChild>
-          <SearchButton setShowDialog={setShowDialog} />
+          <Button type="button">
+            <SearchButton />
+          </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

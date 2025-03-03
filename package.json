@@ -18,6 +18,7 @@
     "@mdx-js/rollup": "^3.1.0",
     "@ngrok/mantle": "0.21.1",
     "@phosphor-icons/react": "^2.1.7",
+    "@radix-ui/themes": "^3.2.1",
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
     "@remix-run/serve": "^2.15.3",

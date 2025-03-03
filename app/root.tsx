@@ -1,3 +1,9 @@
+import "@ngrok/mantle/mantle.css";
+import {
+  MantleThemeHeadContent,
+  ThemeProvider,
+} from "@ngrok/mantle/theme-provider";
+
 import {
   json,
   Links,
@@ -113,6 +119,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <MantleThemeHeadContent />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
@@ -128,8 +135,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Container>
-          <Search />
-          <Outlet />
+          <ThemeProvider>
+            <Outlet />
+          </ThemeProvider>
         </Container>
         <ScrollRestoration />
         <Scripts />

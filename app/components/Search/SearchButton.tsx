@@ -1,14 +1,9 @@
-import { Button } from "@ngrok/mantle/button";
 import { Icon } from "@ngrok/mantle/icon";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 
-export function SearchButton({
-  setShowDialog,
-}: {
-  setShowDialog: (show: boolean) => void;
-}) {
+export function SearchButton() {
   return (
-    <Button type="button" onClick={() => setShowDialog(true)}>
+    <>
       <span className="flex">
         <Icon svg={<MagnifyingGlass />} />
         Search
@@ -27,6 +22,6 @@ export function SearchButton({
         </kbd>
         <kbd>K</kbd>
       </span>
-    </Button>
+    </>
   );
 }

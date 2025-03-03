@@ -9,6 +9,7 @@ import config from "~/utils/docs.config";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 import Footer from "~/components/layout/Footer";
+import { Search } from "@components/Search";
 
 const GitHubIcon = (props) => (
   <svg aria-hidden="true" viewBox="0 0 16 16" {...props}>
@@ -52,6 +53,7 @@ export default function Container({ children }) {
         <div className="mr-6 flex lg:hidden">
           <MobileNavigation />
         </div>
+        <Search />
         <div className="relative flex flex-grow basis-0 items-center space-x-3 hidden md:block">
           <NavLink
             to="/"
