@@ -6,8 +6,6 @@ import MobileNavigation from "~/components/layout/MobileNavigation";
 import Navigation from "~/components/layout/Navigation";
 import config from "~/utils/docs.config";
 
-import { SearchPalette } from "~/components/Search";
-
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 import Footer from "~/components/layout/Footer";
@@ -20,7 +18,7 @@ const GitHubIcon = (props) => (
 
 export default function Container({ children }) {
   let [isScrolled, setIsScrolled] = React.useState(false);
-  let [isSearching, setIsSearching] = React.useState(false);
+  // let [isSearching, setIsSearching] = React.useState(false);
 
   // const [, setTheme] = useTheme();
 
@@ -98,7 +96,7 @@ export default function Container({ children }) {
           </Link>
         </div>
         <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
-          {config.search.enabled && (
+          {/* {config.search.enabled && (
             <>
               <button onClick={() => setIsSearching(!isSearching)}>
                 <MagnifyingGlassIcon className="w-8 h-8 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
@@ -107,7 +105,7 @@ export default function Container({ children }) {
                 <SearchPalette open={isSearching} setOpen={setIsSearching} />
               )}
             </>
-          )}
+          )} */}
           {config.editLink.enabled && (
             <>
               {config.editLink.link && (

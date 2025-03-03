@@ -26,11 +26,7 @@ import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
 import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { InstantSearch, SearchBox, Hits } from "react-instantsearch";
-
-const searchClient = algoliasearch(
-  "8D7MHVMLBR",
-  "2a1bbbf2894c399133c99758c0cb4bae"
-);
+import { Search } from "@components/Search";
 
 export const links: LinksFunction = () => [
   {
@@ -39,7 +35,7 @@ export const links: LinksFunction = () => [
       process.env.NODE_ENV === "development"
         ? "/dev-favicon.ico"
         : "/favicon.ico",
-    type: "image/png",
+    type: "image/ico",
   },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -132,10 +128,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Container>
-          <InstantSearch indexName="ngrok" searchClient={searchClient}>
-            <SearchBox />
-            <Hits hitComponent={Hit} />
-          </InstantSearch>
+          <Search />
           <Outlet />
         </Container>
         <ScrollRestoration />
