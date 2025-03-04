@@ -4,8 +4,7 @@ import { Dialog } from "@headlessui/react";
 import Navigation from "~/components/layout/Navigation";
 import config from "~/utils/docs.config";
 import clsx from "clsx";
-import { DocSearch } from "@docsearch/react";
-import "@docsearch/css";
+import { CustomDocSearch } from "@components/CustomDocSearch";
 
 function MenuIcon(props) {
   return (
@@ -79,11 +78,7 @@ export default function MobileNavigation({ algoliaInfo }: any) {
           </div>
           <ul role="list" className="mt-2 space-y-2 lg:mt-4 lg:space-y-4">
             <li>
-              <DocSearch
-                appId={algoliaInfo.appId}
-                indexName={algoliaInfo.indexName}
-                apiKey={algoliaInfo.apiKey}
-              />
+              <CustomDocSearch algoliaInfo={algoliaInfo} />
             </li>
             <li className="relative">
               <NavLink

@@ -5,8 +5,7 @@ import MobileNavigation from "~/components/layout/MobileNavigation";
 import Navigation from "~/components/layout/Navigation";
 import config from "~/utils/docs.config";
 import Footer from "~/components/layout/Footer";
-import { DocSearch } from "@docsearch/react";
-import "@docsearch/css";
+import { CustomDocSearch } from "@components/CustomDocSearch";
 
 const GitHubIcon = (props) => (
   <svg aria-hidden="true" viewBox="0 0 16 16" {...props}>
@@ -50,11 +49,7 @@ export default function Container({ algoliaInfo, children }) {
         <div className="mr-6 flex lg:hidden">
           <MobileNavigation algoliaInfo={algoliaInfo} />
         </div>
-        <DocSearch
-          appId={algoliaInfo.appId}
-          indexName={algoliaInfo.indexName}
-          apiKey={algoliaInfo.apiKey}
-        />
+        <CustomDocSearch algoliaInfo={algoliaInfo} />
         <div className="relative flex flex-grow basis-0 items-center space-x-3 hidden md:block">
           <NavLink
             to="/"
