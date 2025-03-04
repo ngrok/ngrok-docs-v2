@@ -1,3 +1,9 @@
+import "@ngrok/mantle/mantle.css";
+import {
+  MantleThemeHeadContent,
+  ThemeProvider,
+} from "@ngrok/mantle/theme-provider";
+
 import {
   json,
   Links,
@@ -32,7 +38,7 @@ export const links: LinksFunction = () => [
       process.env.NODE_ENV === "development"
         ? "/dev-favicon.ico"
         : "/favicon.ico",
-    type: "image/png",
+    type: "image/ico",
   },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -53,6 +59,11 @@ export type LoaderData = {
     origin: string;
     path: string;
   } | null;
+  algoliaInfo: {
+    appId: string;
+    indexName: string;
+    apiKey: string;
+  };
 };
 
 export const loader: LoaderFunction = async ({
@@ -73,6 +84,11 @@ export const loader: LoaderFunction = async ({
       origin: getDomainUrl(request),
       path: new URL(request.url).pathname,
     },
+    algoliaInfo: {
+      appId: process.env.ALGOLIA_APP_ID,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+      apiKey: process.env.ALGOLIA_API_KEY,
+    },
   });
 };
 
@@ -89,6 +105,16 @@ const processClientSideRedirect = (
   }
 };
 
+function Hit({ hit }: { hit: any }) {
+  return (
+    <article>
+      <p>{JSON.stringify(hit, null, 2)}</p>
+      <br />
+      <br />
+    </article>
+  );
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -100,6 +126,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <link
+          rel="preconnect"
+          href="https://YOUR_APP_ID-dsn.algolia.net"
+          crossOrigin="anonymous"
+        />
+        <MantleThemeHeadContent />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
@@ -114,8 +146,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Container>
-          <Outlet />
+        <Container algoliaInfo={data.algoliaInfo}>
+          <ThemeProvider>
+            <Outlet />
+          </ThemeProvider>
         </Container>
         <ScrollRestoration />
         <Scripts />

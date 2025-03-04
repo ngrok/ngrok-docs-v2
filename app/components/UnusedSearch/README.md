@@ -1,0 +1,1 @@
+This search component is not yet used in prod. We wrote this before finding the DocSearch component that we're using now. We left it in the codebase so we can build on it later if we want to do a custom implementation of an algolia search leveraging mantle.

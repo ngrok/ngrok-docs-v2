@@ -1,7 +1,15 @@
 import type { Config } from "tailwindcss";
+import {
+  mantlePreset,
+  resolveMantleContentGlob,
+} from "@ngrok/mantle/tailwind-preset";
 
 export default {
-  content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
+  presets: [mantlePreset],
+  content: [
+    resolveMantleContentGlob(require),
+    "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
