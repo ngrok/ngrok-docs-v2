@@ -4,6 +4,8 @@ import { Dialog } from "@headlessui/react";
 import Navigation from "~/components/layout/Navigation";
 import config from "~/utils/docs.config";
 import clsx from "clsx";
+import { DocSearch } from "@docsearch/react";
+import "@docsearch/css";
 
 function MenuIcon(props) {
   return (
@@ -35,7 +37,7 @@ function CloseIcon(props) {
   );
 }
 
-export default function MobileNavigation() {
+export default function MobileNavigation({ algoliaInfo }: any) {
   let [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -76,6 +78,13 @@ export default function MobileNavigation() {
             </Link>
           </div>
           <ul role="list" className="mt-2 space-y-2 lg:mt-4 lg:space-y-4">
+            <li>
+              <DocSearch
+                appId={algoliaInfo.appId}
+                indexName={algoliaInfo.indexName}
+                apiKey={algoliaInfo.apiKey}
+              />
+            </li>
             <li className="relative">
               <NavLink
                 to="/"

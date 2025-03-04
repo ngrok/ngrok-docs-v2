@@ -19,6 +19,9 @@ declare module "@remix-run/node" {
 }
 
 export default defineConfig({
+  ssr: {
+    noExternal: ["@docsearch/react"],
+  },
   resolve: {
     alias: {
       "~": path.resolve(__dirname, "./app"),

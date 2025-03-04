@@ -30,9 +30,6 @@ import { useEffect } from "react";
 import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
-import { liteClient as algoliasearch } from "algoliasearch/lite";
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch";
-import { Search } from "@components/Search";
 
 export const links: LinksFunction = () => [
   {
@@ -62,6 +59,11 @@ export type LoaderData = {
     origin: string;
     path: string;
   } | null;
+  algoliaInfo: {
+    appId: string;
+    indexName: string;
+    apiKey: string;
+  };
 };
 
 export const loader: LoaderFunction = async ({
@@ -81,6 +83,11 @@ export const loader: LoaderFunction = async ({
       url: removeTrailingSlash(`${url}${path}`),
       origin: getDomainUrl(request),
       path: new URL(request.url).pathname,
+    },
+    algoliaInfo: {
+      appId: process.env.ALGOLIA_APP_ID,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+      apiKey: process.env.ALGOLIA_API_KEY,
     },
   });
 };
@@ -119,6 +126,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <link
+          rel="preconnect"
+          href="https://YOUR_APP_ID-dsn.algolia.net"
+          crossOrigin="anonymous"
+        />
         <MantleThemeHeadContent />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -134,7 +146,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Container>
+        <Container algoliaInfo={data.algoliaInfo}>
           <ThemeProvider>
             <Outlet />
           </ThemeProvider>

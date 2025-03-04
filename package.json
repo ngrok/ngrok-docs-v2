@@ -11,6 +11,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@docsearch/css": "^3.9.0",
+    "@docsearch/react": "3",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@mdx-js/mdx": "^3.1.0",
@@ -24,7 +26,6 @@
     "@remix-run/serve": "^2.15.3",
     "@types/react-instantsearch": "^6.10.4",
     "@vercel/remix": "^2.15.3",
-    "algoliasearch": "^5.20.3",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "inflected": "^2.1.0",

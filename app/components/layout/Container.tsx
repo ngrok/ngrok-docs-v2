@@ -1,15 +1,12 @@
 import clsx from "clsx";
 import { Link, NavLink } from "@remix-run/react";
 import * as React from "react";
-
 import MobileNavigation from "~/components/layout/MobileNavigation";
 import Navigation from "~/components/layout/Navigation";
 import config from "~/utils/docs.config";
-
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-
 import Footer from "~/components/layout/Footer";
-import { Search } from "@components/Search";
+import { DocSearch } from "@docsearch/react";
+import "@docsearch/css";
 
 const GitHubIcon = (props) => (
   <svg aria-hidden="true" viewBox="0 0 16 16" {...props}>
@@ -17,7 +14,7 @@ const GitHubIcon = (props) => (
   </svg>
 );
 
-export default function Container({ children }) {
+export default function Container({ algoliaInfo, children }) {
   let [isScrolled, setIsScrolled] = React.useState(false);
   // let [isSearching, setIsSearching] = React.useState(false);
 
@@ -51,9 +48,13 @@ export default function Container({ children }) {
         )}
       >
         <div className="mr-6 flex lg:hidden">
-          <MobileNavigation />
+          <MobileNavigation algoliaInfo={algoliaInfo} />
         </div>
-        <Search />
+        <DocSearch
+          appId={algoliaInfo.appId}
+          indexName={algoliaInfo.indexName}
+          apiKey={algoliaInfo.apiKey}
+        />
         <div className="relative flex flex-grow basis-0 items-center space-x-3 hidden md:block">
           <NavLink
             to="/"
@@ -98,16 +99,6 @@ export default function Container({ children }) {
           </Link>
         </div>
         <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
-          {/* {config.search.enabled && (
-            <>
-              <button onClick={() => setIsSearching(!isSearching)}>
-                <MagnifyingGlassIcon className="w-8 h-8 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
-              </button>
-              {isSearching && (
-                <SearchPalette open={isSearching} setOpen={setIsSearching} />
-              )}
-            </>
-          )} */}
           {config.editLink.enabled && (
             <>
               {config.editLink.link && (
