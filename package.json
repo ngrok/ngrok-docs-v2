@@ -26,6 +26,7 @@
     "@remix-run/serve": "^2.15.3",
     "@types/react-instantsearch": "^6.10.4",
     "@vercel/remix": "^2.15.3",
+    "algoliasearch": "^5.20.3",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "inflected": "^2.1.0",

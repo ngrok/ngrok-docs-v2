@@ -1,7 +1,8 @@
 /**
- * Make a search experience similar to production docs.
- * In prod, the searchbar is actually just a button that opens
- * the search dialog
+ * This is the skeleton of a custom search implementation
+ * that we can implement in the future using mantle.
+ * It's not being used right now. `<DocSeach />`
+ * is being used instead.
  */
 import { InstantSearch } from "react-instantsearch";
 import {
