@@ -107,9 +107,9 @@ importers:
       remix-flat-routes:
         specifier: ^0.8.5
         version: 0.8.5
-      sentence-case:
-        specifier: ^4.0.0
-        version: 4.0.0
+      title-case:
+        specifier: ^4.3.2
+        version: 4.3.2
       vite-env-only:
         specifier: ^3.0.3
         version: 3.0.3(vite@5.4.14(@types/node@22.13.5)(terser@5.39.0))
@@ -3950,10 +3950,6 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  no-case@4.0.0:
-    resolution: {integrity: sha512-WmS3EUGw+vXHlTgiUPi3NzbZNwH6+uGX0QLGgqG+aFSJ5rkX/Ee0nuwHBJfZTfQwwR8lGO819NEIwQ7CGhkdEQ==}
-    deprecated: Use `change-case`
-
   node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
 
@@ -4645,10 +4641,6 @@ packages:
     resolution: {integrity: sha512-dW41u5VfLXu8SJh5bwRmyYUbAoSB3c9uQh6L8h/KtsFREPWpbX1lrljJo186Jc4nmci/sGUZ9a0a0J2zgfq2hw==}
     engines: {node: '>= 0.8.0'}
 
-  sentence-case@4.0.0:
-    resolution: {integrity: sha512-uqupbmxvBktZgGBX5dP3FZrq2ZCnimVqqghEOXDoWYEP4Kk6juyyok1TzVotb5zT8bCxwLE53tb+nY8ZsDzB1w==}
-    deprecated: Use `change-case`
-
   serialize-javascript@6.0.2:
     resolution: {integrity: sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==}
 
@@ -4919,6 +4911,9 @@ packages:
   tinyglobby@0.2.12:
     resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
     engines: {node: '>=12.0.0'}
+
+  title-case@4.3.2:
+    resolution: {integrity: sha512-I/nkcBo73mO42Idfv08jhInV61IMb61OdIFxk+B4Gu1oBjWBPOLmhZdsli+oJCVaD+86pYQA93cJfFt224ZFAA==}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -10147,8 +10142,6 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  no-case@4.0.0: {}
-
   node-releases@2.0.19: {}
 
   nopt@1.0.10:
@@ -11014,10 +11007,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sentence-case@4.0.0:
-    dependencies:
-      no-case: 4.0.0
-
   serialize-javascript@6.0.2:
     dependencies:
       randombytes: 2.1.0
@@ -11360,6 +11349,8 @@ snapshots:
     dependencies:
       fdir: 6.4.3(picomatch@4.0.2)
       picomatch: 4.0.2
+
+  title-case@4.3.2: {}
 
   to-regex-range@5.0.1:
     dependencies:

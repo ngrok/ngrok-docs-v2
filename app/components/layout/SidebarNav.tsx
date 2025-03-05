@@ -51,7 +51,6 @@ const NonCollapsibleSection = ({
   item: SidebarItem;
   children: any;
 }) => {
-  console.log("Noncollapsible", item);
   return (
     <>
       <HorizontalSeparatorGroup>
