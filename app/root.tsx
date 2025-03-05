@@ -25,7 +25,7 @@ import type {
 } from "@remix-run/node";
 
 import "./tailwind.css";
-import { shouldRedirect } from "./utils/redirects/redirectMethods";
+import { checkForRedirects } from "./utils/redirects/redirectMethods";
 import { useEffect } from "react";
 import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
@@ -69,20 +69,22 @@ export type LoaderData = {
 export const loader: LoaderFunction = async ({
   request,
 }: LoaderFunctionArgs) => {
-  const url = getDomainUrl(request);
+  const origin = getDomainUrl(request);
   const path = new URL(request.url).pathname;
+  const canonical = removeTrailingSlash(`${origin}${path}`);
 
-  const { result, newPath } = shouldRedirect(path);
+  // Probably can just pass redirect() to checkForRedirects to simplify this
+  const { result, newPath } = checkForRedirects(path);
   if (result) {
     return redirect(newPath as string);
   }
 
   return json({
-    canonical: removeTrailingSlash(`${url}${path}`),
+    canonical,
     requestInfo: {
-      url: removeTrailingSlash(`${url}${path}`),
-      origin: getDomainUrl(request),
-      path: new URL(request.url).pathname,
+      url: canonical,
+      origin,
+      path,
     },
     algoliaInfo: {
       appId: process.env.ALGOLIA_APP_ID,
@@ -92,43 +94,34 @@ export const loader: LoaderFunction = async ({
   });
 };
 
-const processClientSideRedirect = (
+const processClientSideRedirects = (
   location: Location,
   navigate: NavigateFunction
 ) => {
   const { pathname, hash } = location;
   if (hash) {
-    const { result, newPath } = shouldRedirect(pathname + hash);
+    const { result, newPath } = checkForRedirects(pathname + hash);
     if (result) {
       navigate(newPath as string, { replace: true });
     }
   }
 };
 
-function Hit({ hit }: { hit: any }) {
-  return (
-    <article>
-      <p>{JSON.stringify(hit, null, 2)}</p>
-      <br />
-      <br />
-    </article>
-  );
-}
-
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
   const data = useLoaderData<LoaderData>();
   useEffect(() => {
-    processClientSideRedirect(location, navigate);
+    processClientSideRedirects(location, navigate);
   }, []);
   if (!data) return <ErrorPage />;
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to the algolia API for faster search */}
         <link
           rel="preconnect"
-          href="https://YOUR_APP_ID-dsn.algolia.net"
+          href={`https://${data.algoliaInfo.appId}-dsn.algolia.net`}
           crossOrigin="anonymous"
         />
         <MantleThemeHeadContent />

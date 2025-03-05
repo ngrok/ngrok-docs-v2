@@ -1,8 +1,9 @@
 import { redirect } from "@remix-run/node";
-import { fromExact, toExact } from "./pathMethods"
+import { fromExact, toExact } from "./pathMethods";
 import { allRedirects } from "./redirectAggregator";
+import { NavigateFunction } from "@remix-run/react";
 
-export const shouldRedirect = (path: string) => {
+export const checkForRedirects = (path: string) => {
   // set new path to current path
   let newPath: string | (string | boolean)[] = path;
   // iterate over each redirect, when a match is found, update newPath
@@ -37,4 +38,4 @@ export const shouldRedirect = (path: string) => {
   //   `ignoring redirect from ${path} to ${newPath}; looks loopy`
   // );
   return { result: false, newPath };
-}
+};
