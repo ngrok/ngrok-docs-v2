@@ -587,14 +587,6 @@ const docusaurusSidebar = [
   "faq/faq",
 ];
 
-/**
- * Logic is all wrong here
- * If it has any items at all, those are separate.
- * The top-level path is held in link.id.
- * - Separately, you can't get the title from first thing before /
- *  It's actually the last thing, and if that's "index", it's
- *  the second to last thing.
- */
 const getItemFromString = (
   itemPath: string,
   parentPath: string = ""
@@ -639,6 +631,9 @@ const getItemFromObject = (docusaurusObject: any) => {
   };
 };
 
+/**
+ * Make this just work if the item is formatted properly already
+ */
 export default docusaurusSidebar.map((navItem: any) => {
   if (typeof navItem === "string") {
     return getItemFromString(navItem);
