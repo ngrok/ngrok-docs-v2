@@ -44,6 +44,7 @@
     "remark-parse-frontmatter": "^1.0.3",
     "remark-prettier": "^2.0.0",
     "remix-flat-routes": "^0.8.5",
+    "title-case": "^4.3.2",
     "vite-env-only": "^3.0.3",
     "vite-plugin-require": "^1.2.14",
     "yaml": "^2.7.0"

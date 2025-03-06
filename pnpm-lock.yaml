@@ -107,6 +107,9 @@ importers:
       remix-flat-routes:
         specifier: ^0.8.5
         version: 0.8.5
+      title-case:
+        specifier: ^4.3.2
+        version: 4.3.2
       vite-env-only:
         specifier: ^3.0.3
         version: 3.0.3(vite@5.4.14(@types/node@22.13.5)(terser@5.39.0))
@@ -4908,6 +4911,9 @@ packages:
   tinyglobby@0.2.12:
     resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
     engines: {node: '>=12.0.0'}
+
+  title-case@4.3.2:
+    resolution: {integrity: sha512-I/nkcBo73mO42Idfv08jhInV61IMb61OdIFxk+B4Gu1oBjWBPOLmhZdsli+oJCVaD+86pYQA93cJfFt224ZFAA==}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -11343,6 +11349,8 @@ snapshots:
     dependencies:
       fdir: 6.4.3(picomatch@4.0.2)
       picomatch: 4.0.2
+
+  title-case@4.3.2: {}
 
   to-regex-range@5.0.1:
     dependencies:

@@ -1,30 +1,14 @@
+import sidebar from "./sidebar";
+
 export default {
   base: "/",
   lang: "en-US",
   title: "Ngrok Documentation",
   description: "Just playing around.",
   publicURL: "http://localhost:300",
-  nav: [
-    { text: "Docs", link: "/docs" },
-    { text: "Blog", link: "/blog" },
-  ],
+  nav: [{ text: "Docs", link: "/docs" }],
   head: [],
-  sidebar: [
-    {
-      title: "Introduction",
-      links: [
-        { title: "Example", href: "/docs/example" },
-        { title: "Home", href: "/docs/" },
-      ],
-    },
-    {
-      title: "Core Concepts",
-      links: [
-        { title: "Roadmap", href: "/docs/roadmap" },
-        { title: "Changelog", href: "/docs/changelog" },
-      ],
-    },
-  ],
+  sidebar,
   search: {
     enabled: true,
   },

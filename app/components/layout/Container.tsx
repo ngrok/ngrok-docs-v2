@@ -6,6 +6,7 @@ import Navigation from "~/components/layout/Navigation";
 import config from "~/utils/docs.config";
 import Footer from "~/components/layout/Footer";
 import { CustomDocSearch } from "@components/CustomDocSearch";
+import { SidebarNav } from "@components/layout/SidebarNav";
 
 const GitHubIcon = (props) => (
   <svg aria-hidden="true" viewBox="0 0 16 16" {...props}>
@@ -148,10 +149,7 @@ export default function Container({ algoliaInfo, children }) {
           <div className="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto py-16 pl-0.5">
             <div className="absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block dark:bg-slate-500" />
             <div className="absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block dark:bg-slate-500" />
-            <Navigation
-              navigation={config.sidebar}
-              className="w-64 pr-8 xl:w-72 xl:pr-16"
-            />
+            <SidebarNav className="w-64 pr-8 xl:w-72 xl:pr-16" />
           </div>
         </div>
         <div className="min-w-0 max-w-2xl flex-auto px-4 py-6 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
