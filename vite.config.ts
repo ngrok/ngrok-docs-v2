@@ -11,6 +11,8 @@ import { installGlobals } from "@remix-run/node";
 import remarkGfm from "remark-gfm";
 import { envOnlyMacros } from "vite-env-only";
 import { recmaCodeHike, remarkCodeHike } from "codehike/mdx";
+import remarkHeadings from "@vcarl/remark-headings";
+import { remarkMdxToc } from "remark-mdx-toc";
 
 installGlobals();
 declare module "@remix-run/node" {
@@ -42,6 +44,8 @@ export default defineConfig({
         [remarkCodeHike, codeHikeConfig],
         remarkFrontmatter,
         remarkMdxFrontmatter,
+        remarkHeadings,
+        [remarkMdxToc as any, { name: "toc" }],
       ],
       recmaPlugins: [[recmaCodeHike, codeHikeConfig]],
       providerImportSource: "@mdx-js/react",

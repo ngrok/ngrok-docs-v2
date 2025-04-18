@@ -31,6 +31,7 @@ import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
 import { MDXProvider } from "@mdx-js/react";
 import DocsCodeBlock from "@components/code-block";
+import { getHeadings } from "~/utils/getHeadings";
 
 export const links: LinksFunction = () => [
   {
@@ -71,7 +72,8 @@ export const loader: LoaderFunction = async ({
   request,
 }: LoaderFunctionArgs) => {
   const origin = getDomainUrl(request);
-  const path = new URL(request.url).pathname;
+  const urlData = new URL(request.url);
+  const path = urlData.pathname;
   const canonical = removeTrailingSlash(`${origin}${path}`);
 
   // Probably can just pass redirect() to checkForRedirects to simplify this
@@ -80,7 +82,10 @@ export const loader: LoaderFunction = async ({
     return redirect(newPath as string);
   }
 
+  const headings = await getHeadings(path);
+
   return json({
+    headings,
     canonical,
     requestInfo: {
       url: canonical,
@@ -115,6 +120,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     processClientSideRedirects(location, navigate);
   }, []);
+  console.log("Loader data", data);
   if (!data) return <ErrorPage />;
   return (
     <html lang="en">
@@ -157,5 +163,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <body>
+      <Outlet />
+    </body>
+  );
 }
