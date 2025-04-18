@@ -1,4 +1,4 @@
-import { fromIncludes, toReplace, fromExact, toExact } from "../pathMethods";
+import { fromIncludes, toReplace, fromExact } from "../pathMethods";
 
 // List of redirects
 //  String values are treated as exacts by default.
@@ -9,7 +9,7 @@ import { fromIncludes, toReplace, fromExact, toExact } from "../pathMethods";
 
 //  [1 - to]:  (path, from) => string (returned value becomes the new path)
 export const generalRedirects = [
-  [fromExact(`/docs/`), `/docs/overview`],
+  // [fromExact(`/docs/`), `/docs/overview`],
   [fromIncludes(`/docs/1`), `/docs/overview`],
   [fromIncludes(`/docs/2`), `/docs/overview`],
   [fromIncludes(`/docs/ngrok-link`), `/docs/universal-gateway/overview/`],

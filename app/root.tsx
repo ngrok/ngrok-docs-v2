@@ -3,7 +3,6 @@ import {
   MantleThemeHeadContent,
   ThemeProvider,
 } from "@ngrok/mantle/theme-provider";
-
 import {
   json,
   Links,
@@ -30,6 +29,8 @@ import { useEffect } from "react";
 import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
+import { MDXProvider } from "@mdx-js/react";
+import DocsCodeBlock from "@components/code-block";
 
 export const links: LinksFunction = () => [
   {
@@ -141,7 +142,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <Container algoliaInfo={data.algoliaInfo}>
           <ThemeProvider>
-            <Outlet />
+            {/* Add components here so they can be used in mdx files without being imported */}
+            {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
+            <MDXProvider components={{ DocsCodeBlock }}>
+              <Outlet />
+            </MDXProvider>
           </ThemeProvider>
         </Container>
         <ScrollRestoration />

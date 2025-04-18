@@ -10,6 +10,7 @@ import path from "path";
 import { installGlobals } from "@remix-run/node";
 import remarkGfm from "remark-gfm";
 import { envOnlyMacros } from "vite-env-only";
+import { recmaCodeHike, remarkCodeHike } from "codehike/mdx";
 
 installGlobals();
 declare module "@remix-run/node" {
@@ -17,6 +18,9 @@ declare module "@remix-run/node" {
     v3_singleFetch: true;
   }
 }
+
+// Replace existing tags with custom components here
+const codeHikeConfig = { components: { code: "DocsCodeBlock" } };
 
 export default defineConfig({
   ssr: {
@@ -33,7 +37,14 @@ export default defineConfig({
     envOnlyMacros(),
     tsconfigPaths(),
     mdx({
-      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+      remarkPlugins: [
+        remarkGfm,
+        [remarkCodeHike, codeHikeConfig],
+        remarkFrontmatter,
+        remarkMdxFrontmatter,
+      ],
+      recmaPlugins: [[recmaCodeHike, codeHikeConfig]],
+      providerImportSource: "@mdx-js/react",
     }),
     remix({
       routes(defineRoutes) {
