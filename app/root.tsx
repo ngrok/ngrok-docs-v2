@@ -25,15 +25,16 @@ import type {
 
 import "./tailwind.css";
 import { checkForRedirects } from "./utils/redirects/redirectMethods";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
 import { MDXProvider } from "@mdx-js/react";
-import { components } from "~/utils/componentsToImport";
+import { components } from "app/utils/componentsToImport";
 import useSSR from "use-ssr";
 import { getStorageTab } from "@components/Tabs/utils";
 import { tabParamName } from "@components/Tabs/utils";
+import TabListContext from "@components/Tabs/TabListContext";
 
 export const links: LinksFunction = () => [
   {
@@ -130,9 +131,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   // 	setSelectedLanguage(newLang);
   // };
 
-  const [selectedTabItem, setSelectedTabItem] = useState(
-    storageData?.defaultLanguage ?? null
-  );
+  const [selectedTabItem, setSelectedTabItem] = useState(storageData ?? null);
   const updateSelectedTabItem = (newItem: string | undefined) => {
     if (!newItem) return;
     if (isBrowser) {
@@ -176,30 +175,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         <TabListContext.Provider
           value={{
-            localStorageTab: storageData?.defaultTabItem ?? null,
+            localStorageTab: storageData ?? null,
             selectedTabItem,
             updateSelectedTabItem,
           }}
         >
-          <LangSwitcherContext.Provider
+          {/* <LangSwitcherContext.Provider
             value={{
               defaultLanguage: storageData?.defaultTabItem ?? null,
               selectedLanguage,
               updateSelectedLanguage,
             }}
-          >
-            <body>
-              <Container algoliaInfo={data.algoliaInfo}>
-                {/* Add components here so they can be used in mdx files without being imported */}
-                {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
-                <MDXProvider components={components}>
-                  <Outlet />
-                </MDXProvider>
-              </Container>
-              <ScrollRestoration />
-              <Scripts />
-            </body>
-          </LangSwitcherContext.Provider>
+          > */}
+          <body>
+            <Container algoliaInfo={data.algoliaInfo}>
+              {/* Add components here so they can be used in mdx files without being imported */}
+              {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
+              <MDXProvider components={components}>
+                <Outlet />
+              </MDXProvider>
+            </Container>
+            <ScrollRestoration />
+            <Scripts />
+          </body>
+          {/* </LangSwitcherContext.Provider> */}
         </TabListContext.Provider>
       </ThemeProvider>
     </html>
