@@ -4,7 +4,7 @@ import {
   ThemeProvider,
 } from "@ngrok/mantle/theme-provider";
 import {
-  json,
+  data,
   Links,
   Location,
   Meta,
@@ -31,6 +31,9 @@ import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
 import { MDXProvider } from "@mdx-js/react";
 import { components } from "~/utils/componentsToImport";
+import useSSR from "use-ssr";
+import { getStorageTab } from "@components/Tabs/utils";
+import { tabParamName } from "@components/Tabs/utils";
 
 export const links: LinksFunction = () => [
   {
@@ -81,9 +84,7 @@ export const loader: LoaderFunction = async ({
     return redirect(newPath as string);
   }
 
-  // const headings = await getHeadings(path);
-
-  return json({
+  return data({
     // headings,
     canonical,
     requestInfo: {
@@ -113,12 +114,40 @@ const processClientSideRedirects = (
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { isBrowser } = useSSR();
+
+  const storageData = isBrowser ? getStorageTab() : null;
+  // const [selectedLanguage, setSelectedLanguage] = useState(
+  // 	storageData?.defaultLanguage ?? null,
+  // );
+  // const updateSelectedLanguage = (
+  // 	newLang: string | SupportedLanguage | undefined,
+  // ) => {
+  // 	if (!newLang) return;
+  // 	if (isBrowser) {
+  // 		localStorage.setItem(langParamName, newLang);
+  // 	}
+  // 	setSelectedLanguage(newLang);
+  // };
+
+  const [selectedTabItem, setSelectedTabItem] = useState(
+    storageData?.defaultLanguage ?? null
+  );
+  const updateSelectedTabItem = (newItem: string | undefined) => {
+    if (!newItem) return;
+    if (isBrowser) {
+      localStorage.setItem(tabParamName, newItem);
+    }
+    setSelectedTabItem(newItem);
+  };
+
   const location = useLocation();
   const navigate = useNavigate();
   const data = useLoaderData<LoaderData>();
   useEffect(() => {
     processClientSideRedirects(location, navigate);
   }, []);
+
   if (!data) return <ErrorPage />;
   return (
     <html lang="en">
@@ -144,17 +173,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
           )}
           <Links />
         </head>
-        <body>
-          <Container algoliaInfo={data.algoliaInfo}>
-            {/* Add components here so they can be used in mdx files without being imported */}
-            {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
-            <MDXProvider components={components}>
-              <Outlet />
-            </MDXProvider>
-          </Container>
-          <ScrollRestoration />
-          <Scripts />
-        </body>
+
+        <TabListContext.Provider
+          value={{
+            localStorageTab: storageData?.defaultTabItem ?? null,
+            selectedTabItem,
+            updateSelectedTabItem,
+          }}
+        >
+          <LangSwitcherContext.Provider
+            value={{
+              defaultLanguage: storageData?.defaultTabItem ?? null,
+              selectedLanguage,
+              updateSelectedLanguage,
+            }}
+          >
+            <body>
+              <Container algoliaInfo={data.algoliaInfo}>
+                {/* Add components here so they can be used in mdx files without being imported */}
+                {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
+                <MDXProvider components={components}>
+                  <Outlet />
+                </MDXProvider>
+              </Container>
+              <ScrollRestoration />
+              <Scripts />
+            </body>
+          </LangSwitcherContext.Provider>
+        </TabListContext.Provider>
       </ThemeProvider>
     </html>
   );

@@ -57,6 +57,7 @@
     "title-case": "^4.3.2",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
+    "use-ssr": "^1.0.25",
     "vite-env-only": "^3.0.3",
     "vite-plugin-require": "^1.2.14",
     "yaml": "^2.7.0"

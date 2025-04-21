@@ -23,7 +23,6 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~": ["./app/*"],
       "@components": ["./app/components/"],
       "@shared": ["./app/shared/"]
     },
