@@ -20,6 +20,9 @@ importers:
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@18.3.1)
+      '@kodingdotninja/use-tailwind-breakpoint':
+        specifier: ^1.0.0
+        version: 1.0.0(react@18.3.1)(tailwindcss@3.4.17)
       '@mdx-js/mdx':
         specifier: ^3.1.0
         version: 3.1.0(acorn@8.14.0)
@@ -824,6 +827,17 @@ packages:
 
   '@jspm/core@2.1.0':
     resolution: {integrity: sha512-3sRl+pkyFY/kLmHl0cgHiFp2xEqErA8N3ECjMs7serSUBmoJ70lBa0PG5t0IM6WJgdZNyyI0R8YFfi5wM8+mzg==}
+
+  '@kodingdotninja/use-tailwind-breakpoint@1.0.0':
+    resolution: {integrity: sha512-UVN3Au5qBg7H7tkLxInvbozpigout08AWj6wQORtvAO/F67Gb3sAayuOgppHZTjMuQPAUbVL+TWMLwivuIxWtw==}
+    peerDependencies:
+      react: '>=16.8'
+      tailwindcss: '*'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      tailwindcss:
+        optional: true
 
   '@mdx-js/mdx@2.3.0':
     resolution: {integrity: sha512-jLuwRlz8DQfQNiUCJR50Y09CGPq3fLtmtUQfVrj79E0JWu3dvsVcxVIcfhR5h0iXu+/z++zDrYeiJqifRynJkA==}
@@ -6040,6 +6054,11 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.0
 
   '@jspm/core@2.1.0': {}
+
+  '@kodingdotninja/use-tailwind-breakpoint@1.0.0(react@18.3.1)(tailwindcss@3.4.17)':
+    optionalDependencies:
+      react: 18.3.1
+      tailwindcss: 3.4.17
 
   '@mdx-js/mdx@2.3.0':
     dependencies:

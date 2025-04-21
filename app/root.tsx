@@ -30,8 +30,7 @@ import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
 import { MDXProvider } from "@mdx-js/react";
-import DocsCodeBlock from "@components/code-block";
-import { getHeadings } from "~/utils/getHeadings";
+import { components } from "~/utils/componentsToImport";
 
 export const links: LinksFunction = () => [
   {
@@ -82,10 +81,10 @@ export const loader: LoaderFunction = async ({
     return redirect(newPath as string);
   }
 
-  const headings = await getHeadings(path);
+  // const headings = await getHeadings(path);
 
   return json({
-    headings,
+    // headings,
     canonical,
     requestInfo: {
       url: canonical,
@@ -120,7 +119,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     processClientSideRedirects(location, navigate);
   }, []);
-  console.log("Loader data", data);
   if (!data) return <ErrorPage />;
   return (
     <html lang="en">
@@ -150,7 +148,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <ThemeProvider>
             {/* Add components here so they can be used in mdx files without being imported */}
             {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
-            <MDXProvider components={{ DocsCodeBlock }}>
+            <MDXProvider components={components}>
               <Outlet />
             </MDXProvider>
           </ThemeProvider>

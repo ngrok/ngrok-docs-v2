@@ -1,0 +1,67 @@
+import { useState } from "react";
+import { Heading } from "~/utils/getHeadings";
+import { CaretDown } from "@phosphor-icons/react";
+import { Link } from "@remix-run/react";
+
+function TOCList(props: { children: React.ReactNode[]; className?: string }) {
+  return <ul className={`list-none ${props.className}`}>{props.children}</ul>;
+}
+
+export default function TableOfContents({ headings }: { headings: Heading[] }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      {/* Mobile dropdown */}
+      <div className="lg:hidden w-full mb-6">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex justify-between items-center w-full px-4 py-2 border rounded-md"
+        >
+          <span className="font-medium">On this page</span>
+          {/* <IconButton
+            type="button"
+            label="Expand table of contents"
+            icon={}
+            onClick={() => setIsOpen(!isOpen)}
+          /> */}
+          <CaretDown />
+        </button>
+        {isOpen && (
+          <nav className="absolute w-[100%] mt-2 border rounded-md bg-black p-3">
+            {headings.map((heading) => (
+              <Link
+                onClick={() => setIsOpen(false)}
+                key={heading.id}
+                to={`#${heading.id}`}
+                className={`text-white block text-sm py-1 pl-${(heading.level - 2) * 3} hover:text-blue-500 transition-colors`}
+              >
+                {heading.text}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </div>
+
+      {/* Desktop Sidebar */}
+      <nav className="hidden lg:block sticky top-20 self-start w-56 xl:w-64 max-h-[calc(100vh-5rem)] overflow-y-auto border-l pl-4">
+        <h4 className="mb-2 font-semibold text-gray-700">On this page</h4>
+        <TOCList className="text-sm space-y-1">
+          {headings.map((heading) => {
+            if (heading.level < 2) return null; // Skip top-level headings
+            return (
+              <li key={heading.id}>
+                <Link
+                  to={`#${heading.id}`}
+                  className={`block hover:text-blue-500 transition-colors pl-${(heading.level - 2) * 3}`}
+                >
+                  {heading.text}
+                </Link>
+              </li>
+            );
+          })}
+        </TOCList>
+      </nav>
+    </>
+  );
+}

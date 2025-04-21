@@ -21,7 +21,7 @@ declare module "@remix-run/node" {
   }
 }
 
-// Replace existing tags with custom components here
+// Replace all `<code>` tags with our custom codeblock here
 const codeHikeConfig = { components: { code: "DocsCodeBlock" } };
 
 export default defineConfig({

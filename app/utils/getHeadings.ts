@@ -5,7 +5,7 @@ import remarkParse from "remark-parse";
 import remarkMdx from "remark-mdx";
 import { visit } from "unist-util-visit";
 
-type Heading = {
+export type Heading = {
   text: string;
   level: number;
   id: string;
@@ -39,7 +39,7 @@ export async function getHeadings(rawPath: string) {
         )
         .map((child: any) => child.value)
         .join("");
-      const id = text.toLowerCase().replace(/[^\w]+/g, "-");
+      const id = getHeadingId(text);
 
       const level =
         text.includes("title: ") || text.includes("description: ")
@@ -71,4 +71,8 @@ function addPluses(str: string) {
   const modified = after.replace(/\//g, "+/");
 
   return before + modified;
+}
+
+export function getHeadingId(headingText: string) {
+  return headingText.toLowerCase().replace(/[^\w]+/g, "-");
 }
