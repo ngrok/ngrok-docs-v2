@@ -1,10 +1,12 @@
-import clsx from "clsx";
-import { Link, NavLink } from "@remix-run/react";
-import MobileNavigation from "~/components/layout/MobileNavigation";
+import ResponsiveNavigation from "~/components/layout/ResponsiveNavigation";
 import config from "~/utils/docs.config";
 import Footer from "@components/layout/Footer";
 import { SidebarNav } from "@components/layout/SidebarNav";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import Navigation from "./Navigation";
+import { DocsLogo } from "./DocsLogo";
+import type { LoaderData } from "~/root";
+import { ClientOnly } from "remix-utils/client-only";
 
 const GitHubIcon = (props) => (
   <svg aria-hidden="true" viewBox="0 0 16 16" {...props}>
@@ -12,41 +14,26 @@ const GitHubIcon = (props) => (
   </svg>
 );
 
-export default function Container({ algoliaInfo, children }) {
+export default function Container({
+  algoliaInfo,
+  children,
+}: {
+  algoliaInfo: LoaderData.algoliaInfo;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       <header
         className={
-          "flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500  sm:px-6 lg:px-8"
+          "flex gap-2 w-full flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500  sm:px-6 lg:px-8"
         }
       >
+        <ClientOnly>{() => <DocsLogo className="mr-2" />}</ClientOnly>
         <div className="mr-6 flex lg:hidden">
-          <MobileNavigation algoliaInfo={algoliaInfo} />
+          <ResponsiveNavigation algoliaInfo={algoliaInfo} />
         </div>
         <div className="ml-2 relative flex flex-grow basis-0 items-center space-x-3 hidden md:block">
-          {config.nav &&
-            config.nav.map((nav) => (
-              <NavLink
-                key={nav.link}
-                to={nav.link}
-                prefetch="intent"
-                aria-label={nav.link}
-                className={({ isActive }) =>
-                  clsx(
-                    isActive
-                      ? "font-semibold text-sky-500 before:bg-sky-500"
-                      : "text-black before:hidden before:bg-slate-300 hover:text-slate-600  "
-                  )
-                }
-              >
-                {nav.text}
-              </NavLink>
-            ))}
-        </div>
-        <div className="-my-5 mr-6 sm:mr-8 md:mr-0">
-          <Link to="/" prefetch="intent" className="">
-            {config.title}
-          </Link>
+          <Navigation />
         </div>
         <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
           {config.editLink.enabled && (
