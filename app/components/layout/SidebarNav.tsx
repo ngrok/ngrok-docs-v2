@@ -10,6 +10,7 @@ import { HorizontalSeparatorGroup, Separator } from "@ngrok/mantle/separator";
 import { Link } from "@remix-run/react";
 import type { SidebarItem } from "~/utils/sidebar";
 import sidebar from "~/utils/sidebar";
+import { CustomDocSearch } from "@components/CustomDocSearch";
 
 /**
  * Layout:
@@ -125,9 +126,10 @@ const NavItem = ({
   return <Link to={path}>{title}</Link>;
 };
 
-export function SidebarNav({ className }: any) {
+export function SidebarNav({ className, algoliaInfo }: any) {
   return (
     <nav className={className}>
+      <CustomDocSearch algoliaInfo={algoliaInfo} />
       <ul role="list">
         {sidebar &&
           sidebar.map((topLevelItem: SidebarItem) => {

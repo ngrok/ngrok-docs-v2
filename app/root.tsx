@@ -122,40 +122,40 @@ export function Layout({ children }: { children: React.ReactNode }) {
   if (!data) return <ErrorPage />;
   return (
     <html lang="en">
-      <head>
-        {/* Preconnect to the algolia API for faster search */}
-        <link
-          rel="preconnect"
-          href={`https://${data.algoliaInfo.appId}-dsn.algolia.net`}
-          crossOrigin="anonymous"
-        />
-        <MantleThemeHeadContent />
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        {data.requestInfo && (
+      <ThemeProvider>
+        <head>
+          {/* Preconnect to the algolia API for faster search */}
           <link
-            rel="canonical"
-            href={removeTrailingSlash(
-              `${data.requestInfo.origin}${data.requestInfo.path}`
-            )}
+            rel="preconnect"
+            href={`https://${data.algoliaInfo.appId}-dsn.algolia.net`}
+            crossOrigin="anonymous"
           />
-        )}
-        <Links />
-      </head>
-      <body>
-        <Container algoliaInfo={data.algoliaInfo}>
-          <ThemeProvider>
+          <MantleThemeHeadContent />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <Meta />
+          {data.requestInfo && (
+            <link
+              rel="canonical"
+              href={removeTrailingSlash(
+                `${data.requestInfo.origin}${data.requestInfo.path}`
+              )}
+            />
+          )}
+          <Links />
+        </head>
+        <body>
+          <Container algoliaInfo={data.algoliaInfo}>
             {/* Add components here so they can be used in mdx files without being imported */}
             {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
             <MDXProvider components={components}>
               <Outlet />
             </MDXProvider>
-          </ThemeProvider>
-        </Container>
-        <ScrollRestoration />
-        <Scripts />
-      </body>
+          </Container>
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </ThemeProvider>
     </html>
   );
 }

@@ -6,7 +6,10 @@ export default {
   title: "Ngrok Documentation",
   description: "Just playing around.",
   publicURL: "http://localhost:300",
-  nav: [{ text: "Docs", link: "/docs" }],
+  nav: [
+    { text: "Home", link: "/" },
+    { text: "Docs", link: "/docs" },
+  ],
   head: [],
   sidebar,
   search: {

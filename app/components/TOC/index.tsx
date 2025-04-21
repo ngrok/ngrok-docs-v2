@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Heading } from "~/utils/getHeadings";
-import { CaretDown } from "@phosphor-icons/react";
+import { ArrowUp, CaretDown } from "@phosphor-icons/react";
 import { Link } from "@remix-run/react";
+import { Button } from "@ngrok/mantle/button";
 
 function TOCList(props: { children: React.ReactNode[]; className?: string }) {
   return <ul className={`list-none ${props.className}`}>{props.children}</ul>;
@@ -60,6 +61,16 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
               </li>
             );
           })}
+          <Button
+            type="button"
+            aria-label="scroll back to top of the page"
+            className="mt-4 w-full"
+            priority="neutral"
+            appearance="ghost"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <ArrowUp /> Back to top
+          </Button>
         </TOCList>
       </nav>
     </>

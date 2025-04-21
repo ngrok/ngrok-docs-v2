@@ -4,12 +4,12 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-  @apply text-black dark:text-white;
+  /* @apply bg-blue-500 dark:bg-blue-500;
+  @apply text-black dark:text-white; */
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     color-scheme: dark;
-  }
+  } */
 }
 
 p {
