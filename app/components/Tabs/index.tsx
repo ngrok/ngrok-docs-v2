@@ -2,37 +2,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ngrok/mantle/tabs";
 import React, { useContext } from "react";
 import TabListContext from "./TabListContext";
 
-// export default function TabsComponent(props: any) {
-//   console.log("Tabs", props);
-//   return (
-//     <div className="tabs">
-//       <div className="tabs__list">{props.children}</div>
-//     </div>
-//   );
-// }
-
 type TabsProps = {
   groupId?: string;
   queryString?: string;
   children: React.ReactNode[];
-};
-
-/**
- * Option 1:
- *  Do all rendering from within this component. Cycle through the tab items
- *  and render the content for each tab item.
- * Option 2:
- *  Render effectively nothing here but the children.
- */
-
-// Just map the tab conent twice
-
-type Tab = {
-  props: {
-    label?: string;
-    value?: string;
-    children: React.ReactNode[] | React.ReactNode;
-  };
 };
 
 export default function TabsComponent(props: TabsProps) {
@@ -56,8 +29,7 @@ export default function TabsComponent(props: TabsProps) {
   ) => {
     const newTab = event.currentTarget;
     const newTabIndex = tabRefs.indexOf(newTab);
-    const newTabValue =
-      tabs[newTabIndex]?.props?.label || tabs[newTabIndex]?.props?.value;
+    const newTabValue = tabs[newTabIndex]?.props?.label;
 
     if (newTabValue !== selectedTabItem && updateSelectedTabItem) {
       updateSelectedTabItem(newTabValue);
@@ -65,36 +37,37 @@ export default function TabsComponent(props: TabsProps) {
   };
 
   const defaultTab = getValidDefaultTab(tabs, localStorageTab);
+
   const tabToShow = getValidTabToShow(tabs, selectedTabItem, defaultTab);
 
   return (
     <Tabs orientation="horizontal" defaultValue={defaultTab} value={tabToShow}>
       <TabsList>
         {tabs?.map((tabItem: any, i: number) => {
-          const { label, value } = tabItem.props;
-          if (!label && !value) {
-            throw new Error("TabItem must have a label or value");
+          const { label } = tabItem.props;
+          if (!label) {
+            throw new Error("TabItem must have a label");
           }
           return (
             <TabsTrigger
-              value={label || value}
+              value={label}
               role="tab"
               aria-selected={selectedTabItem === label}
-              key={`${value}${i}`}
+              key={`${label}${i}`}
               onClick={handleTabChange}
               ref={(tabControl) => {
                 tabRefs.push(tabControl);
               }}
             >
-              {label || value}
+              {label}
             </TabsTrigger>
           );
         })}
       </TabsList>
       {tabs?.map((tabItem: any, i: number) => {
-        const { label, value, children } = tabItem.props;
+        const { label, children } = tabItem.props;
         return (
-          <TabsContent value={label || value} key={`${value}${i}`}>
+          <TabsContent value={label} key={`${i}${label}`}>
             {children}
           </TabsContent>
         );
@@ -107,18 +80,14 @@ function getValidDefaultTab(
   tabs: any[],
   localStorageTab: string | null | undefined
 ) {
-  console.log("Localstorage tab", localStorageTab);
   const defaultTab = tabs.find((tab) => {
-    console.log("Tab", tab.props.label);
-    return (
-      tab.props.label === localStorageTab || tab.props.value === localStorageTab
-    );
+    return tab.props.label === localStorageTab;
   });
   if (defaultTab) {
-    console.log("Returning default tab", defaultTab.props.label);
     return defaultTab.props.label;
   }
-  return tabs[0]?.props.label;
+  const tabWithDefaultProp = tabs.find((tab) => tab.props.default);
+  return tabWithDefaultProp?.props?.label || tabs[0]?.props?.label;
 }
 
 function getValidTabToShow(
