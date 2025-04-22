@@ -1,3 +1,12 @@
+/**
+ * This component is structured a little weirdly for the time being so it can
+ * reproduce the behavior of the docusaurus tabs component.
+ * This prevents us having to go through the entirety of the docs
+ * and replace every existing tabs component.
+ * In future, we can refactor this if need be.
+ * We can also add more docusaurus functionality, like
+ * `querystring` and `groupId` support.
+ */
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ngrok/mantle/tabs";
 import React, { useContext } from "react";
 import TabListContext from "./TabListContext";
