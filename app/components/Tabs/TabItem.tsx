@@ -1,3 +1,3 @@
-export default function TabItem({ children }: any) {
-  return <div>{children}</div>;
+export default function TabItem(props: any) {
+  return <div {...props}>{props.children}</div>;
 }

@@ -36,7 +36,7 @@ function CloseIcon(props) {
   );
 }
 
-export default function MobileNavigation({ algoliaInfo }: any) {
+export default function ResponsiveNavigation({ algoliaInfo }: any) {
   let [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function MobileNavigation({ algoliaInfo }: any) {
         className="fixed inset-0 z-50 flex items-start overflow-y-auto bg-slate-900/50 pr-10 backdrop-blur lg:hidden"
         aria-label="Navigation"
       >
-        <Dialog.Panel className="min-h-full w-full max-w-xs bg-white px-4 pt-5 pb-12 dark:bg-slate-900 sm:px-6">
+        <Dialog.Panel className="min-h-full w-full max-w-xs bg-white px-4 pt-5 pb-12  sm:px-6">
           <div className="flex items-center">
             <button
               type="button"
@@ -90,7 +90,7 @@ export default function MobileNavigation({ algoliaInfo }: any) {
                     "block w-full pl-3.5",
                     isActive
                       ? "font-semibold text-sky-500 before:bg-sky-500"
-                      : "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
+                      : "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block "
                   )
                 }
               >
@@ -109,7 +109,7 @@ export default function MobileNavigation({ algoliaInfo }: any) {
                         "block w-full pl-3.5",
                         isActive
                           ? "font-semibold text-sky-500 before:bg-sky-500"
-                          : "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
+                          : "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block "
                       )
                     }
                   >

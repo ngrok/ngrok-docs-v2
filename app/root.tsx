@@ -3,9 +3,8 @@ import {
   MantleThemeHeadContent,
   ThemeProvider,
 } from "@ngrok/mantle/theme-provider";
-
 import {
-  json,
+  data,
   Links,
   Location,
   Meta,
@@ -26,10 +25,14 @@ import type {
 
 import "./tailwind.css";
 import { checkForRedirects } from "./utils/redirects/redirectMethods";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
+import { MDXProvider } from "@mdx-js/react";
+import { components } from "app/utils/componentsToImport";
+import { getStorageTab, tabParamName } from "@components/Tabs/utils";
+import TabListContext from "@components/Tabs/TabListContext";
 
 export const links: LinksFunction = () => [
   {
@@ -70,7 +73,8 @@ export const loader: LoaderFunction = async ({
   request,
 }: LoaderFunctionArgs) => {
   const origin = getDomainUrl(request);
-  const path = new URL(request.url).pathname;
+  const urlData = new URL(request.url);
+  const path = urlData.pathname;
   const canonical = removeTrailingSlash(`${origin}${path}`);
 
   // Probably can just pass redirect() to checkForRedirects to simplify this
@@ -79,7 +83,8 @@ export const loader: LoaderFunction = async ({
     return redirect(newPath as string);
   }
 
-  return json({
+  return data({
+    // headings,
     canonical,
     requestInfo: {
       url: canonical,
@@ -108,49 +113,89 @@ const processClientSideRedirects = (
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  const storageData = isBrowser ? getStorageTab() : null;
+
+  const [selectedTabItem, setSelectedTabItem] = useState(storageData ?? null);
+  const updateSelectedTabItem = (newItem: string | undefined) => {
+    if (!newItem) return;
+    if (isBrowser) {
+      localStorage.setItem(tabParamName, newItem);
+    }
+    setSelectedTabItem(newItem);
+  };
+
   const location = useLocation();
   const navigate = useNavigate();
   const data = useLoaderData<LoaderData>();
   useEffect(() => {
+    setIsBrowser(typeof window !== "undefined");
     processClientSideRedirects(location, navigate);
   }, []);
+
   if (!data) return <ErrorPage />;
   return (
     <html lang="en">
-      <head>
-        {/* Preconnect to the algolia API for faster search */}
-        <link
-          rel="preconnect"
-          href={`https://${data.algoliaInfo.appId}-dsn.algolia.net`}
-          crossOrigin="anonymous"
-        />
-        <MantleThemeHeadContent />
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        {data.requestInfo && (
+      <ThemeProvider>
+        <head>
+          {/* Preconnect to the algolia API for faster search */}
           <link
-            rel="canonical"
-            href={removeTrailingSlash(
-              `${data.requestInfo.origin}${data.requestInfo.path}`
-            )}
+            rel="preconnect"
+            href={`https://${data.algoliaInfo.appId}-dsn.algolia.net`}
+            crossOrigin="anonymous"
           />
-        )}
-        <Links />
-      </head>
-      <body>
-        <Container algoliaInfo={data.algoliaInfo}>
-          <ThemeProvider>
-            <Outlet />
-          </ThemeProvider>
-        </Container>
-        <ScrollRestoration />
-        <Scripts />
-      </body>
+          <MantleThemeHeadContent />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <Meta />
+          {data.requestInfo && (
+            <link
+              rel="canonical"
+              href={removeTrailingSlash(
+                `${data.requestInfo.origin}${data.requestInfo.path}`
+              )}
+            />
+          )}
+          <Links />
+        </head>
+
+        <TabListContext.Provider
+          value={{
+            localStorageTab: storageData ?? null,
+            selectedTabItem,
+            updateSelectedTabItem,
+          }}
+        >
+          {/* <LangSwitcherContext.Provider
+            value={{
+              defaultLanguage: storageData?.defaultTabItem ?? null,
+              selectedLanguage,
+              updateSelectedLanguage,
+            }}
+          > */}
+          <body>
+            <Container algoliaInfo={data.algoliaInfo}>
+              {/* Add components here so they can be used in mdx files without being imported */}
+              {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
+              <MDXProvider components={components}>
+                <Outlet />
+              </MDXProvider>
+            </Container>
+            <ScrollRestoration />
+            <Scripts />
+          </body>
+          {/* </LangSwitcherContext.Provider> */}
+        </TabListContext.Provider>
+      </ThemeProvider>
     </html>
   );
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <body>
+      <Outlet />
+    </body>
+  );
 }

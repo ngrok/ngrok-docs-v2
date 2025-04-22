@@ -1,4 +1,4 @@
-import { fromIncludes, toReplace, fromExact, toExact } from "../pathMethods";
+import { fromIncludes, toReplace, fromExact } from "../pathMethods";
 
 // List of redirects
 //  String values are treated as exacts by default.

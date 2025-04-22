@@ -4,9 +4,40 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  /* @apply bg-blue-500 dark:bg-blue-500;
+  @apply text-black dark:text-white; */
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     color-scheme: dark;
-  }
+  } */
+}
+
+p {
+  @apply mb-3;
+}
+
+h2,
+h3,
+h4 {
+  @apply mb-3;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-lg;
+}
+
+ul {
+  @apply mb-3 list-disc ml-6;
+}
+
+ol {
+  @apply mb-3 list-decimal;
 }
