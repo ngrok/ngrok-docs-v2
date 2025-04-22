@@ -11,6 +11,7 @@ import { Link } from "@remix-run/react";
 import type { SidebarItem } from "~/utils/sidebar";
 import sidebar from "~/utils/sidebar";
 import { CustomDocSearch } from "@components/CustomDocSearch";
+import clsx from "clsx";
 
 /**
  * Layout:
@@ -128,7 +129,7 @@ const NavItem = ({
 
 export function SidebarNav({ className, algoliaInfo }: any) {
   return (
-    <nav className={className}>
+    <nav className={clsx("", className)}>
       <CustomDocSearch algoliaInfo={algoliaInfo} />
       <ul className="list-none" role="list">
         {sidebar &&

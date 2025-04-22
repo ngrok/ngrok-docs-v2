@@ -3,12 +3,8 @@ import { themes, useTheme } from "@ngrok/mantle/theme-provider";
 export function DocsLogo(props: any) {
   const [currentTheme, setTheme] = useTheme();
 
-  const darkModeLogo = (
-    <img {...props} src="../../../public/docs-logos/ngrok-white.svg" />
-  );
-  const lightModeLogo = (
-    <img {...props} src="../../../public/docs-logos/ngrok-black.svg" />
-  );
+  const darkModeLogo = <img {...props} src="/docs-logos/ngrok-white.svg" />;
+  const lightModeLogo = <img {...props} src="/docs-logos/ngrok-black.svg" />;
 
   switch (currentTheme) {
     // system

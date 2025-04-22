@@ -14,18 +14,30 @@ export type Heading = {
 export async function getHeadings(rawPath: string) {
   try {
     const urlPath = addPluses(rawPath);
-    let filePath = path.join(process.cwd(), "app/routes", `${urlPath}.mdx`);
+    let filePath = path.join(
+      process.cwd(),
+      "app/routes/docs+/",
+      `${urlPath}.mdx`
+    );
     let markdown = "";
     try {
       markdown = await fs.readFile(filePath, "utf8");
     } catch (error) {
-      // If we fail to find the file, check if it's an index.mdx file
-      filePath = path.join(
-        process.cwd(),
-        "app/routes",
-        `${urlPath}+/index.mdx`
-      );
-      markdown = await fs.readFile(filePath + "", "utf8");
+      try {
+        // If we fail to find the file, check if it's an index.mdx file
+        filePath = path.join(
+          process.cwd(),
+          "app/routes",
+          `/docs+/${urlPath}+/index.mdx`
+        );
+        markdown = await fs.readFile(filePath + "", "utf8");
+      } catch (error) {
+        console.error(
+          `Error getting headings. Couldn't read file at ${filePath}`,
+          error
+        );
+        return null;
+      }
     }
 
     const headings: Heading[] = [];
@@ -56,21 +68,16 @@ export async function getHeadings(rawPath: string) {
 }
 
 function addPluses(str: string) {
-  const firstSlashIndex = str.indexOf("/");
-
-  if (firstSlashIndex === -1) {
-    // No slashes — just add /index
-    return str + "/index";
+  let normalizedPath = str;
+  if (normalizedPath.indexOf("/") === 0) {
+    normalizedPath = normalizedPath.substring(1);
   }
-
-  // Keep everything up to and including the first slash
-  const before = str.slice(0, firstSlashIndex + 1);
-  const after = str.slice(firstSlashIndex + 1);
-
-  // Add + before every remaining slash
-  const modified = after.replace(/\//g, "+/");
-
-  return before + modified;
+  normalizedPath = normalizedPath.replace("docs/", "");
+  normalizedPath = normalizedPath.replace("/", "+/");
+  if (normalizedPath[normalizedPath.length - 1] === "/") {
+    normalizedPath = normalizedPath.substring(0, normalizedPath.length - 1);
+  }
+  return normalizedPath;
 }
 
 export function getHeadingId(headingText: string) {

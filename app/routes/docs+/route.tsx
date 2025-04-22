@@ -31,7 +31,7 @@ export default function App() {
 
   const { headings } = useLoaderData<LoaderData>();
   return (
-    <div className="relative lg:flex">
+    <div className="flex">
       {isDesktop ? (
         <>
           <div className="w-[100%]">

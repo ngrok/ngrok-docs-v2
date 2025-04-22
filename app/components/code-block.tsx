@@ -13,6 +13,7 @@ import {
   parseMetastring,
 } from "@ngrok/mantle/code-block";
 import type { WithStyleProps } from "@ngrok/mantle/types";
+import clsx from "clsx";
 import type { ComponentProps, ReactNode } from "react";
 
 type Props = WithStyleProps & {
@@ -71,7 +72,7 @@ function DocsCodeBlock({
   const collapsible = meta.collapsible && children.split("\n").length > 20;
 
   return (
-    <CodeBlock className={className} {...props}>
+    <CodeBlock className={clsx("mb-3", className)} {...props}>
       {hasHeader && (
         <CodeBlockHeader>
           {mode ? <CodeBlockIcon preset={mode} /> : _icon}
