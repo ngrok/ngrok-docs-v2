@@ -12,8 +12,6 @@ export function LangSwitcher({ children, className, ...props }: any) {
   const { defaultLanguage, selectedLanguage, updateSelectedLanguage } =
     useContext<LangSwitcherContextType>(LangSwitcherContext);
 
-  // const codeBlocks = children.map((child: any) => child.codeblock);
-
   if (!updateSelectedLanguage) return "Error loading code block";
 
   // if no language tab is set yet
@@ -22,10 +20,10 @@ export function LangSwitcher({ children, className, ...props }: any) {
     const startingLanguage =
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       children.find(
-        (child: any) => child.props.codeblock.language === defaultLanguage
-      ) || children[0].props.codeblock;
-    updateSelectedLanguage(startingLanguage?.language);
-    // if no default language is set, set the first tab as the selected tab
+        (child: any) => child.props.codeblock.lang === defaultLanguage
+        // if no default language is set, set the first tab as the selected tab
+      )?.props.codeblock || children[0].props.codeblock;
+    updateSelectedLanguage(startingLanguage?.lang);
   }
 
   const matchingBlock =

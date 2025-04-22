@@ -128,9 +128,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const updateSelectedLanguage = (
     newLang: string | SupportedLanguage | undefined
   ) => {
+    console.log("Hello");
     if (!newLang) return;
     if (isBrowser) {
       localStorage.setItem(langParamName, newLang);
+    } else {
+      console.log("Not able to write to localStorage", newLang);
     }
     setSelectedLanguage(newLang);
   };
@@ -153,6 +156,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (!data) return <ErrorPage />;
+
   return (
     <html lang="en">
       <ThemeProvider>

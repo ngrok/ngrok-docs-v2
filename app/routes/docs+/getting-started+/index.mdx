@@ -127,6 +127,10 @@ ngrok http 8080 --url https://jumpy-red-mollusk.ngrok-free.app
 example
 ```
 
+```go title="ngrok with static domain"
+example 2
+```
+
 </LangSwitcher>
 
 ## Step 5: Secure your app
@@ -136,9 +140,16 @@ quickly add authentication to your app without any changes. If your Google
 account is `alan@example.com`, you can restrict access only for yourself by
 running ngrok with:
 
-```
+<LangSwitcher>
+```bash
 ngrok http http://localhost:8080 --oauth google --oauth-allow-email alan@example.com
 ```
+
+```go
+test
+```
+
+</LangSwitcher>
 
 Anyone accessing your app will be prompted to log in with Google and only your
 account will be allowed to access it. Keep in mind that when you restart ngrok,
