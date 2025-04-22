@@ -30,9 +30,15 @@ import Container from "./components/layout/Container";
 import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
 import { MDXProvider } from "@mdx-js/react";
-import { components } from "app/utils/componentsToImport";
-import { getStorageTab, tabParamName } from "@components/Tabs/utils";
+import { getStoredTab, tabParamName } from "@components/Tabs/utils";
 import TabListContext from "@components/Tabs/TabListContext";
+import LangSwitcherContext from "@components/LangSwitcher/LangSwitcherContext";
+import {
+  getStoredLanguage,
+  langParamName,
+} from "@components/LangSwitcher/utils";
+import { SupportedLanguage } from "@ngrok/mantle/code-block";
+import { globalComponents } from "./utils/componentsToImport";
 
 export const links: LinksFunction = () => [
   {
@@ -115,9 +121,21 @@ const processClientSideRedirects = (
 export function Layout({ children }: { children: React.ReactNode }) {
   const [isBrowser, setIsBrowser] = useState(false);
 
-  const storageData = isBrowser ? getStorageTab() : null;
+  const storedTab = isBrowser ? getStoredTab() : null;
+  const storedLang = isBrowser ? getStoredLanguage() : null;
 
-  const [selectedTabItem, setSelectedTabItem] = useState(storageData ?? null);
+  const [selectedLanguage, setSelectedLanguage] = useState(storedLang ?? null);
+  const updateSelectedLanguage = (
+    newLang: string | SupportedLanguage | undefined
+  ) => {
+    if (!newLang) return;
+    if (isBrowser) {
+      localStorage.setItem(langParamName, newLang);
+    }
+    setSelectedLanguage(newLang);
+  };
+
+  const [selectedTabItem, setSelectedTabItem] = useState(storedTab ?? null);
   const updateSelectedTabItem = (newItem: string | undefined) => {
     if (!newItem) return;
     if (isBrowser) {
@@ -162,30 +180,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         <TabListContext.Provider
           value={{
-            localStorageTab: storageData ?? null,
+            localStorageTab: storedTab ?? null,
             selectedTabItem,
             updateSelectedTabItem,
           }}
         >
-          {/* <LangSwitcherContext.Provider
+          <LangSwitcherContext.Provider
             value={{
-              defaultLanguage: storageData?.defaultTabItem ?? null,
+              defaultLanguage: storedLang ?? null,
               selectedLanguage,
               updateSelectedLanguage,
             }}
-          > */}
-          <body>
-            <Container algoliaInfo={data.algoliaInfo}>
-              {/* Add components here so they can be used in mdx files without being imported */}
-              {/* To make a component replace an existing tag (like <code> or <a>), add it to codehike in vite.config.ts */}
-              <MDXProvider components={components}>
-                <Outlet />
-              </MDXProvider>
-            </Container>
-            <ScrollRestoration />
-            <Scripts />
-          </body>
-          {/* </LangSwitcherContext.Provider> */}
+          >
+            <body>
+              <Container algoliaInfo={data.algoliaInfo}>
+                {/* Add components here so they can replace existing tags like <code> or <a> */}
+                <MDXProvider components={globalComponents}>
+                  <Outlet />
+                </MDXProvider>
+              </Container>
+              <ScrollRestoration />
+              <Scripts />
+            </body>
+          </LangSwitcherContext.Provider>
         </TabListContext.Provider>
       </ThemeProvider>
     </html>

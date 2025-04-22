@@ -1,20 +1,19 @@
 import type { Mode, SupportedLanguage } from "@ngrok/mantle/code-block";
 import {
   CodeBlock,
-  CodeBlockBody,
   CodeBlockCode,
-  CodeBlockCopyButton,
-  CodeBlockExpanderButton,
-  CodeBlockHeader,
-  CodeBlockIcon,
-  CodeBlockTitle,
-  fmtCode,
   parseLanguage,
-  parseMetastring,
 } from "@ngrok/mantle/code-block";
 import type { WithStyleProps } from "@ngrok/mantle/types";
-import clsx from "clsx";
 import type { ComponentProps, ReactNode } from "react";
+import { CodeBlockWithInfo } from "./CodeBlockWithInfo";
+import { getLanguageInfo, getMetaData } from "./LangSwitcher/utils";
+import { Button } from "@ngrok/mantle/button";
+
+type WithIndentation = Pick<
+  ComponentProps<typeof CodeBlockCode>,
+  "indentation"
+>;
 
 type Props = WithStyleProps & {
   /**
@@ -46,8 +45,9 @@ type Props = WithStyleProps & {
    */
   title?: string;
 
-  value?: any;
-};
+  // any for now
+  codeblock: any;
+} & WithIndentation;
 
 /**
  * A code block component that support
@@ -56,38 +56,36 @@ function DocsCodeBlock({
   children,
   className,
   icon: _icon,
+  indentation: _indentation,
   language: _language,
   metastring,
   mode: _mode,
   title: _title,
   ...props
-}: Props | any) {
+}: Props) {
   const { codeblock } = props;
-  const language = _language ?? parseLanguage(codeblock.language);
-  const meta = parseMetastring(codeblock.meta);
-  const title = _title || meta.title;
-  const mode = _mode || meta.mode;
-  const hasHeader = title || mode || _icon;
+  const language = _language || parseLanguage(codeblock.lang);
 
-  const collapsible = meta.collapsible && children.split("\n").length > 20;
-
+  const meta = getMetaData(codeblock.meta);
   return (
-    <CodeBlock className={clsx("mb-3", className)} {...props}>
-      {hasHeader && (
-        <CodeBlockHeader>
-          {mode ? <CodeBlockIcon preset={mode} /> : _icon}
-          {title && <CodeBlockTitle>{title}</CodeBlockTitle>}
-        </CodeBlockHeader>
-      )}
-      <CodeBlockBody>
-        {!meta.disableCopy && <CodeBlockCopyButton />}
-        <CodeBlockCode
-          language={language}
-          value={fmtCode`${codeblock.value}`}
-        />
-        {collapsible && <CodeBlockExpanderButton />}
-      </CodeBlockBody>
-    </CodeBlock>
+    <CodeBlockWithInfo
+      content={codeblock.value}
+      language={language}
+      meta={meta}
+      className={className}
+      headerContent={
+        <Button
+          disabled
+          type="button"
+          priority="neutral"
+          appearance={"outlined"}
+        >
+          {meta.tabName || language.toUpperCase()}
+        </Button>
+      }
+      info={getLanguageInfo(language)}
+      codeBlockProps={props}
+    />
   );
 }
 

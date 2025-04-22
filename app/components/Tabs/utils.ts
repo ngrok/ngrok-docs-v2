@@ -1,6 +1,6 @@
 export const tabParamName = "defaultTabItem";
 
-export const getStorageTab = () => {
+export const getStoredTab = () => {
   function getStorageItem(key: string) {
     if (localStorage) {
       return localStorage.getItem(key);
