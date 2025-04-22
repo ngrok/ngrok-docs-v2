@@ -12,8 +12,6 @@ import { Sun } from "@phosphor-icons/react";
 export function ThemeSwitcher(props: any) {
   const [currentTheme, setTheme] = useTheme();
 
-  console.log("currentTheme", currentTheme);
-
   return (
     <div {...props}>
       <Select

@@ -31,9 +31,7 @@ import { getDomainUrl, removeTrailingSlash } from "./utils";
 import ErrorPage from "@components/ErrorPage";
 import { MDXProvider } from "@mdx-js/react";
 import { components } from "app/utils/componentsToImport";
-import useSSR from "use-ssr";
-import { getStorageTab } from "@components/Tabs/utils";
-import { tabParamName } from "@components/Tabs/utils";
+import { getStorageTab, tabParamName } from "@components/Tabs/utils";
 import TabListContext from "@components/Tabs/TabListContext";
 
 export const links: LinksFunction = () => [
@@ -115,21 +113,9 @@ const processClientSideRedirects = (
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { isBrowser } = useSSR();
+  const [isBrowser, setIsBrowser] = useState(false);
 
   const storageData = isBrowser ? getStorageTab() : null;
-  // const [selectedLanguage, setSelectedLanguage] = useState(
-  // 	storageData?.defaultLanguage ?? null,
-  // );
-  // const updateSelectedLanguage = (
-  // 	newLang: string | SupportedLanguage | undefined,
-  // ) => {
-  // 	if (!newLang) return;
-  // 	if (isBrowser) {
-  // 		localStorage.setItem(langParamName, newLang);
-  // 	}
-  // 	setSelectedLanguage(newLang);
-  // };
 
   const [selectedTabItem, setSelectedTabItem] = useState(storageData ?? null);
   const updateSelectedTabItem = (newItem: string | undefined) => {
@@ -144,6 +130,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const data = useLoaderData<LoaderData>();
   useEffect(() => {
+    setIsBrowser(typeof window !== "undefined");
     processClientSideRedirects(location, navigate);
   }, []);
 

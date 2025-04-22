@@ -130,7 +130,7 @@ export function SidebarNav({ className, algoliaInfo }: any) {
   return (
     <nav className={className}>
       <CustomDocSearch algoliaInfo={algoliaInfo} />
-      <ul role="list">
+      <ul className="list-none" role="list">
         {sidebar &&
           sidebar.map((topLevelItem: SidebarItem) => {
             if (topLevelItem.divider) {
