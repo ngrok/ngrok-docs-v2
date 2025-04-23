@@ -1,11 +1,11 @@
-import ResponsiveNavigation from "~/components/layout/ResponsiveNavigation";
-import config from "~/utils/docs.config";
 import Footer from "@components/layout/Footer";
 import { SidebarNav } from "@components/layout/SidebarNav";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import Navigation from "./Navigation";
 import { DocsLogo } from "./DocsLogo";
 import { ClientOnly } from "remix-utils/client-only";
+import { Button } from "@ngrok/mantle/button";
+import MobileNavigation from "./MobileNavigation";
 
 const GitHubIcon = (props) => (
   <svg aria-hidden="true" viewBox="0 0 16 16" {...props}>
@@ -29,25 +29,16 @@ export default function Container({
       >
         <ClientOnly>{() => <DocsLogo className="mr-2" />}</ClientOnly>
         <div className="mr-6 flex lg:hidden">
-          <ResponsiveNavigation algoliaInfo={algoliaInfo} />
+          <MobileNavigation algoliaInfo={algoliaInfo} />
         </div>
-        <div className="ml-2 relative flex flex-grow basis-0 items-center space-x-3 hidden md:block">
+        <div className="md:max-w-full ml-2 relative md:flex flex-grow basis-0 items-center space-x-3 hidden md:block">
           <Navigation />
         </div>
-        <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
-          {config.editLink.enabled && (
-            <>
-              {config.editLink.link && (
-                <a
-                  href={config.editLink.link}
-                  className="group"
-                  aria-label="GitHub"
-                >
-                  <GitHubIcon className="h-8 w-8 fill-slate-400 group-hover:fill-slate-500  " />
-                </a>
-              )}
-            </>
-          )}
+        <div className="hidden md:flex md:gap-3">
+          <Button type="button">Log in</Button>
+          <Button type="button" appearance="filled">
+            Sign Up
+          </Button>
         </div>
         <ThemeSwitcher className="ml-5" />
       </header>

@@ -36,7 +36,7 @@ function CloseIcon(props) {
   );
 }
 
-export default function ResponsiveNavigation({ algoliaInfo }: any) {
+export default function MobileNavigation({ algoliaInfo }: any) {
   let [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

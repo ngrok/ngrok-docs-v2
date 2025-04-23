@@ -17,8 +17,6 @@ meta:
 ---
 
 export const meta = frontmatter.meta;
-
-;
 ```
 
 ```mdx
