@@ -1,5 +1,5 @@
 import { data, LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { Outlet } from "@remix-run/react";
+import { Outlet, useMatches } from "@remix-run/react";
 import TableOfContents from "@components/TOC";
 import { getHeadings } from "~/utils/getHeadings";
 import { useLoaderData } from "@remix-run/react";
@@ -22,6 +22,15 @@ export const loader: LoaderFunction = async ({
   });
 };
 
+function getTitleFromMatches(matches: any[]) {
+  const { handle } = matches[matches.length - 1];
+  type MatchHandle = {
+    title?: string;
+  };
+
+  return (handle as MatchHandle[]).find((item: any) => item.title)?.title || "";
+}
+
 export default function Docs() {
   const { useBreakpoint } = create({
     // We can change this number at any point; this is a placeholder
@@ -31,11 +40,15 @@ export default function Docs() {
   const isDesktop = useBreakpoint("md");
 
   const { headings } = useLoaderData<LoaderData>();
+
+  const matches = useMatches();
+  const title = getTitleFromMatches(matches);
   return (
     <div className="flex">
       {isDesktop ? (
         <>
           <div className="w-[100%]">
+            <h1>{title}</h1>
             <Outlet />
           </div>
           <TableOfContents headings={headings} />
@@ -43,7 +56,7 @@ export default function Docs() {
       ) : (
         <div className="relative">
           <TableOfContents headings={headings} />
-          <div className="w-[100%]">
+          <div className="">
             <Outlet />
           </div>
         </div>

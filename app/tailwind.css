@@ -16,10 +16,24 @@ p {
   @apply mb-3;
 }
 
+h1,
 h2,
 h3,
 h4 {
   @apply mb-3;
+}
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+td,
+th {
+  @apply p-2 border;
+}
+
+table {
+  @apply border-collapse border mb-5;
 }
 
 h2 {
