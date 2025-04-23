@@ -1,5 +1,5 @@
 import type { Integration } from "~/utils/Integrations/getIntegrations";
-import NgrokCard from "./NgrokCard";
+import NgrokCard from "../NgrokCard";
 
 export default function IntegrationsList({ list }: { list: Integration[] }) {
   return (

@@ -14,11 +14,7 @@ export type Heading = {
 export async function getHeadings(rawPath: string) {
   try {
     let urlPath = addPluses(rawPath);
-    let filePath = path.join(
-      process.cwd(),
-      "app/routes/docs+/",
-      `${urlPath}.mdx`
-    );
+    let filePath = path.join(process.cwd(), "app/routes/", `${urlPath}.mdx`);
     let markdown = "";
     try {
       markdown = await fs.readFile(filePath, "utf8");
@@ -31,7 +27,7 @@ export async function getHeadings(rawPath: string) {
         filePath = path.join(
           process.cwd(),
           "app/routes",
-          `/docs+/${urlPath}+/index.mdx`
+          `/${urlPath}+/index.mdx`
         );
         markdown = await fs.readFile(filePath + "", "utf8");
       } catch (error) {
@@ -49,6 +45,15 @@ export async function getHeadings(rawPath: string) {
 
     visit(tree, "heading", (node: any) => {
       const text = node.children
+        .map((child: any) => {
+          if (!child.children) {
+            return child;
+          }
+          return {
+            type: child.children[0].type,
+            value: child.children[0].value,
+          };
+        })
         .filter(
           (child: any) => child.type === "text" || child.type === "inlineCode"
         )
@@ -74,13 +79,12 @@ export async function getHeadings(rawPath: string) {
 
 function addPluses(str: string) {
   let normalizedPath = str;
-  if (normalizedPath.indexOf("/") === 0) {
+  if (normalizedPath.startsWith("/")) {
     normalizedPath = normalizedPath.substring(1);
   }
-  normalizedPath = normalizedPath.replace("docs/", "");
-  normalizedPath = normalizedPath.replace("/", "+/");
-  if (normalizedPath[normalizedPath.length - 1] === "/") {
-    normalizedPath = normalizedPath.substring(0, normalizedPath.length - 1);
+  normalizedPath = normalizedPath.replaceAll("/", "+/");
+  if (normalizedPath.endsWith("/")) {
+    normalizedPath = normalizedPath.substring(0, normalizedPath.length - 2);
   }
   return normalizedPath;
 }

@@ -1,19 +1,10 @@
-/**
- * Rework this component to just read whatever files are in the directory
- * and list that in the NgrokCard components, that way we
- * don't need to have a bunch of state issues or any weirdness
- */
-
-// import { useIntegration } from "./integrations/use-integrations";
-import NgrokCard from "./NgrokCard";
-
 type Props = {
   name: string;
 };
 
 export default function IntegrationPageList({ name }: Props) {
   return <p>Integration Page List (temp)</p>;
-  // const integration = useIntegration(name);
+  // const integration = getIntegration(name);
 
   // if (!integration) {
   //   return null;

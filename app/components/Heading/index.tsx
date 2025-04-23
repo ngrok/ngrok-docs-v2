@@ -7,7 +7,25 @@ type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
 };
 
 export const Heading = ({ as: Tag, children, ...props }: HeadingProps) => {
-  const id = typeof children === "string" ? getHeadingId(children) : undefined;
+  let id = "";
+
+  if (typeof children === "string") {
+    id = getHeadingId(children);
+  } else if (typeof children === "object") {
+    const normalizedValue = (children as React.ReactElement[]).reduce(
+      (acc, child) => {
+        if (typeof child === "string") {
+          return acc + child;
+        } else if (typeof child === "object" && child.props) {
+          return acc + child.props.children;
+        }
+        return acc;
+      },
+      ""
+    );
+    id = getHeadingId(normalizedValue);
+  }
+
   const { hash } = useLocation();
 
   useEffect(() => {
