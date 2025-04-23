@@ -1,3 +1,4 @@
+import Callout from "@components/Callout";
 import DocsCodeBlock from "@components/code-block";
 import { Definition } from "@components/Definition";
 import { Heading } from "@components/Heading";
@@ -21,6 +22,7 @@ export const globalComponents = {
   h6: (props: any) => <Heading as="h6" {...props} />,
   // replaces <code>
   DocsCodeBlock,
+  Callout,
   LangSwitcher,
   ContentSwitcher,
   Definition,
