@@ -24,10 +24,10 @@ export const loader: LoaderFunction = async ({
 
 function getTitleFromMatches(matches: any[]) {
   const { handle } = matches[matches.length - 1];
+  if (!handle) return null;
   type MatchHandle = {
     title?: string;
   };
-
   return (handle as MatchHandle[]).find((item: any) => item.title)?.title || "";
 }
 
@@ -48,7 +48,7 @@ export default function Docs() {
       {isDesktop ? (
         <>
           <div className="w-[100%]">
-            <h1>{title}</h1>
+            {title && <h1>{title}</h1>}
             <Outlet />
           </div>
           <TableOfContents headings={headings} />
