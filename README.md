@@ -17,6 +17,9 @@ meta:
 ---
 
 export const meta = frontmatter.meta;
+export const handle = meta;
+
+;
 ```
 
 ```mdx
@@ -27,6 +30,7 @@ export const meta = frontmatter.meta;
 
 {/* Passing the frontmatter directly, not a nested array within the frontmatter */}
 export const meta = frontmatter;
+export const handle = meta;
 ```
 
 Here's what DOESN'T work:
@@ -40,6 +44,7 @@ meta:
 
 {/* Bad -- meta is an object, not an array (missing the dashes - ) */}
 export const meta = frontmatter.meta;
+export const handle = meta;
 ```
 
 ```mdx
@@ -50,6 +55,7 @@ description: My description
 
 {/* Bad -- frontmatter is an object, not an array (missing the dashes - ) */}
 export const meta = frontmatter;
+export const handle = meta;
 ```
 
 ### As an array literal
@@ -68,6 +74,7 @@ export const meta = [
   { name: "robots", content: "index,follow" },
   { name: "googlebot", content: "index,follow" },
 ];
+export const handle = meta;
 ```
 
 Not all these are required.
@@ -79,6 +86,7 @@ export const meta = [
   { name: "description", content: "This app is the best" },
   { property: "og:title", content: "Very cool app" },
 ];
+export const handle = meta;
 ```
 
 Will create `<meta>` tags like this:
@@ -86,4 +94,19 @@ Will create `<meta>` tags like this:
 ```html
 <meta name="description" content="This app is the best" />
 <meta property="og:title" content="Very cool app" />
+```
+
+## Exporting `handle`
+
+To access metadata in layout routes in remix, you must add it to an exported `handle` variable. In order to display the page title from `meta`, add `export const handle = meta;` to each mdx file.
+
+```mdx
+---
+- title: Example title
+---
+
+export const meta = frontmatter;
+export const handle = meta;
+
+...
 ```
