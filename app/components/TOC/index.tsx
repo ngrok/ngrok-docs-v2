@@ -10,7 +10,7 @@ function TOCList(props: { children: React.ReactNode[]; className?: string }) {
 
 export default function TableOfContents({ headings }: { headings: Heading[] }) {
   const [isOpen, setIsOpen] = useState(false);
-
+  if (!headings || headings.length === 0) return null;
   return (
     <>
       {/* Mobile dropdown */}

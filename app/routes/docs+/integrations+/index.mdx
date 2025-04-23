@@ -1,13 +1,12 @@
 ---
-pagination_next: integrations/1password/index
-sidebar_position: 1
+- pagination_next: integrations/1password/index
+- sidebar_position: 1
 ---
 
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import IntegrationsList from "@components/IntegrationsList";
-import {getIntegrations} from "~/utils/Integrations/getIntegrations";  
-
+import { getIntegrations } from "~/utils/Integrations/getIntegrations";
 export const loader = async () => {
   return {
     integrationList: await getIntegrations(),

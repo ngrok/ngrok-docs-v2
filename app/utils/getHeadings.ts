@@ -13,7 +13,7 @@ export type Heading = {
 
 export async function getHeadings(rawPath: string) {
   try {
-    const urlPath = addPluses(rawPath);
+    let urlPath = addPluses(rawPath);
     let filePath = path.join(
       process.cwd(),
       "app/routes/docs+/",
@@ -24,6 +24,9 @@ export async function getHeadings(rawPath: string) {
       markdown = await fs.readFile(filePath, "utf8");
     } catch (error) {
       try {
+        if (urlPath.endsWith("+") || urlPath.endsWith("/")) {
+          urlPath = urlPath.substring(0, urlPath.length - 1);
+        }
         // If we fail to find the file, check if it's an index.mdx file
         filePath = path.join(
           process.cwd(),
@@ -57,7 +60,9 @@ export async function getHeadings(rawPath: string) {
         text.includes("title: ") || text.includes("description: ")
           ? 0
           : node.depth;
-      headings.push({ text, level, id });
+      if (level > 1) {
+        headings.push({ text, level, id });
+      }
     });
 
     return headings;
