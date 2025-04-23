@@ -22,8 +22,9 @@ export const loader: LoaderFunction = async ({
   });
 };
 
-export default function App() {
+export default function Docs() {
   const { useBreakpoint } = create({
+    // We can change this number at any point; this is a placeholder
     md: "768px",
   });
 

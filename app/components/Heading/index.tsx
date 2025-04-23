@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getHeadingId } from "~/utils/getHeadings";
 
 type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
-  as: "h2" | "h3" | "h4" | "h5" | "h6";
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
 export const Heading = ({ as: Tag, children, ...props }: HeadingProps) => {

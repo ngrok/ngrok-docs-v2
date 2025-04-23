@@ -7,6 +7,7 @@
  * We can also add more docusaurus functionality, like
  * `querystring` and `groupId` support.
  */
+// Note: We also look into how accessible this component is. Probably need to make it work with keyboards.
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ngrok/mantle/tabs";
 import React, { useContext } from "react";
 import TabListContext from "./TabListContext";

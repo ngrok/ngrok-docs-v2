@@ -3,7 +3,7 @@ import { createContext } from "react";
 
 export type LangSwitcherContextType = {
   selectedLanguage: string | SupportedLanguage | null;
-  defaultLanguage: string | null;
+  localStorageLanguage: string | null;
   updateSelectedLanguage:
     | null
     | ((newLang: string | SupportedLanguage | undefined) => void);
@@ -12,7 +12,7 @@ export type LangSwitcherContextType = {
 const LangSwitcherContext = createContext<LangSwitcherContextType>({
   selectedLanguage: null,
   updateSelectedLanguage: null,
-  defaultLanguage: null,
+  localStorageLanguage: null,
 });
 
 export default LangSwitcherContext;

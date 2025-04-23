@@ -9,7 +9,7 @@ import { ClientOnly } from "remix-utils/client-only";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function LangSwitcher({ children, className, ...props }: any) {
-  const { defaultLanguage, selectedLanguage, updateSelectedLanguage } =
+  const { localStorageLanguage, selectedLanguage, updateSelectedLanguage } =
     useContext<LangSwitcherContextType>(LangSwitcherContext);
 
   if (!updateSelectedLanguage) return "Error loading code block";
@@ -20,8 +20,11 @@ export function LangSwitcher({ children, className, ...props }: any) {
     const startingLanguage =
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       children.find(
-        (child: any) => child.props.codeblock.lang === defaultLanguage
-        // if no default language is set, set the first tab as the selected tab
+        (child: any) => {
+          child.props.codeblock.lang === localStorageLanguage;
+        }
+        // if no default language is set,
+        // use the first tab in the array
       )?.props.codeblock || children[0].props.codeblock;
     updateSelectedLanguage(startingLanguage?.lang);
   }

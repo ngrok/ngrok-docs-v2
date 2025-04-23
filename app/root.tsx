@@ -37,7 +37,6 @@ import {
   getStoredLanguage,
   langParamName,
 } from "@components/LangSwitcher/utils";
-import { SupportedLanguage } from "@ngrok/mantle/code-block";
 import { globalComponents } from "./utils/componentsToImport";
 
 export const links: LinksFunction = () => [
@@ -122,38 +121,36 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [isBrowser, setIsBrowser] = useState(false);
 
   const storedTab = isBrowser ? getStoredTab() : null;
-  const storedLang = isBrowser ? getStoredLanguage() : null;
-
-  const [selectedLanguage, setSelectedLanguage] = useState(storedLang ?? null);
-  const updateSelectedLanguage = (
-    newLang: string | SupportedLanguage | undefined
-  ) => {
-    console.log("Hello");
-    if (!newLang) return;
-    if (isBrowser) {
-      localStorage.setItem(langParamName, newLang);
-    } else {
-      console.log("Not able to write to localStorage", newLang);
-    }
-    setSelectedLanguage(newLang);
-  };
-
   const [selectedTabItem, setSelectedTabItem] = useState(storedTab ?? null);
-  const updateSelectedTabItem = (newItem: string | undefined) => {
-    if (!newItem) return;
-    if (isBrowser) {
-      localStorage.setItem(tabParamName, newItem);
-    }
-    setSelectedTabItem(newItem);
+  const storedLang = isBrowser ? getStoredLanguage() : null;
+  const [selectedLanguage, setSelectedLanguage] = useState(storedLang ?? null);
+
+  const updateTabOrLanguageFunction = (type: string) => {
+    const param = type === "tab" ? tabParamName : langParamName;
+    const updateFunction =
+      type === "tab" ? setSelectedTabItem : setSelectedLanguage;
+    return (newItem: string | undefined) => {
+      if (!newItem) return;
+      if (isBrowser) {
+        localStorage.setItem(param, newItem);
+      }
+      updateFunction(newItem);
+    };
   };
+
+  const updateSelectedTabItem = updateTabOrLanguageFunction("tab");
+  const updateSelectedLanguage = updateTabOrLanguageFunction("lang");
 
   const location = useLocation();
   const navigate = useNavigate();
   const data = useLoaderData<LoaderData>();
   useEffect(() => {
-    setIsBrowser(typeof window !== "undefined");
+    if (!isBrowser) {
+      return setIsBrowser(typeof window !== "undefined");
+    }
+    setSelectedLanguage(storedLang);
     processClientSideRedirects(location, navigate);
-  }, []);
+  }, [isBrowser]);
 
   if (!data) return <ErrorPage />;
 
@@ -191,7 +188,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         >
           <LangSwitcherContext.Provider
             value={{
-              defaultLanguage: storedLang ?? null,
+              localStorageLanguage: storedLang ?? null,
               selectedLanguage,
               updateSelectedLanguage,
             }}
