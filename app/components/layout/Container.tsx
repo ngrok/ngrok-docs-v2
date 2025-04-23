@@ -53,7 +53,6 @@ export default function Container({
       </header>
       <div className="flex max-h-full">
         <SidebarNav
-          className="bg-red-300"
           algoliaInfo={algoliaInfo}
           className="w-64 pr-8 xl:w-72 xl:pr-16"
         />

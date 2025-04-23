@@ -1,6 +1,8 @@
 import DocsCodeBlock from "@components/code-block";
+import { Definition } from "@components/Definition";
 import { Heading } from "@components/Heading";
 import { LangSwitcher } from "@components/LangSwitcher";
+import { ContentSwitcher } from "@components/LangSwitcher/ContentSwitcher";
 import Tabs from "@components/Tabs";
 import TabItem from "@components/Tabs/TabItem";
 
@@ -20,6 +22,8 @@ export const globalComponents = {
   // replaces <code>
   DocsCodeBlock,
   LangSwitcher,
+  ContentSwitcher,
+  Definition,
   Tabs,
   TabItem,
 };
