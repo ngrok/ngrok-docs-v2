@@ -1,4 +1,5 @@
 import { titleCase } from "title-case";
+import { getSidebarData } from "./getSidebarData";
 
 export type SidebarItem = {
   title?: string;
@@ -585,12 +586,28 @@ const docusaurusSidebar = [
   "faq/faq",
 ];
 
-const getItemFromString = (
+const getItemFromString = async (
   itemPath: string,
   parentPath: string = ""
-): SidebarItem | null => {
+): Promise<SidebarItem | null> => {
+  /**
+   * Take the path, add pluses,
+   * read the file from the file system
+   * Use the frontmatter or headings to get the title
+   */
+  const data = await getSidebarData(itemPath);
+  if (!data) {
+    return null;
+  }
+
+  return {
+    path: data.path,
+    title:
+      data.frontmatter?.title ||
+      data.headings.find((item: any) => item.depth === 1)?.value,
+    children: [],
+  };
   const path = "/docs/" + itemPath.split("/index")[0];
-  // if (path === parentPath) return null;
   const parts = itemPath.split("/");
   // example: a/b/c -> title = 'c'
   let title = itemPath.includes("/index")
@@ -632,15 +649,18 @@ const getItemFromObject = (docusaurusObject: any) => {
 /**
  * Make this just work if the item is formatted properly already
  */
-export default docusaurusSidebar.map((navItem: any) => {
-  if (typeof navItem === "string") {
-    return getItemFromString(navItem);
-  }
-  if (navItem.type === "html") {
-    return {
-      title: navItem.value,
-      divider: true,
-    };
-  }
-  return getItemFromObject(navItem);
-}) as SidebarItem[];
+export const getSidebar = async () => {
+  const sidebarItemsPromises = docusaurusSidebar.map(async (navItem: any) => {
+    if (typeof navItem === "string") {
+      return await getItemFromString(navItem);
+    }
+    if (navItem.type === "html") {
+      return {
+        title: navItem.value,
+        divider: true,
+      };
+    }
+    return getItemFromObject(navItem);
+  });
+  return Promise.allSettled(sidebarItemsPromises);
+};

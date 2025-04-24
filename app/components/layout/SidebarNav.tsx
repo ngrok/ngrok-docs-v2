@@ -7,11 +7,12 @@ import {
   AccordionTriggerIcon,
 } from "@ngrok/mantle/accordion";
 import { HorizontalSeparatorGroup, Separator } from "@ngrok/mantle/separator";
-import { Link } from "@remix-run/react";
+import { Await, Link } from "@remix-run/react";
 import type { SidebarItem } from "~/utils/sidebar";
-import sidebar from "~/utils/sidebar";
+import { getSidebar } from "~/utils/sidebar";
 import { CustomDocSearch } from "@components/CustomDocSearch";
 import clsx from "clsx";
+import { Suspense } from "react";
 
 /**
  * Layout:
@@ -121,41 +122,48 @@ const NavItem = ({
   path,
   title,
 }: {
-  path: SidebarItem.path;
-  title: SidebarItem.title;
+  path: SidebarItem["path"];
+  title: SidebarItem["title"];
 }) => {
   return <Link to={path}>{title}</Link>;
 };
 
-export function SidebarNav({ className, algoliaInfo }: any) {
-  return (
-    <nav className={clsx("", className)}>
-      <CustomDocSearch algoliaInfo={algoliaInfo} />
-      <ul className="list-none" role="list">
-        {sidebar &&
-          sidebar.map((topLevelItem: SidebarItem) => {
-            if (topLevelItem.divider) {
-              return (
-                <SidebarDivider
-                  key={topLevelItem.path || topLevelItem.title}
-                  title={topLevelItem.title}
-                />
-              );
-            }
-            return (
-              <li key={topLevelItem.path || topLevelItem.title}>
-                {topLevelItem?.children?.length > 0 ? (
-                  <SidebarSection sectionItem={topLevelItem} />
-                ) : (
-                  <NavItem
-                    path={topLevelItem.path}
-                    title={topLevelItem.title}
-                  />
-                )}
-              </li>
-            );
-          })}
-      </ul>
-    </nav>
-  );
-}
+export const SidebarNav = ({ className, algoliaInfo }: any) => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Await resolve={getSidebar()}>
+      {(sidebarPromises: any[]) => {
+        const sidebar = sidebarPromises.map((item: any) => item.value);
+        return (
+          <nav className={clsx("", className)}>
+            <CustomDocSearch algoliaInfo={algoliaInfo} />
+            <ul className="list-none" role="list">
+              {sidebar &&
+                sidebar.map((topLevelItem: SidebarItem) => {
+                  if (topLevelItem.divider) {
+                    return (
+                      <SidebarDivider
+                        key={topLevelItem.path || topLevelItem.title}
+                        title={topLevelItem.title}
+                      />
+                    );
+                  }
+                  return (
+                    <li key={topLevelItem.path || topLevelItem.title}>
+                      {topLevelItem?.children?.length > 0 ? (
+                        <SidebarSection sectionItem={topLevelItem} />
+                      ) : (
+                        <NavItem
+                          path={topLevelItem.path}
+                          title={topLevelItem.title}
+                        />
+                      )}
+                    </li>
+                  );
+                })}
+            </ul>
+          </nav>
+        );
+      }}
+    </Await>
+  </Suspense>
+);

@@ -9,6 +9,7 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkMdx from "remark-mdx";
 import { visit } from "unist-util-visit";
+import { getRemixPath } from "./pathSanitization";
 
 export type Heading = {
   text: string;
@@ -18,7 +19,7 @@ export type Heading = {
 
 export async function getHeadings(rawPath: string) {
   try {
-    let urlPath = addPluses(rawPath);
+    let urlPath = getRemixPath(rawPath);
     let filePath = path.join(process.cwd(), "app/routes/", `${urlPath}.mdx`);
     let markdown = "";
     try {
@@ -80,18 +81,6 @@ export async function getHeadings(rawPath: string) {
     console.error(`Error getting headings for ${rawPath}:`, error);
     return null;
   }
-}
-
-function addPluses(str: string) {
-  let normalizedPath = str;
-  if (normalizedPath.startsWith("/")) {
-    normalizedPath = normalizedPath.substring(1);
-  }
-  normalizedPath = normalizedPath.replaceAll("/", "+/");
-  if (normalizedPath.endsWith("/")) {
-    normalizedPath = normalizedPath.substring(0, normalizedPath.length - 2);
-  }
-  return normalizedPath;
 }
 
 export function getHeadingId(headingText: string) {

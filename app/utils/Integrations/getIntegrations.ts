@@ -5,7 +5,7 @@ import { fileToPath } from "~/utils/docusaurusUtils";
 import { remark } from "remark";
 import remarkParseFrontmatter from "remark-parse-frontmatter";
 import remarkHeadings from "@vcarl/remark-headings";
-import { getPathWithNormalizedSlashes } from "../path-sanitization/getPathWithNormalizedSlashes";
+import { getPathWithNormalizedSlashes } from "../pathSanitization";
 
 export type Integration = {
   name: string;
