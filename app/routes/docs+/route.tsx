@@ -6,7 +6,7 @@ import {
 } from "@remix-run/node";
 import { Outlet, useLoaderData, useMatches } from "@remix-run/react";
 import TableOfContents from "@components/TOC";
-import { Heading } from "~/utils/getHeadings";
+import { getHeadings, Heading } from "~/utils/getHeadings";
 import { create } from "@kodingdotninja/use-tailwind-breakpoint";
 import { checkForRedirects } from "~/utils/redirects/redirectMethods";
 
@@ -25,8 +25,7 @@ export const loader: LoaderFunction = async ({
   if (result) {
     return redirect(newPath as string);
   }
-  // const headings = await getHeadings(pathname);
-  const headings = null;
+  const headings = await getHeadings(pathname);
 
   return data({
     headings,

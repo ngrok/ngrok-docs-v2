@@ -1,3 +1,8 @@
+/**
+ * TODO: We can use remarkHeadings to parse the headings rather than the code
+ * we have now.
+ */
+
 import fs from "fs/promises";
 import path from "path";
 import { unified } from "unified";
