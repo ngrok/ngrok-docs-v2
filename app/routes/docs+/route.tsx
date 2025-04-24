@@ -1,10 +1,14 @@
-import { data, LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { Outlet, useMatches } from "@remix-run/react";
+import {
+  data,
+  LoaderFunction,
+  LoaderFunctionArgs,
+  redirect,
+} from "@remix-run/node";
+import { Outlet, useLoaderData, useMatches } from "@remix-run/react";
 import TableOfContents from "@components/TOC";
-import { getHeadings } from "~/utils/getHeadings";
-import { useLoaderData } from "@remix-run/react";
 import { Heading } from "~/utils/getHeadings";
 import { create } from "@kodingdotninja/use-tailwind-breakpoint";
+import { checkForRedirects } from "~/utils/redirects/redirectMethods";
 
 export type LoaderData = {
   headings: Heading[];
@@ -14,8 +18,15 @@ export const loader: LoaderFunction = async ({
   request,
 }: LoaderFunctionArgs) => {
   const urlData = new URL(request.url);
-  const path = urlData.pathname;
-  const headings = await getHeadings(path);
+  const { pathname } = urlData;
+
+  // Probably can just pass redirect() to checkForRedirects to simplify this
+  const { result, newPath } = checkForRedirects(pathname);
+  if (result) {
+    return redirect(newPath as string);
+  }
+  // const headings = await getHeadings(pathname);
+  const headings = null;
 
   return data({
     headings,
@@ -40,7 +51,6 @@ export default function Docs() {
   const isDesktop = useBreakpoint("md");
 
   const { headings } = useLoaderData<LoaderData>();
-
   const matches = useMatches();
   const title = getTitleFromMatches(matches);
   return (

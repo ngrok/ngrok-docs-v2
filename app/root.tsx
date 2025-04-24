@@ -10,7 +10,6 @@ import {
   Meta,
   NavigateFunction,
   Outlet,
-  redirect,
   Scripts,
   ScrollRestoration,
   useLoaderData,
@@ -81,12 +80,6 @@ export const loader: LoaderFunction = async ({
   const urlData = new URL(request.url);
   const path = urlData.pathname;
   const canonical = removeTrailingSlash(`${origin}${path}`);
-
-  // Probably can just pass redirect() to checkForRedirects to simplify this
-  const { result, newPath } = checkForRedirects(path);
-  if (result) {
-    return redirect(newPath as string);
-  }
 
   return data({
     // headings,
@@ -195,7 +188,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           >
             <body>
               <Container algoliaInfo={data.algoliaInfo}>
-                {/* Add components here so they can replace existing tags like <code> or <a> */}
                 <MDXProvider components={globalComponents}>
                   <Outlet />
                 </MDXProvider>

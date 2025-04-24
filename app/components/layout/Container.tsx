@@ -24,7 +24,7 @@ export default function Container({
     <div className="max-w-full">
       <header
         className={
-          "flex gap-2 w-full flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500  sm:px-6 lg:px-8"
+          "flex gap-2 w-full flex-wrap items-center justify-between bg-white px-4 py-5 transition duration-500  sm:px-6 lg:px-8"
         }
       >
         <ClientOnly>{() => <DocsLogo className="mr-2" />}</ClientOnly>

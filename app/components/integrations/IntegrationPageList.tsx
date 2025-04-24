@@ -1,27 +1,50 @@
+import NgrokCard from "@components/NgrokCard";
+import { useContext } from "react";
+import IntegrationPageListContext, {
+  IntegrationPageListContextType,
+} from "./IntegrationPageListContext";
+import { useLocation } from "@remix-run/react";
+
 type Props = {
   name: string;
 };
 
-export default function IntegrationPageList({ name }: Props) {
-  return <p>Integration Page List (temp)</p>;
-  // const integration = getIntegration(name);
+export default function IntegrationPageList(props: Props) {
+  const data = useContext<IntegrationPageListContextType | null>(
+    IntegrationPageListContext
+  );
 
-  // if (!integration) {
-  //   return null;
-  // }
+  const { pathname } = useLocation();
 
-  // return (
-  //   <ul className="m-0 mb-5 grid list-none grid-cols-2 gap-5 p-0" role="list">
-  //     {integration.docs.map((doc) => (
-  //       <li className="last-of-type:col-span-full" key={doc.path}>
-  //         <NgrokCard
-  //           to={doc.path}
-  //           size="sm"
-  //           title={doc.frontMatter?.title || doc.contentTitle}
-  //           description={doc.frontMatter?.description || doc.excerpt}
-  //         />
-  //       </li>
-  //     ))}
-  //   </ul>
-  // );
+  if (!data) {
+    console.log("\n* data is null", data);
+    return null;
+  }
+  if (!data?.pageList) {
+    return null;
+  }
+  const { pageList } = data;
+
+  // console.log("Hello", (data as any).integrationList);
+
+  return (
+    <ul className="" role="list">
+      {pageList?.map((item) => {
+        return item.docs.map((doc) => {
+          const splitChar = doc.path.includes("/") ? "/" : "\\";
+          const pathParts = doc.path.split(splitChar);
+          return (
+            <li className="list-none border p-2" key={doc.path}>
+              <NgrokCard
+                to={pathParts[pathParts.length - 1]}
+                size="sm"
+                title={doc.headings.find((item: any) => item.depth == 1).value}
+                description={doc.frontmatter?.description || doc.excerpt}
+              />
+            </li>
+          );
+        });
+      })}
+    </ul>
+  );
 }

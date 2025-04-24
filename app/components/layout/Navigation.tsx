@@ -6,7 +6,7 @@ export default function Navigation(props: any) {
   return (
     <div
       className={clsx(
-        `ml-2 relative flex flex-grow basis-0 items-center space-x-3 hidden md:block`,
+        `ml-2 relative flex-grow basis-0 items-center space-x-3 hidden md:block`,
         props.className
       )}
     >
