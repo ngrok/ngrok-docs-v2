@@ -15,6 +15,7 @@ import {
   useLoaderData,
   useLocation,
   useNavigate,
+  useRouteError,
 } from "@remix-run/react";
 import type {
   LinksFunction,
@@ -207,5 +208,26 @@ export default function App() {
     <body>
       <Outlet />
     </body>
+  );
+}
+
+/**
+ * 404 page
+ */
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return (
+    <html>
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        This page doesn't exist. Please check the URL and try again.
+        <Scripts />
+      </body>
+    </html>
   );
 }
