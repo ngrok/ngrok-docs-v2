@@ -1,0 +1,576 @@
+export const docusaurusSidebar = [
+  "overview/index",
+  "what-is-ngrok",
+  "how-ngrok-works",
+  "why-ngrok",
+  "whats-new",
+  {
+    label: "Getting Started",
+    type: "category",
+    link: { type: "doc", id: "getting-started/index" },
+    items: [
+      "getting-started/index",
+      "getting-started/go",
+      "getting-started/rust",
+      "getting-started/kubernetes",
+    ],
+  },
+  {
+    label: "Pricing & Limits",
+    type: "category",
+    link: { type: "doc", id: "pricing-limits/index" },
+    items: ["pricing-limits/free-plan-limits"],
+  },
+  {
+    label: "Universal Gateway",
+    type: "category",
+    collapsible: false,
+    className: "menu__list-item--category",
+    link: { type: "doc", id: "universal-gateway/overview" },
+    items: [
+      "universal-gateway/overview",
+      {
+        label: "Concepts",
+        type: "category",
+        items: [
+          { id: "universal-gateway/domains", type: "doc", label: "Domains" },
+          {
+            id: "universal-gateway/tcp-addresses",
+            type: "doc",
+            label: "TCP Addresses",
+          },
+          "universal-gateway/tls-certificates",
+          "universal-gateway/edges",
+        ],
+      },
+      {
+        label: "Endpoints",
+        type: "category",
+        link: { type: "doc", id: "universal-gateway/endpoints" },
+        items: [
+          {
+            id: "universal-gateway/endpoints",
+            type: "doc",
+            label: "Overview",
+          },
+          {
+            label: "Types",
+            type: "category",
+            link: { type: "doc", id: "universal-gateway/types" },
+            items: [
+              {
+                label: "Cloud Endpoints",
+                type: "category",
+                link: {
+                  type: "doc",
+                  id: "universal-gateway/cloud-endpoints/index",
+                },
+                items: ["universal-gateway/cloud-endpoints/quickstart"],
+              },
+              {
+                id: "universal-gateway/agent-endpoints",
+                type: "doc",
+                label: "Agent Endpoints",
+              },
+            ],
+          },
+          {
+            label: "Protocols",
+            type: "category",
+            link: { type: "doc", id: "universal-gateway/protocols" },
+            items: [
+              {
+                id: "universal-gateway/http",
+                type: "doc",
+                label: "HTTP/S",
+              },
+              {
+                id: "universal-gateway/tls",
+                type: "doc",
+                label: "TLS",
+              },
+              {
+                id: "universal-gateway/tcp",
+                type: "doc",
+                label: "TCP",
+              },
+            ],
+          },
+          {
+            label: "Bindings",
+            type: "category",
+            link: { type: "doc", id: "universal-gateway/bindings" },
+            items: [
+              {
+                id: "universal-gateway/public-endpoints",
+                type: "doc",
+                label: "Public",
+              },
+              {
+                id: "universal-gateway/internal-endpoints",
+                type: "doc",
+                label: "Internal",
+              },
+              {
+                id: "universal-gateway/kubernetes-endpoints",
+                type: "doc",
+                label: "Kubernetes",
+              },
+            ],
+          },
+          {
+            id: "universal-gateway/endpoint-pooling",
+            type: "doc",
+            label: "Pooling",
+          },
+        ],
+      },
+      {
+        label: "Network",
+        type: "category",
+        link: {
+          type: "doc",
+          id: "universal-gateway/global-load-balancer",
+        },
+        items: [
+          "universal-gateway/global-load-balancer",
+          "universal-gateway/tls-termination",
+          "universal-gateway/ddos-protection",
+          "universal-gateway/ip-addresses",
+          "universal-gateway/points-of-presence",
+        ],
+      },
+    ],
+  },
+  {
+    label: "Traffic Policy",
+    type: "category",
+    collapsible: false,
+    className: "menu__list-item--category",
+    link: { type: "doc", id: "traffic-policy/index" },
+    items: [
+      "traffic-policy/index",
+      {
+        label: "Getting Started",
+        type: "category",
+        link: {
+          type: "doc",
+          id: "traffic-policy/getting-started/agent-endpoints/cli",
+        },
+        items: [
+          {
+            label: "Agent Endpoints",
+            link: {
+              id: "traffic-policy/getting-started/agent-endpoints/cli/",
+            },
+            items: [
+              {
+                label: "via CLI Flags",
+                link: {
+                  id: "traffic-policy/getting-started/agent-endpoints/cli/",
+                },
+              },
+              {
+                label: "via Configuration File",
+                link: {
+                  id: "traffic-policy/getting-started/agent-endpoints/config-file/",
+                },
+              },
+            ],
+          },
+          {
+            label: "Cloud Endpoints",
+            link: {
+              id: "traffic-policy/getting-started/cloud-endpoints/api/",
+            },
+            items: [
+              {
+                label: "via API",
+                link: {
+                  id: "traffic-policy/getting-started/cloud-endpoints/api/",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Concepts",
+        type: "category",
+        link: { type: "doc", id: "traffic-policy/concepts/index" },
+        items: [
+          "traffic-policy/concepts/actions",
+          "traffic-policy/concepts/cel-interpolation",
+          "traffic-policy/concepts/expressions",
+          "traffic-policy/concepts/phase-rules",
+          "traffic-policy/concepts/phases",
+        ],
+      },
+      {
+        label: "Actions",
+        type: "category",
+        link: { type: "doc", id: "traffic-policy/actions/index" },
+        items: [
+          "traffic-policy/actions/add-headers",
+          "traffic-policy/actions/basic-auth",
+          "traffic-policy/actions/circuit-breaker",
+          "traffic-policy/actions/compress-response",
+          "traffic-policy/actions/custom-response",
+          "traffic-policy/actions/deny",
+          "traffic-policy/actions/forward-internal",
+          "traffic-policy/actions/jwt-validation",
+          "traffic-policy/actions/log",
+          "traffic-policy/actions/oauth",
+          "traffic-policy/actions/oidc",
+          "traffic-policy/actions/rate-limit",
+          "traffic-policy/actions/redirect",
+          "traffic-policy/actions/remove-headers",
+          "traffic-policy/actions/restrict-ips",
+          "traffic-policy/actions/saml",
+          "traffic-policy/actions/terminate-tls",
+          "traffic-policy/actions/url-rewrite",
+          "traffic-policy/actions/verify-webhook",
+        ],
+      },
+      {
+        label: "Macros",
+        type: "category",
+        link: { type: "doc", id: "traffic-policy/macros/index" },
+        items: [
+          "traffic-policy/macros/core",
+          "traffic-policy/macros/ext",
+          "traffic-policy/macros/http",
+          "traffic-policy/macros/utility",
+        ],
+      },
+      {
+        label: "Variables",
+        type: "category",
+        link: { type: "doc", id: "traffic-policy/variables/index" },
+        items: [
+          "traffic-policy/variables/action",
+          "traffic-policy/variables/connection",
+          "traffic-policy/variables/endpoint",
+          "traffic-policy/variables/ip-intel",
+          "traffic-policy/variables/req",
+          "traffic-policy/variables/res",
+          "traffic-policy/variables/time",
+        ],
+      },
+      {
+        label: "Resources",
+        type: "category",
+        link: { type: "doc", id: "traffic-policy/identities" },
+        items: ["traffic-policy/identities"],
+      },
+      {
+        label: "Examples",
+        type: "category",
+        items: [
+          "traffic-policy/examples/a-b-tests",
+          "traffic-policy/examples/add-and-remove-headers",
+          "traffic-policy/examples/add-authentication",
+          "traffic-policy/examples/block-unwanted-requests",
+        ],
+      },
+    ],
+  },
+  {
+    label: "Traffic Observability",
+    type: "category",
+    collapsible: false,
+    className: "menu__list-item--category",
+    link: { type: "doc", id: "obs/index" },
+    items: [
+      "obs/index",
+      "obs/traffic-inspection",
+      {
+        type: "category",
+        label: "Events",
+        link: { type: "doc", id: "obs/events/index" },
+        items: [
+          { id: "obs/events/index", type: "doc", label: "Overview" },
+          "obs/events/reference",
+        ],
+      },
+    ],
+  },
+  {
+    label: "Secure Tunnels",
+    type: "category",
+    link: { type: "doc", id: "agent/index" },
+    className: "menu__list-item--category",
+    collapsible: false,
+    items: [
+      {
+        label: "Agent",
+        type: "category",
+        link: { type: "doc", id: "agent/index" },
+        items: [
+          "agent/index",
+          "agent/web-inspection-interface",
+          "agent/cli",
+          "agent/cli-api",
+          {
+            label: "Configuration file",
+            type: "category",
+            link: { type: "doc", id: "agent/config/index" },
+            items: ["agent/config/v2", "agent/config/v3"],
+          },
+          "agent/api",
+          "agent/ssh-reverse-tunnel-agent",
+          "agent/ingress",
+          "agent/agent-tls-termination",
+          "agent/changelog",
+          "agent/version-support-policy",
+          "agent/diagnose",
+        ],
+      },
+      {
+        label: "Agent SDKs",
+        type: "category",
+        link: { type: "doc", id: "agent-sdks/index" },
+        items: [{ type: "autogenerated", dirName: "agent-sdks" }],
+      },
+      {
+        label: "Kubernetes",
+        type: "category",
+        link: { type: "doc", id: "k8s/index" },
+        items: [
+          "k8s/index",
+          "k8s/how-it-works",
+          "k8s/with-edges",
+          "k8s/getting-started-kic",
+          "k8s/getting-started-gwapi",
+          "k8s/user-guide",
+          "k8s/deployment-guide",
+          "k8s/advanced-deployments",
+          "k8s/crds",
+          "k8s/custom-domain",
+          {
+            label: "Developer Guide",
+            type: "category",
+            link: { type: "doc", id: "k8s/developer-guide/index" },
+            items: [
+              "k8s/developer-guide/architecture",
+              "k8s/developer-guide/releasing",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Identity & Access",
+    type: "category",
+    collapsible: false,
+    className: "menu__list-item--category",
+    link: { type: "doc", id: "iam/index" },
+    items: [
+      "iam/index",
+      {
+        type: "category",
+        label: "Principals",
+        link: { type: "doc", id: "iam/users" },
+        items: ["iam/users", "iam/bot-users"],
+      },
+      {
+        type: "category",
+        label: "Account Governance",
+        link: { type: "doc", id: "iam/sso" },
+        items: ["iam/sso", "iam/rbac", "iam/domain-controls"],
+      },
+    ],
+  },
+  {
+    type: "html",
+    value: "Platform",
+  },
+  {
+    label: "API",
+    type: "category",
+    link: { type: "doc", id: "api/index" },
+    items: [
+      "api/index",
+      {
+        type: "category",
+        label: "API Reference",
+        items: [
+          "api/reference",
+          // Universal Gateway
+          {
+            type: "category",
+            label: "Universal Gateway",
+            items: [
+              "api/resources/endpoints",
+              "api/resources/reserved-addrs",
+              "api/resources/reserved-domains",
+              "api/resources/tls-certificates",
+              // Edges (deprecated)
+              {
+                type: "category",
+                label: "Edges",
+                items: [
+                  // HTTPS Edges
+                  {
+                    type: "category",
+                    label: "HTTPS Edges",
+                    items: [
+                      "api/resources/edges-https",
+                      "api/resources/edges-https-routes",
+                      "api/resources/https-edge-mutual-tls-module",
+                      "api/resources/edge-route-backend-module",
+                      "api/resources/edge-route-circuit-breaker-module",
+                      "api/resources/edge-route-compression-module",
+                      "api/resources/edge-route-ip-restriction-module",
+                      "api/resources/edge-route-o-auth-module",
+                      "api/resources/edge-route-oidc-module",
+                      "api/resources/edge-route-request-headers-module",
+                      "api/resources/edge-route-response-headers-module",
+                      "api/resources/edge-route-saml-module",
+                      "api/resources/edge-route-traffic-policy-module",
+                      "api/resources/edge-route-user-agent-filter-module",
+                      "api/resources/edge-route-webhook-verification-module",
+                      "api/resources/edge-route-websocket-tcp-converter-module",
+                      "api/resources/https-edge-tls-termination-module",
+                    ],
+                  },
+                  // TCP Edges
+                  {
+                    type: "category",
+                    label: "TCP Edges",
+                    items: [
+                      "api/resources/edges-tcp",
+                      "api/resources/tcp-edge-backend-module",
+                      "api/resources/tcp-edge-ip-restriction-module",
+                      "api/resources/tcp-edge-traffic-policy-module",
+                    ],
+                  },
+                  // TLS Edges
+                  {
+                    type: "category",
+                    label: "TLS Edges",
+                    items: [
+                      "api/resources/edges-tls",
+                      "api/resources/tls-edge-backend-module",
+                      "api/resources/tls-edge-ip-restriction-module",
+                      "api/resources/tls-edge-mutual-tls-module",
+                      "api/resources/tls-edge-tls-termination-module",
+                      "api/resources/tls-edge-traffic-policy-module",
+                    ],
+                  },
+                  // Backends
+                  {
+                    type: "category",
+                    label: "Backends",
+                    items: [
+                      "api/resources/failover-backends",
+                      "api/resources/http-response-backends",
+                      "api/resources/tunnel-group-backends",
+                      "api/resources/weighted-backends",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          // Traffic Policy
+          {
+            type: "category",
+            label: "Traffic Policy",
+            items: [
+              "api/resources/certificate-authorities",
+              "api/resources/ip-policies",
+              "api/resources/ip-policy-rules",
+              "api/resources/application-users",
+              "api/resources/application-sessions",
+            ],
+          },
+          // Secure Tunnels
+          {
+            type: "category",
+            label: "Secure Tunnels",
+            items: [
+              "api/resources/agent-ingresses",
+              "api/resources/tunnels",
+              "api/resources/tunnel-sessions",
+            ],
+          },
+          // Observability
+          {
+            type: "category",
+            label: "Observability",
+            items: [
+              "api/resources/event-destinations",
+              "api/resources/event-sources",
+              "api/resources/event-subscriptions",
+            ],
+          },
+          // IAM
+          {
+            type: "category",
+            label: "IAM",
+            items: [
+              "api/resources/ip-restrictions",
+              "api/resources/api-keys",
+              "api/resources/ssh-credentials",
+              "api/resources/credentials",
+              "api/resources/bot-users",
+            ],
+          },
+          // SSH Certificates
+          {
+            type: "category",
+            label: "SSH Certificates",
+            items: [
+              "api/resources/ssh-certificate-authorities",
+              "api/resources/ssh-host-certificates",
+              "api/resources/ssh-user-certificates",
+            ],
+          },
+          // Partners (Abuse)
+          {
+            type: "category",
+            label: "Partners",
+            items: ["api/resources/abuse-reports"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Errors",
+    type: "category",
+    link: { type: "doc", id: "errors/index" },
+    items: ["errors/index", "errors/reference"],
+  },
+  {
+    type: "html",
+    value: "Walkthroughs",
+  },
+  {
+    label: "Guides",
+    type: "category",
+    link: { type: "doc", id: "guides/index" },
+    items: [
+      { type: "autogenerated", dirName: "guides" },
+      {
+        label: "Using ngrok with",
+        type: "category",
+        link: { type: "doc", id: "using-ngrok-with" },
+        items: [{ type: "autogenerated", dirName: "using-ngrok-with" }],
+      },
+    ],
+  },
+  {
+    label: "Integrations",
+    type: "category",
+    link: { type: "doc", id: "integrations/index" },
+    items: [{ type: "autogenerated", dirName: "integrations" }],
+  },
+  {
+    type: "html",
+    value: "",
+  },
+  "faq/faq",
+];

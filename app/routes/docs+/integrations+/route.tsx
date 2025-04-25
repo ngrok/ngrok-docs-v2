@@ -27,14 +27,10 @@ export const loader: LoaderFunction = async ({
 
 export default function IntegrationsRoute() {
   const data = useLoaderData<IntegrationsLoaderData>();
-  if (!data) {
-    console.log("\n* No integrations page list found ***\n");
-  }
   return (
     <IntegrationPageListContext.Provider
       value={{
         pageList: data.pageList,
-        integrationPathName: data.integrationPathName,
       }}
     >
       <Outlet />

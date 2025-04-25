@@ -88,16 +88,12 @@ export const getIntegration = async (
   }
   // Get the parent directory name of the current path
   // e.g. /docs/integrations/box/webhooks -> box
-  console.log(`\n* Path parts: ${pathParts} ***\n`);
   const name = pathParts[pathParts.length - 1];
 
   const remixPathString = "./app/routes/docs+";
   const plainPathString = "/docs";
   const integrationDir = path.join(remixPathString, `integrations+/${name}+/`);
-  console.log("\n* integrationDir", integrationDir);
   const integrationList = [];
-
-  // console.log("\n* Integration dir", integrationDir);
 
   const dir = await fs.promises.opendir(integrationDir);
   for await (const dirent of dir) {

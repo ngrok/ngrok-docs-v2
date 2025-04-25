@@ -135,17 +135,13 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
       <ul className="list-none" role="list">
         {data?.sidebar &&
           data.sidebar.map((topLevelItem: SidebarItem) => {
-            if (topLevelItem?.divider) {
-              return (
-                <SidebarDivider
-                  key={topLevelItem.path || topLevelItem.title}
-                  title={topLevelItem.title}
-                />
-              );
+            const { children, path, divider, title } = topLevelItem;
+            if (divider) {
+              return <SidebarDivider key={path || title} title={title} />;
             }
             return (
               <li key={topLevelItem.path || topLevelItem.title}>
-                {topLevelItem?.children?.length > 0 ? (
+                {children && children?.length > 0 ? (
                   <SidebarSection sectionItem={topLevelItem} />
                 ) : (
                   <NavItem

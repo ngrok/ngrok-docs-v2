@@ -6,7 +6,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkParseFrontmatter from "remark-parse-frontmatter";
 import { remark } from "remark";
 
-export async function getSidebarData(rawPath: string): Promise<{
+export async function getSidebarItemAtPath(rawPath: string): Promise<{
   frontmatter: any;
   headings: any;
   path: string;
@@ -50,4 +50,8 @@ export async function getSidebarData(rawPath: string): Promise<{
     // console.error(`Error getting headings for ${rawPath}:`, error);
     return null;
   }
+}
+
+export async function getItemsFromDir(dirName: string, path: string) {
+  return [];
 }

@@ -15,11 +15,6 @@ export default function IntegrationPageList(props: Props) {
   );
 
   const { pathname } = useLocation();
-
-  if (!data) {
-    console.log("\n* data is null", data);
-    return null;
-  }
   if (!data?.pageList) {
     return null;
   }

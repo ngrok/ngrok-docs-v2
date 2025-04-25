@@ -99,6 +99,12 @@ export const loader: LoaderFunction = async ({
 
   const sidebar = await fetchSidebarData();
 
+  // sidebar?.forEach((item: SidebarItem) => {
+  //   if (item.path && item.path?.includes("universal")) {
+  //     console.log("\n * Universal gateway", item, "\n");
+  //   }
+  // });
+
   return data({
     sidebar,
     canonical,
