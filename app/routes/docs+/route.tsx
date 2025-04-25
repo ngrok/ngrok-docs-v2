@@ -7,8 +7,8 @@ import {
 import { Outlet, useLoaderData, useMatches } from "@remix-run/react";
 import TableOfContents from "@components/TOC";
 import { getHeadings, Heading } from "~/utils/getHeadings";
-import { create } from "@kodingdotninja/use-tailwind-breakpoint";
 import { checkForRedirects } from "~/utils/redirects/redirectMethods";
+import useBreakpoint from "use-breakpoint";
 
 export type LoaderData = {
   headings: Heading[];
@@ -42,19 +42,18 @@ function getTitleFromMatches(matches: any[]) {
 }
 
 export default function Docs() {
-  const { useBreakpoint } = create({
-    // We can change this number at any point; this is a placeholder
-    md: "768px",
-  });
-
-  const isDesktop = useBreakpoint("md");
+  const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };
+  const { breakpoint, maxWidth, minWidth } = useBreakpoint(
+    BREAKPOINTS,
+    "desktop"
+  );
 
   const { headings } = useLoaderData<LoaderData>();
   const matches = useMatches();
   const title = getTitleFromMatches(matches);
   return (
-    <div className="flex">
-      {isDesktop ? (
+    <div className="flex max-w-full">
+      {breakpoint === "desktop" ? (
         <>
           <div className="w-[100%]">
             {title && <h1>{title}</h1>}
@@ -66,6 +65,7 @@ export default function Docs() {
         <div className="relative">
           <TableOfContents headings={headings} />
           <div className="">
+            {title && <h1>{title}</h1>}
             <Outlet />
           </div>
         </div>

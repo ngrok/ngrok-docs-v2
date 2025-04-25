@@ -146,6 +146,9 @@ importers:
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
+      use-breakpoint:
+        specifier: ^4.0.6
+        version: 4.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       use-ssr:
         specifier: ^1.0.25
         version: 1.0.25(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5255,6 +5258,12 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
+
+  use-breakpoint@4.0.6:
+    resolution: {integrity: sha512-1s7vUjf36eeZYTgY1KkmPNXrTbKJVRA9cjBFQdYjK8+pDr0qJgH6/cuX5qQ2zcfkqxN5LieVd/DTVK6ofnwRTQ==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
 
   use-callback-ref@1.3.3:
     resolution: {integrity: sha512-jQL3lRnocaFtu3V00JToYz/4QkNWswxijDaCVNZRiRTO3HQDLsdu1ZtmIUvV4yPp+rvWm5j0y0TG/S61cuijTg==}
@@ -11887,6 +11896,11 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  use-breakpoint@4.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   use-callback-ref@1.3.3(@types/react@18.3.18)(react@18.3.1):
     dependencies:

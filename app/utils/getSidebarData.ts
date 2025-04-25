@@ -27,7 +27,6 @@ export async function getSidebarData(rawPath: string): Promise<{
         filePath = path.join(process.cwd(), basePath, `${urlPath}+/index.mdx`);
         markdown = await fs.readFile(filePath + "", "utf8");
       } catch (error) {
-        console.log(`\n* ${filePath}`);
         // console.error(
         //   `Error getting headings. Couldn't read file at ${filePath}`,
         //   error

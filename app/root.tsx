@@ -38,6 +38,7 @@ import {
   langParamName,
 } from "@components/LangSwitcher/utils";
 import { globalComponents } from "./utils/componentsToImport";
+import { getSidebar, SidebarItem } from "./utils/sidebar";
 
 export const links: LinksFunction = () => [
   {
@@ -61,6 +62,7 @@ export const links: LinksFunction = () => [
 ];
 
 export type LoaderData = {
+  sidebar: SidebarItem[] | null;
   canonical?: string;
   requestInfo: {
     url: string;
@@ -74,6 +76,19 @@ export type LoaderData = {
   };
 };
 
+let cachedSidebarData: any | any[] = null;
+
+// Don't wanna fetch this on every page load
+async function fetchSidebarData() {
+  if (cachedSidebarData) {
+    return cachedSidebarData;
+  }
+  const rawData = await getSidebar();
+  const sidebar = rawData?.map((item: any) => item.value);
+  cachedSidebarData = sidebar;
+  return sidebar;
+}
+
 export const loader: LoaderFunction = async ({
   request,
 }: LoaderFunctionArgs) => {
@@ -82,8 +97,10 @@ export const loader: LoaderFunction = async ({
   const path = urlData.pathname;
   const canonical = removeTrailingSlash(`${origin}${path}`);
 
+  const sidebar = await fetchSidebarData();
+
   return data({
-    // headings,
+    sidebar,
     canonical,
     requestInfo: {
       url: canonical,
@@ -182,8 +199,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         >
           <LangSwitcherContext.Provider
             value={{
-              localStorageLanguage: storedLang ?? null,
               selectedLanguage,
+              localStorageLanguage: storedLang || null,
               updateSelectedLanguage,
             }}
           >

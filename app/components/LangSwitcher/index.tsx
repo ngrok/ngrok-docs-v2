@@ -53,7 +53,7 @@ export function LangSwitcher({ children, className, ...props }: any) {
                 const childMeta = getMetaData(codeblock.meta);
                 return (
                   <Button
-                    key={codeblock.language + codeblock.value}
+                    key={codeblock.lang + codeblock.value}
                     onClick={() => {
                       return updateSelectedLanguage(codeblock.lang);
                     }}

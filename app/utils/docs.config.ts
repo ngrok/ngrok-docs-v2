@@ -1,5 +1,3 @@
-import sidebar from "./sidebar";
-
 export default {
   base: "/",
   lang: "en-US",
@@ -16,7 +14,6 @@ export default {
     { text: "Get ngrok", link: "https://ngrok.com/downloads/windows" },
   ],
   head: [],
-  sidebar,
   search: {
     enabled: true,
   },
