@@ -51,7 +51,3 @@ export async function getSidebarItemAtPath(rawPath: string): Promise<{
     return null;
   }
 }
-
-export async function getItemsFromDir(dirName: string, path: string) {
-  return [];
-}
