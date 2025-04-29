@@ -7,11 +7,12 @@ import {
   AccordionTriggerIcon,
 } from "@ngrok/mantle/accordion";
 import { HorizontalSeparatorGroup, Separator } from "@ngrok/mantle/separator";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData, useLocation } from "@remix-run/react";
 import type { SidebarItem } from "~/utils/sidebar";
 import { CustomDocSearch } from "@components/CustomDocSearch";
 import clsx from "clsx";
 import { LoaderData } from "~/root";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Layout:
@@ -28,10 +29,26 @@ import { LoaderData } from "~/root";
  */
 
 const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
+  const { pathname } = useLocation();
+
   return (
     <ul>
       {items?.map((item: any, key) => {
-        if (!item) return null;
+        if (!item) return null;        
+        const itemRef = useRef<HTMLLIElement | null>(null);
+        const [isActive, setIsActive] = useState(false);
+        
+        useEffect(() => {
+          setIsActive(pathname === item.path);
+          console.log("Pathname", pathname, "Item path", item.path);
+          if (isActive && itemRef.current) {
+            itemRef.current.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+              inline: "nearest",
+            });
+          }
+        }, [isActive]);
         return (
           <li key={`${key}${item.path || item.title}`}>
             {item?.children?.length > 0 ? (

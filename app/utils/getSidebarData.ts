@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import {glob} from "glob";
 import { getFullUrlPath, getRemixPath } from "./pathSanitization";
 import remarkHeadings from "@vcarl/remark-headings";
 import remarkFrontmatter from "remark-frontmatter";
@@ -14,21 +15,32 @@ export async function getSidebarItemAtPath(rawPath: string): Promise<{
   try {
     let urlPath = getRemixPath(rawPath);
     const basePath = "app/routes/docs+/";
-    let filePath = path.join(process.cwd(), basePath, `${urlPath}.mdx`);
+    let mdxFilePath = path.join(process.cwd(), basePath, `${urlPath}.mdx`);
+    let mdFilePath = path.join(process.cwd(), basePath, `${urlPath}.md`);
     let markdown = "";
     try {
-      markdown = await fs.readFile(filePath, "utf8");
-    } catch (error) {
+      try{
+        markdown = await fs.readFile(mdxFilePath, "utf8");
+      } catch (error) {
+        // Check for .md
+        markdown = await fs.readFile(mdFilePath, "utf8");
+      }
+    } catch (error) {      
       try {
+        // If we still fail to find the file, check if it's an index file
         if (urlPath.endsWith("+") || urlPath.endsWith("/")) {
           urlPath = urlPath.substring(0, urlPath.length - 1);
         }
-        // If we fail to find the file, check if it's an index.mdx file
-        filePath = path.join(process.cwd(), basePath, `${urlPath}+/index.mdx`);
-        markdown = await fs.readFile(filePath + "", "utf8");
+        try{
+          mdxFilePath = path.join(process.cwd(), basePath, `${urlPath}+/index.mdx`);
+          markdown = await fs.readFile(mdxFilePath + "", "utf8");
+        } catch (error) {
+          mdFilePath = path.join(process.cwd(), basePath, `${urlPath}+/index.md`);
+          markdown = await fs.readFile(mdxFilePath.replace(".mdx", ".md"), "utf8");
+        }
       } catch (error) {
         // console.error(
-        //   `Error getting headings. Couldn't read file at ${filePath}`,
+        //   `Error getting headings. Couldn't read file at ${mdxFilePath}`,
         //   error
         // );
         return null;

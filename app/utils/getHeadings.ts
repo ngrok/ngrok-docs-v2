@@ -30,12 +30,23 @@ export async function getHeadings(rawPath: string) {
           urlPath = urlPath.substring(0, urlPath.length - 1);
         }
         // If we fail to find the file, check if it's an index.mdx file
+        
         filePath = path.join(
           process.cwd(),
           "app/routes",
           `/${urlPath}+/index.mdx`
         );
-        markdown = await fs.readFile(filePath + "", "utf8");
+        try{
+          markdown = await fs.readFile(filePath + "", "utf8");        
+        } catch (error) {
+          // check for index.md instead
+          filePath = path.join(
+            process.cwd(),
+            "app/routes",
+            `/${urlPath}+/index.md`
+          );
+          markdown = await fs.readFile(filePath.replace(".mdx", ".md"), "utf8");
+        }
       } catch (error) {
         console.error(
           `Error getting headings. Couldn't read file at ${filePath}`,

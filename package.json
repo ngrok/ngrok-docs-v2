@@ -33,6 +33,7 @@
     "clsx": "^2.1.1",
     "codehike": "^1.0.5",
     "date-fns": "^4.1.0",
+    "glob": "^11.0.2",
     "inflected": "^2.1.0",
     "isbot": "^4.1.0",
     "prettier": "^3.5.2",

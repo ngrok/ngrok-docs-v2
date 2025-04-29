@@ -54,7 +54,7 @@ export const getIntegrations = async (): Promise<Integration[] | undefined> => {
         .processSync(fileContent);
 
       // Add file details as metadata information on integration
-      if (x === "index.mdx") {
+      if (x === "index.mdx" || x === "index.md") {
         integration.metadata = fileOfRemark.data.frontmatter;
         return;
       }
