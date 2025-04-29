@@ -136,6 +136,9 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
         {data?.sidebar &&
           data.sidebar.map((topLevelItem: SidebarItem) => {
             const { children, path, divider, title } = topLevelItem;
+            // if (path?.includes("integration")) {
+            //   console.log("Integration sidebar item", topLevelItem);
+            // }
             if (divider) {
               return <SidebarDivider key={path || title} title={title} />;
             }

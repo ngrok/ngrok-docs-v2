@@ -85,6 +85,9 @@ async function fetchSidebarData() {
   }
   const rawData = await getSidebar();
   const sidebar = rawData?.map((item: any) => item.value);
+  const sidebarData = sidebar;
+
+  // console.log("Sidebar data", sidebarData);
   cachedSidebarData = sidebar;
   return sidebar;
 }
