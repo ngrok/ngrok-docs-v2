@@ -53,13 +53,13 @@ export default function Docs() {
   const title = getTitleFromMatches(matches);
   return (
     <div className="flex max-w-full">
-      {breakpoint === "desktop" ? (
+      {breakpoint === "tablet" || breakpoint === "desktop" ? (
         <>
           <div className="w-[100%]">
             {title && <h1>{title}</h1>}
             <Outlet />
           </div>
-          <TableOfContents headings={headings} />
+          <TableOfContents className="mr-3" headings={headings} />
         </>
       ) : (
         <div className="relative">

@@ -3,18 +3,19 @@ import { Heading } from "~/utils/getHeadings";
 import { ArrowUp, CaretDown } from "@phosphor-icons/react";
 import { Link } from "@remix-run/react";
 import { Button } from "@ngrok/mantle/button";
+import clsx from "clsx";
 
 function TOCList(props: { children: React.ReactNode[]; className?: string }) {
   return <ul className={`list-none ${props.className}`}>{props.children}</ul>;
 }
 
-export default function TableOfContents({ headings }: { headings: Heading[] }) {
+export default function TableOfContents({ headings, className }: { headings: Heading[], className: string }) {
   const [isOpen, setIsOpen] = useState(false);
   if (!headings || headings.length === 0) return null;
   return (
     <>
       {/* Mobile dropdown */}
-      <div className="lg:hidden w-full mb-6">
+      <div className={clsx(className, "lg:hidden w-full mb-6")}>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex justify-between items-center w-full px-4 py-2 border rounded-md"

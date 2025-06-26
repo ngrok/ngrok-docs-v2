@@ -1,4 +1,4 @@
-import Footer from "@components/layout/Footer";
+import {Footer} from "@components/layout/Footer";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import Navigation from "./Navigation";
 import { DocsLogo } from "./DocsLogo";
