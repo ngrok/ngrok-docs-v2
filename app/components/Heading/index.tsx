@@ -33,7 +33,7 @@ export const Heading = ({ as: Tag, children, ...props }: HeadingProps) => {
     } catch (error) {
       console.error("Error getting heading ID:", error);
     }
-  }
+}
 
   const { hash } = useLocation();
 
