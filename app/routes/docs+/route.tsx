@@ -55,7 +55,7 @@ export default function Docs() {
     <div className="flex max-w-full">
       {breakpoint === "tablet" || breakpoint === "desktop" ? (
         <>
-          <div className="w-[100%]">
+          <div className="p-5 w-[100%]">
             {title && <h1>{title}</h1>}
             <Outlet />
           </div>

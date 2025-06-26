@@ -19,11 +19,7 @@ export default function Container({
   const data = useLoaderData<LoaderData>();
   return (
     <div className="max-w-full">
-      <header
-        className={
-          "flex gap-2 w-full flex-wrap items-center justify-between bg-white px-4 py-5 transition duration-500  sm:px-6 lg:px-8"
-        }
-      >
+      <header className="flex gap-2 w-full flex-wrap items-center justify-between bg-white px-4 py-5 transition duration-500 sm:px-6 lg:px-8">
         <ClientOnly>{() => <DocsLogo className="mr-2" />}</ClientOnly>
         <div className="mr-6 flex lg:hidden">
           <MobileNavigation algoliaInfo={algoliaInfo} />
@@ -39,17 +35,19 @@ export default function Container({
         </div>
         <ThemeSwitcher className="ml-5" />
       </header>
-      <div className="flex max-h-full">
+
+      <div className="flex max-h-screen">
         <Sidebar
           algoliaInfo={algoliaInfo}
-          className="w-64 pr-8 xl:w-72 xl:pr-16"
+          className="h-screen w-64 overflow-y-auto pr-8 xl:w-72 xl:pr-16"
           data={data.sidebar}
         />
-        <div className="">
+        <div className="flex-1 overflow-y-auto">
           <div className="flex">{children}</div>
         </div>
       </div>
       <Footer />
     </div>
+
   );
 }
