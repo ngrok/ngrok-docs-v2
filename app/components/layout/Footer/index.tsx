@@ -8,7 +8,7 @@ export function Footer ({className}: {className?: string}) {
 <footer className="w-full flex place-content-center">
   <div className={clsx(
     className,
-    "w-full md:w-[80%] flex flex-col sm:flex-row items-start justify-between"
+    "w-full md:w-[80%] flex flex-col sm:flex-row items-start justify-between mt-3"
   )}>
     {footerData.links.map((section, index) => (
       <div key={index} className="m-5 flex flex-col items-start w-full sm:w-full">

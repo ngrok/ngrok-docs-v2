@@ -100,7 +100,7 @@ export const loader: LoaderFunction = async ({
   const path = urlData.pathname;
   const canonical = removeTrailingSlash(`${origin}${path}`);
 
-  const sidebar = await fetchSidebarData();
+  // const sidebar = await fetchSidebarData();
 
   // sidebar?.forEach((item: SidebarItem) => {
   //   if (item.path && item.path?.includes("universal")) {
@@ -109,7 +109,7 @@ export const loader: LoaderFunction = async ({
   // });
 
   return data({
-    sidebar,
+    // sidebar,
     canonical,
     requestInfo: {
       url: canonical,

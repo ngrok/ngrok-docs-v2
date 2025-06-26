@@ -9,10 +9,36 @@ import TableOfContents from "@components/TOC";
 import { getHeadings, Heading } from "~/utils/getHeadings";
 import { checkForRedirects } from "~/utils/redirects/redirectMethods";
 import useBreakpoint from "use-breakpoint";
+import { Sidebar } from "@components/layout/Sidebar";
+import { getSidebar, SidebarItem } from "~/utils/sidebar";
 
 export type LoaderData = {
+  sidebar: SidebarItem[] | null;
   headings: Heading[];
+  algoliaInfo: {
+    appId: string;
+    indexName: string;
+    apiKey: string;
+  };
 };
+
+
+
+let cachedSidebarData: any | any[] = null;
+
+// Don't wanna fetch this on every page load
+async function fetchSidebarData() {
+  if (cachedSidebarData) {
+    return cachedSidebarData;
+  }
+  const rawData = await getSidebar();
+  const sidebar = rawData?.map((item: any) => item.value);
+  const sidebarData = sidebar;
+
+  // console.log("Sidebar data", sidebarData);
+  cachedSidebarData = sidebar;
+  return sidebar;
+}
 
 export const loader: LoaderFunction = async ({
   request,
@@ -26,9 +52,16 @@ export const loader: LoaderFunction = async ({
     return redirect(newPath as string);
   }
   const headings = await getHeadings(pathname);
+  const sidebar = await fetchSidebarData();
 
   return data({
+    sidebar,
     headings,
+    algoliaInfo: {
+      appId: process.env.ALGOLIA_APP_ID,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+      apiKey: process.env.ALGOLIA_API_KEY,
+    },    
   });
 };
 
@@ -48,28 +81,40 @@ export default function Docs() {
     "desktop"
   );
 
-  const { headings } = useLoaderData<LoaderData>();
+  // const { headings, algoliaInfo } = useLoaderData<LoaderData>();
   const matches = useMatches();
   const title = getTitleFromMatches(matches);
+  const data = useLoaderData<LoaderData>();  
   return (
-    <div className="flex max-w-full">
-      {breakpoint === "tablet" || breakpoint === "desktop" ? (
-        <>
-          <div className="p-5 w-[100%]">
-            {title && <h1>{title}</h1>}
-            <Outlet />
-          </div>
-          <TableOfContents className="mr-3" headings={headings} />
-        </>
-      ) : (
-        <div className="relative">
-          <TableOfContents headings={headings} />
-          <div className="">
-            {title && <h1>{title}</h1>}
-            <Outlet />
-          </div>
-        </div>
-      )}
+<div className="flex max-w-full">
+  {/* Floating sidebar */}
+  <div className="sticky top-0 h-screen w-64 shrink-0">
+    <Sidebar
+      algoliaInfo={data.algoliaInfo}
+      data={data.sidebar}
+      className="h-full overflow-y-auto pr-4 overflow-x-hidden"
+    />
+  </div>
+
+  {/* Main content */}
+  {breakpoint === "tablet" || breakpoint === "desktop" ? (
+    <>
+      <div className="p-5 w-full max-w-[65ch]">
+        {title && <h1>{title}</h1>}
+        <Outlet />
+      </div>
+      <TableOfContents headings={data.headings} />
+    </>
+  ) : (
+    <div className="relative w-full">
+      <TableOfContents headings={data.headings} />
+      <div>
+        {title && <h1>{title}</h1>}
+        <Outlet />
+      </div>
     </div>
+  )}
+</div>
+
   );
 }

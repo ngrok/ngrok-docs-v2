@@ -149,6 +149,7 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
   return (
     <nav className={clsx("", className)}>
       <CustomDocSearch algoliaInfo={algoliaInfo} />
+      <div className="sticky top-0 self-start h-[calc(100vh-4rem)] w-64 overflow-y-auto pr-8 xl:w-72 xl:pr-16">
       <ul className="list-none" role="list">
         {data?.sidebar &&
           data.sidebar.map((topLevelItem: SidebarItem) => {
@@ -173,6 +174,7 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
             );
           })}
       </ul>
+      </div>
     </nav>
   );
 };
