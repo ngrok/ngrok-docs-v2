@@ -40,7 +40,6 @@ const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
         
         useEffect(() => {
           setIsActive(pathname === item.path);
-          console.log("Pathname", pathname, "Item path", item.path);
           if (isActive && itemRef.current) {
             itemRef.current.scrollIntoView({
               behavior: "smooth",

@@ -30,7 +30,7 @@ export default function TableOfContents({ headings, className }: { headings: Hea
           <CaretDown />
         </button>
         {isOpen && (
-          <nav className="absolute w-[100%] mt-2 border rounded-md bg-black p-3">
+          <nav className="absolute w-[100%] mt-2 border rounded-md p-3">
             {headings.map((heading) => (
               <Link
                 onClick={() => setIsOpen(false)}
@@ -46,9 +46,9 @@ export default function TableOfContents({ headings, className }: { headings: Hea
       </div>
 
       {/* Desktop Sidebar */}
-      <nav className={clsx(className, "hidden lg:block sticky top-8 self-start bg-blue-200 w-56 xl:w-64 max-h-[calc(100vh-5rem)] overflow-y-auto border-l pl-4")}>
+      <nav className={clsx(className, "hidden lg:block sticky top-8 self-start w-56 xl:w-64 max-h-[calc(100vh-5rem)] overflow-y-auto border-l pl-4")}>
         <h4 className="mb-2 font-semibold text-gray-700">On this page</h4>
-        <TOCList className="text-xs space-y-1">
+        <TOCList className="text-xs space-y-2">
           {headings.map((heading) => {
             if (heading.level < 2) return null; // Skip top-level headings
             return (

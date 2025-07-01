@@ -86,7 +86,7 @@ export default function Docs() {
   const title = getTitleFromMatches(matches);
   const data = useLoaderData<LoaderData>();  
   return (
-<div className="flex max-w-full">
+<div className="flex w-full">
   {/* Floating sidebar */}
   <div className="sticky top-0 h-screen w-64 shrink-0">
     <Sidebar
@@ -98,20 +98,20 @@ export default function Docs() {
 
   {/* Main content */}
   {breakpoint === "tablet" || breakpoint === "desktop" ? (
-    <>
-      <div className="p-5 w-full max-w-[65ch]">
+    <div className="w-full flex">
+      <div className="p-5 bg-red w-full">
         {title && <h1>{title}</h1>}
         <Outlet />
       </div>
       <TableOfContents headings={data.headings} />
-    </>
+    </div>
   ) : (
     <div className="relative w-full">
       <TableOfContents headings={data.headings} />
-      <div>
         {title && <h1>{title}</h1>}
+        <div className="p-5">
         <Outlet />
-      </div>
+        </div>
     </div>
   )}
 </div>
