@@ -67,7 +67,6 @@ export async function getHeadings(rawPath: string) {
     console.log("Parsed...");
     console.log("========================\n")
     visit(tree, "heading", (node: any) => {
-      console.log("Heading node:", node);
       const text = node.children
         .map((child: any) => {
           if (!child.children) {
@@ -97,7 +96,7 @@ export async function getHeadings(rawPath: string) {
     return headings;
   } catch (error) {
     console.log("\n========================")
-    console.error(`Error getting headings for ${rawPath}:`, error);
+    console.error(`Error getting headings for ${rawPath}. If this is an acorn error, it's likely that the page content has issues rather than the headings. Error:\n`, error);
     console.log("========================\n")
     return null;
   }

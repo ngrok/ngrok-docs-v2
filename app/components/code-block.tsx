@@ -66,7 +66,11 @@ function DocsCodeBlock({
   const { codeblock } = props;
   const language = _language || parseLanguage(codeblock.lang);
 
-  const meta = getMetaData(codeblock.meta);
+  if(!codeblock) {
+    return <CodeBlockFallback {...props}>{children}</CodeBlockFallback>;
+  }
+
+  const meta = getMetaData(codeblock?.meta);
   return (
     <CodeBlockWithInfo
       content={codeblock.value}
