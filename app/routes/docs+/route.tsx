@@ -76,7 +76,7 @@ function getTitleFromMatches(matches: any[]) {
 
 export default function Docs() {
   const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };
-  const { breakpoint, maxWidth, minWidth } = useBreakpoint(
+  const { breakpoint } = useBreakpoint(
     BREAKPOINTS,
     "desktop"
   );
@@ -86,7 +86,7 @@ export default function Docs() {
   const title = getTitleFromMatches(matches);
   const data = useLoaderData<LoaderData>();  
   return (
-<div className="flex w-full">
+<div className="flex w-full max-w-full">
   {/* Floating sidebar */}
   <div className="sticky top-0 h-screen w-64 shrink-0">
     <Sidebar
@@ -98,12 +98,12 @@ export default function Docs() {
 
   {/* Main content */}
   {breakpoint === "tablet" || breakpoint === "desktop" ? (
-    <div className="w-full flex">
-      <div className="p-5 bg-red w-full">
+    <div className="w-full max-w-full flex">
+      <div className="p-5 w-full max-w-full">
         {title && <h1>{title}</h1>}
         <Outlet />
       </div>
-      <TableOfContents headings={data.headings} />
+      <TableOfContents className="" headings={data.headings} />
     </div>
   ) : (
     <div className="relative w-full">

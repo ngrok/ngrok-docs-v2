@@ -11,7 +11,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const headings = getHeadings(mdxContent);
 
   return json({
-    headings,
-    mdxContent, // pass to MDX renderer
+    // headings,
+    // mdxContent, // pass to MDX renderer
   });
 }

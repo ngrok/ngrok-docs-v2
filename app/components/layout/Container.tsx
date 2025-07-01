@@ -7,7 +7,6 @@ import { Button } from "@ngrok/mantle/button";
 import MobileNavigation from "./MobileNavigation";
 import { LoaderData } from "~/root";
 import { useLoaderData } from "@remix-run/react";
-import { Sidebar } from "./Sidebar";
 
 export default function Container({
   algoliaInfo,
@@ -39,7 +38,7 @@ return (
       <ThemeSwitcher className="ml-5" />
     </header>
     {/* main content */}
-      <div className="w-full flex flex-col">{children}</div>
+      <div className="w-full max-w-full flex flex-col">{children}</div>
 
   {/* footer */}
   <Footer />

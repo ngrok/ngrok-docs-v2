@@ -4,6 +4,7 @@ import { ArrowUp, CaretDown } from "@phosphor-icons/react";
 import { Link } from "@remix-run/react";
 import { Button } from "@ngrok/mantle/button";
 import clsx from "clsx";
+import useBreakpoint from "use-breakpoint";
 
 function TOCList(props: { children: React.ReactNode[]; className?: string }) {
   return <ul className={`list-none p-0 m-0 ${props.className}`}>{props.children}</ul>;
@@ -11,6 +12,11 @@ function TOCList(props: { children: React.ReactNode[]; className?: string }) {
 
 export default function TableOfContents({ headings, className }: { headings: Heading[], className?: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };
+  const { breakpoint } = useBreakpoint(
+    BREAKPOINTS,
+    "desktop"
+  );
   if (!headings || headings.length === 0) return null;
   return (
     <>
@@ -46,7 +52,7 @@ export default function TableOfContents({ headings, className }: { headings: Hea
       </div>
 
       {/* Desktop Sidebar */}
-      <nav className={clsx(className, "hidden lg:block sticky top-8 self-start w-56 xl:w-64 max-h-[calc(100vh-5rem)] overflow-y-auto border-l pl-4")}>
+      <nav className={clsx(className, "hidden lg:block sticky top-8 self-start  max-h-[calc(100vh-5rem)] overflow-y-auto border-l pl-4")}>
         <h4 className="mb-2 font-semibold text-gray-700">On this page</h4>
         <TOCList className="text-xs space-y-2">
           {headings.map((heading) => {
