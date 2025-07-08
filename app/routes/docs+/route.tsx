@@ -11,7 +11,6 @@ import { checkForRedirects } from "~/utils/redirects/redirectMethods";
 import useBreakpoint from "use-breakpoint";
 import { Sidebar } from "@components/layout/Sidebar";
 import { getSidebar, SidebarItem } from "~/utils/sidebar";
-import { SidebarDataProvider } from "@components/layout/Sidebar/SidebarContext";
 
 export type LoaderData = {
   sidebar: SidebarItem[] | null;
@@ -87,36 +86,35 @@ export default function Docs() {
   const title = getTitleFromMatches(matches);
   const data = useLoaderData<LoaderData>();  
   return (
-    <SidebarDataProvider>
-      <div className="flex w-full max-w-full">
-        {/* Floating sidebar */}
-        <div className="sticky top-0 h-screen w-64 shrink-0">
-          <Sidebar
-            algoliaInfo={data.algoliaInfo}
-            data={data.sidebar}
-            className="h-full overflow-y-auto pr-4 overflow-x-hidden"
-          />
-        </div>
+<div className="flex w-full max-w-full">
+  {/* Floating sidebar */}
+  <div className="sticky top-0 h-screen w-64 shrink-0">
+    <Sidebar
+      algoliaInfo={data.algoliaInfo}
+      data={data.sidebar}
+      className="h-full overflow-y-auto pr-4 overflow-x-hidden"
+    />
+  </div>
 
-        {/* Main content */}
-        {breakpoint === "tablet" || breakpoint === "desktop" ? (
-          <div className="w-full max-w-full flex">
-            <div className="p-5 w-full max-w-full">
-              {title && <h1>{title}</h1>}
-              <Outlet />
-            </div>
-            <TableOfContents className="" headings={data.headings} />
-          </div>
-        ) : (
-          <div className="relative w-full">
-            <TableOfContents headings={data.headings} />
-              {title && <h1>{title}</h1>}
-              <div className="p-5">
-              <Outlet />
-              </div>
-          </div>
-        )}
+  {/* Main content */}
+  {breakpoint === "tablet" || breakpoint === "desktop" ? (
+    <div className="w-full max-w-full flex">
+      <div className="p-5 w-full max-w-full">
+        {title && <h1>{title}</h1>}
+        <Outlet />
       </div>
-    </SidebarDataProvider>
+      <TableOfContents className="" headings={data.headings} />
+    </div>
+  ) : (
+    <div className="relative w-full">
+      <TableOfContents headings={data.headings} />
+        {title && <h1>{title}</h1>}
+        <div className="p-5">
+        <Outlet />
+        </div>
+    </div>
+  )}
+</div>
+
   );
 }
