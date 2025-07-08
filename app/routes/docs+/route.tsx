@@ -13,7 +13,7 @@ import { Sidebar } from "@components/layout/Sidebar";
 import { getSidebar, SidebarItem } from "~/utils/sidebar";
 
 export type LoaderData = {
-  sidebar: SidebarItem[] | null;
+  sidebarData: SidebarItem[] | null;
   headings: Heading[];
   algoliaInfo: {
     appId: string;
@@ -32,12 +32,10 @@ async function fetchSidebarData() {
     return cachedSidebarData;
   }
   const rawData = await getSidebar();
-  const sidebar = rawData?.map((item: any) => item.value);
-  const sidebarData = sidebar;
+  const sidebarData = rawData?.map((item: any) => item.value);
 
-  // console.log("Sidebar data", sidebarData);
-  cachedSidebarData = sidebar;
-  return sidebar;
+  cachedSidebarData = sidebarData;
+  return sidebarData;
 }
 
 export const loader: LoaderFunction = async ({
@@ -52,10 +50,10 @@ export const loader: LoaderFunction = async ({
     return redirect(newPath as string);
   }
   const headings = await getHeadings(pathname);
-  const sidebar = await fetchSidebarData();
+  const sidebarData = await fetchSidebarData();
 
   return data({
-    sidebar,
+    sidebarData,
     headings,
     algoliaInfo: {
       appId: process.env.ALGOLIA_APP_ID,

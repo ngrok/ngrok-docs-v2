@@ -30,14 +30,14 @@ export async function getHeadings(rawPath: string) {
           urlPath = urlPath.substring(0, urlPath.length - 1);
         }
         // If we fail to find the file, check if it's an index.mdx file
-        
+
         filePath = path.join(
           process.cwd(),
           "app/routes",
           `/${urlPath}+/index.mdx`
         );
-        try{
-          markdown = await fs.readFile(filePath + "", "utf8");        
+        try {
+          markdown = await fs.readFile(filePath + "", "utf8");
         } catch (error) {
           // check for index.md instead
           filePath = path.join(
@@ -76,7 +76,7 @@ export async function getHeadings(rawPath: string) {
         )
         .map((child: any) => child.value)
         .join("");
-      const id = getHeadingId(text);
+      const id = getHeadingId(text, headings);
 
       const level =
         text.includes("title: ") || text.includes("description: ")
@@ -89,13 +89,27 @@ export async function getHeadings(rawPath: string) {
 
     return headings;
   } catch (error) {
-    console.log("\n========================")
-    console.error(`Error getting headings for ${rawPath}. If this is an acorn error, it's likely that the page content has issues rather than the headings. Error:\n`, error);
-    console.log("========================\n")
+    console.log("\n========================");
+    console.error(
+      `Error getting headings for ${rawPath}. If this is an acorn error, it's likely that the page content has issues rather than the headings. Error:\n`,
+      error
+    );
+    console.log("========================\n");
     return null;
   }
 }
 
-export function getHeadingId(headingText: string) {
-  return headingText.toLowerCase().replace(/[^\w]+/g, "-");
+export function getHeadingId(
+  headingText: string,
+  headings: Heading[] = []
+): string {
+  const baseId = headingText.toLowerCase().replace(/[^\w]+/g, "-");
+  // Prevent duplicate IDs by checking existing headings
+  let idSuffixNumber = 0;
+  for (const heading of headings) {
+    if (heading.id === baseId) {
+      idSuffixNumber++;
+    }
+  }
+  return idSuffixNumber === 0 ? baseId : baseId + idSuffixNumber;
 }
