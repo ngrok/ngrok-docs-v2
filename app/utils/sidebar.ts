@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { getSidebarItemAtPath } from "./getSidebarData";
-import { docusaurusSidebar } from "./docusaurusSidebar";
+import { navData } from "./navData";
 import remarkHeadings from "@vcarl/remark-headings";
 import { remark } from "remark";
 import remarkFrontmatter from "remark-frontmatter";
@@ -155,15 +155,9 @@ const getItemFromObject = async (docusaurusObject: any) => {
  */
 export const getSidebar = async () => {
   return Promise.allSettled(
-    docusaurusSidebar.map(async (navItem: any) => {
+    navData.map(async (navItem: any) => {
       if (typeof navItem === "string") {
         return await getItemFromString(navItem);
-      }
-      if (navItem.type === "html") {
-        return {
-          title: navItem.value,
-          divider: true,
-        };
       }
       return await getItemFromObject(navItem);
     })

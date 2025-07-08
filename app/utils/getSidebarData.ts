@@ -1,6 +1,5 @@
 import fs from "fs/promises";
 import path from "path";
-import {glob} from "glob";
 import { getFullUrlPath, getRemixPath } from "./pathSanitization";
 import remarkHeadings from "@vcarl/remark-headings";
 import remarkFrontmatter from "remark-frontmatter";

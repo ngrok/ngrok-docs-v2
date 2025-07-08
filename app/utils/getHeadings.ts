@@ -58,14 +58,8 @@ export async function getHeadings(rawPath: string) {
 
     const headings: Heading[] = [];
 
-    console.log("\n========================")
-    console.log("Parsing markdown for headings:", filePath);
-    console.log("========================\n")
     const tree = unified().use(remarkParse).use(remarkMdx).parse(markdown);
 
-    console.log("========================")
-    console.log("Parsed...");
-    console.log("========================\n")
     visit(tree, "heading", (node: any) => {
       const text = node.children
         .map((child: any) => {
