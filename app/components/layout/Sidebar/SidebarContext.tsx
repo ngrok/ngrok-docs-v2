@@ -4,6 +4,10 @@ import { LoaderData } from "~/root";
 import { SidebarItem } from "~/utils/sidebar";
 
 const SidebarDataContext = createContext<SidebarItem[] | null>(null);
+const SidebarStateContext = createContext<{
+  openSections: string[];
+  toggleSection: (sectionId: string) => void;
+} | null>(null);
 
 export function SidebarDataProvider({ children }: any) {
   const loaderData = useRouteLoaderData<LoaderData>("root");
@@ -11,15 +15,27 @@ export function SidebarDataProvider({ children }: any) {
     throw new Error("Sidebar data not found.");
   }
   const [sidebarData] = useState(loaderData.sidebar); // cache in state
+  const [openSections, setOpenSections] = useState<string[]>([]);
+
+  const toggleSection = (sectionId: string) => {
+    setOpenSections(prev => 
+      prev.includes(sectionId) 
+        ? prev.filter(id => id !== sectionId)
+        : [...prev, sectionId]
+    );
+  };
 
   return (
     <SidebarDataContext.Provider value={sidebarData}>
-      {children}
+      <SidebarStateContext.Provider value={{ openSections, toggleSection }}>
+        {children}
+      </SidebarStateContext.Provider>
     </SidebarDataContext.Provider>
   );
 }
 
 export const useSidebarData = () => useContext(SidebarDataContext);
+export const useSidebarState = () => useContext(SidebarStateContext);
 /**
  * Next steps:
  * 1. Fetch the data in the loader

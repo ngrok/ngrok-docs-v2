@@ -13,6 +13,7 @@ import { CustomDocSearch } from "@components/CustomDocSearch";
 import clsx from "clsx";
 import { LoaderData } from "~/root";
 import { useEffect, useRef, useState } from "react";
+import { useSidebarState } from "./SidebarContext";
 
 /**
  * Layout:
@@ -49,7 +50,7 @@ const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
           }
         }, [isActive]);
         return (
-          <li key={`${key}${item.path || item.title}`}>
+          <li key={item.path || item.title || `item-${key}`} ref={itemRef}>
             {item?.children?.length > 0 ? (
               <SidebarSection sectionItem={item} />
             ) : (
@@ -101,6 +102,22 @@ export const SidebarSection = ({
 }: {
   sectionItem: SidebarItem;
 }) => {
+  const sidebarState = useSidebarState();
+  const { pathname } = useLocation();
+  const sectionId = sectionItem.title || sectionItem.path || '';
+  
+  // Auto-open section if current page is within it
+  const shouldAutoOpen = sectionItem.children?.some(child => 
+    child.path === pathname || 
+    (child.children && child.children.some(grandchild => grandchild.path === pathname))
+  );
+  
+  useEffect(() => {
+    if (shouldAutoOpen && sidebarState && !sidebarState.openSections.includes(sectionId)) {
+      sidebarState.toggleSection(sectionId);
+    }
+  }, [shouldAutoOpen, sectionId, sidebarState]);
+
   if (!sectionItem.collapsible) {
     return (
       <NonCollapsibleSection item={sectionItem}>
@@ -108,9 +125,24 @@ export const SidebarSection = ({
       </NonCollapsibleSection>
     );
   }
+  
+  const isOpen = sidebarState?.openSections.includes(sectionId) ?? false;
+  
   return (
-    <Accordion type="multiple">
-      <AccordionItem value={sectionItem.title}>
+    <Accordion 
+      type="multiple" 
+      value={isOpen ? [sectionId] : []}
+      onValueChange={(value) => {
+        if (sidebarState) {
+          const isNowOpen = value.includes(sectionId);
+          const wasOpen = sidebarState.openSections.includes(sectionId);
+          if (isNowOpen !== wasOpen) {
+            sidebarState.toggleSection(sectionId);
+          }
+        }
+      }}
+    >
+      <AccordionItem value={sectionId}>
         <AccordionHeading asChild>
           <SectionTitle item={sectionItem} />
         </AccordionHeading>
@@ -145,13 +177,15 @@ const NavItem = ({
 
 export const Sidebar = ({ className, algoliaInfo }: any) => {
   const data = useLoaderData<LoaderData>();
+  const sidebarData = data?.sidebar;
+  
   return (
     <nav className={clsx("", className)}>
       <CustomDocSearch algoliaInfo={algoliaInfo} />
       <div className="sticky top-0 self-start h-[calc(100vh-4rem)] w-64 overflow-y-auto pr-8 xl:w-72 xl:pr-16">
       <ul className="list-none" role="list">
-        {data?.sidebar &&
-          data.sidebar.map((topLevelItem: SidebarItem) => {
+        {sidebarData &&
+          sidebarData.map((topLevelItem: SidebarItem) => {
             const { children, path, divider, title } = topLevelItem;
             // if (path?.includes("integration")) {
             //   console.log("Integration sidebar item", topLevelItem);
