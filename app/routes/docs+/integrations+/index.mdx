@@ -1,0 +1,23 @@
+---
+- pagination_next: integrations/1password/index
+- sidebar_position: 1
+---
+
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import IntegrationsList from "@components/Integrations/IntegrationsList";
+import { getIntegrations } from "~/utils/Integrations/getIntegrations";
+export const loader = async () => {
+  return {
+    integrationList: await getIntegrations(),
+  };
+};
+
+export function List() {
+  const { integrationList } = useLoaderData();
+  return <IntegrationsList list={integrationList} />;
+}
+
+# Integrations Hub
+
+<List />

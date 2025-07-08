@@ -1,0 +1,18 @@
+```bash
+ngrok http 80 --traffic-policy-file traffic-policy.yml
+```
+
+##### `traffic-policy.yml`
+
+```yaml
+on_http_request:
+  - actions:
+      - type: add-headers
+        config:
+          headers:
+            is-ngrok: 1
+            country: ${conn.geo.country_code}
+      - type: remove-headers
+        config:
+          headers: ["referrer"]
+```

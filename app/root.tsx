@@ -1,189 +1,258 @@
-import type {
-  HeadersFunction,
-  LinksFunction,
-  LoaderFunction,
-  V2_MetaFunction,
-} from "@vercel/remix";
-import { json } from "@vercel/remix";
+import "@ngrok/mantle/mantle.css";
 import {
+  MantleThemeHeadContent,
+  ThemeProvider,
+} from "@ngrok/mantle/theme-provider";
+import {
+  data,
   Links,
-  useLoaderData,
-  LiveReload,
+  Location,
   Meta,
+  NavigateFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
-  isRouteErrorResponse,
+  useLoaderData,
+  useLocation,
+  useNavigate,
   useRouteError,
 } from "@remix-run/react";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  LoaderFunctionArgs,
+} from "@remix-run/node";
 
+import "./tailwind.css";
+import { checkForRedirects } from "./utils/redirects/redirectMethods";
+import { useEffect, useState } from "react";
+import Container from "./components/layout/Container";
+import { getDomainUrl, removeTrailingSlash } from "./utils";
+import ErrorPage from "@components/ErrorPage";
+import { MDXProvider } from "@mdx-js/react";
+import { getStoredTab, tabParamName } from "@components/Tabs/utils";
+import TabListContext from "@components/Tabs/TabListContext";
+import LangSwitcherContext from "@components/LangSwitcher/LangSwitcherContext";
 import {
-  ThemeBody,
-  ThemeHead,
-  ThemeProvider,
-  useTheme,
-} from "~/utils/theme-provider";
-import type { Theme } from "~/utils/theme-provider";
-import { getThemeSession } from "~/utils/theme.server";
+  getStoredLanguage,
+  langParamName,
+} from "@components/LangSwitcher/utils";
+import { globalComponents } from "./utils/componentsToImport";
+import { getSidebar, SidebarItem } from "./utils/sidebar";
 
-import { CacheControl } from "~/utils/cache-control.server";
-import ErrorPage from "~/components/ErrorPage";
-
-import tailwindStyles from "./tailwind.css";
-
-//import type {SideBarItem, SidebarGroup} from '~/utils/docs.server';
-import Container from "~/components/layout/Container";
-
-import { getDomainUrl, removeTrailingSlash } from "~/utils";
-
-import config from "~/docs.config";
-import { getSeo } from "~/seo";
-
-export const meta: V2_MetaFunction = ({ data, matches }) => {
-  if (!data) return [];
-
-  return [
-    getSeo({
-      title: config?.title,
-      description: config?.description,
-      url: data.canonical ? data.canonical : "",
-    }),
-  ];
-};
-
-export const handle = {
-  id: "root",
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "icon",
+    href:
+      process.env.NODE_ENV === "development"
+        ? "/dev-favicon.ico"
+        : "/favicon.ico",
+    type: "image/ico",
+  },
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?fashaquil/doc-111-upgrade-to-remix-2-retrymily=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+  },
+];
 
 export type LoaderData = {
-  theme: Theme | null;
+  sidebar: SidebarItem[] | null;
   canonical?: string;
   requestInfo: {
     url: string;
     origin: string;
     path: string;
   } | null;
+  algoliaInfo: {
+    appId: string;
+    indexName: string;
+    apiKey: string;
+  };
 };
 
-export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "//fonts.gstatic.com", crossOrigin: "anonymous" },
-  { rel: "stylesheet", href: tailwindStyles },
-  {
-    rel: "stylesheet",
-    href: "//fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en",
-  },
-];
+let cachedSidebarData: any | any[] = null;
 
-export const headers: HeadersFunction = () => {
-  return { "Cache-Control": new CacheControl("swr").toString() };
-};
+// Don't wanna fetch this on every page load
+async function fetchSidebarData() {
+  if (cachedSidebarData) {
+    return cachedSidebarData;
+  }
+  const rawData = await getSidebar();
+  const sidebar = rawData?.map((item: any) => item.value);
+  const sidebarData = sidebar;
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const themeSession = await getThemeSession(request);
+  // console.log("Sidebar data", sidebarData);
+  cachedSidebarData = sidebar;
+  return sidebar;
+}
 
-  const url = getDomainUrl(request);
-  const path = new URL(request.url).pathname;
+export const loader: LoaderFunction = async ({
+  request,
+}: LoaderFunctionArgs) => {
+  const origin = getDomainUrl(request);
+  const urlData = new URL(request.url);
+  const path = urlData.pathname;
+  const canonical = removeTrailingSlash(`${origin}${path}`);
 
-  return json({
-    theme: themeSession.getTheme(),
-    canonical: removeTrailingSlash(`${url}${path}`),
+  // const sidebar = await fetchSidebarData();
+
+  // sidebar?.forEach((item: SidebarItem) => {
+  //   if (item.path && item.path?.includes("universal")) {
+  //     console.log("\n * Universal gateway", item, "\n");
+  //   }
+  // });
+
+  return data({
+    // sidebar,
+    canonical,
     requestInfo: {
-      url: removeTrailingSlash(`${url}${path}`),
-      origin: getDomainUrl(request),
-      path: new URL(request.url).pathname,
+      url: canonical,
+      origin,
+      path,
+    },
+    algoliaInfo: {
+      appId: process.env.ALGOLIA_APP_ID,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+      apiKey: process.env.ALGOLIA_API_KEY,
     },
   });
 };
 
-function App() {
+const processClientSideRedirects = (
+  location: Location,
+  navigate: NavigateFunction
+) => {
+  const { pathname, hash } = location;
+  if (hash) {
+    const { result, newPath } = checkForRedirects(pathname + hash);
+    if (result) {
+      navigate(newPath as string, { replace: true });
+    }
+  }
+};
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  const storedTab = isBrowser ? getStoredTab() : null;
+  const [selectedTabItem, setSelectedTabItem] = useState(storedTab ?? null);
+  const storedLang = isBrowser ? getStoredLanguage() : null;
+  const [selectedLanguage, setSelectedLanguage] = useState(storedLang ?? null);
+
+  const updateTabOrLanguageFunction = (type: string) => {
+    const param = type === "tab" ? tabParamName : langParamName;
+    const updateFunction =
+      type === "tab" ? setSelectedTabItem : setSelectedLanguage;
+    return (newItem: string | undefined) => {
+      if (!newItem) return;
+      if (isBrowser) {
+        localStorage.setItem(param, newItem);
+      }
+      updateFunction(newItem);
+    };
+  };
+
+  const updateSelectedTabItem = updateTabOrLanguageFunction("tab");
+  const updateSelectedLanguage = updateTabOrLanguageFunction("lang");
+
+  const location = useLocation();
+  const navigate = useNavigate();
   const data = useLoaderData<LoaderData>();
-  const [theme] = useTheme();
+  useEffect(() => {
+    if (!isBrowser) {
+      return setIsBrowser(typeof window !== "undefined");
+    }
+    setSelectedLanguage(storedLang);
+    processClientSideRedirects(location, navigate);
+  }, [isBrowser]);
+
+  if (!data) return <ErrorPage />;
+
   return (
-    <html lang="en" className={theme ?? ""}>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        {data.requestInfo && (
+    <html lang="en">
+      <ThemeProvider>
+        <head>
+          {/* Preconnect to the algolia API for faster search */}
           <link
-            rel="canonical"
-            href={removeTrailingSlash(
-              `${data.requestInfo.origin}${data.requestInfo.path}`
-            )}
+            rel="preconnect"
+            href={`https://${data.algoliaInfo.appId}-dsn.algolia.net`}
+            crossOrigin="anonymous"
           />
-        )}
-        <Links />
-        <ThemeHead ssrTheme={Boolean(data.theme)} />
-      </head>
-      <body>
-        <Container>
-          <Outlet />
-        </Container>
-        <ThemeBody ssrTheme={Boolean(data.theme)} />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
+          <MantleThemeHeadContent />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <Meta />
+          {data.requestInfo && (
+            <link
+              rel="canonical"
+              href={removeTrailingSlash(
+                `${data.requestInfo.origin}${data.requestInfo.path}`
+              )}
+            />
+          )}
+          <Links />
+        </head>
+
+        <TabListContext.Provider
+          value={{
+            localStorageTab: storedTab ?? null,
+            selectedTabItem,
+            updateSelectedTabItem,
+          }}
+        >
+          <LangSwitcherContext.Provider
+            value={{
+              selectedLanguage,
+              localStorageLanguage: storedLang || null,
+              updateSelectedLanguage,
+            }}
+          >
+            <body>
+              <Container algoliaInfo={data.algoliaInfo}>
+                <MDXProvider components={globalComponents}>
+                  <Outlet />
+                </MDXProvider>
+              </Container>
+              <ScrollRestoration />
+              <Scripts />
+            </body>
+          </LangSwitcherContext.Provider>
+        </TabListContext.Provider>
+      </ThemeProvider>
     </html>
   );
 }
 
-export default function AppWithProviders() {
-  const data = useLoaderData<LoaderData>();
-
+export default function App() {
   return (
-    <ThemeProvider specifiedTheme={data.theme}>
-      <App />
-    </ThemeProvider>
+    <body>
+      <Outlet />
+    </body>
   );
 }
 
+/**
+ * 404 page
+ */
 export function ErrorBoundary() {
-  let error = useRouteError();
-  let status = "500";
-  let message = "";
-  let stacktrace;
-
-  // when true, this is what used to go to `CatchBoundary`
-  if (error.status === 404) {
-    status = 404;
-    message = "Page Not Found";
-  } else if (error instanceof Error) {
-    status = "500";
-    message = error.message;
-    stacktrace = error.stack;
-  } else {
-    status = "500";
-    message = "Unknown Error";
-  }
+  const error = useRouteError();
+  console.error(error);
   return (
-    <ErrorDocument title="Error!">
-      <ErrorPage code={status} title={`There was an error`} message={message} />
-    </ErrorDocument>
-  );
-}
-
-function ErrorDocument({
-  children,
-  title,
-}: {
-  children: React.ReactNode;
-  title?: string;
-}) {
-  return (
-    <html className="h-full" lang="en">
+    <html>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        {title ? <title>{title}</title> : null}
+        <title>Oh no!</title>
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
-        {children}
-        <ScrollRestoration />
+      <body>
+        This page doesn't exist. Please check the URL and try again.
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>
   );
