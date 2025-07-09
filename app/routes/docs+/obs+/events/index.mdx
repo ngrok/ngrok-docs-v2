@@ -50,7 +50,7 @@ We also publish guides to get started with each of ngrok's Event Destinations:
 - **[Azure Logs Ingestion](/integrations/azure-logs-ingestion/event-destination/)**
 - **[Datadog Logs](/integrations/datadog/event-destination/)**
 
-## Event Subscriptions {#subscriptions}
+## Event Subscriptions
 
 Event subscriptions define which [Event Sources](/obs/events/reference/) to capture and which
 destinations to publish to. If you're familiar with other event systems, they may
@@ -65,7 +65,7 @@ Event Subscriptions can be created on the [ngrok
 Dashboard](https://dashboard.ngrok.com/events/subscriptions) or via the [
 Event Subscription API Resource](/api/resources/event-subscriptions/#create-event-subscription).
 
-## Event Sources {#sources}
+## Event Sources
 
 Event Sources choose which events an Event Subscription captures. Other event
 systems may call this a _selector_.
@@ -102,7 +102,7 @@ definition you can specify a CEL expression which is evaluated against each even
 to determine if it should be captured. See the [Filters](#filters) section
 for further detail.
 
-#### Filters {#filters}
+#### Filters
 
 You may specify a filter on [Traffic
 Events](/obs/events/reference/#traffic-events) since the velocity of these events can be quite high. Filters are a boolean
@@ -150,7 +150,7 @@ ev.conn.client_ip != "2601:0:8200:0:4cd7:fd52:0:7823" &&
 ev.conn.server_name == "ngrok-docs-examples.ngrok.dev"
 ```
 
-## Event Destinations {#destinations}
+## Event Destinations
 
 An Event Destination encapsulates the configuration to publish events to other
 systems. Other event systems may call this a _sink_ or _output_.

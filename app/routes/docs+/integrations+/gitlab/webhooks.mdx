@@ -27,7 +27,7 @@ By integrating ngrok with GitLab, you can:
 - **Modify and Replay GitLab Webhook requests** with a single click and without spending time reproducing events manually in your GitLab account.
 - **Secure your app with GitLab validation provided by ngrok**. Invalid requests are blocked by ngrok before reaching your app.
 
-## **Step 1**: Start your app {#start-your-app}
+## **Step 1**: Start your app
 
 For this tutorial, we'll use the [sample NodeJS app available on GitHub](https://github.com/ngrok/ngrok-webhook-nodejs-sample).
 
@@ -51,7 +51,7 @@ The app runs by default on port 3000.
 
 You can validate that the app is up and running by visiting http://localhost:3000. The application logs request headers and body in the terminal and responds with a message in the browser.
 
-## **Step 2**: Launch ngrok {#start-ngrok}
+## **Step 2**: Launch ngrok
 
 Once your app is running successfully on localhost, let's get it on the internet securely using ngrok!
 
@@ -70,7 +70,7 @@ Once your app is running successfully on localhost, let's get it on the internet
 1. ngrok will display a URL where your localhost application is exposed to the internet (copy this URL for use with GitLab).
    ![ngrok agent running](/img/integrations/launch_ngrok_tunnel.png)
 
-## **Step 3**: Integrate GitLab {#setup-webhook}
+## **Step 3**: Integrate GitLab
 
 GitLab can trigger webhook calls to external applications whenever events happen in a repository. To register for such events, follow the instructions below:
 
@@ -121,7 +121,7 @@ Alternatively, clone your repository locally, add some content, commit, and then
 <InspectingRequests />
 
 <ReplayingRequests />
-## Secure webhook requests {#security}
+## Secure webhook requests
 
 The ngrok signature webhook verification feature allows ngrok to assert that requests from your Gitlab webhooks are the only traffic allowed to make calls to your localhost app.
 

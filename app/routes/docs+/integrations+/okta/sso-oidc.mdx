@@ -46,7 +46,7 @@ To integrate ngrok with Okta SSO, you will need to:
 1. Configure Okta with the ngrok app
 1. Configure ngrok with the SSO settings provided by Okta
 
-## **Step 1**: Configure Okta {#configure-okta}
+## **Step 1**: Configure Okta
 
 ### Add the ngrok App in Okta
 
@@ -71,7 +71,7 @@ Okta allows administrators to restrict access to SSO apps — such as ngrok — 
 1. Click **Assignments**.
 1. Use the **Assign** button to associate groups and users with the ngrok app. **To test the SSO with ngrok, make sure you're assigned to the app**.
 
-## **Step 2**: Configure ngrok {#configure-ngrok}
+## **Step 2**: Configure ngrok
 
 ngrok can leverage Okta SSO in two ways:
 
@@ -143,7 +143,7 @@ For this step, we assume you have an app running locally (i.e. on localhost:3000
 1.  In the test edge, copy the **endpoint URL**. (you will use this url to test the Okta Authentication)
     ![tunnel url](img/okta-4.png)
 
-## Step 3: Test the integration {#test-sso}
+## Step 3: Test the integration
 
 1. In your browser, launch an incognito window.
 1. Access your ngrok tunnel (i.e., https://okta-sso-test.ngrok.app or using a copied URL).

@@ -33,7 +33,7 @@ Using this guide, you will launch a local cluster (or use an existing local/remo
     domain, like `https://api.example.com`.
   - We'll refer to this domain as `<NGROK_DOMAIN>`.
 
-## Set up a local development cluster {#set-up-a-local-development-cluster}
+## Set up a local development cluster
 
 1. Create a local Kubernetes cluster with minikube. You will assign it a profile named `ngrok-linkerd` with `-p`, and for the best compatibility with Linkerd, you will use the `containerd` [container runtime](https://minikube.sigs.k8s.io/docs/runtimes/).
 
@@ -65,7 +65,7 @@ Using this guide, you will launch a local cluster (or use an existing local/remo
    kube-system       Active   72s
    ```
 
-## Deploy Linkerd's service mesh to your cluster {#deploy-linkerds-service-mesh}
+## Deploy Linkerd's service mesh to your cluster
 
 1. Verify your Linkerd CLI is working correctly with `linkerd version`, which should display the same output as below. The `Server version: unavailable` is expected at this point.
 
@@ -109,7 +109,7 @@ Using this guide, you will launch a local cluster (or use an existing local/remo
 
    :::
 
-## Deploy an example microservices-based application {#deploy-an-example-microservices-based-application}
+## Deploy an example microservices-based application
 
 To demonstrate how Linkerd and the ngrok Kubernetes Operator integrate to add additional observability, security, and reliability into your cluster, you'll deploy the [Emojivoto](https://github.com/BuoyantIO/emojivoto) demo application, which was developed by Buoyant, the company that originally developed Linkerd.
 
@@ -189,7 +189,7 @@ To demonstrate how Linkerd and the ngrok Kubernetes Operator integrate to add ad
 
    ![Viewing the Emojivoto application](img/emojivoto.png)
 
-## Add Linkerd's dashboard to verify meshing and mTLS {#add-linkerds-dashboard-and-verify-mtls}
+## Add Linkerd's dashboard to verify meshing and mTLS
 
 Given that one of the key benefits of a service mesh is increased observability, and the inherent security enhancements that come from mTLS connections between your microservices, you'll want to double-check that your deployments and pods are properly meshed.
 

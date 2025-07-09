@@ -28,7 +28,7 @@ By integrating ngrok with HostedHooks, you can:
 - **Modify and Replay HostedHooks Webhook requests** with a single click and without spending time reproducing events manually in your HostedHooks account.
 - **Secure your app with HostedHooks validation provided by ngrok**. Invalid requests are blocked by ngrok before reaching your app.
 
-## **Step 1**: Start your app {#start-your-app}
+## **Step 1**: Start your app
 
 For this tutorial, we'll use the [sample NodeJS app available on GitHub](https://github.com/ngrok/ngrok-webhook-nodejs-sample).
 
@@ -52,7 +52,7 @@ The app runs by default on port 3000.
 
 You can validate that the app is up and running by visiting http://localhost:3000. The application logs request headers and body in the terminal and responds with a message in the browser.
 
-## **Step 2**: Launch ngrok {#start-ngrok}
+## **Step 2**: Launch ngrok
 
 Once your app is running successfully on localhost, let's get it on the internet securely using ngrok!
 
@@ -71,7 +71,7 @@ Once your app is running successfully on localhost, let's get it on the internet
 1. ngrok will display a URL where your localhost application is exposed to the internet (copy this URL for use with HostedHooks).
    ![ngrok agent running](/img/integrations/launch_ngrok_tunnel.png)
 
-## **Step 3**: Integrate HostedHooks {#setup-webhook}
+## **Step 3**: Integrate HostedHooks
 
 To register a webhook on your HostedHooks account follow the instructions below:
 
@@ -100,7 +100,7 @@ To register a webhook on your HostedHooks account follow the instructions below:
 
    Confirm your localhost app receives the **myapp.event** event notification and logs both headers and body in the terminal.
 
-### Run Webhooks with HostedHooks and ngrok {#run-webhook}
+### Run Webhooks with HostedHooks and ngrok
 
 Whenever you post a message to the HostedHooks message endpoint using the value **myapp.event** as the event type inside the body of the request, HostedHooks routes this message to your localhost app through your ngrok URL.
 You can trigger new calls from HostedHooks to your application by following the instructions below.
@@ -138,7 +138,7 @@ Alternatively, you can verify the log of the webhook call in HostedHooks:
 <InspectingRequests />
 
 <ReplayingRequests />
-## Secure webhook requests {#security}
+## Secure webhook requests
 
 The ngrok signature webhook verification feature allows ngrok to assert that requests from your HostedHooks webhook are the only traffic allowed to make calls to your localhost app.
 

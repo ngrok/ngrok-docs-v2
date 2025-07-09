@@ -40,7 +40,7 @@ demo application to the ngrok platform to route traffic to your vcluster.
     domain, like `https://api.example.com`.
   - We'll refer to this domain as `<NGROK_DOMAIN>`.
 
-## Set up a local virtual cluster with vcluster {#set-up-vcluster}
+## Set up a local virtual cluster with vcluster
 
 To follow along with this guide, you need a remote or local Kubernetes cluster with vcluster installed. If you have an
 existing cluster with vcluster set up, you can skip this step and proceed to
@@ -95,7 +95,7 @@ If you don't have a cluster already, create one locally with minikube and instal
 
    :::
 
-## Install a sample application {#install-a-sample-application}
+## Install a sample application
 
 At this point, you have a functional vcluster with the ngrok Kubernetes Operator running and authenticated with your
 ngrok credentials. To demonstrate how the Operator simplifies routing external traffic to your primary
@@ -188,7 +188,7 @@ cluster, virtual cluster, and ultimately an exposed service or endpoint, you can
 
    !["Navigating directly to the https://one-two-three.ngrok.app domain to see the 2048 application"](img/ngrok-k8s-vcluster_2048.png)
 
-## Add OAuth protection to your demo app {#add-oauth-protection}
+## Add OAuth protection to your demo app
 
 Let's take your ingress needs a little further by assuming you want to add edge security, in the form of Google OAuth,
 to the endpoint where your 2048 application is humming along.

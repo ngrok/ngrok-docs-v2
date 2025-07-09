@@ -4,8 +4,8 @@ sidebar_label: Overview
 pagination_next: agent/web-inspection-interface
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
+import TabItem from "@components/Tabs/TabItem";
+import Tabs from "@components/Tabs";
 
 import BasicAuthAgentCliExample from "/examples/agent-cli/http-basic-auth.mdx";
 import ForwardHttpsAgentCliExample from "/examples/agent-cli/http-forward-https.mdx";
@@ -95,7 +95,7 @@ Start multiple tunnels defined in the [configuration file](/agent/config/).
 ngrok start foo bar baz
 ```
 
-## Tab Completion {#tab-completion}
+## Tab Completion
 
 The ngrok agent has built-in tab completion which makes it easy to navigate its
 command and flags by hitting tab in your terminal when using a `bash` or `zsh`
@@ -178,7 +178,7 @@ in the configuration file.
 | `NGROK_AUTHTOKEN` | [`authtoken`](/agent/config/v3/#authtoken) |
 | `NGROK_API_KEY`   | [`api_key`](/agent/config/v3/#api_key)     |
 
-## Running ngrok in the background {#background-service}
+## Running ngrok in the background
 
 ngrok includes commands to run itself in the background as a native operating
 system service, i.e. as a daemon. When it runs as an operating system service it:
@@ -253,7 +253,7 @@ connections to the ngrok service through which they create new endpoints and
 receive connections from ngrok's cloud service that are intended for your upstream
 services.
 
-### Address {#connectivity-address}
+### Address
 
 By default, the latest ngrok agent dials the following "agent ingress address" when it
 connects to the ngrok service. This address resolves to a [dynamic set of IP Addresses](/universal-gateway/ip-addresses/).
@@ -362,7 +362,7 @@ slowly backs off its reconnection attempts but always attempts to re-establish
 connectivity unless the ngrok service explicitly instructs it to stop
 reconnecting.
 
-### Troubleshooting {#troubleshooting-connectivity}
+### Troubleshooting
 
 If the ngrok agent can't connect to the ngrok service, it is often difficult to
 understand why.

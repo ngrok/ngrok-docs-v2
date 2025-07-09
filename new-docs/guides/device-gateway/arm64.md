@@ -10,8 +10,8 @@ tags:
   - devices
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
+import TabItem from "@components/Tabs/TabItem";
+import Tabs from "@components/Tabs";
 
 In this guide, you'll learn how to install ngrok on any Linux ARM64 device to forward traffic from public endpoints to your upstream services or for remote management. You'll also create some a traffic policy to protect your device from unauthorized traffic.
 

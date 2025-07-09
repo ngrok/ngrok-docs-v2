@@ -135,7 +135,7 @@ Your vendor can implement multiple security practices, including:
 The configuration and operation of these security practices will be handled by
 your vendor.
 
-### How does ngrok’s traffic encryption work? {#ngrok-traffic-encryption}
+### How does ngrok’s traffic encryption work?
 
 The agent always connects to the ngrok network via TLS. We support three encryption models based on where TLS is _terminated_:
 
@@ -150,7 +150,7 @@ upstream service using the second or third models listed above.
 
 Contact your vendor if you’re unsure how TLS termination is managed in your site-to-site connectivity architecture.
 
-### Can ngrok see my traffic? {#can-ngrok-see-my-traffic}
+### Can ngrok see my traffic?
 
 No—if your vendor configures ngrok to terminate TLS at the agent or your upstream service.
 
@@ -186,7 +186,7 @@ few ways to enable this functionality. They can:
 In any case, your vendor is responsible for configuring these inspection
 strategies for your site-to-site architecture.
 
-### How can I prevent ngrok from being used for any purpose other than in site-to-site connectivity with my vendor? {#how-can-i-prevent-ngrok-from-being-used-for-any-purpose-other-than-in-site-to-site-connectivity-with-my-vendor?}
+### How can I prevent ngrok from being used for any purpose other than in site-to-site connectivity with my vendor?
 
 The best way to disallow other uses of ngrok on your network is working with your vendor to specify a [custom agent ingress address](/agent/ingress/#customize-agent-ingress-address).
 
@@ -277,7 +277,7 @@ See our [Security, Privacy, and Compliance](https://ngrok.com/security) and [Tru
 
 ## Operations and agent deployment
 
-### Where can I run the ngrok agent and what are the ngrok agent’s system requirements? {#where-can-i-run-the-ngrok-agent-and-what-are-the-ngrok-agent’s-system-requirements?}
+### Where can I run the ngrok agent and what are the ngrok agent’s system requirements?
 
 The ngrok agent runs on Linux, Windows, and macOS systems and most CPU
 architectures. See our [supported platforms

@@ -2,8 +2,8 @@
 title: HTTP/S Endpoints
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
+import TabItem from "@components/Tabs/TabItem";
+import Tabs from "@components/Tabs";
 
 import TlsLimits from "./_tls_limits.mdx";
 
@@ -284,7 +284,7 @@ wildcard domains as well.
 Endpoints with randomly-assigned hostnames are an exception and won't match an
 existing Domain object.
 
-### Bring your own domain {#bring-your-own-domain}
+### Bring your own domain
 
 If you want to bring your own domain, first [create a Domain record and set up
 a DNS CNAME record](/universal-gateway/domains/#branded-domains). Then
@@ -516,7 +516,7 @@ your endpoint using Google as the identity provider by using the
 	</TabItem>
 </Tabs>
 
-#### Rewriting the `host` header {#rewrite-host-header}
+#### Rewriting the `host` header
 
 Some application servers expect the `host` header to match a specific value
 when they receive requests and some use the `host` header to determine which of
