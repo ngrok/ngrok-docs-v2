@@ -150,9 +150,6 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
           navBucket.children?.map((topLevelItem: SidebarItem) => {
             if(!topLevelItem) return null;
             const { path, title } = topLevelItem;
-            // if (path?.includes("integration")) {
-            //   console.log("Integration sidebar item", topLevelItem);
-            // }
             if (topLevelItem.divider) {
               return <SidebarDivider key={path || title} title={title} />;
             }
