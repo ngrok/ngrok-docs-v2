@@ -14,7 +14,7 @@ import {
 import { Icon } from "@ngrok/mantle/icon";
 import { NavBucket, navData } from "~/utils/navData";
 import { CaretDown } from "@phosphor-icons/react";
-import { LoaderData } from "~/routes/docs+/route";
+import { DocsLoaderData } from "~/routes/docs+/route";
 import { SidebarItem } from "~/utils/sidebar";
 
 /**
@@ -23,9 +23,8 @@ import { SidebarItem } from "~/utils/sidebar";
  */
 
 export default function Navigation(props: any) {
-  const { sidebarData } = useRouteLoaderData<LoaderData>("routes/docs+/route");
+  const { sidebarData } = useRouteLoaderData<DocsLoaderData>("routes/docs+/route");
 
-  console.log("Navigation sidebar data", sidebarData);
 
   return (
     <div

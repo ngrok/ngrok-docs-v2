@@ -11,8 +11,10 @@ import { checkForRedirects } from "~/utils/redirects/redirectMethods";
 import useBreakpoint from "use-breakpoint";
 import { Sidebar } from "@components/layout/Sidebar";
 import { getSidebar, SidebarItem } from "~/utils/sidebar";
+import ActiveSidebarContext, { ActiveSidebarProvider } from "@components/layout/Sidebar/ActiveSidebarContext";
+import { act } from "react";
 
-export type LoaderData = {
+export type DocsLoaderData = {
   sidebarData: SidebarItem[] | null;
   headings: Heading[];
   algoliaInfo: {
@@ -21,8 +23,6 @@ export type LoaderData = {
     apiKey: string;
   };
 };
-
-
 
 let cachedSidebarData: any | any[] = null;
 
@@ -59,7 +59,7 @@ export const loader: LoaderFunction = async ({
       appId: process.env.ALGOLIA_APP_ID,
       indexName: process.env.ALGOLIA_INDEX_NAME,
       apiKey: process.env.ALGOLIA_API_KEY,
-    },    
+    },
   });
 };
 
@@ -74,45 +74,41 @@ function getTitleFromMatches(matches: any[]) {
 
 export default function Docs() {
   const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };
-  const { breakpoint } = useBreakpoint(
-    BREAKPOINTS,
-    "desktop"
-  );
+  const { breakpoint } = useBreakpoint(BREAKPOINTS, "desktop");
 
   // const { headings, algoliaInfo } = useLoaderData<LoaderData>();
   const matches = useMatches();
   const title = getTitleFromMatches(matches);
-  const data = useLoaderData<LoaderData>();  
+  const data = useLoaderData<DocsLoaderData>();
   return (
-<div className="flex w-full max-w-full">
-  {/* Floating sidebar */}
-  <div className="sticky top-0 h-screen w-64 shrink-0">
-    <Sidebar
-      algoliaInfo={data.algoliaInfo}
-      data={data.sidebar}
-      className="h-full overflow-y-auto pr-4 overflow-x-hidden"
-    />
-  </div>
-
-  {/* Main content */}
-  {breakpoint === "tablet" || breakpoint === "desktop" ? (
-    <div className="w-full max-w-full flex">
-      <div className="p-5 w-full max-w-full">
-        {title && <h1>{title}</h1>}
-        <Outlet />
+    <div className="flex w-full max-w-full">
+      {/* Floating sidebar */}
+      <div className="sticky top-0 h-screen w-64 shrink-0">
+        <Sidebar
+          algoliaInfo={data.algoliaInfo}
+          data={data.sidebarData}
+          className="h-full overflow-y-auto pr-4 overflow-x-hidden"
+        />
       </div>
-      <TableOfContents className="" headings={data.headings} />
-    </div>
-  ) : (
-    <div className="relative w-full">
-      <TableOfContents headings={data.headings} />
-        {title && <h1>{title}</h1>}
-        <div className="p-5">
-        <Outlet />
-        </div>
-    </div>
-  )}
-</div>
 
+      {/* Main content */}
+      {breakpoint === "tablet" || breakpoint === "desktop" ? (
+        <div className="w-full max-w-full flex">
+          <div className="p-5 w-full max-w-full">
+            {title && <h1>{title}</h1>}
+            <Outlet />
+          </div>
+          <TableOfContents className="" headings={data.headings} />
+        </div>
+      ) : (
+        <div className="relative w-full">
+          <TableOfContents headings={data.headings} />
+          {title && <h1>{title}</h1>}
+          <div className="p-5">
+            <Outlet />
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
