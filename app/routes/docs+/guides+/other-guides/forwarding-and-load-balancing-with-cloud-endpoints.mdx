@@ -8,7 +8,7 @@ tags:
   - load-balancing
 ---
 
-import ConfigExample from "/src/components/ConfigExample.tsx";
+import ConfigExample from "@components/ConfigExample.tsx";
 
 <!-- prettier-ignore -->
 <!-- Imports -->
@@ -184,3 +184,4 @@ ngrok http 80 \
 
 And we're done! You've successfully created a cloud endpoint that can be accessed from the URL you reserved: `${NGROK_SUBDOMAIN}.ngrok.app`
 The cloud endpoint will refer to its traffic policy and forward traffic to our internal endpoint. The internal endpoint finally exposes the local port on which it was created on in Step 1.
+

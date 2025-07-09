@@ -1,6 +1,6 @@
 import TabItem from "@theme/TabItem";
 import Tabs from "@theme/Tabs";
-import ConfigExample from "/src/components/ConfigExample.tsx";
+import ConfigExample from "@components/ConfigExample.tsx";
 
 <Tabs groupId="auth-method" queryString="auth-method">
 <TabItem value={props.firstTabValue || "traffic-policy"} label={props.firstTabLabel || "Using Traffic Policy"}>
@@ -57,3 +57,4 @@ ngrok http 80 --traffic-policy-file /path/to/traffic-policy.yml
 </TabItem>
 
 </Tabs>
+

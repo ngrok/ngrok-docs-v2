@@ -150,3 +150,4 @@ curl https://$NGROK_DOMAIN \
 - Layer in more authentication mechanisms, like the [`oauth`](/docs/traffic-policy/actions/oauth) or [`basic-auth`](/docs/traffic-policy/actions/basic-auth) actions using the same pattern of checking the subsequent action result variables with an expression.
 - Use the action result variables and [CEL interpolation](/docs/traffic-policy/concepts/cel-interpolation) to add specific error messages to your catch-all `custom-response` action.
 - View your traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) to see requests that failed to authenticate but should have—for example, maybe a specific IP address is missing from your `restrict-ips` allow list or a user who doesn't realize they're using an invalid JWT token.
+

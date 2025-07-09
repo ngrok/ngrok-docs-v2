@@ -2,7 +2,7 @@
 title: Helm Configuration
 ---
 
-import RemoteYamlBlock from "@site/src/components/RemoteYamlBlock";
+import RemoteYamlBlock from "@components/RemoteYamlBlock";
 
 
 The following YAML block contains the default `values.yaml` used when installing the ngrok Kubernetes Operator. You can reference these values and change them individually with `--set` flags while installing/upgrading the ngrok Kubernetes operator.
@@ -41,3 +41,4 @@ This project is built using kube-builder, so out of the box it exposes the metri
 ### Watching Specific Namespaces
 
 By default, the Operator watches all namespaces. It's a common use case to need a controller to watch only a specific namespace in the case where you may run a controller in a namespace for each team or environment. In order to watch only a specific namespace for ingress objects, you can set the helm value `watchNamespace` to the namespace you want to watch.
+
