@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { NavLink, useLoaderData, useRouteLoaderData } from "@remix-run/react";
-import config from "~/utils/docs.config";
 import { Button } from "@ngrok/mantle/button";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@ngrok/mantle/hover-card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,26 +37,26 @@ export default function Navigation(props: any) {
       {sidebarData.map((bucket: SidebarItem) => {
         if (!bucket?.title) return null;
         return (
-          <DropdownMenu key={`${bucket.title}-${bucket.path}`}>
-            <DropdownMenuTrigger asChild>
+          <HoverCard key={`${bucket.title}-${bucket.path}`}>
+            <HoverCardTrigger asChild>
               <Button appearance="link" type="button">
                 {bucket.title} <Icon svg={<CaretDown />} />
               </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            </HoverCardTrigger>
+            <HoverCardContent className="flex flex-col" >
               {/* Get sidebar data for the bucket here*/}
               {bucket?.children?.map((item: SidebarItem) => {
                 // This check should be removed eventually.
                 // The data should probably always have a title and path.
                 if (!item?.title || !item?.path) return null;
                 return (
-                  <DropdownMenuItem key={item.path + item.title}>
-                    <NavLink
+                  <NavLink key={item.path + item.title}
                       to={item.path}
                       prefetch="intent"
                       aria-label={item.title}
                       className={({ isActive }) =>
                         clsx(
+                          "w-full hover:text-sky-500",
                           isActive
                             ? "font-semibold text-sky-500 before:bg-sky-500"
                             : "text-black before:hidden before:bg-slate-300 hover:text-slate-600"
@@ -65,11 +65,10 @@ export default function Navigation(props: any) {
                     >
                       {item.title}
                     </NavLink>
-                  </DropdownMenuItem>
                 );
               })}
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </HoverCardContent>
+          </HoverCard>
         );
       })}
     </div>
