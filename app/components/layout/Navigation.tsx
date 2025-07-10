@@ -23,8 +23,13 @@ import { SidebarItem } from "~/utils/sidebar";
  */
 
 export default function Navigation(props: any) {
-  const { sidebarData } = useRouteLoaderData<DocsLoaderData>("routes/docs+/route");
+  const data = useRouteLoaderData<DocsLoaderData>("routes/docs+/route");
 
+  const sidebarData = data?.sidebarData;  
+  if(!sidebarData || sidebarData.length === 0) {
+    console.log("Data is empty:", data);
+    return null;
+  }
 
   return (
     <div

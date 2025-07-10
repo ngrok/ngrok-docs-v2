@@ -42,6 +42,7 @@
     "react-error-boundary": "^5.0.0",
     "react-instantsearch": "^7.15.3",
     "react-loadable": "^5.5.0",
+    "react-markdown": "^10.1.0",
     "rehype": "^13.0.2",
     "rehype-slug": "^6.0.0",
     "remark": "^15.0.1",
