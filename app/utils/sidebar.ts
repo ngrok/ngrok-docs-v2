@@ -19,9 +19,7 @@ export async function getItemsFromDir(dirName: string, bucketLabel: string = "",
     for await (const dirent of dir) {
 			if (dirent.name.includes("shared")) {
 				// Skip the shared directory
-        console.log("====================");
-        console.log("Skipping shared directory:", dirent.name);
-        console.log("====================");
+        continue;
 			}
       const entity = path.join(itemsDir, dirent.name);
       const isFile = (await fs.lstat(entity)).isFile();
@@ -53,6 +51,7 @@ export async function getItemsFromDir(dirName: string, bucketLabel: string = "",
 
         itemsList.push({
           title:
+            indexFileData.frontmatter?.sidebar_label ||
             indexFileData.frontmatter?.title ||
             indexFileData.headings[0]?.value,
           bucketLabel,
@@ -76,6 +75,7 @@ export async function getItemsFromDir(dirName: string, bucketLabel: string = "",
         path: getFullUrlPath(`/docs/${dirName}/${dirent.name}`),
         bucketLabel,
         title:
+          fileOfRemark.data?.frontmatter?.sidebar_label ||
           fileOfRemark.data?.frontmatter?.title ||
           fileOfRemark.data?.headings?.find((item: any) => item.depth === 1)
             ?.value,
@@ -96,7 +96,7 @@ export async function getItemsFromDir(dirName: string, bucketLabel: string = "",
 }
 
 export type SidebarItem = {
-  title?: string;
+  title: string;
   bucketLabel: string;
   path?: string;
   children?: SidebarItem[];
@@ -116,6 +116,7 @@ const getItemFromString = async (
     path: data.path,
     bucketLabel,
     title:
+      data.frontmatter?.sidebar_label ||
       data.frontmatter?.title ||
       data.headings.find((item: any) => item.depth === 1)?.value,
     children: [],
@@ -140,26 +141,36 @@ const getChildrenData = async (childItems: any, bucketLabel: string = "") => {
 };
 
 const getItemFromObject = async (itemData: any, bucketLabel: string = "") => {
-  const path = itemData?.link?.id
-    ? "/docs/" + itemData.link.id.split("/index")[0]
-    : null;
-  const childrenData = await getChildrenData(
+  let path = "";
+  switch(itemData.type) {
+    case "link":
+      path = itemData?.href || null;
+      break;
+    default: // "doc" or "category"
+      const id = itemData?.link?.id || itemData?.id;
+      if(id){
+        path = `/docs/${id.split("/index")[0]}`;
+      }
+      break;
+  }
+    
+  const childrenData = itemData.items ? await getChildrenData(
     itemData.items,
     bucketLabel
-  );
+  ) : null;
+
+  const children = childrenData?.map((item: any) => item.value).flat();
 
   return {
     title: itemData.label,
-    bucketLabel: bucketLabel,
-    path,
-    // children: [],
-    children: !itemData.items
-      ? []
-      : childrenData.map((item: any) => item.value).flat(),
+    bucketLabel,
+    path: path || children?.[0]?.path || "",
+    children,
     collapsible:
       itemData.collapsible !== undefined
         ? itemData.collapsible
         : true,
+    getIcon: itemData.getIcon
   };
 };
 
@@ -178,18 +189,16 @@ export const getSidebar = async () => {
 function findInNestedArray(arr: any, path: string) {
   if(!arr) return null;
   for (const item of arr) {
-    // Match found
     if(!item){
-      console.log("Item is null or undefined", path, item);
-    }
-    if(!item || !item["path"]){
-      console.log("Item has no path property", item);
-      continue; // Skip if no path
-    }
-    if (item["path"] === path) {
-      return item;
+      // console.log("Item is null or undefined", path, item);
+      continue;
     }
 
+    if(item["path"]){
+      if (path === item["path"] || path === `${item["path"]}/`) {
+        return item;
+      }
+    }
     // Recurse if children exist and are an array
     if (Array.isArray(item["children"])) {
       const found: SidebarItem = findInNestedArray(item["children"], path);

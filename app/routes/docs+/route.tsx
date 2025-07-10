@@ -12,8 +12,8 @@ import useBreakpoint from "use-breakpoint";
 import { Sidebar } from "@components/layout/Sidebar";
 import { getSidebar, SidebarItem } from "~/utils/sidebar";
 
-export type LoaderData = {
-  sidebar: SidebarItem[] | null;
+export type DocsLoaderData = {
+  sidebarData: SidebarItem[] | null;
   headings: Heading[];
   algoliaInfo: {
     appId: string;
@@ -29,17 +29,16 @@ let cachedSidebarData: any | any[] = null;
 // Don't wanna fetch this on every page load
 async function fetchSidebarData() {
   if (cachedSidebarData) {
-    console.log("Fetched sidebar data:", cachedSidebarData);
+    // console.log("Cached sidebar data:", cachedSidebarData);
     return cachedSidebarData;
   }
   const rawData = await getSidebar();
-  const sidebar = rawData?.map((item: any) => item.value);
-  const sidebarData = sidebar;
+  const sidebarData = rawData?.map((item: any) => item.value);
 
   // console.log("Sidebar data", sidebarData);
-  console.log("Fetched sidebar data:", sidebar);
-  cachedSidebarData = sidebar;
-  return sidebar;
+  cachedSidebarData = sidebarData;
+  
+  return sidebarData;
 }
 
 export const loader: LoaderFunction = async ({

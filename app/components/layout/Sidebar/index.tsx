@@ -7,12 +7,13 @@ import {
   AccordionTriggerIcon,
 } from "@ngrok/mantle/accordion";
 import { HorizontalSeparatorGroup, Separator } from "@ngrok/mantle/separator";
-import { Link, useLoaderData, useLocation } from "@remix-run/react";
+import { Link, NavLink, useLoaderData, useLocation } from "@remix-run/react";
 import { getActiveNavBucket, type SidebarItem } from "~/utils/sidebar";
 import { CustomDocSearch } from "@components/CustomDocSearch";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { DocsLoaderData } from "~/routes/docs+/route";
+import { doNormalizedPathsMatch } from "~/utils/redirects/pathMethods";
 
 
 const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
@@ -145,9 +146,18 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
       <CustomDocSearch algoliaInfo={algoliaInfo} />
       <div className="sticky top-0 self-start h-[calc(100vh-4rem)] w-64 overflow-y-auto pr-8 xl:w-72 xl:pr-16">
       <ul className="list-none" role="list">
+        <h2><NavLink
+          to={navBucket.path || window.location.pathname}
+          prefetch="intent"
+        >{navBucket.title}</NavLink></h2>
         {navBucket &&
           navBucket.children?.map((topLevelItem: SidebarItem) => {
-            if(!topLevelItem) return null;
+            if(!topLevelItem) return null;            
+            // Skip the top-level item if it matches the current nav bucket path
+            // This is to avoid showing the same item twice in the sidebar
+            if(doNormalizedPathsMatch(topLevelItem.path, navBucket.path)) {
+              return null;
+            }
             const { path, title } = topLevelItem;
             if (topLevelItem.divider) {
               return <SidebarDivider key={path || title} title={title} />;
