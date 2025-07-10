@@ -20,7 +20,8 @@ export type Heading = {
 export async function getHeadings(rawPath: string) {
   try {
     let urlPath = getRemixPath(rawPath);
-    let filePath = path.join(process.cwd(), "app/routes/", `${urlPath}.mdx`);
+    const basePath = "app/routes/";
+    let filePath = path.join(process.cwd(), basePath, `${urlPath}.mdx`);
     let markdown = "";
     try {
       markdown = await fs.readFile(filePath, "utf8");
@@ -33,8 +34,8 @@ export async function getHeadings(rawPath: string) {
 
         filePath = path.join(
           process.cwd(),
-          "app/routes",
-          `/${urlPath}+/index.mdx`
+          basePath,
+          `${urlPath}+/index.mdx`
         );
         try {
           markdown = await fs.readFile(filePath + "", "utf8");
@@ -42,8 +43,8 @@ export async function getHeadings(rawPath: string) {
           // check for index.md instead
           filePath = path.join(
             process.cwd(),
-            "app/routes",
-            `/${urlPath}+/index.md`
+            basePath,
+            `${urlPath}+/index.md`
           );
           markdown = await fs.readFile(filePath.replace(".mdx", ".md"), "utf8");
         }

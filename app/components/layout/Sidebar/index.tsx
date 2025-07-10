@@ -140,7 +140,6 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
   if(!navBucket) {
     return null;
   }
-  console.log("Sidebar navBucket", navBucket, pathname);
   return (
     <nav className={clsx("", className)}>
       <CustomDocSearch algoliaInfo={algoliaInfo} />

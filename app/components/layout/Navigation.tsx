@@ -27,7 +27,6 @@ export default function Navigation(props: any) {
 
   const sidebarData = data?.sidebarData;  
   if(!sidebarData || sidebarData.length === 0) {
-    console.log("Data is empty:", data);
     return null;
   }
 

@@ -17,6 +17,12 @@ export async function getItemsFromDir(dirName: string, bucketLabel: string = "",
   try {
     const dir = await fs.opendir(itemsDir);
     for await (const dirent of dir) {
+			if (dirent.name.includes("shared")) {
+				// Skip the shared directory
+        console.log("====================");
+        console.log("Skipping shared directory:", dirent.name);
+        console.log("====================");
+			}
       const entity = path.join(itemsDir, dirent.name);
       const isFile = (await fs.lstat(entity)).isFile();
       if (!isFile) {
@@ -171,31 +177,29 @@ export const getSidebar = async () => {
 
 function findInNestedArray(arr: any, path: string) {
   if(!arr) return null;
-  const pathKey = "path";
   for (const item of arr) {
     // Match found
     if(!item){
       console.log("Item is null or undefined", path, item);
     }
-    if(!item || !item[pathKey]){
+    if(!item || !item["path"]){
       console.log("Item has no path property", item);
       continue; // Skip if no path
     }
-    if (item[pathKey] === path) {
+    if (item["path"] === path) {
       return item;
     }
 
-    const childKey = "children";
     // Recurse if children exist and are an array
-    if (Array.isArray(item[childKey])) {
-      const found: SidebarItem = findInNestedArray(item[childKey], path);
+    if (Array.isArray(item["children"])) {
+      const found: SidebarItem = findInNestedArray(item["children"], path);
       if (found) {
         return found;
       }
     }
   }
 
-  return null; // Not found
+  return null;
 }
 
 export const getActiveNavBucket = (windowPath: string, sidebarData: SidebarItem[]) => {
