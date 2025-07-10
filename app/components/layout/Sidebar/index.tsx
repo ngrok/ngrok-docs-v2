@@ -155,7 +155,7 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
             if(!topLevelItem) return null;            
             // Skip the top-level item if it matches the current nav bucket path
             // This is to avoid showing the same item twice in the sidebar
-            if(doNormalizedPathsMatch(topLevelItem.path, navBucket.path)) {
+            if(doNormalizedPathsMatch(topLevelItem.path, navBucket.path) && topLevelItem.title === navBucket.title) {
               return null;
             }
             const { path, title } = topLevelItem;
