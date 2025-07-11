@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { NavLink, useLoaderData, useRouteLoaderData } from "@remix-run/react";
+import { NavLink, useRouteLoaderData } from "@remix-run/react";
 import { Button } from "@ngrok/mantle/button";
 import {
   HoverCard,
@@ -9,8 +9,8 @@ import {
 import { Icon } from "@ngrok/mantle/icon";
 import { CaretDown } from "@phosphor-icons/react";
 import { DocsLoaderData } from "~/routes/docs+/route";
-import { SidebarItem } from "~/utils/sidebar";
 import { doNormalizedPathsMatch } from "~/utils/redirects/pathMethods";
+import { SidebarItemData } from "~/utils/sidebar";
 
 const MAX_CHILDREN = 5; // Maximum number of children to show before showing "More"
 
@@ -29,7 +29,7 @@ export default function Navigation(props: any) {
       )}
     >
       {sidebarData.map((bucket: SidebarItemData) => {
-        return <NavItem key={bucket.path} bucket={bucket} />;
+        return <CardItem key={bucket.path} bucket={bucket} />;
       })}
     </div>
   );
@@ -76,7 +76,7 @@ function generateOverviewItemIfNeeded(bucket: SidebarItemData) {
   return null;
 }
 
-function NavItem({ bucket }: { bucket: SidebarItemData }) {
+function CardItem({ bucket }: { bucket: SidebarItemData }) {
 
   // If there are more than MAX_CHILDREN items, show only the first MAX_CHILDREN items
   const truncatedChildren = bucket.children?.slice(0, MAX_CHILDREN);

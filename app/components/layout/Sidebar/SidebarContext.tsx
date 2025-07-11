@@ -1,7 +1,7 @@
 import { useRouteLoaderData } from "@remix-run/react";
 import { createContext, useContext, useState } from "react";
 import { LoaderData } from "~/root";
-import { SidebarItem } from "~/utils/sidebar";
+import { SidebarItemData } from "~/utils/sidebar";
 
 const SidebarDataContext = createContext<SidebarItemData[] | null>(null);
 

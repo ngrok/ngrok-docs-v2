@@ -97,6 +97,7 @@ function SidebarItem({
   className?: string;
 }) {
   const itemHasChildren = item.children && item.children.length > 0;
+  
   return (
     itemHasChildren ? (
       <div className={className}>

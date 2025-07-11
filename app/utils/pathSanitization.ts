@@ -29,11 +29,14 @@ export function getFullUrlPath(str: string) {
   if (normalizedPath.includes("+")) {
     normalizedPath = normalizedPath.replaceAll("+", "");
   }
-  if (normalizedPath.endsWith("index")) {
-    normalizedPath = normalizedPath.replace(/index$/, "");
-  }
   if (normalizedPath.includes(".md")) {
     normalizedPath = normalizedPath.substring(0, normalizedPath.indexOf(".md"));
+  }
+  if(!normalizedPath.endsWith("/")) {
+    normalizedPath += "/";
+  }
+  if (normalizedPath.endsWith("index/")) {
+    normalizedPath = normalizedPath.replace("index/", "");
   }
   return normalizedPath;
 }
