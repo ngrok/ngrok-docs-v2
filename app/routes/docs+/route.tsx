@@ -13,7 +13,7 @@ import { Sidebar } from "@components/layout/Sidebar";
 import { getSidebar, SidebarItem } from "~/utils/sidebar";
 
 export type DocsLoaderData = {
-  sidebarData: SidebarItem[] | null;
+  sidebarData: SidebarItemData[] | null;
   headings: Heading[];
   algoliaInfo: {
     appId: string;

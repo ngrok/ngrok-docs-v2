@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 import { LoaderData } from "~/root";
 import { SidebarItem } from "~/utils/sidebar";
 
-const SidebarDataContext = createContext<SidebarItem[] | null>(null);
+const SidebarDataContext = createContext<SidebarItemData[] | null>(null);
 
 export function SidebarDataProvider({ children }: any) {
   const loaderData = useRouteLoaderData<LoaderData>("root");

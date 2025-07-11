@@ -62,7 +62,7 @@ export const links: LinksFunction = () => [
 ];
 
 export type LoaderData = {
-  sidebar: SidebarItem[] | null;
+  sidebar: SidebarItemData[] | null;
   canonical?: string;
   requestInfo: {
     url: string;
@@ -102,7 +102,7 @@ export const loader: LoaderFunction = async ({
 
   // const sidebar = await fetchSidebarData();
 
-  // sidebar?.forEach((item: SidebarItem) => {
+  // sidebar?.forEach((item: SidebarItemData) => {
   //   if (item.path && item.path?.includes("universal")) {
   //     console.log("\n * Universal gateway", item, "\n");
   //   }

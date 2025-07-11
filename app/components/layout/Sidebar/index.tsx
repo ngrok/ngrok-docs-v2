@@ -1,14 +1,5 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionHeading,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionTriggerIcon,
-} from "@ngrok/mantle/accordion";
-import { HorizontalSeparatorGroup, Separator } from "@ngrok/mantle/separator";
 import { Link, NavLink, useLoaderData, useLocation } from "@remix-run/react";
-import { getActiveNavBucket, type SidebarItem } from "~/utils/sidebar";
+import { getActiveNavBucket, type SidebarItemData } from "~/utils/sidebar";
 import { CustomDocSearch } from "@components/CustomDocSearch";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
@@ -16,7 +7,7 @@ import { DocsLoaderData } from "~/routes/docs+/route";
 import { doNormalizedPathsMatch } from "~/utils/redirects/pathMethods";
 
 
-const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
+const SectionChildren = ({ items, className }: { items: SidebarItemData["children"], className?: string }) => {
   const { pathname } = useLocation();
 
   return (
@@ -27,7 +18,7 @@ const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
         const [isActive, setIsActive] = useState(false);
         
         useEffect(() => {
-          setIsActive(pathname === item.path);
+          setIsActive(doNormalizedPathsMatch(pathname, item.path));
           if (isActive && itemRef.current) {
             itemRef.current.scrollIntoView({
               behavior: "smooth",
@@ -38,11 +29,7 @@ const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
         }, [isActive]);
         return (
           <li key={`${key}${item.path || item.title}`}>
-            {item?.children?.length > 0 ? (
-              <SidebarSection sectionItem={item} />
-            ) : (
-              <NavItem path={item.path} title={item.title} />
-            )}
+            <SidebarItem className={clsx("", className)} item={item} />
           </li>
         );
       })}
@@ -50,85 +37,16 @@ const SectionChildren = ({ items }: { items: SidebarItem["children"] }) => {
   );
 };
 
-const NonCollapsibleSection = ({
-  item,
-  children,
-}: {
-  item: SidebarItem;
-  children: any;
-}) => {
-  return (
-    <>
-      <HorizontalSeparatorGroup>
-        <Separator />
-        <span>{item.title}</span>
-        <Separator />
-      </HorizontalSeparatorGroup>
-      {children}
-    </>
-  );
-};
-
-const SectionTitle = ({ item }: { item: SidebarItem }) => {
-  return (
-    <div className="flex">
-      {item.path ? (
-        <NavItem path={item.path.split("index")[0]} title={item.title} />
-      ) : (
-        item.title
-      )}
-      <AccordionTrigger>
-        <AccordionTriggerIcon />
-      </AccordionTrigger>
-    </div>
-  );
-};
-
-export const SidebarSection = ({
-  sectionItem,
-}: {
-  sectionItem: SidebarItem;
-}) => {
-  if (!sectionItem.collapsible) {
-    return (
-      <NonCollapsibleSection item={sectionItem}>
-        <SectionChildren items={sectionItem.children} />
-      </NonCollapsibleSection>
-    );
-  }
-  return (
-    <Accordion type="multiple">
-      <AccordionItem value={sectionItem.title}>
-        <AccordionHeading asChild>
-          <SectionTitle item={sectionItem} />
-        </AccordionHeading>
-        <AccordionContent className="ml-5 flex flex-col">
-          <SectionChildren items={sectionItem.children} />
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  );
-};
-
-const SidebarDivider = ({ title }: { title: string }) => {
-  if (!title) return <Separator orientation="vertical" />;
-  return (
-    <HorizontalSeparatorGroup>
-      <Separator />
-      <span>{title}</span>
-      <Separator />
-    </HorizontalSeparatorGroup>
-  );
-};
-
 const NavItem = ({
   path,
   title,
+  className,
 }: {
-  path: SidebarItem["path"];
-  title: SidebarItem["title"];
+  path: SidebarItemData["path"];
+  title: SidebarItemData["title"];
+  className?: string;
 }) => {
-  return <Link to={path}>{title}</Link>;
+  return <NavLink className={clsx("", className)} to={path}>{title}</NavLink>;
 };
 
 export const Sidebar = ({ className, algoliaInfo }: any) => {
@@ -145,33 +63,23 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
     <nav className={clsx("", className)}>
       <CustomDocSearch algoliaInfo={algoliaInfo} />
       <div className="sticky top-0 self-start h-[calc(100vh-4rem)] w-64 overflow-y-auto pr-8 xl:w-72 xl:pr-16">
-      <ul className="list-none" role="list">
         <h2><NavLink
           to={navBucket.path || window.location.pathname}
           prefetch="intent"
         >{navBucket.title}</NavLink></h2>
+      <ul className="list-none" role="list">
         {navBucket &&
-          navBucket.children?.map((topLevelItem: SidebarItem) => {
+          navBucket.children?.map((topLevelItem: SidebarItemData) => {
             if(!topLevelItem) return null;            
-            // Skip the top-level item if it matches the current nav bucket path
-            // This is to avoid showing the same item twice in the sidebar
             if(doNormalizedPathsMatch(topLevelItem.path, navBucket.path) && topLevelItem.title === navBucket.title) {
+              // Skip the top-level item if it matches the current nav bucket path
+              // This is to avoid showing the same item twice in the sidebar
               return null;
             }
-            const { path, title } = topLevelItem;
-            if (topLevelItem.divider) {
-              return <SidebarDivider key={path || title} title={title} />;
-            }
+            const fontStyle = !topLevelItem?.children ? "font-mono" : ""
             return (
-              <li key={topLevelItem.path || topLevelItem.title}>
-                {topLevelItem.children && topLevelItem.children?.length > 0 ? (
-                  <SidebarSection sectionItem={topLevelItem} />
-                ) : (
-                  <NavItem
-                    path={topLevelItem.path}
-                    title={topLevelItem.title}
-                  />
-                )}
+              <li key={topLevelItem.path + topLevelItem.title}>
+                <SidebarItem className={fontStyle} item={topLevelItem} />
               </li>
             );
           })}
@@ -180,3 +88,27 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
     </nav>
   );
 };
+
+function SidebarItem({
+  item,
+  className,
+}: {
+  item: SidebarItemData;
+  className?: string;
+}) {
+  const itemHasChildren = item.children && item.children.length > 0;
+  return (
+    itemHasChildren ? (
+      <div className={className}>
+        <span className="font-mono text-lg mt-2 mb-2">{item.title}</span>
+        <SectionChildren items={item.children} />
+      </div>
+    ) : (
+      <NavItem
+        className={clsx("", className)}
+        path={item.path}
+        title={item.title}
+      />
+    )
+  );
+}
