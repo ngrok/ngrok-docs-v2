@@ -99,7 +99,6 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
     return null;
   }
   const navBucket = getActiveNavBucket(pathname, sidebarData);
-  console.log("Active nav bucket", JSON.stringify(navBucket, null, 2));
   if (!navBucket) {
     console.error("No active nav bucket found for path:", pathname);
     return null;
