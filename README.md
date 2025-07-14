@@ -4,7 +4,7 @@ This readme is under construction
 
 Frontmatter is supported with a few requirements:
 
-1. To apply frontmatter values to metadata, you must export a `meta` array from each MDX file that takes the frontmatter as its value
+1. To apply frontmatter values to metadata, you must export a `meta` array containing the frontmatter from each MDX file
 1. The value _must_ be an array, meaning you have to put a dash (`-`) in front of each item you expect to pass to it when writing up the YAML
 
 Here are examples that work:
@@ -21,6 +21,8 @@ export const handle = meta;
 
 ;
 ```
+
+!!! Note that it should be `frontmatter`, all lowercase, not `frontMatter` as we previously used in docusaurus.
 
 ```mdx
 ---

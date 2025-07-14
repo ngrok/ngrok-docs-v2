@@ -15,6 +15,12 @@ export const doNormalizedPathsMatch = (from: string | undefined, path: string | 
   return normalizedPath === normalizedFrom;
 }
 
+export const doesIncludeNormalizedPath = (container: string | undefined, item: string | undefined) => {
+  if(!container || !item) return false; // If either is empty, return false  
+  const { normalizedFrom: normalizedContainer, normalizedPath: normalizedItem } = getNormalizedPaths(container, item);
+  return normalizedContainer.includes(normalizedItem);
+}
+
 export const fromExact = (from: string) => (path: string) => {
   const { normalizedFrom, normalizedPath } = getNormalizedPaths(from, path);
   return [normalizedFrom, normalizedPath === normalizedFrom]; // [xyz]

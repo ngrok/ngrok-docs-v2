@@ -3,7 +3,6 @@ sidebar_position: 0
 title: Overview
 pagination_next: traffic-policy/actions/add-headers
 pagination_label: Actions
-
 categories:
   - id: connection-modification
     name: Connection Modification
@@ -231,7 +230,7 @@ actions:
     categories:
       - security
 ---
-
+{console.log(frontmatter)}
 import ActionHub from "@components/ActionHub";
 
 # Actions
@@ -244,6 +243,6 @@ Traffic Policy Actions enable you to manipulate, route or manage traffic on your
 
 The following actions are available for use on your endpoints:
 
-<ActionHub actions={frontMatter?.actions} />
+<ActionHub actions={frontmatter?.actions} />
 
 
