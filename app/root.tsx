@@ -10,6 +10,7 @@ import {
   Meta,
   NavigateFunction,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
   useLoaderData,
@@ -95,18 +96,13 @@ async function fetchSidebarData() {
 export const loader: LoaderFunction = async ({
   request,
 }: LoaderFunctionArgs) => {
-  const origin = getDomainUrl(request);
   const urlData = new URL(request.url);
   const path = urlData.pathname;
+  if(path === "/") {
+    return redirect("/docs");
+  }
+  const origin = getDomainUrl(request);
   const canonical = removeTrailingSlash(`${origin}${path}`);
-
-  // const sidebar = await fetchSidebarData();
-
-  // sidebar?.forEach((item: SidebarItemData) => {
-  //   if (item.path && item.path?.includes("universal")) {
-  //     console.log("\n * Universal gateway", item, "\n");
-  //   }
-  // });
 
   return data({
     // sidebar,

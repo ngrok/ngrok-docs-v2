@@ -7,6 +7,8 @@ import { remark } from "remark";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkParseFrontmatter from "remark-parse-frontmatter";
 import { getFullUrlPath } from "./pathSanitization";
+import { titleCase } from "title-case";
+import { doNormalizedPathsMatch } from "./redirects/pathMethods";
 
 export type SidebarItemData = {
   title: string;
@@ -57,14 +59,15 @@ export async function getItemsFromDir(dirName: string, bucketLabel: string = "",
 
         if(!indexFileData && filteredChildren.length === 0) {
           // If no index file and no children, skip this directory
+          console.error(`Failed to add empty directory ${dirent.name} to sidebar. To be in the sidebar, a directory must have a file or subdirectory with a file.`);
           continue;
         }
 
         itemsList.push({
-          title: !indexFileData ? null :
+          title: !indexFileData ? titleCase(dirent.name.split("+/").pop()?.replaceAll("-", " ").replaceAll("+", "") || "") || "" :
             indexFileData.frontmatter?.sidebar_label ||
             indexFileData.frontmatter?.title ||
-            indexFileData.headings[0]?.value,
+            indexFileData.headings[0]?.value || "",
           frontmatter: indexFileData?.frontmatter,
           bucketLabel,
           path: !indexFileData ? "" : getFullUrlPath(indexFileData.path),
@@ -202,7 +205,7 @@ function findInNestedArray(arr: any, path: string) {
     }
 
     if(item["path"]){
-      if (path === item["path"] || path === `${item["path"]}/`) {
+      if (doNormalizedPathsMatch(path, item["path"])) {
         return item;
       }
     }
