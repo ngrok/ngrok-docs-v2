@@ -81,7 +81,7 @@ const NavItem = ({
   title,
   className,
 }: {
-  path: SidebarItemData["path"];
+  path: SidebarItemData["path"] | SidebarItemData["href"];
   title: SidebarItemData["title"];
   className?: string;
 }) => {
@@ -99,6 +99,7 @@ export const Sidebar = ({ className, algoliaInfo }: any) => {
     return null;
   }
   const navBucket = getActiveNavBucket(pathname, sidebarData);
+  console.log("Active nav bucket", JSON.stringify(navBucket, null, 2));
   if (!navBucket) {
     console.error("No active nav bucket found for path:", pathname);
     return null;
@@ -174,7 +175,7 @@ function SidebarItem({
   ) : (
     <NavItem
       className={clsx("", className)}
-      path={item.path}
+      path={item.path || item.href || ""}
       title={item.title}
     />
   );

@@ -98,9 +98,12 @@ export const loader: LoaderFunction = async ({
 }: LoaderFunctionArgs) => {
   const urlData = new URL(request.url);
   const path = urlData.pathname;
-  if(path === "/") {
-    return redirect("/docs");
-  }
+  const { result, newPath } = checkForRedirects(path);
+    if (result) {
+      redirect(newPath as string, { 
+        status: 301,
+      });
+    }
   const origin = getDomainUrl(request);
   const canonical = removeTrailingSlash(`${origin}${path}`);
 

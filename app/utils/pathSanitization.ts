@@ -19,6 +19,7 @@ export function getRemixPath(str: string) {
 }
 
 export function getFullUrlPath(str: string) {
+  if (!str) return "";
   let normalizedPath = str;
   if (!normalizedPath.startsWith("/")) {
     normalizedPath = `/${normalizedPath}`;
