@@ -112,3 +112,23 @@ export const handle = meta;
 
 ...
 ```
+
+## sidebar_position
+
+The sidebar_position frontmatter prop is a holdover from docusaurus. Right now the way it works is, if a directory has items with that prop, those items are sorted to the top of the list in the sidebar, then sorted amongst themselves based on the position specified.
+
+Example:
+
+```txt
+- item 1 has sidebar_position 3
+- item 2 has no sidebar_position
+- item 3 has sidebar_position 1
+
+Result:
+
+- item 3
+- item 1
+- item 2
+```
+
+This behavior will be updated to fully match docusaurus logic in the future.

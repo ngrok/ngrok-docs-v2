@@ -29,6 +29,7 @@ export default function Navigation(props: any) {
       )}
     >
       {sidebarData.map((bucket: SidebarItemData) => {
+        if(!bucket?.path) { return null; }
         return <CardItem key={bucket.path} bucket={bucket} />;
       })}
     </div>
