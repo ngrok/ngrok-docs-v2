@@ -1,5 +1,5 @@
 import { vitePlugin as remix } from "@remix-run/dev";
-import { defineConfig } from "vite";
+import { defineConfig, Plugin } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import vitePluginRequire from "vite-plugin-require";
 import mdx from "@mdx-js/rollup";
@@ -13,6 +13,14 @@ import { envOnlyMacros } from "vite-env-only";
 import { recmaCodeHike, remarkCodeHike } from "codehike/mdx";
 import remarkHeadings from "@vcarl/remark-headings";
 import { remarkMdxToc } from "remark-mdx-toc";
+
+const generateSidebarPlugin = (): Plugin => ({
+  name: 'generate-sidebar',
+  buildStart: async () => {
+    // Run sidebar generation at build start
+    await import('./app/prebuild/prebuild-sidebar');
+  }
+});
 
 installGlobals();
 declare module "@remix-run/node" {
@@ -65,5 +73,6 @@ export default defineConfig({
       },
     }),
     vitePluginRequire.default(),
+    generateSidebarPlugin(),
   ],
 });

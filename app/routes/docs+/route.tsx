@@ -11,6 +11,7 @@ import { checkForRedirects } from "~/utils/redirects/redirectMethods";
 import useBreakpoint from "use-breakpoint";
 import { Sidebar } from "@components/layout/Sidebar";
 import { getSidebar, SidebarItem } from "~/utils/sidebar";
+import { getSidebarData } from "~/utils/sidebarLoader";
 
 export type DocsLoaderData = {
   sidebarData: SidebarItemData[] | null;
@@ -53,7 +54,8 @@ export const loader: LoaderFunction = async ({
     return redirect(newPath as string);
   }
   const headings = await getHeadings(pathname);
-  const sidebarData = await fetchSidebarData();
+  // const sidebarData = await fetchSidebarData();
+  const sidebarData = getSidebarData();
 
   return data({
     sidebarData,

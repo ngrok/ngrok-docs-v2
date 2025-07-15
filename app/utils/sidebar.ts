@@ -183,8 +183,11 @@ const getItemFromObject = async (itemData: any) => {
 
   throwErrorIfChildrenInvalid(children, itemData, finalPath);
 
+  const {subDirsCollapsible, type} = itemData;
+
   return {
-    ...itemData,
+    subDirsCollapsible,
+    type,
     title: itemData.label,
     path: finalPath,    
     children: children,
