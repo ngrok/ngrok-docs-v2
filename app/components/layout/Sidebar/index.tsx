@@ -1,10 +1,10 @@
-import { Link, NavLink, useLoaderData, useLocation } from "@remix-run/react";
+import { Link, NavLink, NavLinkProps, useLoaderData, useLocation } from "@remix-run/react";
 import { getActiveNavBucket, type SidebarItemData } from "~/utils/sidebar";
 import { CustomDocSearch } from "@components/CustomDocSearch";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { DocsLoaderData } from "~/routes/docs+/route";
-import { doNormalizedPathsMatch } from "~/utils/redirects/pathMethods";
+import { doesIncludeNormalizedPath, doNormalizedPathsMatch } from "~/utils/redirects/pathMethods";
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +13,7 @@ import {
   AccordionTrigger,
   AccordionTriggerIcon,
 } from "@ngrok/mantle/accordion";
+import { useIsPathActive } from "~/hooks/useIsPathActive";
 
 function getSortedItems(items: SidebarItemData[]) {
   
@@ -54,20 +55,20 @@ if(!items) return null;
       {sortedItems?.map((item: any, key) => {
         if (!item) return null;
         const itemRef = useRef<HTMLLIElement | null>(null);
-        const [isActive, setIsActive] = useState(false);
+        const isPathActive = useIsPathActive(item.path);
 
         useEffect(() => {
-          setIsActive(doNormalizedPathsMatch(pathname, item.path));
-          if (isActive && itemRef.current) {
+          if (isPathActive && itemRef.current) {
             itemRef.current.scrollIntoView({
               behavior: "smooth",
               block: "center",
               inline: "nearest",
             });
           }
-        }, [isActive]);
+        }, [isPathActive]);
+
         return (
-          <li key={`${key}${item.path || item.title}`}>
+          <li  ref={itemRef} key={`${key}${item.path || item.title}`}>
             <SidebarItem className={clsx("", className)} item={item} />
           </li>
         );
@@ -86,7 +87,10 @@ const NavItem = ({
   className?: string;
 }) => {
   return (
-    <NavLink className={clsx("", className)} to={path}>
+    <NavLink className={({isActive})=>clsx("", className, isActive
+                      ? "font-semibold text-sky-500 before:bg-sky-500"
+                      : "text-black before:hidden before:bg-slate-300 hover:text-slate-600"  )}
+                    to={path}>
       {title}
     </NavLink>
   );
@@ -147,11 +151,18 @@ function SidebarItem({
   item: SidebarItemData;
   className?: string;
 }) {
+  const { pathname } = useLocation();
   const itemHasChildren = item.children && item.children.length > 0;
+  let defaultState = "defaultValue";
+  if(itemHasChildren) {
+    if(item.children?.some((child: SidebarItemData) => doNormalizedPathsMatch(child.path, pathname))) {
+      defaultState = item.title;
+    }
+  }
   return itemHasChildren ? (
     <div className={className}>
       {item.collapsible ? (
-        <Accordion type="single" defaultValue="defaultValue" collapsible>
+        <Accordion type="single" defaultValue={defaultState} collapsible>
           <AccordionItem value={item.title}>
             <AccordionHeading className="mx-4 flex items-center gap-2" asChild>
               <AccordionTrigger>

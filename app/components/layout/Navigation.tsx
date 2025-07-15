@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { NavLink, useRouteLoaderData } from "@remix-run/react";
+import { NavLink, useNavigate, useRouteLoaderData } from "@remix-run/react";
 import { Button } from "@ngrok/mantle/button";
 import {
   HoverCard,
@@ -12,7 +12,6 @@ import { DocsLoaderData } from "~/routes/docs+/route";
 import { doNormalizedPathsMatch } from "~/utils/redirects/pathMethods";
 import { SidebarItemData } from "~/utils/sidebar";
 
-const MAX_CHILDREN = 5; // Maximum number of children to show before showing "More"
 
 export default function Navigation(props: any) {
   const data = useRouteLoaderData<DocsLoaderData>("routes/docs+/route");
@@ -29,8 +28,8 @@ export default function Navigation(props: any) {
       )}
     >
       {sidebarData.map((bucket: SidebarItemData) => {
-        if(!bucket?.path) { return null; }
-        return <CardItem key={bucket.path} bucket={bucket} />;
+        if(!bucket?.title) { return null; }
+        return <CardItem key={bucket.path || bucket.title} bucket={bucket} />;
       })}
     </div>
   );
@@ -78,16 +77,23 @@ function generateOverviewItemIfNeeded(bucket: SidebarItemData) {
 }
 
 function CardItem({ bucket }: { bucket: SidebarItemData }) {
-
+  const navigate = useNavigate();
+  const MAX_CHILDREN = 5; // Maximum number of children to show before showing "More"
   // If there are more than MAX_CHILDREN items, show only the first MAX_CHILDREN items
   const truncatedChildren = bucket.children?.slice(0, MAX_CHILDREN);
   const childrenToShow = truncatedChildren || bucket.children;
+  const hasChildren = childrenToShow && childrenToShow.length > 0;
+
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button appearance="link" type="button">
+        <Button onClick={()=>{
+          // If bucket has no children, make it act like a link
+          if(hasChildren || !bucket.path) return;
+          navigate(bucket.path);
+        }} appearance="link" type="button">
           {bucket.title}{" "}
-          {bucket.children?.length === 0 ? null : <Icon svg={<CaretDown />} />}
+          {!hasChildren ? null : <Icon svg={<CaretDown />} />}
         </Button>
       </HoverCardTrigger>
       {

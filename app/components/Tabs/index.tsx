@@ -54,9 +54,9 @@ export default function TabsComponent(props: TabsProps) {
     <Tabs orientation="horizontal" defaultValue={defaultTab} value={tabToShow}>
       <TabsList>
         {tabs?.map((tabItem: any, i: number) => {
-          const { label } = tabItem.props;
-          if (!label) {
-            throw new Error("TabItem must have a label");
+          const { label, value } = tabItem.props;
+          if (!label && !value) {
+            throw new Error("TabItem must have a label or value");
           }
           return (
             <TabsTrigger

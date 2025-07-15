@@ -55,7 +55,7 @@ export async function getItemsFromDir(dirName: string, collapsible: boolean = fa
         );
         const indexFileData = await getSidebarItemAtPath(indexFilePath);
         const children: any[] | any = await getItemsFromDir(
-          path.join(adjustedDirName, dirent.name),
+          `${adjustedDirName}/${dirent.name}`,
           collapsible
         );
 
@@ -76,7 +76,7 @@ export async function getItemsFromDir(dirName: string, collapsible: boolean = fa
             indexFileData.headings[0]?.value || "",
           frontmatter: indexFileData?.frontmatter,
           explicitSidebarPosition: indexFileData?.frontmatter?.sidebar_position,
-          path: !indexFileData ? "" : getFullUrlPath(indexFileData.path),
+          path: !indexFileData ? filteredChildren[0].path || "" : getFullUrlPath(indexFileData.path),
           children: filteredChildren,
           collapsible,
         });
@@ -166,14 +166,11 @@ const getChildrenData = async (itemData: any) => {
 
 const getItemFromObject = async (itemData: any) => {
   let path = "";
-  switch(itemData.type) {
-    case "doc": // "doc" or "category"
-    case "category":
-      const id = itemData?.link?.id || itemData?.id;
-      if(id){
-        path = `/docs/${id.split("/index")[0]}`;
-      }
-      break;
+  if(itemData.type !== "link") {
+    const id = itemData?.link?.id || itemData?.id;
+    if(id){
+      path = `/docs/${id.split("/index")[0]}`;
+    }
   }
     
   const childrenData = itemData.items ? await getChildrenData(
