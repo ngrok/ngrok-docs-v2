@@ -181,8 +181,11 @@ const getItemFromObject = async (itemData: any) => {
   ) : [];
 
   const children = childrenData?.map((item: any) => item.value).flat();
-
+  
   const finalPath = itemData.type === "link" ? "" : getFullUrlPath(path) || getFullUrlPath(children?.[0]?.path) || "";
+
+  throwErrorIfChildrenInvalid(children, itemData, finalPath);
+
   return {
     ...itemData,
     title: itemData.label,
@@ -190,6 +193,15 @@ const getItemFromObject = async (itemData: any) => {
     children: children,
   };
 };
+
+function throwErrorIfChildrenInvalid(children: SidebarItemData[], itemData: any, finalPath: string) {
+  if(!children || children.length === 0) {
+    return;
+  }
+  if(children.some((item: SidebarItemData) => item?.type === "link" && doNormalizedPathsMatch(item?.href, finalPath))) {
+    throw new Error(`Sidebar items with type "link" cannot link to the same path as the parent object. Check ${itemData.label}.\n\n Problematic path: ${finalPath}`);
+  }
+}
 
 /**
  * Make this just work if the item is formatted properly already
@@ -210,7 +222,6 @@ function findInNestedArray(children: any, path: string) {
       // console.log("Item is null or undefined", path, item);
       continue;
     }
-
     // Skip links
     if(item.type === "link" || item.href !== undefined) {
       continue;
@@ -237,7 +248,7 @@ export const getActiveNavBucket = (windowPath: string, sidebarData: SidebarItemD
   if(topLevelPage) return topLevelPage;
 
   // If not, find the first bucket that has a child with the current path
-  return sidebarData.find((bucket: SidebarItemData) => {
+  return sidebarData.find((bucket: SidebarItemData) => {    
     return findInNestedArray(bucket.children, windowPath);
   });
 }

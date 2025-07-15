@@ -39,7 +39,7 @@ import {
   langParamName,
 } from "@components/LangSwitcher/utils";
 import { globalComponents } from "./utils/componentsToImport";
-import { getSidebar, SidebarItem } from "./utils/sidebar";
+import { getSidebar, SidebarItem, SidebarItemData } from "./utils/sidebar";
 
 export const links: LinksFunction = () => [
   {

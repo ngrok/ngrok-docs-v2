@@ -70,7 +70,6 @@ export const navData: NavBucket[] = [
       {
         label: "Kubernetes",
         type: "category",
-        link: { type: "doc", id: "getting-started/kubernetes/ingress" },
         items: [
           {
             type: "link",
