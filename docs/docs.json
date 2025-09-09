@@ -6,6 +6,6 @@
     "primary": "#ff0000"
   },
   "navigation": {
-    "pages": ["agent"]
+    "pages": ["how-ngrok-works", "what-is-ngrok", "whats-new", "why-ngrok"]
   }
 }
