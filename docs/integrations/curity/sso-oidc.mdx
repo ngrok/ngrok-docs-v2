@@ -39,7 +39,7 @@ To integrate ngrok with Curity Identity Server, you will need to:
 1. Configure Curity with the ngrok app
 1. Configure ngrok with the SSO settings provided by Curity
 
-## **Step 1**: Configure Curity Authentication {#configure-Curity-auth}
+## **Step 1**: Configure Curity Authentication 
 
 The Curity Identity Server provides an authenticator called `html-form` that is suitable for setting up a login with username and password. It uses a Credential Manager to verify the credentials, which in turn uses a data-source. There any many options for stronger authentication than username and password. A list of possible authentication methods is available [here](https://curity.io/product/authentication-service/ways-to-authenticate/).
 
@@ -57,7 +57,7 @@ The Curity Identity Server provides an authenticator called `html-form` that is 
 
       ![img/username-04.jpg](img/username-04.jpg)
 
-## **Step 2**: Configure Curity for OIDC {#configure-Curity-oidc}
+## **Step 2**: Configure Curity for OIDC 
 
 ### Add an openid client in Curity
 
@@ -96,7 +96,7 @@ The Curity Identity Server provides an authenticator called `html-form` that is 
 
       ![img/username-04.jpg](img/username-04.jpg)
 
-## **Step 3**: Configure ngrok {#configure-ngrok}
+## **Step 3**: Configure ngrok 
 
 ngrok can leverage Curity Identity Server in two ways:
 
@@ -164,7 +164,7 @@ For this step, we assume you have an app running locally (i.e. on localhost:3000
 1.  In the test edge, copy the **endpoint URL**. (you will use this url to test the Curity Authentication)
     ![tunnel url](img/curity-4.png)
 
-## **Step 4**: Test the integration {#test-sso}
+## **Step 4**: Test the integration 
 
 1. In your browser, launch an incognito window.
 1. Access your ngrok tunnel (i.e., https://curity-sso-test.ngrok.app or using a copied URL).

@@ -6,16 +6,16 @@ sidebar_label: Connect URLs
 import TabItem from "@theme/TabItem";
 import Tabs from "@theme/Tabs";
 
-import CustomIngressAgentCliExample from "/examples/agent-cli/custom-agent-ingress.mdx";
-import CustomIngressAgentConfigExample from "/examples/agent-config/custom-agent-ingress.mdx";
-import CustomIngressGoSdkExample from "/examples/go-sdk/custom-agent-ingress.mdx";
-import CustomIngressJavascriptSdkExample from "/examples/javascript-sdk/custom-agent-ingress.mdx";
-import CustomIngressKubernetesExample from "/examples/k8s/custom-agent-ingress.mdx";
-import CustomIngressPythonSdkExample from "/examples/python-sdk/custom-agent-ingress.mdx";
-import CustomIngressRustSdkExample from "/examples/rust-sdk/custom-agent-ingress.mdx";
-import CustomIngressSshExample from "/examples/ssh/custom-agent-ingress.mdx";
+import CustomIngressAgentCliExample from "/snippets/examples/agent-cli/custom-agent-ingress.mdx";
+import CustomIngressAgentConfigExample from "/snippets/examples/agent-config/custom-agent-ingress.mdx";
+import CustomIngressGoSdkExample from "/snippets/examples/go-sdk/custom-agent-ingress.mdx";
+import CustomIngressJavascriptSdkExample from "/snippets/examples/javascript-sdk/custom-agent-ingress.mdx";
+import CustomIngressKubernetesExample from "/snippets/examples/k8s/custom-agent-ingress.mdx";
+import CustomIngressPythonSdkExample from "/snippets/examples/python-sdk/custom-agent-ingress.mdx";
+import CustomIngressRustSdkExample from "/snippets/examples/rust-sdk/custom-agent-ingress.mdx";
+import CustomIngressSshExample from "/snippets/examples/ssh/custom-agent-ingress.mdx";
 
-# Connect URL {#connect-url}
+# Connect URL 
 
 ## Overview
 
@@ -24,7 +24,7 @@ establish its control connection to the ngrok service. By default, agents use
 `connect.ngrok-agent.com:443`. You can change this per agent by setting the
 [`connect_url`](/agent/config/v3/#connect_url) field in your configuration file.
 
-## Custom Connect URL {#custom-connect-url}
+## Custom Connect URL 
 
 Create a custom Connect URL to customize how your agents connect (for example
 `connect.example.com:443`). This involves delegating a DNS subdomain and

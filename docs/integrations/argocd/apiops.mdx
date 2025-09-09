@@ -31,7 +31,7 @@ Here is what you'll be building with:
     domain, like `https://api.example.com`.
   - We'll refer to this domain as `<NGROK_DOMAIN>`.
 
-## Deploy Argo CD {#deploy-argo-cd}
+## Deploy Argo CD 
 
 Next, set up Argo CD on your cluster to enable GitOps.
 
@@ -84,7 +84,7 @@ Next, set up Argo CD on your cluster to enable GitOps.
    argocd login <YOUR-CLUSTER>:8080
    ```
 
-## Set up the demo API {#set-up-demo-api}
+## Set up the demo API 
 
 Next, you need to set up the Git repository for the API you'll deploy behind your ngrok API gateway. GitOps (and thus APIOps) requires declarative and version-controlled configuration, and that includes the hostname for your deployment. You can't simply clone the demo API repository and apply it to your cluster, as the ngrok-supplied hostname will already be in use.
 
@@ -98,7 +98,7 @@ If you have an existing API and GitOps configuration, you're more than welcome t
 
 1. Add, commit, and push these changes to your fork.
 
-## Deploy your demo API with Argo CD {#deploy-demo-api}
+## Deploy your demo API with Argo CD 
 
 Now that your demo API is forked and properly configured on GitHub, you can connect it to Argo CD to sync, reconcile, and deploy.
 
@@ -141,7 +141,7 @@ Now that your demo API is forked and properly configured on GitHub, you can conn
      https://<NGROK-DOMAIN>/legend
    ```
 
-## Enable APIOps in Argo CD {#enable-apiops-in-argo-cd}
+## Enable APIOps in Argo CD 
 
 A fundamental component of GitOps, and thus APIOps, is that because your Git repository contains the latest version of your desired state, your deployment toolkit should automatically update the production deployment without any manual processes.
 
@@ -178,7 +178,7 @@ A fundamental component of GitOps, and thus APIOps, is that because your Git rep
 
    ![Automatically increase the number of replicas via GitOps](img/argo-replicas.png)
 
-## Configure your API gateway with traffic policies {#configure-api-gateway-traffic-policies}
+## Configure your API gateway with traffic policies 
 
 The ngrok team [recently rolled out support](https://ngrok.com/blog-post/policy-support-in-gateway-api) for using the [Traffic Policy module](/traffic-policy/) alongside the Kubernetes Gateway API. This allows you to place all your Traffic Policy actions into a single `NgrokTrafficPolicy` CRD, controlling your ngrok-powered API gateway with an APIOps workflow with version-controlled and declarative manifests.
 

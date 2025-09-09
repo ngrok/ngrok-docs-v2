@@ -42,7 +42,7 @@ to ngrok using Rancher's Chart repository, and deploy a demo application, which 
     domain, like `https://api.example.com`.
   - We'll refer to this domain as `<NGROK_DOMAIN>`.
 
-## Install Rancher via Docker {#install-rancher-via-docker}
+## Install Rancher via Docker 
 
 To follow along with this guide, you need Rancher installed on a local or remote Kubernetes cluster. If you already have
 an existing cluster running Rancher, you can skip this step and proceed to [Install a sample application](#install-a-sample-application).
@@ -139,7 +139,7 @@ docker logs [DOCKER_NAME] 2>&1 | grep "Bootstrap Password:"
 You have now installed Rancher in a Docker container, created a new Kubernetes cluster for your applications, and
 connected one or more Linux nodes to Rancher for handling future workloads.
 
-## Install a sample application {#install-a-sample-application}
+## Install a sample application 
 
 Now that you have the ngrok Kubernetes Operator running and authenticated with your credentials, you're ready to add a
 sample application to your cluster. The ngrok Kubernetes Operator will connect this application to the ngrok cloud service,

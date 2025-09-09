@@ -4,11 +4,11 @@ title: User Management
 
 # User Management
 
-## Role Based Access Control (RBAC) {#rbac}
+## Role Based Access Control (RBAC) 
 
 The ngrok dashboard allows many users to be invited to the same account. Each user in the account will have the same account type and be able to start tunnels under that account. The dashboard includes role based access control (RBAC) as a way to limit what users have access to in the account. You can manage these roles and add more users to your account in the [team members page](https://dashboard.ngrok.com/users/team-members) of the dashboard. This is only available for paid plans.
 
-## Single Sign-On (SSO) {#dashboard-sso}
+## Single Sign-On (SSO) 
 
 If you are an Enterprise customer, you have the option of enabling Single Sign-On (SSO) for your users logging into the ngrok Dashboard. Account admins can find the configuration options under the ["Settings > Account"](https://dashboard.ngrok.com/settings) in the left navigation once they log into the dashboard.
 
@@ -20,7 +20,7 @@ You also have the option to choose how new users are added to the account. If yo
 
 ngrok supports two enforcement options once you have configured your identity provider. When testing and verifying the integration is working, it is helpful to enable"Mixed Mode", which will still allow you and the users of your account to log into the account using your previous credentials. Once you are satisfied that everything is working correctly, you can enable "SSO Enforced" mode which will require all users in the account to authenticate through one of the configured identity providers.
 
-## Service Users {#service-users}
+## Service Users 
 
 ### What is a service user?
 
@@ -51,7 +51,7 @@ Service Users facts and limitations:
   - Service Users can be deactivated to temporarily suspend all credentials associated with it—making ngrok more secure.
   - Service Users can be deleted to immediately revoke and delete all credentials associated with it—making ngrok more secure.
 
-### How do I create a Service User? {#service-user-creation}
+### How do I create a Service User? 
 
 You can create a Service User via the dashboard or programmatically through the ngrok API.
 
@@ -59,24 +59,24 @@ In the [ngrok Dashboard](https://dashboard.ngrok.com/users/bots), navigate to th
 
 Using the API, you can POST to the [`/bot_users` endpoint](/api/resources/bot-users/).
 
-### When should I use a Service User? {#service-user-use-cases}
+### When should I use a Service User? 
 
 A Service User is the best suited to own the credentials of shipped products, devices, and integrations in production. The ideal flow is a credential you can associate with a specific task, keep active, and can rotate on a predictable schedule because it is unique to that integration, service, or function.
 
 Service Users are available on all ngrok free and paid plans.
 
-### When should I not use a service User? {#service-user-vs-user}
+### When should I not use a service User? 
 
 A Service User is very useful, but it is not a good substitute for a standard ngrok User. When a developer is building with ngrok they may need to rotate credentials after adding them to a build environment or accidentally committing them to a repository. The developer needs to be able to use the ngrok dashboard to see endpoint status, make configuration changes, and manage their own credentials, which a Service User cannot do.
 
-### What happens when I delete a Service User? {#service-user-delete}
+### What happens when I delete a Service User? 
 
 When you delete a Service User, all credentials owned the user are immediately revoked and deleted. You cannot restore deleted credentials and if this happens you should create new credentials under a new or existing service user.
 
-### What does it mean for a Service User to be inactive? {#service-user-inactive}
+### What does it mean for a Service User to be inactive? 
 
 When a Service User is marked as inactive, they remain in the account, but their credentials can no longer be used. This is a good way to test what might break if the service user is completely removed.
 
-### Can I move my former employees credentials (API keys, authtokens, SSH keys) to a Service User? {#service-user-existing-credentials}
+### Can I move my former employees credentials (API keys, authtokens, SSH keys) to a Service User? 
 
 Credentials are assigned an owner when they are created and the owner cannot be changed. Access the [ngrok Dashboard](https://dashboard.ngrok.com/users/bots) to create a new Service User.
