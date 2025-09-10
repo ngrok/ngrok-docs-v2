@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ### Follow redirects
 
@@ -16,24 +16,34 @@ ngrok http https://httpbin.org --host-header rewrite --url https://httpbin.inter
 
 #### Example
 
-<ConfigExample
-	snippetText="Follow up to 2 redirects from httpbin.internal"
-	showLineNumbers={true}
-	config={{
-		"on_http_request": [
-			{
-				"name": "FollowRedirects",
-				"actions": [
-					{
-						"type": "http-request",
-						"config": {
-							"url": "https://httpbin.internal/redirect/2",
-							"method": "GET",
-							"max_redirects": 2
-						}
-					}
-				]
-			}
-		]
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+on_http_request:
+  - name: "FollowRedirects"
+    actions:
+    - type: "http-request"
+    config:
+    url: "https://httpbin.internal/redirect/2"
+    method: "GET"
+    max_redirects: 2
+```
+```json policy.json
+{
+  "on_http_request": [
+    {
+      "name": "FollowRedirects",
+      "actions": [
+        {
+          "type": "http-request",
+          "config": {
+            "url": "https://httpbin.internal/redirect/2",
+            "method": "GET",
+            "max_redirects": 2
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>

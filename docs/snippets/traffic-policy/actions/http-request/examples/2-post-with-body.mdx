@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ### Make a POST request
 
@@ -14,28 +14,41 @@ ngrok http https://httpbin.org --host-header rewrite --url https://httpbin.inter
 
 #### Example
 
-<ConfigExample
-	snippetText="POST body and headers to httpbin.internal"
-	showLineNumbers={true}
-	config={{
-		"on_http_request": [
-			{
-				"name": "PostWithBody",
-				"actions": [
-					{
-						"type": "http-request",
-						"config": {
-							"url": "https://httpbin.internal/post",
-							"method": "POST",
-							"headers": {
-								"content-type": "application/json",
-								"x-custom-header": "abc123"
-							},
-							"body": "{ \"user\": \"${req.headers[\\\"x-user-id\\\"]}\" }"
-						}
-					}
-				]
-			}
-		]
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+on_http_request:
+  - name: "PostWithBody"
+    actions:
+    - type: "http-request"
+    config:
+    url: "https://httpbin.internal/post"
+    method: "POST"
+    headers:
+    content-type: "application/json"
+    x-custom-header: "abc123"
+    body: "{ "user": "${req.headers[\"x-user-id\"]}" }"
+```
+```json policy.json
+{
+  "on_http_request": [
+    {
+      "name": "PostWithBody",
+      "actions": [
+        {
+          "type": "http-request",
+          "config": {
+            "url": "https://httpbin.internal/post",
+            "method": "POST",
+            "headers": {
+              "content-type": "application/json",
+              "x-custom-header": "abc123"
+            },
+            "body": "{ \"user\": \"${req.headers[\\\"x-user-id\\\"]}\" }"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>

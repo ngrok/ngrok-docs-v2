@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ### Restricting Access with Allow and Deny Lists
 
@@ -8,28 +8,41 @@ using the `restrict-ips` action.
 
 #### Example Traffic Policy Document
 
-<ConfigExample
-	snippetText={null}
-	showLineNumbers={true}
-	yamlMetastring="{4-10}"
-	jsonMetastring="{5-16}"
-	config={{
-		on_tcp_connect: [
-			{
-				actions: [
-					{
-						type: "restrict-ips",
-						config: {
-							enforce: true,
-							allow: ["1.1.1.1/32"],
-							deny: ["e680:5791:be4c:5739:d959:7b94:6d54:d4b4/128"],
-						},
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml highlight={4-10}
+on_tcp_connect:
+  - actions:
+    - type: "restrict-ips"
+    config:
+    enforce: true
+    allow:
+    - "1.1.1.1/32"
+    deny:
+    - "e680:5791:be4c:5739:d959:7b94:6d54:d4b4/128"
+```
+```json policy.json highlight={5-16}
+{
+  "on_tcp_connect": [
+    {
+      "actions": [
+        {
+          "type": "restrict-ips",
+          "config": {
+            "enforce": true,
+            "allow": [
+              "1.1.1.1/32"
+            ],
+            "deny": [
+              "e680:5791:be4c:5739:d959:7b94:6d54:d4b4/128"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
 
 This configuration will ensure that only requests from the IP `1.1.1.1` are
 allowed, while requests from the IP `e680:5791:be4c:5739:d959:7b94:6d54:d4b4`

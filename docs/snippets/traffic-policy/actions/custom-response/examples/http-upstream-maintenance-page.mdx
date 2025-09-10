@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ### Custom Response for Internal Endpoint Downtime
 
@@ -7,30 +7,45 @@ configuration demonstrates how to use the `custom-response` action to redirect t
 
 #### Example Traffic Policy Document
 
-<ConfigExample
-	hideAgentConfig
-	config={{
-		on_http_request: [
-			{
-				actions: [
-					{
-						type: "forward-internal",
-						config: {
-							url: "https://endpoint-1.internal",
-							on_error: "continue",
-						},
-					},
-					{
-						type: "custom-response",
-						config: {
-							status_code: 302,
-							headers: {
-								location: "https://www.example.com",
-							},
-						},
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+on_http_request:
+  - actions:
+    - type: "forward-internal"
+    config:
+    url: "https://endpoint-1.internal"
+    on_error: "continue"
+
+    - type: "custom-response"
+    config:
+    status_code: 302
+    headers:
+    location: "https://www.example.com"
+```
+```json policy.json
+{
+  "on_http_request": [
+    {
+      "actions": [
+        {
+          "type": "forward-internal",
+          "config": {
+            "url": "https://endpoint-1.internal",
+            "on_error": "continue"
+          }
+        },
+        {
+          "type": "custom-response",
+          "config": {
+            "status_code": 302,
+            "headers": {
+              "location": "https://www.example.com"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>

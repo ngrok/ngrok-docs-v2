@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ### Rate Limit by Host Header
 
@@ -8,32 +8,42 @@ all incoming requests by the `Host` header.
 
 #### Example Traffic Policy Document
 
-<ConfigExample
-	snippetText={null}
-	showLineNumbers={true}
-	jsonMetastring="{5-13}"
-	yamlMetastring="{4-8}"
-	config={{
-		on_http_request: [
-			{
-				actions: [
-					{
-						type: "rate-limit",
-						config: {
-							name: "Only allow 30 requests per minute",
-							algorithm: "sliding_window",
-							capacity: 30,
-							rate: "60s",
-							bucket_key: [
-								"hasReqHeader('host') ? getReqHeader('host')[0] : 'unknown'",
-							],
-						},
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml highlight={4-8}
+on_http_request:
+  - actions:
+    - type: "rate-limit"
+    config:
+    name: "Only allow 30 requests per minute"
+    algorithm: "sliding_window"
+    capacity: 30
+    rate: "60s"
+    bucket_key:
+    - "hasReqHeader('host') ? getReqHeader('host')[0] : 'unknown'"
+```
+```json policy.json highlight={5-13}
+{
+  "on_http_request": [
+    {
+      "actions": [
+        {
+          "type": "rate-limit",
+          "config": {
+            "name": "Only allow 30 requests per minute",
+            "algorithm": "sliding_window",
+            "capacity": 30,
+            "rate": "60s",
+            "bucket_key": [
+              "hasReqHeader('host') ? getReqHeader('host')[0] : 'unknown'"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
 
 For this example, we are assuming that ngrok is pointing at the upstream service
 https://httpbin.org.

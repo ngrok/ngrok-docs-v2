@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ## Connection Geo Variables
 
@@ -18,68 +18,124 @@ The following variables are available under the `conn.geo` namespace:
 
 The name of the city, in EN, where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.geo.city == 'Strongsville'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.geo.city == 'Strongsville'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.geo.city == 'Strongsville'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.geo.country`
 
 The name of the country, in EN, where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.geo.country == 'United States'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.geo.country == 'United States'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.geo.country == 'United States'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.geo.country_code`
 
 The two-letter ISO country code where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.geo.country_code != 'US'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.geo.country_code != 'US'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.geo.country_code != 'US'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.geo.latitude`
 
 The approximate latitude where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["double(conn.geo.latitude) >= 45.0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "double(conn.geo.latitude) >= 45.0"
+```
+```json policy.json
+{
+  "expressions": [
+    "double(conn.geo.latitude) >= 45.0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.geo.longitude`
 
 The approximate longitude where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["double(conn.geo.longitude) <= -93.0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "double(conn.geo.longitude) <= -93.0"
+```
+```json policy.json
+{
+  "expressions": [
+    "double(conn.geo.longitude) <= -93.0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.geo.radius`
 
 The radius in kilometers around the latitude and longitude where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.geo.radius <= '5'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.geo.radius <= '5'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.geo.radius <= '5'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.geo.subdivision`
 
 The name of the subdivision, in EN, where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.geo.subdivision == 'California'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.geo.subdivision == 'California'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.geo.subdivision == 'California'"
+  ]
+}
+```
+</CodeGroup>

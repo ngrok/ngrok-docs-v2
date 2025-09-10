@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ## Time variables
 
@@ -12,8 +12,16 @@ The following variables are available under the `time` namespace:
 
 The current UTC time in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.ts.end < timestamp(time.now)"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.ts.end < timestamp(time.now)"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.ts.end < timestamp(time.now)"
+  ]
+}
+```
+</CodeGroup>

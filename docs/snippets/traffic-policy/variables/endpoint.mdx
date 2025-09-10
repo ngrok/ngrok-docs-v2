@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ## Endpoint Variables
 
@@ -17,57 +17,105 @@ The following variables are available under the `endpoint` namespace:
 
 The address for this endpoint.
 
-<ConfigExample
-	config={{
-		expressions: ["endpoint.addr == 'my-subdomain.ngrok.app:443'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "endpoint.addr == 'my-subdomain.ngrok.app:443'"
+```
+```json policy.json
+{
+  "expressions": [
+    "endpoint.addr == 'my-subdomain.ngrok.app:443'"
+  ]
+}
+```
+</CodeGroup>
 ### `endpoint.host`
 
 The hostname for this endpoint.
 
-<ConfigExample
-	config={{
-		expressions: ["endpoint.host == 'my-subdomain.ngrok.app'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "endpoint.host == 'my-subdomain.ngrok.app'"
+```
+```json policy.json
+{
+  "expressions": [
+    "endpoint.host == 'my-subdomain.ngrok.app'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `endpoint.id`
 
 The id for this endpoint.
 
-<ConfigExample
-	config={{
-		expressions: ["endpoint.id == 'ep_2iL8LRbQilSCKYjaslRoqBwJcfT'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "endpoint.id == 'ep_2iL8LRbQilSCKYjaslRoqBwJcfT'"
+```
+```json policy.json
+{
+  "expressions": [
+    "endpoint.id == 'ep_2iL8LRbQilSCKYjaslRoqBwJcfT'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `endpoint.port`
 
 The port for this endpoint.
 
-<ConfigExample
-	config={{
-		expressions: ["endpoint.port == 443"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "endpoint.port == 443"
+```
+```json policy.json
+{
+  "expressions": [
+    "endpoint.port == 443"
+  ]
+}
+```
+</CodeGroup>
 
 ### `endpoint.protocol`
 
 The protocol for this endpoint. Current supported values are `http`, `https`, `tcp`, and `tls`.
 
-<ConfigExample
-	config={{
-		expressions: ["endpoint.protocol == 'https'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "endpoint.protocol == 'https'"
+```
+```json policy.json
+{
+  "expressions": [
+    "endpoint.protocol == 'https'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `endpoint.url`
 
 The url for this endpoint.
 
-<ConfigExample
-	config={{
-		expressions: ["endpoint.url == 'https://my-subdomain.ngrok.app'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "endpoint.url == 'https://my-subdomain.ngrok.app'"
+```
+```json policy.json
+{
+  "expressions": [
+    "endpoint.url == 'https://my-subdomain.ngrok.app'"
+  ]
+}
+```
+</CodeGroup>

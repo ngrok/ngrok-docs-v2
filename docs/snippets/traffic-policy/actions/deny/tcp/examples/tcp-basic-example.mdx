@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ### Deny all traffic
 
@@ -7,23 +7,26 @@ configuration will deny all inbound traffic on your endpoint.
 
 #### Example Traffic Policy Document
 
-<ConfigExample
-	snippetText={null}
-	showLineNumbers={true}
-	yamlMetastring="{4-10}"
-	jsonMetastring="{5-7}"
-	config={{
-		on_tcp_connect: [
-			{
-				actions: [
-					{
-						type: "deny",
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml highlight={4-10}
+on_tcp_connect:
+  - actions:
+    - type: "deny"
+```
+```json policy.json highlight={5-7}
+{
+  "on_tcp_connect": [
+    {
+      "actions": [
+        {
+          "type": "deny"
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
 
 #### Example Request
 

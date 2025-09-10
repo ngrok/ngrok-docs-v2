@@ -61,28 +61,36 @@ You will use the contents of `ca.crt` in your traffic policy to validate request
 
 Using the CA certificate generated in the previous step, you can specify the `mutual_tls_certificate_authorities` field in a traffic policy to trust the CA that issued the client certificate.
 
-<ConfigExample
-	snippetText={null}
-	showLineNumbers={true}
-	jsonMetastring="{5-12}"
-	yamlMetastring="{4-10}"
-	config={{
-		on_tcp_connect: [
-			{
-				actions: [
-					{
-						type: "terminate-tls",
-						config: {
-							mutual_tls_certificate_authorities: [
-								"-----BEGIN CERTIFICATE-----\n... certificate ...\n-----END CERTIFICATE-----",
-							],
-						},
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml highlight={4-10}
+on_tcp_connect:
+  - actions:
+    - type: "terminate-tls"
+    config:
+    mutual_tls_certificate_authorities:
+    - "-----BEGIN CERTIFICATE-----
+    ... certificate ...
+    -----END CERTIFICATE-----"
+```
+```json policy.json highlight={5-12}
+{
+  "on_tcp_connect": [
+    {
+      "actions": [
+        {
+          "type": "terminate-tls",
+          "config": {
+            "mutual_tls_certificate_authorities": [
+              "-----BEGIN CERTIFICATE-----\n... certificate ...\n-----END CERTIFICATE-----"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
 
 You may also optionally [upload the CA certificate](https://dashboard.ngrok.com/tls-cert-authorities) in the ngrok dashboard and use its ID in the `mutual_tls_certificate_authorities` array.
 

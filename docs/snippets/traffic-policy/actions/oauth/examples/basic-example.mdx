@@ -1,30 +1,35 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ### Using a Managed Provider
 
 The following [Traffic Policy](/docs/traffic-policy/)
 configuration will provide your app with a google authentication step.
 
-<ConfigExample
-	snippetText={null}
-	showLineNumbers={true}
-	yamlMetastring="{4-10}"
-	jsonMetastring="{5-10}"
-	config={{
-		on_http_request: [
-			{
-				actions: [
-					{
-						type: "oauth",
-						config: {
-							provider: "google",
-						},
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml highlight={4-10}
+on_http_request:
+  - actions:
+    - type: "oauth"
+    config:
+    provider: "google"
+```
+```json policy.json highlight={5-10}
+{
+  "on_http_request": [
+    {
+      "actions": [
+        {
+          "type": "oauth",
+          "config": {
+            "provider": "google"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
 
 The `provider` value can be replaced with any of the [Supported Providers](/docs/traffic-policy/actions/oauth/#supported-providers) that have an
 a managed app available.

@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ## Response Variables
 
@@ -31,198 +31,358 @@ The following variables are available under the `res` namespace:
 
 The encoding set in the Content-Encoding header for this response.
 
-<ConfigExample
-	config={{
-		expressions: ["res.content_encoding[0] == 'br'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.content_encoding[0] == 'br'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.content_encoding[0] == 'br'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.content_length`
 
 The length of the content associated with the response.
 
-<ConfigExample
-	config={{
-		expressions: ["res.content_length != 0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.content_length != 0"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.content_length != 0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.content_type`
 
 The media type set in the Content-Type header for this response.
 
-<ConfigExample
-	config={{
-		expressions: ["res.content_type == 'application/json'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.content_type == 'application/json'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.content_type == 'application/json'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.content_type.parameters`
 
 The parameters set in the Content-Type header for this response.
 
-<ConfigExample
-	config={{
-		expressions: ["res.content_type.parameters['charset'] == 'utf-8'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.content_type.parameters['charset'] == 'utf-8'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.content_type.parameters['charset'] == 'utf-8'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.content_type.raw`
 
 The Content-Type header for this response as a string.
 
-<ConfigExample
-	config={{
-		expressions: ["res.content_type.raw == 'application/json; charset=utf-8'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.content_type.raw == 'application/json; charset=utf-8'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.content_type.raw == 'application/json; charset=utf-8'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies`
 
 The HTTP cookie objects included in this response. If there are multiple cookies with the same name, they will be ordered by path length, with longest path first.
 
-<ConfigExample
-	config={{
-		expressions: ["size(res.cookies) > 0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "size(res.cookies) > 0"
+```
+```json policy.json
+{
+  "expressions": [
+    "size(res.cookies) > 0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].domain`
 
 The value of the `Domain` attribute of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].domain == 'nba.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].domain == 'nba.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].domain == 'nba.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].expires`
 
 The value of the `Expires` attribute of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].expires > timestamp(time.now)"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].expires > timestamp(time.now)"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].expires > timestamp(time.now)"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].http_only`
 
 The value of the `HttpOnly` attribute of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].http_only"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].http_only"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].http_only"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].max_age`
 
 The value of the `MaxAge` attribute of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].max_age > duration('24h')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].max_age > duration('24h')"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].max_age > duration('24h')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].name`
 
 The name of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].name == 'sessionId'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].name == 'sessionId'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].name == 'sessionId'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].path`
 
 The value of the `Path` attribute of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].path == '/"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].path == '/"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].path == '/"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].same_site`
 
 The value of the `SameSite` attribute of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].same_site"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].same_site"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].same_site"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].secure`
 
 The value of the `Secure` attribute of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].secure"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].secure"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].secure"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].unparsed_attributes`
 
 Any non-standard attributes of the cookie parsed as a map of names to values.
 
-<ConfigExample
-	config={{
-		expressions: ["size(res.cookies['sessionId'][0].unparsed_attributes) > 0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "size(res.cookies['sessionId'][0].unparsed_attributes) > 0"
+```
+```json policy.json
+{
+  "expressions": [
+    "size(res.cookies['sessionId'][0].unparsed_attributes) > 0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.cookies[k][i].value`
 
 The value of the cookie.
 
-<ConfigExample
-	config={{
-		expressions: ["res.cookies['sessionId'][0].value > 'value'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.cookies['sessionId'][0].value > 'value'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.cookies['sessionId'][0].value > 'value'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.headers`
 
 The response headers parsed as a map of lower-case names to values.
 
-<ConfigExample
-	config={{
-		expressions: ["'Fizz' in res.headers['baz']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "'Fizz' in res.headers['baz']"
+```
+```json policy.json
+{
+  "expressions": [
+    "'Fizz' in res.headers['baz']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.location`
 
 The location header value of the response.
 
-<ConfigExample
-	config={{
-		expressions: ["res.location == '/index.html'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.location == '/index.html'"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.location == '/index.html'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.status_code`
 
 The status code of this response.
 
-<ConfigExample
-	config={{
-		expressions: ["res.status_code >= 300"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "res.status_code >= 300"
+```
+```json policy.json
+{
+  "expressions": [
+    "res.status_code >= 300"
+  ]
+}
+```
+</CodeGroup>
 
 ### `res.trailers`
 
 The response trailers parsed as a map of lower-case names to values.
 
-<ConfigExample
-	config={{
-		expressions: ["'fizz' in res.trailers['baz']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "'fizz' in res.trailers['baz']"
+```
+```json policy.json
+{
+  "expressions": [
+    "'fizz' in res.trailers['baz']"
+  ]
+}
+```
+</CodeGroup>

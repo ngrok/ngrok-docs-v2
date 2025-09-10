@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ## Connection TLS Variables
 
@@ -17,63 +17,109 @@ The following variables are available under the `conn.tls` namespace:
 
 The cipher suite selected during the TLS handshake.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.cipher_suite == 'TLS_AES_128_GCM_SHA256'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.cipher_suite == 'TLS_AES_128_GCM_SHA256'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.cipher_suite == 'TLS_AES_128_GCM_SHA256'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.ja4_fingerprint`
 
 The JA4 fingerprint of the TLS handshake.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.ja4_fingerprint == 't13d1717h2_5b57614c22b0_f0fc7018f8e8'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.ja4_fingerprint == 't13d1717h2_5b57614c22b0_f0fc7018f8e8'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.ja4_fingerprint == 't13d1717h2_5b57614c22b0_f0fc7018f8e8'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.negotiated_alpn`
 
 The TLS Application-Layer Protocol Negotiation (ALPN) Protocol ID of the protocol agreed upon in the TLS handshake. Defaults to `""` if no ALPN was successfully negotiated.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.negotiated_alpn == 'h2'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.negotiated_alpn == 'h2'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.negotiated_alpn == 'h2'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.session_resumed`
 
 True if the TLS session was resumed. Currently always false as we do not yet support TLS session resumption.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.session_resumed == false"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.session_resumed == false"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.session_resumed == false"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.sni`
 
 The hostname included in the `ClientHello` message via the SNI extension.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.sni == 'client.example.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.sni == 'client.example.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.sni == 'client.example.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.version`
 
 The version of the TLS protocol used between the client and the ngrok edge.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.version == '1.3'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.version == '1.3'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.version == '1.3'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Connection TLS Client Variables
 
@@ -118,346 +164,579 @@ The following variables are available under the `conn.tls.client` namespace:
 
 Additional information added to the certificate.
 
-<ConfigExample
-	config={{
-		expressions: ["size(conn.tls.client.extensions) > 0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "size(conn.tls.client.extensions) > 0"
+```
+```json policy.json
+{
+  "expressions": [
+    "size(conn.tls.client.extensions) > 0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.extensions[i].id`
 
 The identifier (OID) that specifies the type of extension.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.extensions[0].id == '2.5.29.15'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.extensions[0].id == '2.5.29.15'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.extensions[0].id == '2.5.29.15'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.extensions[i].critical`
 
 True if the extension is critical.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.extensions[0].critical"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.extensions[0].critical"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.extensions[0].critical"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.extensions[i].value`
 
 The data for the extension.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.extensions[0].value == b'\x03\x02\x05\xA0'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.extensions[0].value == b' '"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.extensions[0].value == b'\u0003\u0002\u0005 '"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer`
 
 The issuing authority of the certificate as a string roughly following the RFC 2253 Distinguished Names syntax.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.issuer == 'CN=E1,O=Let's Encrypt,C=US'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer == 'CN=E1,O=Let's Encrypt,C=US'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer == 'CN=E1,O=Let's Encrypt,C=US'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.common_name`
 
 Common name of the issuing authority, usually the domain name.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.issuer.common_name == 'exampleca.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.common_name == 'exampleca.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.common_name == 'exampleca.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.country`
 
 Country name(s) where the issuing authority is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.issuer.country == ['US']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.country == ['US']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.country == ['US']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.locality`
 
 Locality or city of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.issuer.locality == ['Mountain View']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.locality == ['Mountain View']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.locality == ['Mountain View']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.organization`
 
 Name(s) of the organization that issued the certificate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.issuer.organization == ['Example CA']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.organization == ['Example CA']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.organization == ['Example CA']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.organizational_unit`
 
 Division of the organization responsible for the certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.issuer.organizational_unit == ['Certification Authority Division']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.organizational_unit == ['Certification Authority Division']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.organizational_unit == ['Certification Authority Division']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.postal_code`
 
 Postal code of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.issuer.postal_code == ['94043']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.postal_code == ['94043']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.postal_code == ['94043']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.province`
 
 Province or state of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.issuer.province == ['California']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.province == ['California']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.province == ['California']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.issuer.street_address`
 
 Street address of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.issuer.street_address == ['1234 Encryption Way']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.issuer.street_address == ['1234 Encryption Way']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.issuer.street_address == ['1234 Encryption Way']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.pem`
 
 Full PEM-encoded client certificate of the TLS connection, with `\n` used for newlines.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.pem.starts_with('-----BEGIN CERTIFICATE-----')",
-			"conn.tls.client.pem.ends_with('-----END CERTIFICATE-----')",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.pem.starts_with('-----BEGIN CERTIFICATE-----')"
+  - "conn.tls.client.pem.ends_with('-----END CERTIFICATE-----')"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.pem.starts_with('-----BEGIN CERTIFICATE-----')",
+    "conn.tls.client.pem.ends_with('-----END CERTIFICATE-----')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.san`
 
 Subject alternative names of the client certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.san == 'DNS:www.example.com, DNS:example.com, IP Address:192.168.1.1'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.san == 'DNS:www.example.com, DNS:example.com, IP Address:192.168.1.1'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.san == 'DNS:www.example.com, DNS:example.com, IP Address:192.168.1.1'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.san.dns_names`
 
 DNS names in the subject alternative names.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.san.dns_names == ['www.example.com', 'example.com']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.san.dns_names == ['www.example.com', 'example.com']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.san.dns_names == ['www.example.com', 'example.com']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.san.email_addresses`
 
 Email addresses in the subject alternative names.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.san.email_addresses == ['ngrok-email1@example.com', 'ngrok-email2@example.com']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.san.email_addresses == ['ngrok-email1@example.com', 'ngrok-email2@example.com']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.san.email_addresses == ['ngrok-email1@example.com', 'ngrok-email2@example.com']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.san.ip_addresses`
 
 IP addresses in the subject alternative names.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.san.ip_addresses == ['192.168.1.1']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.san.ip_addresses == ['192.168.1.1']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.san.ip_addresses == ['192.168.1.1']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.san.uris`
 
 URIs in the subject alternative names.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.san.uris == ['https://example.com/example']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.san.uris == ['https://example.com/example']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.san.uris == ['https://example.com/example']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.serial_number`
 
 Unique identifier for the certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.serial_number == 'b53017e79d4a5208b314a55d3574e0a8'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.serial_number == 'b53017e79d4a5208b314a55d3574e0a8'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.serial_number == 'b53017e79d4a5208b314a55d3574e0a8'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.signature_algorithm`
 
 Algorithm used to sign the certificate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.signature_algorithm == 'SHA256-RSA'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.signature_algorithm == 'SHA256-RSA'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.signature_algorithm == 'SHA256-RSA'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject`
 
 The entity to whom the certificate is issued as a string roughly following the RFC 2253 Distinguished Names syntax.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.subject == 'CN=www.example.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject == 'CN=www.example.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject == 'CN=www.example.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.common_name`
 
 Common name of the subject, usually the domain name.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.subject.common_name == 'www.example.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.common_name == 'www.example.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.common_name == 'www.example.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.country`
 
 Country name(s) where the subject of the certificate is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.subject.country == ['US']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.country == ['US']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.country == ['US']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.locality`
 
 Locality or city where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.subject.locality == ['Mountain View']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.locality == ['Mountain View']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.locality == ['Mountain View']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.organization`
 
 Name(s) of the organization to which the subject belongs.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.subject.organization == ['Example Corp']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.organization == ['Example Corp']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.organization == ['Example Corp']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.organizational_unit`
 
 Division of the organization to which the subject belongs.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.subject.organizational_unit == ['Web Services']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.organizational_unit == ['Web Services']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.organizational_unit == ['Web Services']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.postal_code`
 
 Postal code where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.subject.postal_code == ['94043']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.postal_code == ['94043']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.postal_code == ['94043']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.province`
 
 Province or state where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.client.subject.province == ['California']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.province == ['California']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.province == ['California']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.subject.street_address`
 
 Street address where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.subject.street_address == ['1234 Secure Blvd']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.subject.street_address == ['1234 Secure Blvd']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.subject.street_address == ['1234 Secure Blvd']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.validity.not_after`
 
 Expiration date and time when the certificate is no longer valid.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.validity.not_after == timestamp('2023-01-01T00:00:00Z')",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.validity.not_after == timestamp('2023-01-01T00:00:00Z')"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.validity.not_after == timestamp('2023-01-01T00:00:00Z')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.client.validity.not_before`
 
 Start date and time when the certificate becomes valid.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.client.validity.not_before == timestamp('2020-01-01T00:00:00Z')",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.client.validity.not_before == timestamp('2020-01-01T00:00:00Z')"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.client.validity.not_before == timestamp('2020-01-01T00:00:00Z')"
+  ]
+}
+```
+</CodeGroup>
 
 ## Connection TLS Server Variables
 
@@ -501,332 +780,556 @@ The following variables are available under the `conn.tls.server` namespace:
 
 Additional information added to the certificate.
 
-<ConfigExample
-	config={{
-		expressions: ["size(conn.tls.server.extensions) > 0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "size(conn.tls.server.extensions) > 0"
+```
+```json policy.json
+{
+  "expressions": [
+    "size(conn.tls.server.extensions) > 0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.extensions[i].id`
 
 The identifier that specifies the type of extension.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.extensions[0].id == '2.5.29.15'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.extensions[0].id == '2.5.29.15'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.extensions[0].id == '2.5.29.15'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.extensions[i].critical`
 
 True if the extension is critical.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.extensions[0].critical"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.extensions[0].critical"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.extensions[0].critical"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.extensions[i].value`
 
 The data for the extension.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.extensions[0].value == b'\x03\x02\x05\xA0'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.extensions[0].value == b' '"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.extensions[0].value == b'\u0003\u0002\u0005 '"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer`
 
 The issuing authority of the certificate as a string roughly following the RFC 2253 Distinguished Names syntax.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.issuer == 'CN=E1,O=Let's Encrypt,C=US'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer == 'CN=E1,O=Let's Encrypt,C=US'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer == 'CN=E1,O=Let's Encrypt,C=US'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.common_name`
 
 Common name of the issuing authority, usually the domain name.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.issuer.common_name == 'exampleca.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.common_name == 'exampleca.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.common_name == 'exampleca.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.country`
 
 Country name(s) where the issuing authority is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.issuer.country == ['US']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.country == ['US']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.country == ['US']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.locality`
 
 Locality or city of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.issuer.locality == ['Mountain View']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.locality == ['Mountain View']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.locality == ['Mountain View']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.organization`
 
 Name(s) of the organization that issued the certificate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.issuer.organization == ['Example CA']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.organization == ['Example CA']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.organization == ['Example CA']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.organizational_unit`
 
 Division of the organization responsible for the certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.issuer.organizational_unit == ['Certification Authority Division']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.organizational_unit == ['Certification Authority Division']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.organizational_unit == ['Certification Authority Division']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.postal_code`
 
 Postal code of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.issuer.postal_code == ['94043']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.postal_code == ['94043']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.postal_code == ['94043']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.province`
 
 Province or state of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.issuer.province == ['California']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.province == ['California']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.province == ['California']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.issuer.street_address`
 
 Street address of the issuing authority.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.issuer.street_address == ['1234 Encryption Way']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.issuer.street_address == ['1234 Encryption Way']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.issuer.street_address == ['1234 Encryption Way']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.san`
 
 Subject alternative names of the server certificate of the ngrok server's leaf TLS certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.san == 'DNS:www.example.com, DNS:example.com, IP Address:192.168.1.1'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.san == 'DNS:www.example.com, DNS:example.com, IP Address:192.168.1.1'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.san == 'DNS:www.example.com, DNS:example.com, IP Address:192.168.1.1'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.san.dns_names`
 
 DNS names in the subject alternative names of the ngrok server's leaf TLS certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.san.dns_names == ['ngrok-dns.com', 'ngrok-dns2.com']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.san.dns_names == ['ngrok-dns.com', 'ngrok-dns2.com']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.san.dns_names == ['ngrok-dns.com', 'ngrok-dns2.com']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.san.email_addresses`
 
 Email addresses in the subject alternative names of the ngrok server's leaf TLS certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.san.email_addresses == ['ngrok-email1@example.com', 'ngrok-email2@example.com']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.san.email_addresses == ['ngrok-email1@example.com', 'ngrok-email2@example.com']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.san.email_addresses == ['ngrok-email1@example.com', 'ngrok-email2@example.com']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.san.ip_addresses`
 
 IP addresses in the subject alternative names of the ngrok server's leaf TLS certificate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.san.ip_addresses == ['192.168.1.1']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.san.ip_addresses == ['192.168.1.1']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.san.ip_addresses == ['192.168.1.1']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.san.uris`
 
 URIs in the subject alternative names of the ngrok server's leaf TLS certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.san.uris == ['https://example.com/example']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.san.uris == ['https://example.com/example']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.san.uris == ['https://example.com/example']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.serial_number`
 
 Unique identifier for the certificate.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.serial_number == 'b53017e79d4a5208b314a55d3574e0a8'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.serial_number == 'b53017e79d4a5208b314a55d3574e0a8'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.serial_number == 'b53017e79d4a5208b314a55d3574e0a8'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.signature_algorithm`
 
 Algorithm used to sign the certificate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.signature_algorithm == 'SHA256-RSA'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.signature_algorithm == 'SHA256-RSA'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.signature_algorithm == 'SHA256-RSA'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject`
 
 The entity to whom the certificate is issued as a string roughly following the RFC 2253 Distinguished Names syntax.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.subject == 'CN=www.example.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject == 'CN=www.example.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject == 'CN=www.example.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.common_name`
 
 Common name of the subject, usually the domain name.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.subject.common_name == 'ngrok-server.example.com'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.common_name == 'ngrok-server.example.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.common_name == 'ngrok-server.example.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.country`
 
 Country name(s) where the subject of the certificate is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.subject.country == ['US']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.country == ['US']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.country == ['US']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.locality`
 
 Locality or city where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.subject.locality == ['Mountain View']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.locality == ['Mountain View']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.locality == ['Mountain View']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.organization`
 
 Name(s) of the organization to which the subject belongs.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.subject.organization == ['Example Corp']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.organization == ['Example Corp']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.organization == ['Example Corp']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.organizational_unit`
 
 Division of the organization to which the subject belongs.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.subject.organizational_unit == ['Web Services']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.organizational_unit == ['Web Services']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.organizational_unit == ['Web Services']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.postal_code`
 
 Postal code where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.subject.postal_code == ['94043']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.postal_code == ['94043']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.postal_code == ['94043']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.province`
 
 Province or state where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.tls.server.subject.province == ['California']"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.province == ['California']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.province == ['California']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.subject.street_address`
 
 Street address where the subject is located.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.subject.street_address == ['1234 Secure Blvd']",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.subject.street_address == ['1234 Secure Blvd']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.subject.street_address == ['1234 Secure Blvd']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.validity.not_after`
 
 Expiration date and time when the certificate is no longer valid.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.validity.not_after > timestamp('2023-01-01T00:00:00Z')",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.validity.not_after > timestamp('2023-01-01T00:00:00Z')"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.validity.not_after > timestamp('2023-01-01T00:00:00Z')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.tls.server.validity.not_before`
 
 Start date and time when the certificate becomes valid.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.tls.server.validity.not_before < timestamp('2020-01-01T00:00:00Z')",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.tls.server.validity.not_before < timestamp('2020-01-01T00:00:00Z')"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.tls.server.validity.not_before < timestamp('2020-01-01T00:00:00Z')"
+  ]
+}
+```
+</CodeGroup>

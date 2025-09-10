@@ -3,7 +3,6 @@ title: Macros
 sidebar_position: 0
 ---
 
-import ConfigExample from "/src/components/ConfigExample.tsx";
 
 # Macros
 
@@ -60,13 +59,19 @@ basic_auth.encode('username', 'password1')  // Basic dXNlcm5hbWU6cGFzc3dvcmQx
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: [
-			"basic_auth.encode('username', 'password1') == 'Basic dXNlcm5hbWU6cGFzc3dvcmQx'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "basic_auth.encode('username', 'password1') == 'Basic dXNlcm5hbWU6cGFzc3dvcmQx'"
+```
+```json policy.json
+{
+  "expressions": [
+    "basic_auth.encode('username', 'password1') == 'Basic dXNlcm5hbWU6cGFzc3dvcmQx'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Bytes
 
@@ -103,11 +108,19 @@ getReqCookie('session')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["getReqCookie('session').secure"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "getReqCookie('session').secure"
+```
+```json policy.json
+{
+  "expressions": [
+    "getReqCookie('session').secure"
+  ]
+}
+```
+</CodeGroup>
 
 ### `getReqHeader(string) -> list`
 
@@ -123,13 +136,19 @@ getReqHeader('User-Agent')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: [
-			"getReqHeader('User-Agent').exists(v, v.matches('(?i)google-images'))",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "getReqHeader('User-Agent').exists(v, v.matches('(?i)google-images'))"
+```
+```json policy.json
+{
+  "expressions": [
+    "getReqHeader('User-Agent').exists(v, v.matches('(?i)google-images'))"
+  ]
+}
+```
+</CodeGroup>
 
 ### `getQueryParam(string) -> list`
 
@@ -144,11 +163,19 @@ getQueryParam('search')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["size(getQueryParam('q')) == 0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "size(getQueryParam('q')) == 0"
+```
+```json policy.json
+{
+  "expressions": [
+    "size(getQueryParam('q')) == 0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `hasQueryParam(string) -> bool`
 
@@ -162,11 +189,19 @@ hasQueryParam('query')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["hasQueryParam('q')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "hasQueryParam('q')"
+```
+```json policy.json
+{
+  "expressions": [
+    "hasQueryParam('q')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `hasReqCookie(string) -> bool`
 
@@ -180,11 +215,19 @@ hasReqCookie('session')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["hasReqCookie('session')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "hasReqCookie('session')"
+```
+```json policy.json
+{
+  "expressions": [
+    "hasReqCookie('session')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `hasReqHeader(string) -> bool`
 
@@ -199,11 +242,19 @@ hasReqHeader('Authorization')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["hasReqHeader('X-Version-Id')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "hasReqHeader('X-Version-Id')"
+```
+```json policy.json
+{
+  "expressions": [
+    "hasReqHeader('X-Version-Id')"
+  ]
+}
+```
+</CodeGroup>
 
 ## HTTP Responses
 
@@ -222,11 +273,19 @@ getResCookie('_device_id')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["getResCookie('_device_id').value == 'mobile-phone-14'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "getResCookie('_device_id').value == 'mobile-phone-14'"
+```
+```json policy.json
+{
+  "expressions": [
+    "getResCookie('_device_id').value == 'mobile-phone-14'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `getResHeader(string) -> list`
 
@@ -241,13 +300,19 @@ getResHeader('Content-Type')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: [
-			"size(getResHeader('Content-Type').filter(v, v.matches('application/json'))) > 0",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "size(getResHeader('Content-Type').filter(v, v.matches('application/json'))) > 0"
+```
+```json policy.json
+{
+  "expressions": [
+    "size(getResHeader('Content-Type').filter(v, v.matches('application/json'))) > 0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `hasResCookie(string) -> bool`
 
@@ -261,11 +326,19 @@ hasResCookie('_device_id')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["hasResCookie('_device_id')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "hasResCookie('_device_id')"
+```
+```json policy.json
+{
+  "expressions": [
+    "hasResCookie('_device_id')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `hasResHeader(string) -> bool`
 
@@ -281,11 +354,19 @@ hasResHeader('Content-Type')
 
 #### Example (Expression)
 
-<ConfigExample
-	config={{
-		expressions: ["hasResHeader('Content-Type')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "hasResHeader('Content-Type')"
+```
+```json policy.json
+{
+  "expressions": [
+    "hasResHeader('Content-Type')"
+  ]
+}
+```
+</CodeGroup>
 
 ## Hash
 
@@ -441,13 +522,19 @@ json.decode('["a","b","c"]')  // string["a","b","c"]
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: [
-			"json.decode(getReqHeader('x-json-array')[0])[0] == \"first entry\"",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "json.decode(getReqHeader('x-json-array')[0])[0] == "first entry""
+```
+```json policy.json
+{
+  "expressions": [
+    "json.decode(getReqHeader('x-json-array')[0])[0] == \"first entry\""
+  ]
+}
+```
+</CodeGroup>
 
 ### `json.encode(list | map) -> string`
 
@@ -462,13 +549,19 @@ json.encode(["a","b","c"])  // ["a","b","c"]
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: [
-			'json.encode(req.content_type.parameters) == \'{"charset":"UTF-8"}\'',
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "json.encode(req.content_type.parameters) == '{"charset":"UTF-8"}'"
+```
+```json policy.json
+{
+  "expressions": [
+    "json.encode(req.content_type.parameters) == '{\"charset\":\"UTF-8\"}'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Lists
 
@@ -703,11 +796,19 @@ queryString.decode("a=b&c=d")  // {a:b,c:d}
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: ['queryString.decode(req.url.query)["q"] == "hello"'],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "queryString.decode(req.url.query)["q"] == "hello""
+```
+```json policy.json
+{
+  "expressions": [
+    "queryString.decode(req.url.query)[\"q\"] == \"hello\""
+  ]
+}
+```
+</CodeGroup>
 
 ### `queryString.encode(map) -> string`
 
@@ -721,11 +822,19 @@ queryString.encode({a:b,c:d})  // a=b&c=d
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: ['queryString.encode({"q":"policy"}) == req.url.query'],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "queryString.encode({"q":"policy"}) == req.url.query"
+```
+```json policy.json
+{
+  "expressions": [
+    "queryString.encode({\"q\":\"policy\"}) == req.url.query"
+  ]
+}
+```
+</CodeGroup>
 
 ## Random
 
@@ -741,11 +850,19 @@ rand.double() >= 0.5
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: ["rand.double() >= 0.5"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "rand.double() >= 0.5"
+```
+```json policy.json
+{
+  "expressions": [
+    "rand.double() >= 0.5"
+  ]
+}
+```
+</CodeGroup>
 
 ### `rand.int(min,max) -> int`
 
@@ -764,19 +881,35 @@ rand.int(0, 10) >= 5
 
 The following is an example of using `rand.int` with the default values:
 
-<ConfigExample
-	config={{
-		expressions: ["rand.int() == 1"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "rand.int() == 1"
+```
+```json policy.json
+{
+  "expressions": [
+    "rand.int() == 1"
+  ]
+}
+```
+</CodeGroup>
 
 The following is an example of using `rand.int` with custom values:
 
-<ConfigExample
-	config={{
-		expressions: ["rand.int(0, 10) >= 5"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "rand.int(0, 10) >= 5"
+```
+```json policy.json
+{
+  "expressions": [
+    "rand.int(0, 10) >= 5"
+  ]
+}
+```
+</CodeGroup>
 
 ## Secrets
 
@@ -1413,11 +1546,19 @@ url.escape("i;md/r/$y")
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: ["url.escape(req.raw) == '%2Ffoo'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "url.escape(req.raw) == '%2Ffoo'"
+```
+```json policy.json
+{
+  "expressions": [
+    "url.escape(req.raw) == '%2Ffoo'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `url.parse(string) -> URL`
 
@@ -1432,11 +1573,19 @@ url.parse("https://ngrok.com")
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: ["url.parse(req.url).host == 'ngrok.com'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "url.parse(req.url).host == 'ngrok.com'"
+```
+```json policy.json
+{
+  "expressions": [
+    "url.parse(req.url).host == 'ngrok.com'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `url.unescape(string) -> string`
 
@@ -1451,11 +1600,19 @@ url.unescape("i%3Bmd%2Fr%2F%24y")
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: ["url.unescape('%2Ffoo') == '/foo'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "url.unescape('%2Ffoo') == '/foo'"
+```
+```json policy.json
+{
+  "expressions": [
+    "url.unescape('%2Ffoo') == '/foo'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Utility
 
@@ -1483,11 +1640,19 @@ inCidrRange('192.168.1.100', '192.168.1.0/24')  // true
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: ["inCidrRange(conn.client_ip, '66.249.66.1/24')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "inCidrRange(conn.client_ip, '66.249.66.1/24')"
+```
+```json policy.json
+{
+  "expressions": [
+    "inCidrRange(conn.client_ip, '66.249.66.1/24')"
+  ]
+}
+```
+</CodeGroup>
 
 ### `inCidrRanges(ip,cidrs) -> bool`
 
@@ -1504,10 +1669,16 @@ inCidrRanges('192.168.1.100', ['192.168.1.0/24', '10.0.0.0/8']) // true
 
 #### Example (in expression)
 
-<ConfigExample
-	config={{
-		expressions: [
-			"inCidrRanges(conn.client_ip, ['66.249.66.1/24', '2001:4860::/32'])",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "inCidrRanges(conn.client_ip, ['66.249.66.1/24', '2001:4860::/32'])"
+```
+```json policy.json
+{
+  "expressions": [
+    "inCidrRanges(conn.client_ip, ['66.249.66.1/24', '2001:4860::/32'])"
+  ]
+}
+```
+</CodeGroup>

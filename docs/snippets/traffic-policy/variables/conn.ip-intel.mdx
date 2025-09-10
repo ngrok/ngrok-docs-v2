@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 IP Intelligence provides you with additional information about any IP address you see in ngrok. It includes Autonomous System information, Geolocation data, as well as information fetched from 3rd parties that list IP address for blocklists or allowlists.
 
@@ -18,11 +18,19 @@ The following variables are available under the `conn.client_ip` namespace:
 
 The list of categories that classify the `conn.client_ip`. Check out our [full list of categories](#ip-categories).
 
-<ConfigExample
-	config={{
-		expressions: ["('proxy.anonymous.tor' in conn.client_ip.categories)"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "('proxy.anonymous.tor' in conn.client_ip.categories)"
+```
+```json policy.json
+{
+  "expressions": [
+    "('proxy.anonymous.tor' in conn.client_ip.categories)"
+  ]
+}
+```
+</CodeGroup>
 
 ## Client IP Autonomous System
 
@@ -37,21 +45,37 @@ The following variables are available under the `conn.client_ip` namespace:
 
 The [Autonomous System Number](https://www.arin.net/resources/guide/asn/) of the `conn.client_ip`.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.as.number == 12345"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.as.number == 12345"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.as.number == 12345"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.as.organization`
 
 The Autonomous System Organization name of the `conn.client_ip`.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.as.organization == 'COMCAST-7922'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.as.organization == 'COMCAST-7922'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.as.organization == 'COMCAST-7922'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Client IP Geo Location
 
@@ -76,121 +100,217 @@ This is the location where the IP address is located, which may be different fro
 
 The name of the city, in EN, where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.city == 'Strongsville'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.city == 'Strongsville'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.city == 'Strongsville'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.continent`
 
 The name of the continent, in EN, where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.continent == 'North America'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.continent == 'North America'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.continent == 'North America'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.country`
 
 The name of the country, in EN, where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.country == 'United States'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.country == 'United States'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.country == 'United States'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.country_code`
 
 The two-letter ISO country code where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.country_code != 'US'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.country_code != 'US'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.country_code != 'US'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.is_eu`
 
 Determines if the `conn.client_ip` is in the EU. Helpful for GDPR compliance.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.is_eu == true"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.is_eu == true"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.is_eu == true"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.latitude`
 
 The approximate latitude where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["double(conn.client_ip.geo.location.latitude) >= 45.0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "double(conn.client_ip.geo.location.latitude) >= 45.0"
+```
+```json policy.json
+{
+  "expressions": [
+    "double(conn.client_ip.geo.location.latitude) >= 45.0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.longitude`
 
 The approximate longitude where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["double(conn.client_ip.geo.location.longitude) <= -93.0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "double(conn.client_ip.geo.location.longitude) <= -93.0"
+```
+```json policy.json
+{
+  "expressions": [
+    "double(conn.client_ip.geo.location.longitude) <= -93.0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.metro_code`
 
 The metro code where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.metro_code != ''"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.metro_code != ''"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.metro_code != ''"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.postal_code`
 
 The postal code where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.postal_code == '94324'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.postal_code == '94324'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.postal_code == '94324'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.radius`
 
 The radius in kilometers around the latitude and longitude where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.radius <= '5'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.radius <= '5'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.radius <= '5'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.subdivision`
 
 The name of the subdivision, in EN, where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.subdivision == 'California'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.subdivision == 'California'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.subdivision == 'California'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.location.timezone`
 
 The name of the timezone where the `conn.client_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.location.timezone == 'America/New_York'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.location.timezone == 'America/New_York'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.location.timezone == 'America/New_York'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Client IP Registered Geo Location
 
@@ -211,93 +331,145 @@ This is the location where the IP address is registered, which may be different 
 
 The name of the city, in EN, where the `conn.client_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.client_ip.geo.registered_location.city == 'Strongsville'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.city == 'Strongsville'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.city == 'Strongsville'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.registered_location.continent`
 
 The name of the continent, in EN, where the `conn.client_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.client_ip.geo.registered_location.continent == 'North America'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.continent == 'North America'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.continent == 'North America'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.registered_location.country`
 
 The name of the country, in EN, where the `conn.client_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.client_ip.geo.registered_location.country == 'United States'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.country == 'United States'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.country == 'United States'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.registered_location.country_code`
 
 The two-letter ISO country code where the `conn.client_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.client_ip.geo.registered_location.country_code != 'US'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.country_code != 'US'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.country_code != 'US'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.registered_location.is_eu`
 
 Determines if the `conn.client_ip` is in the EU. Helpful for GDPR compliance.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.registered_location.is_eu == true"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.is_eu == true"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.is_eu == true"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.registered_location.subdivision`
 
 The name of the subdivision, in EN, where the `conn.client_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.client_ip.geo.registered_location.subdivision == 'California'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.subdivision == 'California'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.subdivision == 'California'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.registered_location.metro_code`
 
 The metro code where the `conn.client_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.client_ip.geo.registered_location.metro_code != ''"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.metro_code != ''"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.metro_code != ''"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip.geo.registered_location.timezone`
 
 The name of the timezone where the `conn.client_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.client_ip.geo.registered_location.timezone == 'America/New_York'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip.geo.registered_location.timezone == 'America/New_York'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip.geo.registered_location.timezone == 'America/New_York'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Server IP Intelligence
 
@@ -311,11 +483,19 @@ The following variables are available under the `conn.server_ip` namespace:
 
 The list of categories that classify the `conn.server_ip`. Check out our [full list of categories](#ip-categories).
 
-<ConfigExample
-	config={{
-		expressions: ["('proxy.anonymous.tor' in conn.server_ip.categories)"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "('proxy.anonymous.tor' in conn.server_ip.categories)"
+```
+```json policy.json
+{
+  "expressions": [
+    "('proxy.anonymous.tor' in conn.server_ip.categories)"
+  ]
+}
+```
+</CodeGroup>
 
 ## Server IP Autonomous System
 
@@ -328,21 +508,37 @@ The list of categories that classify the `conn.server_ip`. Check out our [full l
 
 The [Autonomous System Number](https://www.arin.net/resources/guide/asn/) of the `conn.server_ip`.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.as.number == 12345"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.as.number == 12345"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.as.number == 12345"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.as.organization`
 
 The Autonomous System Organization name of the `conn.server_ip`.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.as.organization == 'COMCAST-7922'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.as.organization == 'COMCAST-7922'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.as.organization == 'COMCAST-7922'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Server IP Location Geo
 
@@ -367,121 +563,217 @@ This is the location where the server IP address is located, which may be differ
 
 The name of the city, in EN, where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.city == 'Strongsville'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.city == 'Strongsville'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.city == 'Strongsville'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.continent`
 
 The name of the continent, in EN, where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.continent == 'North America'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.continent == 'North America'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.continent == 'North America'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.country`
 
 The name of the country, in EN, where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.country == 'United States'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.country == 'United States'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.country == 'United States'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.country_code`
 
 The two-letter ISO country code where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.country_code != 'US'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.country_code != 'US'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.country_code != 'US'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.is_eu`
 
 Determines if the `conn.server_ip` location is in the EU. Helpful for GDPR compliance.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.is_eu == true"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.is_eu == true"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.is_eu == true"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.latitude`
 
 The approximate latitude where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["double(conn.server_ip.geo.location.latitude) >= 45.0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "double(conn.server_ip.geo.location.latitude) >= 45.0"
+```
+```json policy.json
+{
+  "expressions": [
+    "double(conn.server_ip.geo.location.latitude) >= 45.0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.longitude`
 
 The approximate longitude where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["double(conn.server_ip.geo.location.longitude) <= -93.0"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "double(conn.server_ip.geo.location.longitude) <= -93.0"
+```
+```json policy.json
+{
+  "expressions": [
+    "double(conn.server_ip.geo.location.longitude) <= -93.0"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.metro_code`
 
 The metro code where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.metro_code != ''"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.metro_code != ''"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.metro_code != ''"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.postal_code`
 
 The postal code where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.postal_code == '94324'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.postal_code == '94324'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.postal_code == '94324'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.radius`
 
 The radius in kilometers around the latitude and longitude where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.radius <= '5'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.radius <= '5'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.radius <= '5'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.subdivision`
 
 The name of the subdivision, in EN, where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.subdivision == 'California'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.subdivision == 'California'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.subdivision == 'California'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.location.timezone`
 
 The name of the timezone where the `conn.server_ip` is likely to originate.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.location.timezone == 'America/New_York'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.location.timezone == 'America/New_York'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.location.timezone == 'America/New_York'"
+  ]
+}
+```
+</CodeGroup>
 
 ## Server IP Registered Location Geo
 
@@ -502,90 +794,142 @@ This is the location where the server IP address is registered, which may be dif
 
 The name of the city, in EN, where the `conn.server_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.server_ip.geo.registered_location.city == 'Strongsville'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.city == 'Strongsville'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.city == 'Strongsville'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.registered_location.continent`
 
 The name of the continent, in EN, where the `conn.server_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.server_ip.geo.registered_location.continent == 'North America'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.continent == 'North America'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.continent == 'North America'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.registered_location.country`
 
 The name of the country, in EN, where the `conn.server_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.server_ip.geo.registered_location.country == 'United States'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.country == 'United States'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.country == 'United States'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.registered_location.country_code`
 
 The two-letter ISO country code where the `conn.server_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.server_ip.geo.registered_location.country_code != 'US'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.country_code != 'US'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.country_code != 'US'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.registered_location.is_eu`
 
 Determines if the `conn.server_ip` is in the EU. Helpful for GDPR compliance.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.registered_location.is_eu == true"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.is_eu == true"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.is_eu == true"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.registered_location.subdivision`
 
 The name of the subdivision, in EN, where the `conn.server_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.server_ip.geo.registered_location.subdivision == 'California'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.subdivision == 'California'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.subdivision == 'California'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.registered_location.metro_code`
 
 The metro code where the `conn.server_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip.geo.registered_location.metro_code != ''"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.metro_code != ''"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.metro_code != ''"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip.geo.registered_location.timezone`
 
 The name of the timezone where the `conn.server_ip` is registered.
 
-<ConfigExample
-	config={{
-		expressions: [
-			"conn.server_ip.geo.registered_location.timezone == 'America/New_York'",
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip.geo.registered_location.timezone == 'America/New_York'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip.geo.registered_location.timezone == 'America/New_York'"
+  ]
+}
+```
+</CodeGroup>

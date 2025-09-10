@@ -1,4 +1,4 @@
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 
 ## Connection Variables
 
@@ -19,72 +19,142 @@ The following variables are available under the `conn` namespace:
 
 The number of bytes entering the endpoint from the client.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.bytes_in > 1000"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.bytes_in > 1000"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.bytes_in > 1000"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.bytes_out`
 
 The number of bytes leaving an endpoint to the client.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.bytes_out > 1000"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.bytes_out > 1000"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.bytes_out > 1000"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_ip`
 
 Source IP of the connection to the ngrok endpoint.
 
-<ConfigExample
-	config={{ expressions: ["conn.client_ip in ['::1', '127.0.0.1']"] }}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_ip in ['::1', '127.0.0.1']"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_ip in ['::1', '127.0.0.1']"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.client_port`
 
 Source port of the connection to the ngrok endpoint.
 
-<ConfigExample config={{ expressions: ["conn.client_port == 80"] }} />
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.client_port == 80"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.client_port == 80"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_ip`
 
 The IP that this connection was established on.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_ip == '192.168.1.1'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_ip == '192.168.1.1'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_ip == '192.168.1.1'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_port`
 
 The port that this connection was established on.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_port == 80"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_port == 80"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_port == 80"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.server_region`
 
 The ngrok [PoP (Point of Presence)](/docs/universal-gateway/points-of-presence/) that this connection was established on and serviced through.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.server_region == 'eu'"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.server_region == 'eu'"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.server_region == 'eu'"
+  ]
+}
+```
+</CodeGroup>
 
 ### `conn.ts.start`
 
 Timestamp when the connection to ngrok was started.
 
-<ConfigExample
-	config={{
-		expressions: ["conn.ts.start > timestamp('2023-12-31T00:00:00Z')"],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+expressions:
+  - "conn.ts.start > timestamp('2023-12-31T00:00:00Z')"
+```
+```json policy.json
+{
+  "expressions": [
+    "conn.ts.start > timestamp('2023-12-31T00:00:00Z')"
+  ]
+}
+```
+</CodeGroup>

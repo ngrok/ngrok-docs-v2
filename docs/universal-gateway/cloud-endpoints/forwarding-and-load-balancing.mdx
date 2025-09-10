@@ -9,7 +9,7 @@ tags:
   - load-balancing
 ---
 
-import ConfigExample from "/src/components/ConfigExample.tsx";
+
 This guide provides an example of using an ngrok Cloud Endpoint to route traffic between multiple internal endpoints.
 
 ## Core Concepts
@@ -114,24 +114,31 @@ handle incoming traffic. This guide will showcase one of the simplest
 and most common use cases: forwarding traffic to other endpoints
 (the internal endpoint we created in Step 1) via the forward action.
 
-<ConfigExample
-	snippetText={null}
-	showLineNumbers={true}
-	config={{
-		on_http_request: [
-			{
-				actions: [
-					{
-						type: "forward-internal",
-						config: {
-							url: "https://your-domain-name.internal",
-						},
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+```yaml policy.yml
+on_http_request:
+  - actions:
+    - type: "forward-internal"
+    config:
+    url: "https://your-domain-name.internal"
+```
+```json policy.json
+{
+  "on_http_request": [
+    {
+      "actions": [
+        {
+          "type": "forward-internal",
+          "config": {
+            "url": "https://your-domain-name.internal"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
 
 ## **Step 4** — Create an ngrok Cloud Endpoint
 
