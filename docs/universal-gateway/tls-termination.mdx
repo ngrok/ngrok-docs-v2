@@ -2,9 +2,6 @@
 title: TLS Termination
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 import TlsLimits from "/snippets/http/_tls_limits.mdx";
 
 import AtAgentAgentCliExample from "/snippets/examples/agent-cli/tls-terminate-at-agent.mdx";
@@ -91,31 +88,31 @@ termination behavior.
 
 #### Cloud Service
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<CustomDomainAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<CustomDomainAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<CustomDomainSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<CustomDomainGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<CustomDomainJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<CustomDomainPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<CustomDomainRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<CustomDomainKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 <br />
@@ -124,62 +121,62 @@ termination behavior.
 
 See [Zero-Knowledge TLS at the Agent](/agent/agent-tls-termination/) for additional details.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<AtAgentAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<AtAgentAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<AtAgentSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<AtAgentGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<AtAgentJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<AtAgentPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<AtAgentRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<AtAgentKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 <br />
 
 #### Terminate at Upstream
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<AtUpstreamAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<AtUpstreamAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<AtUpstreamSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<AtUpstreamGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<AtUpstreamJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<AtUpstreamPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<AtUpstreamRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<AtUpstreamKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## `terminate-tls`

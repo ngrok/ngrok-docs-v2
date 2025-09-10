@@ -2,9 +2,6 @@
 title: OAuth
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 # Securing Your Endpoints with OAuth Authentication
 
 OAuth is a widely adopted authentication and authorization mechanism that enables users to securely access resources without exposing their credentials. It is commonly used for single sign-on (SSO), API security, and third-party integrations.
@@ -36,8 +33,8 @@ The following example showcases how you might set up a required Google login wit
 Check out the [OAuth traffic policy action](/traffic-policy/actions/oauth/) page for more details about how it functions and the parameters it accepts.
 Consult the list of [supported providers](/traffic-policy/actions/oauth/#supported-providers) for step-by-step integration guides for each one.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -60,8 +57,8 @@ Consult the list of [supported providers](/traffic-policy/actions/oauth/#support
                     - https://www.googleapis.com/auth/userinfo.profile
                     - https://www.googleapis.com/auth/userinfo.email
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -82,8 +79,8 @@ Consult the list of [supported providers](/traffic-policy/actions/oauth/#support
                     - https://www.googleapis.com/auth/userinfo.profile
                     - https://www.googleapis.com/auth/userinfo.email
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not natively support OAuth enforcement, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -132,8 +129,8 @@ Consult the list of [supported providers](/traffic-policy/actions/oauth/#support
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	💡 Gateway API resources do not natively support OAuth enforcement, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -179,5 +176,5 @@ Consult the list of [supported providers](/traffic-policy/actions/oauth/#support
         port: 443
         protocol: HTTPS
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

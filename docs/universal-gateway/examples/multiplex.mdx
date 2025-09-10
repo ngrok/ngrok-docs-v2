@@ -9,9 +9,6 @@ import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
 import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 Multiplexing is a common gateway design where you host multiple services from a single fully qualified domain name (FQDN) like `example.com`.
 For example, `app.example.com` can serve a static web app while `api.example.com` serves a JSON API using entirely different services and infrastructure. With ngrok Cloud Endpoints and Traffic Policy, you can dynamically determine where your traffic is forwarded to.
 
@@ -52,7 +49,7 @@ You'll then need to set up CNAME records with your DNS provider.
 While still viewing your new Cloud Endpoint in the dashboard, copy and paste one of the three policies below into the Traffic Policy editor depending on whether you want to route by hostname/subdomain, header value, or with global variables that are accessed at runtime.
 
 <Tabs>
-	<TabItem value="subdomain" label="By subdomain" default>
+	<Tab title="By subdomain">
 		```yaml
 		on_http_request:
 			- actions:
@@ -64,8 +61,8 @@ While still viewing your new Cloud Endpoint in the dashboard, copy and paste one
     	**What's happening here?**
     	This policy forwards every HTTP request to one of your internal Agent Endpoints, which in turn forward traffic to your internal services.
     	The [`split` macro](/docs/traffic-policy/macros/#stringsplit---list) dynamically routes traffic based on the incoming hostname so that the policy forwards requests to the `foo` subdomain to `https://foo.internal`, and so on.
-    </TabItem>
-    <TabItem value="header" label="By header">
+    </Tab>
+    <Tab title="By header">
     	```yaml
     	on_http_request:
     	  - actions:
@@ -77,8 +74,8 @@ While still viewing your new Cloud Endpoint in the dashboard, copy and paste one
     	**What's happening here?**
     	This policy forwards every HTTP request to one of your internal Agent Endpoints, which in turn forward traffic to your internal services.
     	The [`split` macro](/docs/traffic-policy/macros/#stringsplit---list) dynamically routes traffic based on the `x-service` header so that the policy forwards requests with the `x-service: foo` header to `https://foo.internal`, and so on.
-    </TabItem>
-    <TabItem value="set-vars" label="By allowed subdomains">
+    </Tab>
+    <Tab title="By allowed subdomains">
     	```yaml
     	on_http_request:
     		- actions:
@@ -103,7 +100,7 @@ While still viewing your new Cloud Endpoint in the dashboard, copy and paste one
     	**Whats happening here?**
     	This policy first sets a variable `allowed_subdomains` to a list of subdomains that are allowed to access the service.
     	Then it checks if the incoming request's subdomain is in that list. If not, it returns a custom response with a `Denied` message. If the subdomain is allowed, it forwards the request to the corresponding internal Agent Endpoint.
-    </TabItem>
+    </Tab>
 
     </Tabs>
 

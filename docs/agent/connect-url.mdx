@@ -3,9 +3,6 @@ title: Connect URLs
 sidebar_label: Connect URLs
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 import CustomIngressAgentCliExample from "/snippets/examples/agent-cli/custom-agent-ingress.mdx";
 import CustomIngressAgentConfigExample from "/snippets/examples/agent-config/custom-agent-ingress.mdx";
 import CustomIngressGoSdkExample from "/snippets/examples/go-sdk/custom-agent-ingress.mdx";
@@ -69,31 +66,31 @@ For example, if the domain of your custom Connect URL is
 `connect.example.com` then you might add the following line to the agent's
 configuration file:
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<CustomIngressAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config" default>
+	</Tab>
+	<Tab title="Agent Config">
 		<CustomIngressAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<CustomIngressSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<CustomIngressGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<CustomIngressJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<CustomIngressPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<CustomIngressRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<CustomIngressKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## Regional scope and GSLB

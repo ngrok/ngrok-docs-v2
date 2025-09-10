@@ -4,9 +4,6 @@ sidebar_label: Cloud Endpoints
 description: Set up your first ngrok Cloud Endpoint to start managing traffic to your services.
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 Cloud Endpoints provide a persistent way to service traffic.
 Unlike Agent Endpoints, which are ephemeral and run locally, cloud endpoints run on ngrok's cloud service, allowing you to accept public traffic even if your internal apps or services are down.
 
@@ -43,15 +40,15 @@ We'll come back to this in later steps.
 
 If this is your first time using ngrok, run the command that corresponds to your operating system to install the Agent CLI:
 
-<Tabs groupId="os" queryString="os">
-<TabItem value="macos" label="Mac OS" default>
+<Tabs>
+<Tab title="Mac OS">
 
 ```bash
 brew install ngrok
 ```
 
-</TabItem>
-<TabItem value="linux" label="Debian Linux">
+</Tab>
+<Tab title="Debian Linux">
 
 ```bash
 curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
@@ -62,12 +59,12 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
   && sudo apt install ngrok
 ```
 
-</TabItem>
-<TabItem value="windows" label="Windows">
+</Tab>
+<Tab title="Windows">
 
 Install via the <a href="ms-windows-store://pdp/?ProductId=9mvs1j51gmk6">Windows App Store</a>
 
-</TabItem>
+</Tab>
 </Tabs>
 
 Or [follow the direct installation guide](https://download.ngrok.com?tab=download) if you can't use one of the options above.
@@ -113,8 +110,8 @@ Start up the app or service you'd like to put online.
 
 If you don't have an app to work with, you can create a minimal app in your language of choice using the following code to set up a basic HTTP server at port `8080`.
 
-<Tabs groupId="language" queryString="language">
-<TabItem value="javascript" label="JavaScript" default>
+<Tabs>
+<Tab title="JavaScript">
 ```javascript
 const http = require('http');
 
@@ -141,8 +138,8 @@ Navigate to the directory where this file is located and run the following comma
 node service.js
 ````
 
-</TabItem>
-<TabItem value="go" label="Go">
+</Tab>
+<Tab title="Go">
 
 ```go title="service.go"
 package main
@@ -174,8 +171,8 @@ Navigate to the directory where this file is located and run the following comma
 go run service.go
 ```
 
-</TabItem>
-<TabItem value="python" label="Python">
+</Tab>
+<Tab title="Python">
 
 ```python title="service.py"
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -209,8 +206,8 @@ Navigate to the directory where this file is located and run the following comma
 python service.py
 ```
 
-</TabItem>
-<TabItem value="rust" label="Rust">
+</Tab>
+<Tab title="Rust">
 
 First, create a directory for your Rust project and navigate into it:
 
@@ -279,7 +276,7 @@ To run the server, navigate to the root directory of the project (where the `Car
 cargo run
 ```
 
-</TabItem>
+</Tab>
 </Tabs>
 
 ### 6. Start your agent endpoint

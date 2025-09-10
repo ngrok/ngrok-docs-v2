@@ -2,9 +2,6 @@
 title: HTTP/S Endpoints
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 import TlsLimits from "/snippets/http/_tls_limits.mdx";
 
 import RandomAgentCliExample from "/snippets/examples/agent-cli/http-random.mdx";
@@ -136,31 +133,31 @@ process and forwards traffic to a port or URL of your choosing.
 Create the endpoint `https://example.ngrok.app` and forward its traffic to a
 local port.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<StaticDomainAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<StaticDomainAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<StaticDomainSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<StaticDomainGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<StaticDomainJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<StaticDomainPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<StaticDomainRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<StaticDomainKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 <br />
@@ -175,8 +172,8 @@ handles traffic.
 [Create an HTTPS cloud endpoint](https://dashboard.ngrok.com/endpoints/new)
 which returns a `Hello world!` 200 OK response.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-api" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 
 ```bash title="Command line"
 ngrok api endpoints create \
@@ -195,7 +192,7 @@ on_http_request:
           body: "Hello world!"
 ```
 
-    </TabItem>
+    </Tab>
 
 </Tabs>
 
@@ -295,31 +292,31 @@ a Domain](https://dashboard.ngrok.com/domains) and follow the instructions to
 set up a CNAME record. Then use the following example to start an endpoint on
 your domain:
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<BrandedDomainAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<BrandedDomainAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<BrandedDomainSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<BrandedDomainGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<BrandedDomainJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<BrandedDomainPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<BrandedDomainRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<BrandedDomainKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### Wildcard endpoints
@@ -342,31 +339,31 @@ will receive traffic for `https://foo.example.com` and
   online, a connection to `https://app.example.com` will not be routed to the
   wildcard endpoint.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<WildcardAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<WildcardAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<WildcardSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<WildcardGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<WildcardJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<WildcardPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<WildcardRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<WildcardKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### Use multiple endpoints with wildcard subdomains
@@ -402,31 +399,31 @@ For example, the command `ngrok http 80` may create an endpoint like
 The following example create an HTTPS endpoint on a randomly assigned hostname
 that forwards to port 8080.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<RandomAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<RandomAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<RandomSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<RandomGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<RandomJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<RandomPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<RandomRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<StaticDomainKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## Traffic Policy
@@ -454,31 +451,31 @@ most often you want to add authentication. You can secure your endpoints with
 Adds a username and password with the [Basic
 Auth](/traffic-policy/actions/basic-auth) Traffic Policy action.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<BasicAuthAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<BasicAuthAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<BasicAuthSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<BasicAuthGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<BasicAuthJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<BasicAuthPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<BasicAuthRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<BasicAuthKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 <br />
@@ -489,31 +486,31 @@ The following example enforces a browser-based OAuth redirect flow in front of
 your endpoint using Google as the identity provider by using the
 [OAuth](/traffic-policy/actions/oauth) Traffic Policy action.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<OAuthAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<OAuthAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<OAuthSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<OAuthGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<OAuthJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<OAuthPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<OAuthRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<OAuthKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 #### Rewriting the `host` header 
@@ -532,31 +529,31 @@ Adding the `Host` header [is a special
 case](/traffic-policy/actions/add-headers/#special-cases) that replaces the existing
 `Host` header instead of appending a second value.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<HostHeaderAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<HostHeaderAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<HostHeaderSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<HostHeaderGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<HostHeaderJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<HostHeaderPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<HostHeaderRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<HostHeaderKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## Agent Forwarding
@@ -587,31 +584,31 @@ verify the TLS certificate presented by the upstream service. You may change
 this behavior with the [flags `--upstream-tls-verify` and
 `upstream-tls-verify-cas`](/agent/cli/#ngrok-http).
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<ForwardHttpsAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<ForwardHttpsAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<ForwardHttpsSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<ForwardHttpsGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<ForwardHttpsJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<ForwardHttpsPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<ForwardHttpsRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<ForwardHttpsKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### Non-local forwarding
@@ -620,31 +617,31 @@ Agents don't just forward to ports on your localhost. You can forward traffic
 to any address or URL reachable from the agent. For example, if you want to
 forward traffic to a HTTP server running on your network at `192.168.1.2:80`:
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<NonLocalAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<NonLocalAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<NonLocalSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<NonLocalGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<NonLocalJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<NonLocalPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<NonLocalRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<NonLocalKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### HTTP/2 forwarding
@@ -679,93 +676,93 @@ Paths in `file://` URLs must be specified as absolute paths.
 
 #### Serve files in `/var/log`
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<AbsPathFileserverAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<AbsPathFileserverAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<AbsPathFileserverSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<AbsPathFileserverGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<AbsPathFileserverJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<AbsPathFileserverPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<AbsPathFileserverRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<AbsPathFileserverKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 <br />
 
 #### Serve files on Windows
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<WindowsFileserverAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<WindowsFileserverAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<WindowsFileserverSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<WindowsFileserverGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<WindowsFileserverJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<WindowsFileserverPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<WindowsFileserverRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<WindowsFileserverKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 <br />
 
 #### Serve files in your current working directory
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<WorkingDirFileserverAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<WorkingDirFileserverAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<WorkingDirFileserverSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<WorkingDirFileserverGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<WorkingDirFileserverJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<WorkingDirFileserverPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<WorkingDirFileserverRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<WorkingDirFileserverKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## Traffic Observability

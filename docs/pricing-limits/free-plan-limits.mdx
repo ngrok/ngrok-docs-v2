@@ -3,9 +3,6 @@ title: Free Plan Limits
 ---
 
 import FreeResources from "@site/shared/limits/free-resources.mdx";
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 Learn about the limits enforced in the free ngrok for developers plan.
 
 Note: The free tier does NOT have timeouts on tunnels. That is something that ngrok used to do for anonymous use, but does not do for free accounts. If you'd like to run your tunnel all the time, you can do so, on the free tier, as a [background service.] (https://ngrok.com/docs/agent/#background-service)
@@ -60,8 +57,8 @@ You can remove the interstitial by upgrading to [any paid plan](https://ngrok.co
 
 From the client accessing the ngrok endpoint, add a header value of `ngrok-skip-browser-warning` and set it to any value. These requests will bypass the interstitial.
 
-  <Tabs groupId="headers" queryString="library">
-    <TabItem value="axios" label="Axios">
+  <Tabs>
+    <Tab title="Axios">
       ```js
       axios.get(url, { 'headers': { 'ngrok-skip-browser-warning': '1' } })
         .then((response => {
@@ -71,8 +68,8 @@ From the client accessing the ngrok endpoint, add a header value of `ngrok-skip-
           console.log(error);
         });
       ```
-    </TabItem>
-    <TabItem value="fetch" label="Fetch" default>    
+    </Tab>
+    <Tab title="Fetch">    
       ```js
       const response = await fetch(URL, {
         headers: {
@@ -81,23 +78,23 @@ From the client accessing the ngrok endpoint, add a header value of `ngrok-skip-
         // ...
       });
       ```
-    </TabItem>
-    <TabItem value="superagent" label="Super Agent" default>
+    </Tab>
+    <Tab title="Super Agent">
       ```js
       request
             .get('/endpoint')
             .set('ngrok-skip-browser-warning', '1')
             .then(callback);
       ```
-    </TabItem>
-    <TabItem value="jquery" label="JQuery">
+    </Tab>
+    <Tab title="JQuery">
       ```js
       request
             .get('/endpoint')
             .set('ngrok-skip-browser-warning', '1')
             .then(callback);
       ```
-    </TabItem>
+    </Tab>
   </Tabs>
 
 ### Using a custom user agent

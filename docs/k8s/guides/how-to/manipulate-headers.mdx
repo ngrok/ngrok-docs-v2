@@ -2,9 +2,6 @@
 title: Manipulate Headers
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 # Customizing Requests with Header Manipulation
 
 Header manipulation is a core feature of API Gateways that allows you to modify HTTP headers on incoming requests and outgoing responses.
@@ -41,8 +38,8 @@ Key Benefits:
 The following examples will add the `X-Request-Header: my-custom-value` header to requests before they are forwarded to the upstream.
 
 
-<Tabs groupId="add-req-header" queryString="add-req-header">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -64,8 +61,8 @@ The following examples will add the `X-Request-Header: my-custom-value` header t
                   headers:
                     X-Request-Header: my-custom-value
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -85,8 +82,8 @@ The following examples will add the `X-Request-Header: my-custom-value` header t
                   headers:
                     X-Request-Header: my-custom-value
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not have native configuration for header manipulation, but they can be extended using a traffic policy.
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
@@ -133,8 +130,8 @@ The following examples will add the `X-Request-Header: my-custom-value` header t
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports header manipulation, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -190,7 +187,7 @@ The following examples will add the `X-Request-Header: my-custom-value` header t
           - name: X-Request-Header
             value: "my-custom-value"
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### Adding Response Headers
@@ -198,8 +195,8 @@ The following examples will add the `X-Request-Header: my-custom-value` header t
 The following examples will add the `X-Response-Header: my-custom-value` header to responses before they are sent to the clients.
 
 
-<Tabs groupId="add-res-header" queryString="add-res-header">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -221,8 +218,8 @@ The following examples will add the `X-Response-Header: my-custom-value` header 
                   headers:
                     X-Response-Header: my-custom-value
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -242,8 +239,8 @@ The following examples will add the `X-Response-Header: my-custom-value` header 
                   headers:
                     X-Response-Header: my-custom-value
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not have native configuration for header manipulation, but they can be extended using a traffic policy.
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
@@ -290,8 +287,8 @@ The following examples will add the `X-Response-Header: my-custom-value` header 
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports header manipulation, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -347,7 +344,7 @@ The following examples will add the `X-Response-Header: my-custom-value` header 
           - name: X-Response-Header
             value: "my-custom-value"
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### Removing Request Headers
@@ -355,8 +352,8 @@ The following examples will add the `X-Response-Header: my-custom-value` header 
 The following examples will remove the `X-Trace-Id` header from requests before they are forwarded to the upstream if the header is present.
 
 
-<Tabs groupId="del-req-header" queryString="del-req-header">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -378,8 +375,8 @@ The following examples will remove the `X-Trace-Id` header from requests before 
                   headers:
                     - X-Trace-Id
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -399,8 +396,8 @@ The following examples will remove the `X-Trace-Id` header from requests before 
                   headers:
                     - X-Trace-Id
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not have native configuration for header manipulation, but they can be extended using a traffic policy.
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
@@ -447,8 +444,8 @@ The following examples will remove the `X-Trace-Id` header from requests before 
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports header manipulation, and this feature is fully supported by the ngrok Kubernetes operator.
 	### 1. Create a `Gateway`
 
@@ -501,15 +498,15 @@ The following examples will remove the `X-Trace-Id` header from requests before 
           remove:
           - X-Trace-Id
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### Removing Response Headers
 
 The following examples will remove the `Server` header from responses before they are sent to the clients if the header is present.
 
-<Tabs groupId="del-res-header" queryString="del-res-header">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -531,8 +528,8 @@ The following examples will remove the `Server` header from responses before the
                   headers:
                     - Server
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
 
@@ -552,8 +549,8 @@ The following examples will remove the `Server` header from responses before the
                   headers:
                     - Server
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not have native configuration for header manipulation, but they can be extended using a traffic policy.
 
 	Check out the [add headers](/traffic-policy/actions/add-headers/) and [remove headers](/traffic-policy/actions/remove-headers/) traffic policy action pages for more details about how they function and the parameters they accept.
@@ -600,8 +597,8 @@ The following examples will remove the `Server` header from responses before the
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports header manipulation, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -656,5 +653,5 @@ The following examples will remove the `Server` header from responses before the
           remove:
           - Server
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

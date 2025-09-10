@@ -2,9 +2,6 @@
 title: JWT Validation
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 # Securing Your Endpoints with JWT Validation
 
 By validating JWTs at the network edge, you can:
@@ -40,8 +37,8 @@ A useful tool for working with JWTs is provided at [jwt.io](https://jwt.io/).
 
 Check out the [JWT validation traffic policy action](/traffic-policy/actions/jwt-validation/) page for more details about how it functions and the parameters it accepts.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -81,8 +78,8 @@ Check out the [JWT validation traffic policy action](/traffic-policy/actions/jwt
                         additional_jkus:
                           - https://example.com/issuer/jku
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -120,8 +117,8 @@ Check out the [JWT validation traffic policy action](/traffic-policy/actions/jwt
                         additional_jkus:
                           - https://example.com/issuer/jku
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not natively support JWT validation, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -187,8 +184,8 @@ Check out the [JWT validation traffic policy action](/traffic-policy/actions/jwt
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	💡 Gateway API resources do not natively support JWT validation, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -251,5 +248,5 @@ Check out the [JWT validation traffic policy action](/traffic-policy/actions/jwt
         port: 443
         protocol: HTTPS
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

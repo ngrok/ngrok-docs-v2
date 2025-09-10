@@ -10,9 +10,6 @@ tags:
   - devices
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 In this guide, you'll learn how to install ngrok on any Linux ARM64 device to forward traffic from public endpoints to your upstream services or for remote management. You'll also create some a traffic policy to protect your device from unauthorized traffic.
 
 This guide is specific to ARM64 devices on Linux—if you're using a different device or CPU architecture, first check whether your platform meets the ngrok agent's [system and resource requirements](/agent/#system-requirements). We also have other guides that may fit your use case more precisely:
@@ -135,21 +132,21 @@ Now that you have SSH tunneling and service ingress handled via ngrok, you may a
 
 1.  Restart any existing tunnels, or create new ones, referencing the `policy.yml` file you just created, choosing between a TLS and HTTP tunnel below.
 
-    <Tabs groupId="connectivity" queryString="cty">
-      <TabItem value="tls-tunnel" label="TLS tunnel">
+    <Tabs>
+      <Tab title="TLS tunnel">
         
         ```bash
         ngrok tcp 22  --traffic-policy-file /path/to/policy.yml
         ```
 
-      </TabItem>
-      <TabItem value="http-tunnel" label="HTTP tunnel">
+      </Tab>
+      <Tab title="HTTP tunnel">
 
         ```bash
         ngrok http 8080 --traffic-policy-file /path/to/policy.yml
         ```
 
-      </TabItem>
+      </Tab>
     </Tabs>
 
 1.  When you re-establish your TLS or HTTP tunnels, ngrok will proxy requests from your allowed IP/CIDR through to your ARM64 device and reject all others _at its cloud service_, preventing your device from being constantly bombarded with automated and malicious attacks.

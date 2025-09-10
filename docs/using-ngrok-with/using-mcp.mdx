@@ -4,9 +4,6 @@ title: Using ngrok With Claude AI's MCP
 description: Learn how to use ngrok to proxy a local server so you can build custom apps for Claude's MCP.
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 [Claude.ai](https://www.anthropic.com/news/introducing-claude) supports [Custom MCP (Model Context Protocol) Integrations](https://support.anthropic.com/en/articles/11175166-about-custom-integrations-using-remote-mcp) — allowing it to interact with your own tools and APIs via structured function calls.
 
 That means you can bring any custom MCP server into Claude.ai or Claude Desktop — as long as it's reachable via a public endpoint.
@@ -71,8 +68,8 @@ Once you have claimed your free static domain, add the `--url https://<your_stat
 
 Custom integrations using **Remote MCP** are now available on [Claude.ai](https://claude.ai/) and the Claude Desktop app for users on **Claude Max**, **Team**, and **Enterprise** plans. **This feature is currently in beta.**
 
-<Tabs groupId="user-type" queryString="user-type">
-<TabItem value="claude-max" label="Claude Max" default>
+<Tabs>
+<Tab title="Claude Max">
 
 1. Go to [**Settings → Profile**](https://claude.ai/settings/profile)
 2. Scroll to the **Integrations** section
@@ -80,15 +77,15 @@ Custom integrations using **Remote MCP** are now available on [Claude.ai](https:
 4. Paste the MCP server URL from your earlier step
 5. Click **Add** to finish setting up the integration
 
-</TabItem>
+</Tab>
 
-<TabItem value="claude-enterprise" label="Enterprise & Teams">
+<Tab title="Enterprise & Teams">
 
 Refer to Anthropic's official setup guide:
 
 - [**About Custom Integrations using Remote MCP** →](https://support.anthropic.com/en/articles/11175166-about-custom-integrations-using-remote-mcp)
 
-</TabItem>
+</Tab>
 
 </Tabs>
 

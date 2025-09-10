@@ -4,8 +4,6 @@ title: Using OAuth Traffic Policy on Endpoints
 description: Learn how to add OAuth authentication to your ngrok endpoints using Traffic Policy.
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
 import ConfigExample from "/src/components/ConfigExample.tsx";
 
 Sometimes you don't want everyone to be able to access the app at your [Endpoints](/universal-gateway/endpoints).
@@ -54,8 +52,8 @@ Create this traffic policy file in the same directory where you run your ngrok a
 
 ## 3. Restart your endpoint with the policy attached
 
-<Tabs groupId="start-location" queryString="start-location">
-<TabItem value="policy" label="Using a local file" default>
+<Tabs>
+<Tab title="Using a local file">
 
 If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--traffic-policy-file` flag to your ngrok command when starting your agent as shown in the following example.
 
@@ -63,8 +61,8 @@ If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--tr
 ngrok http 3000 --traffic-policy-file oauth.yml
 ```
 
-</TabItem>
-<TabItem value="config" label="Using an Agent Config file">
+</Tab>
+<Tab title="Using an Agent Config file">
 
 If you've added the traffic policy to your agent config, run the following command in your terminal.
 
@@ -72,7 +70,7 @@ If you've added the traffic policy to your agent config, run the following comma
 ngrok start endpoint-name-here
 ```
 
-</TabItem>
+</Tab>
 </Tabs>
 
 ## 4. Verify in a browser
@@ -150,8 +148,8 @@ This section includes two examples of how to apply these additional auth lifecyc
 
 Now you can restart your endpoint with the updated traffic policy file or config.
 
-<Tabs groupId="start-location" queryString="start-location">
-<TabItem value="policy" label="Using a local file" default>
+<Tabs>
+<Tab title="Using a local file">
 
 If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--traffic-policy-file` flag to your ngrok command when starting your agent as shown in the following example.
 
@@ -159,8 +157,8 @@ If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--tr
 ngrok http 3000 --traffic-policy-file oauth.yml
 ```
 
-</TabItem>
-<TabItem value="config" label="Using an Agent Config file">
+</Tab>
+<Tab title="Using an Agent Config file">
 
 If you've added the traffic policy to your agent config, run the following command in your terminal.
 
@@ -168,7 +166,7 @@ If you've added the traffic policy to your agent config, run the following comma
 ngrok start endpoint-name-here
 ```
 
-</TabItem>
+</Tab>
 </Tabs>
 
 If you need assistance with specific configurations or further customization, feel free to ask our Support team at [support@ngrok.com](mailto:support@ngrok.com).

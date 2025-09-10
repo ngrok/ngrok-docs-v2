@@ -2,9 +2,6 @@
 title: Local Cluster Options
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 # Run a local Kubernetes Cluster
 
 You can install the ngrok Kubernetes operator in a locally running Kubernetes cluster rather than paying for one from a cloud provider.
@@ -46,8 +43,8 @@ Select one of the following options for running Kubernetes inside containers on 
 
 ### Basic commands
 
-<Tabs groupId="k8s-provider" queryString="k8s-provider">
-	<TabItem value="k3d" label="k3d" default>
+<Tabs>
+	<Tab title="k3d">
 
     #### Create a k3d cluster
     ```bash
@@ -65,8 +62,8 @@ Select one of the following options for running Kubernetes inside containers on 
     ```bash
     k3d cluster delete my-cluster
     ```
-    </TabItem>
-    <TabItem value="minikube" label="Minikube" default>
+    </Tab>
+    <Tab title="Minikube">
 
     #### Create a Minikube cluster
     ```bash
@@ -84,8 +81,8 @@ Select one of the following options for running Kubernetes inside containers on 
     ```bash
     minikube delete
     ```
-    </TabItem>
-    <TabItem value="kind" label="Kind" default>
+    </Tab>
+    <Tab title="Kind">
 
     #### Create a kind cluster
     ```bash
@@ -104,8 +101,8 @@ Select one of the following options for running Kubernetes inside containers on 
     kind delete cluster --name my-cluster
     ```
 
-    </TabItem>
-    <TabItem value="microk8s" label="Microk8s" default>
+    </Tab>
+    <Tab title="Microk8s">
 
     #### Create a Microk8s cluster
     ```bash
@@ -128,10 +125,10 @@ Select one of the following options for running Kubernetes inside containers on 
     ```bash
     microk8s reset
     ```
-    </TabItem>
-    <TabItem value="docker-desktop" label="Docker Desktop" default>
+    </Tab>
+    <Tab title="Docker Desktop">
     [Docker Desktop](https://www.docker.com/products/docker-desktop/) offers a simple to use interface that includes support for running Kubernetes in docker with [its Kubernetes feature](https://docs.docker.com/desktop/features/k8s/)
-    </TabItem>
+    </Tab>
 
 </Tabs>
 

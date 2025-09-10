@@ -8,9 +8,6 @@ tags:
   - microservices
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 You've developed a world-class API, and now you want to make it available online.
 
 Aside from the challenges involved in any API gateway deployment, you're looking
@@ -93,7 +90,7 @@ managing these policies for each service separately and trying to keep them in
 sync to ward off configuration drift.
 
 <Tabs>
-	<TabItem value="Dashboard">
+	<Tab>
 
     	First, log into the [ngrok dashboard](https://dashboard.ngrok.com). Select **Endpoints &rarr; + New**.
 
@@ -111,8 +108,8 @@ sync to ward off configuration drift.
 
     		Select **Save** to apply your changes.
 
-    </TabItem>
-    <TabItem value="API">
+    </Tab>
+    <Tab>
 
     	The `ngrok` CLI provides a helpful wrapper around the [ngrok API](/docs/api/index), which you can use to create a cloud endpoint and apply a file containing Traffic Policy rules.
 
@@ -137,7 +134,7 @@ sync to ward off configuration drift.
 
     	You'll get a `201` response—save the value of `id`, as you'll need it again later to continue configuring the Traffic Policy applied to your cloud endpoint.
 
-    </TabItem>
+    </Tab>
 
 </Tabs>
 
@@ -204,7 +201,7 @@ properties](/docs/traffic-policy/examples/route-requests), like subdomains and
 headers.
 
 <Tabs>
-	<TabItem value="Dashboard">
+	<Tab>
 
     	Copy and paste the rules below into your cloud endpoint's Traffic Policy editor
     	in the dashboard. If you're bringing your own API services instead of using the
@@ -229,8 +226,8 @@ headers.
 
     	Hit **Save** to lock in the new policy.
 
-    </TabItem>
-    <TabItem value="API">
+    </Tab>
+    <Tab>
 
     	Update your existing `policy.yaml` file with the YAML below. If you're
     	bringing your own API services instead of using the demo API, you'll need to
@@ -260,7 +257,7 @@ headers.
     		--traffic-policy "$(cat policy.yaml)"
     	```
 
-    </TabItem>
+    </Tab>
 
 </Tabs>
 

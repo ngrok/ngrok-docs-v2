@@ -5,8 +5,6 @@ sidebar_label: Custom Resources
 pagination_next: k8s/guides/using-ingresses
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
 import ConfigExample from "/src/components/ConfigExample.tsx";
 
 import K8sPrereq from "/snippets/k8s/_prereq.mdx";
@@ -60,8 +58,8 @@ For more information about cloud and agent endpoints, see [the endpoint types pa
 This manifest exposes a Kubernetes service named `tinyllama` listening on port `80` on `$YOUR_DOMAIN`.
 If you already have a different deployment on your cluster, you'll need to change the backend service name and port.
 
-<Tabs groupId="crds" queryString="crd-option">
-  <TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+  <Tab title="AgentEndpoint">
 
 ```yaml title="ngrok-crds.yaml"
 apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -74,8 +72,8 @@ spec:
     url: http://tinyllama.default:80
 ```
 
-  </TabItem>
-  <TabItem value="cloud-agent-endpoint" label="CloudEndpoint + AgentEndpoint">
+  </Tab>
+  <Tab title="CloudEndpoint + AgentEndpoint">
 
 ```yaml title="ngrok-crds.yaml"
 apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -102,7 +100,7 @@ spec:
     url: http://tinyllama.default:80
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 Apply the manifest with `kubectl apply -f ngrok-crds.yaml`.
@@ -118,8 +116,8 @@ In cases where you need to restrict access to your API or app, [Traffic Policy](
 
 First, copy your public IP address via our [`ip4v.ngrok.com` mini-app](https://ipv4.ngrok.com/).
 
-<Tabs groupId="crds" queryString="crd-option">
-  <TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+  <Tab title="AgentEndpoint">
 
 Add a `trafficPolicy.inline` field followed by the Traffic Policy rule itself.
 
@@ -143,8 +141,8 @@ spec:
                   - $YOUR_PUBLIC_IP
   ```
 
-  </TabItem>
-  <TabItem value="cloud-agent-endpoint" label="CloudEndpoint + AgentEndpoint">
+  </Tab>
+  <Tab title="CloudEndpoint + AgentEndpoint">
 
 Insert the new rule above your existing `forward-internal` action to require authentication before forwarding traffic to your internal agent endpoint.
 
@@ -179,7 +177,7 @@ spec:
     url: http://tinyllama.default:80
 ````
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 Re-apply the manifest with `kubectl apply -f gwapi.yaml`.

@@ -4,9 +4,6 @@ sidebar_label: Docker
 description: Learn how to use ngrok with Docker to expose your local applications and services to the internet.
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 import { YouTubeEmbed } from "@components/youtube-embed";
 
 <Tip>
@@ -15,15 +12,15 @@ For detailed instructions on using ngrok with Kubernetes, check out the [k8s qui
 
 ngrok provides [pre-built docker images](https://hub.docker.com/r/ngrok/ngrok) for the ngrok Agent with instructions for getting started. An example command for starting a tunnel to port `80` on the host machine looks like this.
 
-<Tabs groupId="os" queryString="os">
-<TabItem value="linux" label="Debian Linux">
+<Tabs>
+<Tab title="Debian Linux">
 
 ```bash
 docker run --net=host -it -e NGROK_AUTHTOKEN=xyz ngrok/ngrok:latest http 80
 ```
 
-</TabItem>
-<TabItem value="windows" label="Windows or Mac">
+</Tab>
+<Tab title="Windows or Mac">
 
 ```bash
 docker run -it -e NGROK_AUTHTOKEN=xyz ngrok/ngrok:latest http host.docker.internal:80
@@ -41,7 +38,7 @@ endpoints:
       url: http://host.docker.internal:80
 ```
 
-</TabItem>
+</Tab>
 </Tabs>
 
 Note: the Docker version of ngrok follows the same convention as the agent, for example:

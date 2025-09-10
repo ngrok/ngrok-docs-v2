@@ -2,9 +2,6 @@
 title: OpenID Connect (OIDC)
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 # Authenticating Users with OpenID Connect (OIDC)
 
 OpenID Connect (OIDC) is an identity verification protocol that allows users to securely sign in to applications using trusted identity providers (IdPs) such as Google, Microsoft, Okta, and Auth0.
@@ -42,8 +39,8 @@ https://idp.ngrok.com/oauth2/callback
 Check out the [OIDC traffic policy action](/traffic-policy/actions/oidc/) page for more details about how it functions and the parameters it accepts.
 Consult the list of [supported providers](/traffic-policy/actions/oidc/#supported-providers) for step-by-step integration guides for each.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -67,8 +64,8 @@ Consult the list of [supported providers](/traffic-policy/actions/oidc/#supporte
                     - profile
                     - email
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -90,8 +87,8 @@ Consult the list of [supported providers](/traffic-policy/actions/oidc/#supporte
                     - profile
                     - email
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not natively support OIDC authentication, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -141,8 +138,8 @@ Consult the list of [supported providers](/traffic-policy/actions/oidc/#supporte
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	💡 Gateway API resources do not natively support OIDC authentication, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -189,5 +186,5 @@ Consult the list of [supported providers](/traffic-policy/actions/oidc/#supporte
         port: 443
         protocol: HTTPS
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
