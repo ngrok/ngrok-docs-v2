@@ -10,9 +10,9 @@ To connect to a database using ngrok, you will need to use a TCP tunnel. Once yo
 ngrok tcp 3306
 ```
 
-::::warning
+<Warning>
 TCP endpoints are only available on a free plan after [adding a valid payment method](https://dashboard.ngrok.com/settings#id-verification) to your account.
-::::
+</Warning>
 
 You can then use the ngrok TCP address and port for any tool that you'd like to use to remotely connect to your database.
 

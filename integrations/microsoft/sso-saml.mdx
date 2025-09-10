@@ -6,7 +6,7 @@ description: Use SAML with Microsoft Entra ID to provide SSO to the ngrok Dashbo
 
 ---
 
-:::tip TL;DR
+<Tip> TL;DR
 
 To secure access to ngrok Dashboard using Microsoft Entra ID Single Sign-On with SAML:
 
@@ -14,7 +14,7 @@ To secure access to ngrok Dashboard using Microsoft Entra ID Single Sign-On with
 1. [Configure ngrok](#configure-ngrok)
 1. [Test access to ngrok with Microsoft Entra ID SSO](#test-sso)
 
-:::
+</Tip>
 
 This article details how to configure Microsoft Entra ID as the primary Identity Provider for the ngrok Dashboard.
 By integrating Microsoft Entra ID SSO with ngrok, you can:
@@ -49,9 +49,9 @@ To integrate ngrok with Microsoft Entra ID SSO, you will need to:
    1. **Identifier (Entity ID)**: https://temporary
    1. **Reply URL (Assertion Consumer Service URL)**: https://temporary
    1. **Unique User Identifier**: user.mail
-      :::tip Note
+      <Tip> Note
       This value can differ based upon setup, it is required that this user property value is an email address
-      :::
+</Tip>
 
 ![enter temporary values](img/entra-saml-temp.png)
 

@@ -41,7 +41,7 @@ Using this guide, you will launch a local cluster (or use an existing local/remo
    minikube start -p ngrok-linkerd --container-runtime=containerd
    ```
 
-   :::tip
+   <Tip>
 
    If your OS does not support containerd, you can run minikube without specifying the container runtime.
 
@@ -51,7 +51,7 @@ Using this guide, you will launch a local cluster (or use an existing local/remo
 
    If minikube defaults to using the `docker` runtime, you will likely see an error related to root privileges when installing Linkerd to your cluster. The error includes a workaround to let you install Linkerd despite using the `docker` runtime.
 
-   :::
+   </Tip>
 
 1. Use `kubectl` to verify your local cluster is running properly.
 
@@ -103,11 +103,11 @@ Using this guide, you will launch a local cluster (or use an existing local/remo
    Status check results are √
    ```
 
-   :::note
+   <Note>
 
    These steps are based on the [Linkerd documentation](https://linkerd.io/2.14/getting-started/), which we encourage you to explore for additional details on the value of a service mesh, additional Linkerd features, and more.
 
-   :::
+   </Note>
 
 ## Deploy an example microservices-based application 
 
@@ -144,11 +144,11 @@ To demonstrate how Linkerd and the ngrok Kubernetes Operator integrate to add ad
 
 1. Create a new `emojivoto-ingress.yml` file and add the [following YAML content](https://linkerd.io/2.14/tasks/using-ingress/#ngrok), which defines the ngrok Kubernetes Operator for routing traffic arriving on your `NGROK_DOMAIN` to the `web-svc` deployment, which you created when deploying Emojivoto.
 
-   :::tip
+   <Tip>
 
    Make sure you edit line `9` of the manifest below, which contains the `NGROK_DOMAIN` variable, with your ngrok subdomain. It should look something like `one-two-three.ngrok.app`.
 
-   :::
+   </Tip>
 
    ```yaml showLineNumbers
    apiVersion: networking.k8s.io/v1
@@ -179,11 +179,11 @@ To demonstrate how Linkerd and the ngrok Kubernetes Operator integrate to add ad
 
    Give your cluster a few moments to launch the necessary resources and for ngrok's cloud service to pick up the new tunnel created by the ngrok Kubernetes Operator.
 
-   :::tip
+   <Tip>
 
    If you see an error when applying the manifest, double-check that you've updated the `NGROK_DOMAIN` value and try again.
 
-   :::
+   </Tip>
 
 1. Access your Emojivoto application by navigating to the your ngrok domain, e.g. `https://one-two-three.ngrok.app`, in your browser.
 

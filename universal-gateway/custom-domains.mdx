@@ -6,9 +6,9 @@ description: Learn how to use your own custom domain with ngrok.
 
 This guide shows you how to use any domain name you already own, such as `app.your-domain.com`, with ngrok.
 
-:::note
+<Note>
 ngrok is not a domain registrar; you must already own a domain name to use it with ngrok.
-:::
+</Note>
 
 ## 1. Add your domain in ngrok
 
@@ -16,10 +16,10 @@ On your dashboard's [Domain page](https://dashboard.ngrok.com/domains), click th
 After it's been added, you'll be given a `CNAME` value such as `exampledata.otherdata.ngrok-cname.com`.
 Copy this for the next step.
 
-:::info
+<Info>
 You can also add a domain via the [ngrok API](/api/resources/reserved-domains/#request).
 The `CNAME` will be in the `"cname_target"` field of [the response object](/api/resources/reserved-domains/#response).
-:::
+</Info>
 
 ## 2. Add the CNAME record to your domain
 
@@ -31,9 +31,9 @@ When configuring the record, use the following values:
 - **name**: `@`
 - **value**: the `CNAME` value you copied from ngrok
 
-:::tip Test your CNAME record
+<Tip> Test your CNAME record
 Using a tool like [`dig`](https://www.digwebinterface.com/) or [`nslookup`](https://www.nslookup.io/), you can test your CNAME record in the terminal.
-:::
+</Tip>
 
 ## 3. Start an endpoint using your domain
 

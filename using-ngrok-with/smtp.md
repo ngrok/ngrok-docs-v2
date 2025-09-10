@@ -10,6 +10,6 @@ The common port for the SMTP protocol used by most mail servers is `25` for inse
 ngrok tcp 25
 ```
 
-::::warning
+<Warning>
 TCP endpoints are only available on a free plan after [adding a valid payment method](https://dashboard.ngrok.com/settings#id-verification) to your account.
-::::
+</Warning>

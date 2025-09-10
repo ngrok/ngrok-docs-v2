@@ -187,9 +187,9 @@ system service, i.e. as a daemon. When it runs as an operating system service it
 - Sends logs to the OS's native logging service
 - Starts all tunnels defined in the configuration file, the equivalent of running `ngrok start --all`
 
-::::tip
+<Tip>
 In most cases, installing ngrok as a service requires administrator privileges.
-::::
+</Tip>
 
 | OS      | Notes                                                                                                                                                  |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -228,9 +228,9 @@ manage the installed service:
 - `ngrok service restart`
 - `ngrok service uninstall`
 
-::::tip
+<Tip>
 If you see an exit code `5` or `Input/output error`, it usually indicates that ngrok is not able to find the config file and/or does not have permissions to do so. Make sure you have installed the ngrok service with a valid config file and that when the service is run (either as you or an administrator) it has access to that same config file.
-::::
+</Tip>
 
 ## Remote Management
 
@@ -238,11 +238,11 @@ The ngrok agent can be stopped, restarted, or upgraded remotely using the
 [Tunnel Sessions](/api/resources/tunnel-sessions#restart-tunnel-agent) API. You
 can also perform these actions from the ngrok Dashboard.
 
-::::warning
+<Warning>
 Use this with caution if you have made changes to the config file. If
 for some reason ngrok cannot restart, you may lose access to the agent
 completely.
-::::
+</Warning>
 
 ## Connectivity
 
@@ -260,9 +260,9 @@ connects to the ngrok service. This address resolves to a [dynamic set of IP Add
 connect.ngrok-agent.com:443
 ```
 
-::::note
+<Note>
 All connections to ngrok servers are made on port 443.
-::::
+</Note>
 
 You can [customize the Connect URL](/agent/connect-url/) to brand it with
 your own domain.
@@ -271,9 +271,9 @@ The agent by default only connects to a single region. However connections to mu
 
 The complete list of addresses and IP addresses available for the agent to connect to ngrok can be found in our [ngrok DNS tunnel.json file](https://s3.amazonaws.com/dns.ngrok.com/tunnel.json).
 
-::::note
+<Note>
 Prior to ngrok agent version 3.3.0, the ngrok agent connected to `tunnel.*.ngrok.com` domains. The latest agent uses `connect.*.ngrok-agent.com` domains.
-::::
+</Note>
 
 ### Additional URLs
 
@@ -286,9 +286,9 @@ The ngrok agent reaches out to the following domains to check for revoked certif
 - Prior to ngrok agent version 3.10.0: `http://crl.ngrok.com/ngrok.crl`
 - Latest versions: `http://crl.ngrok-agent.com/ngrok.crl`
 
-::::note
+<Note>
 These connections use HTTP and port 80.
-::::
+</Note>
 
 You can download and decode the CRL using OpenSSL: `openssl crl -inform PEM -text -noout -in ngrok.crl`
 
@@ -298,9 +298,9 @@ The ngrok agent will automatically look for updates when it starts up. This chec
 
 - `https://update.equinox.io`
 
-::::note
+<Note>
 Even though the Equinox service was [shut down in 2021](https://equinox.io/blog/shutting-down), it is wholely owned and operated by ngrok, and as such, continues to be used for building and distributing our binaries.
-::::
+</Note>
 
 ### DNS Resolution
 
@@ -401,12 +401,12 @@ requirements are more stringent, you can still use ngrok via the [Agent SDKs](/a
 | Disk     | 25MB                            |
 | CPU      | No requirement                  |
 
-:::tip
+<Tip>
 
 You can reduce memory usage in the ngrok agent by disabling
 [inspection in the configuration file](/agent/config/v3/#inspect_db_size).
 
-:::
+</Tip>
 
 ## Updates
 
@@ -440,11 +440,11 @@ The ngrok agent has its own HTTP API that can be used to dynamically inspect,
 start and stop tunnels on the agent while it is running. Consult the
 [ngrok agent API reference documentation](/agent/api/) for more details.
 
-:::tip
+<Tip>
 
 If you want to programmatically control the ngrok agent, the [Agent SDKs](/agent-sdks/) are usually a more flexible and powerful choice.
 
-:::
+</Tip>
 
 ## Using ngrok without the agent
 

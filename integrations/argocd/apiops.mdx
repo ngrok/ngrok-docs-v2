@@ -155,9 +155,9 @@ A fundamental component of GitOps, and thus APIOps, is that because your Git rep
 
    ![Enabling auto sync for an Argo CD-deployed API](img/argo-auto-sync.png)
 
-   :::note
+   <Note>
    The default polling interval, at which Argo CD looks for changes to the desired state in your Git repo, is 3 minutes. You can alter this behavior with the [`timeout.reconciliation` value](https://argo-cd.readthedocs.io/en/stable/faq/#how-often-does-argo-cd-check-for-changes-to-my-git-or-helm-repository) in Argo CD's configuration.
-   :::
+   </Note>
 
 1. Optionally, you can test auto sync by editing the number of replicas of the demo API deployed in your cluster. In your Git repository, open the` deployment.yaml` file and edit the `replicas` value:
 

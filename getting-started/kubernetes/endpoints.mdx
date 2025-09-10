@@ -22,11 +22,11 @@ When you use Kubernetes Endpoints, you can:
 
 You also don't need to expose your local services to the public internet or modify the ingress rules to remote clusters.
 
-:::note
+<Note>
 The ngrok Kubernetes Operator is available to all ngrok users at no additional charge.
 You only incur costs if the resources provisioned by the controller incur a cost.
 Find more details on our [pricing page](https://ngrok.com/pricing), or, if you're a free user, the [free plan limits](/docs/pricing-limits/free-plan-limits/).
-:::
+</Note>
 
 ## What you'll need
 
@@ -55,14 +55,14 @@ In this example, ngrok provisions the `http://hello-world.default` URL into a Ku
 Behind the scenes, your ngrok Kubernetes Operator continuously polls the ngrok API for new endpoints with the `kubernetes` binding.
 When it detects your new `http://hello-world.default` endpoint, it provisions a `ClusterIP` Kubernetes service that routes directly to that endpoint.
 
-:::tip
+<Tip>
 You can also start agent-based Kubernetes Endpoints with:
 
 - Our [SDKs](/docs/agent-sdks/)
 - A second cluster
 - Cloud Endpoints with the [ngrok dashboard](https://dashboard.ngrok.com/endpoints)
 - Our [API](/docs/api)
-  :::
+</Tip>
 
 ## 3. Add Traffic Policy to manipulate requests (optional)
 

@@ -56,9 +56,9 @@ If you want to perform remote administration on your ARM64 device using a reserv
 
 1. Start the TCP tunnel with `ngrok`.
 
-   ::::warning
+   <Warning>
    TCP endpoints are only available on a free plan after [adding a valid payment method](https://dashboard.ngrok.com/settings#id-verification) to your account. If you get a different error, ensure your authtoken is configured correctly.
-   ::::
+   </Warning>
 
    ```bash
    ngrok tcp 22
@@ -86,9 +86,9 @@ If you want to perform remote administration on your ARM64 device using a reserv
 
 Separately from SSH access, you can also use ngrok to create an [HTTP tunnel](/universal-gateway/http/) to route traffic to specific applications or services running on your ARM64 device's `localhost` network.
 
-:::note
+<Note>
 If you already established a TCP tunnel for SSH access, you'll either need to create a second tunnel for the HTTP tunnel, or use the [agent configuration file](/agent/config/v3/) to define multiple tunnels.
-:::
+</Note>
 
 1. Use ngrok to create an HTTP tunnel at the port on which your service operates, e.g. port `8080`.
 
@@ -129,9 +129,9 @@ Now that you have SSH tunneling and service ingress handled via ngrok, you may a
              - "1.1.1.1/32"
     ```
 
-    :::note
+    <Note>
     ngrok's IP Restriction action uses [CIDRs](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) to specific IPs or IP ranges. The `/32` notation refers to a single IPv4 address, like `
-    :::
+</Note>
 
 1.  Restart any existing tunnels, or create new ones, referencing the `policy.yml` file you just created, choosing between a TLS and HTTP tunnel below.
 

@@ -89,11 +89,11 @@ If you don't have a cluster already, create one locally with minikube and instal
 
    You know have a vcluster installed on your local minikube cluster.
 
-   :::note
+   <Note>
 
    These steps are partially based the guide [Using the ngrok Kubernetes Operator to create Preview Environments with vcluster](https://loft.sh/blog/using-the-ngrok-ingress-controller-to-create-preview-environments-with-vcluster/) from [Loft](https://loft.sh/), the maintainers of vcluster.
 
-   :::
+   </Note>
 
 ## Install a sample application 
 
@@ -175,7 +175,7 @@ cluster, virtual cluster, and ultimately an exposed service or endpoint, you can
    kubectl apply -f 2048.yaml
    ```
 
-   :::tip
+   <Tip>
 
    **Note:** If you get an error when applying the manifest, double check that you've updated the `NGROK_DOMAIN` value
    and try again.

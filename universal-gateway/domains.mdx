@@ -62,13 +62,13 @@ The wildcard `*` character may only be used as the first part of a
 domain, you may not create domains like `app.*.example.com` or
 `*-app.example.com`.
 
-:::note
+<Note>
 Wildcard domains are available on our Enterprise plan self service. They are also available on Pay-as-You-Go plans if you contact support@ngrok.com. For Pay-as-You-Go when you create a wildcard domain and run endpoints domain `*.foo.com`, endpoints `https://a.foo.com` and `https://b.foo.com`, we bill you for each individual endpoint, which is why we ask that you request the feature.
-:::
+</Note>
 
-:::note
+<Note>
 Reserving subdomains of a wildcard domain within the ngrok dashboard count towards the number of reserved domains in your account. For example, if you reserve `foo.example.com` and `*.example.com`, you have reserved two domains.
-:::
+</Note>
 
 ### Ownership
 
@@ -101,12 +101,12 @@ presence will receive traffic for the Domain's matching endpoints. To disable
 the Global Load Balancer, you may configure a domain to only resolve a single
 point of presence.
 
-:::info Coming Soon
+<Info> Coming Soon
 
 Per-region global load balancer configuration is coming soon, [request access
 to the developer preview](https://dashboard.ngrok.com/developer-preview).
 
-:::
+</Info>
 
 ## TLS Certificates
 
@@ -130,12 +130,12 @@ account.
 If your Domain uses dedicated IPs, you may create public endpoints on _any_
 port numbers, not just 80 and 443.
 
-:::info Coming Soon
+<Info> Coming Soon
 
 Dedicated, static IPs for your domains are coming soon, [request access to the
 developer preview](https://dashboard.ngrok.com/developer-preview).
 
-:::
+</Info>
 
 ## ngrok Managed Domains
 

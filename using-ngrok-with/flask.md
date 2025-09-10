@@ -4,9 +4,9 @@ title: Flask
 
 # Using ngrok with Flask
 
-:::tip
+<Tip>
 This article assumes you have Python, PIP, and Flask already installed.
-:::
+</Tip>
 
 ### ngrok Agent
 

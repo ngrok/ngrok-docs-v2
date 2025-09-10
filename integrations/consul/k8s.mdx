@@ -78,11 +78,11 @@ helm repo add hashicorp https://helm.releases.hashicorp.com
 helm install --values values.yaml consul hashicorp/consul --create-namespace --namespace consul --version "1.0.0"
 ```
 
-:::tip
+<Tip>
 
 Depending on your computer, this can take some time for the pods to become healthy. You can watch the status of the pods with `kubectl get pods --namespace consul -w`
 
-:::
+</Tip>
 
 1. Verify Consul is installed and all its pods are healthy
 
@@ -96,9 +96,9 @@ consul-webhook-cert-manager-5bb6f965c8-pjqms   1/1     Running   0              
 
 We now have a Kubernetes cluster with a Consul service mesh installed.
 
-:::note
+<Note>
 These steps are based on Consul's Tutorial [Consul Service Discovery and Service Mesh on Minikube](https://developer.hashicorp.com/consul/tutorials/kubernetes/kubernetes-minikube)
-:::
+</Note>
 
 ## Configure the ngrok Kubernetes Operator 
 
@@ -145,23 +145,23 @@ traffic between the ngrok Kubernetes Operator and our services.
     	--set podAnnotations."consul\.hashicorp\.com/transparent-proxy-exclude-outbound-cidrs"="YOUR KUBERNETES API CIDR"
     ```
 
-:::note
+<Note>
 
 - HashiCorp's docs also mention the annotation `consul.hashicorp.com/transparent-proxy-exclude-inbound-ports`. This is not applicable to the ngrok Kubernetes Operator as we create an outbound connection for Ingress rather than exposing ports.
 - The `--set-string` flag allows the pod annotation to escape the `.` character in the annotation name while ensuring the value `true` is a boolean and not a string.
 - In a production environment, or anywhere you wish to use Infrastructure as Code and source control your Helm configurations, you can set up your credentials following this [guide](https://github.com/ngrok/ngrok-operator/blob/main/docs/deployment-guide/credentials.md).
 
-:::
+</Note>
 
 ## Install a Sample Application 
 
 Now let's install a sample application to try out our service mesh and Operator combination. We'll use the [HashiCups Demo Application](https://github.com/hashicorp-demoapp) HashiCorp uses for demos and guides such as in their [Getting Started with Consul Service Mesh for Kubernetes](https://developer.hashicorp.com/consul/tutorials/kubernetes-features/service-mesh-deploy) guide. This application is a simple e-commerce application that allows users to order coffee cups.
 The application has a `frontend` and public API services that are also backed by a private API and database. These communicate with each other through the Consul service mesh. This comes with nginx installed as a proxy for the `frontend` and Public API services. We'll replace this with ngrok to provide public access and other features.
 
-:::tip For this demo, everything will be installed in the `consul` namespace.
+<Tip> For this demo, everything will be installed in the `consul` namespace.
 
 The ngrok Kubernetes Operator can send traffic to services across different namespaces, but [Consul Service Intentions](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-intentions) across namespaces [require an enterprise account](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-intentions#sources-namespace). For now, we'll keep everything in the same namespace.
-:::
+</Tip>
 
 1. Clone the [HashiCorp Learning Consul repo](https://github.com/hashicorp/learn-consul-kubernetes). This has multiple great example applications for learning about Consul and Kubernetes. We'll use the HashiCups application for this guide.
 
@@ -250,14 +250,14 @@ spec:
                   number: 8080
 ```
 
-:::tip This ingress object:
+<Tip> This ingress object:
 
 - Uses the `ngrok` ingress class
 - The host is the ngrok domain name you selected that is static
 - There is a route for `/` that routes to the `frontend` service on port `3000`
 - There is a route for `/api` that routes to the `public-api` service on port `8080`
 
-:::
+</Tip>
 
 Open your `<NGROK_DOMAIN>` domain in your browser and see the HashiCups application!
 
