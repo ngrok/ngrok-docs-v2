@@ -1,5 +1,6 @@
-# Migrating ngrok Edges to Cloud Endpoints
-
+---
+title: Migrating ngrok Edges to Cloud Endpoints
+---
 This guide walks you through manually migrating ngrok **Edge configurations** (HTTPS, TLS, TCP) to **Cloud Endpoints** using **Traffic Policies**.
 
 ## 📋 Prerequisites
@@ -265,19 +266,19 @@ urls = [
   {"weight": 4,  "url": "https://j.internal"},
 ]
 
-# Compute cumulative weights
+
 cumulative = []
 total = 0
 for u in urls:
   total += u["weight"]
   cumulative.append(total)
 
-# Build the CEL YAML block with correct string interpolation
+
 index_expr = "[{0}].filter(i, vars.cumulative_weights[i] > vars.weighted_chance)[0]".format(
   ', '.join(map(str, range(len(urls))))
 )
 
-# Generate the configuration for set-vars
+
 config = {
   "type": "set-vars",
   "config": {
@@ -291,7 +292,7 @@ config = {
   }
 }
 
-# Output the config
+
 yaml_output = yaml.dump([config], sort_keys=False)
 print(yaml_output)
 ```

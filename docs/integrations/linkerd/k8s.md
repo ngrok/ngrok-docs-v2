@@ -1,9 +1,7 @@
 ---
 description: Set up a local cluster to demonstrate how to use the ngrok Kubernetes Operator with Linkerd.
+title: Ingress to a microservices-based application connected via Linkerd's service mesh
 ---
-
-# Ingress to a microservices-based application connected via Linkerd's service mesh
-
 ---
 
 The ngrok Kubernetes Operator is the official controller for adding secure public ingress and middleware execution to your Kubernetes applications with ngrok's cloud service. With ngrok, you can manage and secure traffic to your applications at every stage of the development lifecycle while also benefiting from simpler configurations, security, and edge acceleration.
