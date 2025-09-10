@@ -3,7 +3,7 @@ title: Endpoint Pooling
 description: Learn how ngrok enables you to load balance traffic to endpoints with endpoint pooling.
 ---
 
-import { YouTubeEmbed } from "@components/youtube-embed";
+import { YouTubeEmbed } from "/snippets/components/YouTubeEmbed.tsx";
 
 Endpoint pooling makes load balancing dead simple. Load balancing helps you
 scale traffic across multiple replicas of your app to increase capacity,
@@ -214,7 +214,7 @@ When balancing traffic to internal endpoints you may define your own balancing
 strategy by setting the `endpoint_selectors` and `endpoint_weights` fields on
 the `forward-internal` Traffic Policy action configuration.
 
-<Info> Coming Soon
+<Info>
 
 Custom load balancing strategies are not yet generally available, but you can
 request early access to the developer preview in your [ngrok

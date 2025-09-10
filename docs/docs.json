@@ -9,23 +9,28 @@
     "tabs": [
       {
         "tab": "Overview",
-        "groups": [
+        "menu": [
           {
-            "group": "Getting Started",
-            "pages": [
-              "overview/index",
-              "what-is-ngrok", 
-              "how-ngrok-works",
-              "why-ngrok",
-              "whats-new"
-            ]
-          },
-          {
-            "group": "Pricing & Limits",
-            "pages": [
-              "pricing-limits/index",
-              "pricing-limits/free-plan-limits",
-              "pricing-limits/traffic-policy-unit-pricing"
+            "item": "Example",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "overview/index",
+                  "what-is-ngrok",
+                  "how-ngrok-works",
+                  "why-ngrok",
+                  "whats-new"
+                ]
+              },
+              {
+                "group": "Pricing & Limits",
+                "pages": [
+                  "pricing-limits/index",
+                  "pricing-limits/free-plan-limits",
+                  "pricing-limits/traffic-policy-unit-pricing"
+                ]
+              }
             ]
           }
         ]
@@ -35,15 +40,11 @@
         "groups": [
           {
             "group": "Agent CLI",
-            "pages": [
-              "getting-started/index"
-            ]
+            "pages": ["getting-started/index"]
           },
           {
             "group": "Cloud Endpoints",
-            "pages": [
-              "getting-started/cloud-endpoints-quickstart"
-            ]
+            "pages": ["getting-started/cloud-endpoints-quickstart"]
           },
           {
             "group": "SDKs",
@@ -70,9 +71,7 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "universal-gateway/overview"
-            ]
+            "pages": ["universal-gateway/overview"]
           },
           {
             "group": "Concepts",
@@ -153,9 +152,7 @@
           },
           {
             "group": "Examples",
-            "pages": [
-              "universal-gateway/examples"
-            ]
+            "pages": ["universal-gateway/examples"]
           }
         ]
       },
@@ -164,57 +161,39 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "traffic-policy/index"
-            ]
+            "pages": ["traffic-policy/index"]
           },
           {
             "group": "Getting Started",
-            "pages": [
-              "traffic-policy/getting-started/agent-endpoints/cli"
-            ]
+            "pages": ["traffic-policy/getting-started/agent-endpoints/cli"]
           },
           {
             "group": "Concepts",
-            "pages": [
-              "traffic-policy/concepts/index"
-            ]
+            "pages": ["traffic-policy/concepts/index"]
           },
           {
             "group": "Actions",
-            "pages": [
-              "traffic-policy/actions/index"
-            ]
+            "pages": ["traffic-policy/actions/index"]
           },
           {
             "group": "Macros",
-            "pages": [
-              "traffic-policy/macros/index"
-            ]
+            "pages": ["traffic-policy/macros/index"]
           },
           {
             "group": "Secrets",
-            "pages": [
-              "traffic-policy/secrets"
-            ]
+            "pages": ["traffic-policy/secrets"]
           },
           {
             "group": "Variables",
-            "pages": [
-              "traffic-policy/variables/index"
-            ]
+            "pages": ["traffic-policy/variables/index"]
           },
           {
             "group": "Resources",
-            "pages": [
-              "traffic-policy/identities"
-            ]
+            "pages": ["traffic-policy/identities"]
           },
           {
             "group": "Examples",
-            "pages": [
-              "traffic-policy/examples/index"
-            ]
+            "pages": ["traffic-policy/examples/index"]
           }
         ]
       },
@@ -223,22 +202,15 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "k8s/index"
-            ]
+            "pages": ["k8s/index"]
           },
           {
             "group": "How It Works",
-            "pages": [
-              "k8s/how-it-works",
-              "k8s/installation/architecture"
-            ]
+            "pages": ["k8s/how-it-works", "k8s/installation/architecture"]
           },
           {
             "group": "Local Development",
-            "pages": [
-              "k8s/guides/local-cluster"
-            ]
+            "pages": ["k8s/guides/local-cluster"]
           },
           {
             "group": "Quickstarts",
@@ -338,10 +310,7 @@
           },
           {
             "group": "Development",
-            "pages": [
-              "k8s/changelog",
-              "k8s/releasing"
-            ]
+            "pages": ["k8s/changelog", "k8s/releasing"]
           }
         ]
       },
@@ -350,22 +319,15 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "obs/index"
-            ]
+            "pages": ["obs/index"]
           },
           {
             "group": "Traffic Inspection",
-            "pages": [
-              "obs/traffic-inspection"
-            ]
+            "pages": ["obs/traffic-inspection"]
           },
           {
             "group": "Events",
-            "pages": [
-              "obs/events/index",
-              "obs/events/reference"
-            ]
+            "pages": ["obs/events/index", "obs/events/reference"]
           }
         ]
       },
@@ -405,9 +367,7 @@
           },
           {
             "group": "Agent SDKs",
-            "pages": [
-              "agent-sdks/index"
-            ]
+            "pages": ["agent-sdks/index"]
           }
         ]
       },
@@ -416,24 +376,15 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "iam/index"
-            ]
+            "pages": ["iam/index"]
           },
           {
             "group": "Principals",
-            "pages": [
-              "iam/users",
-              "iam/service-users"
-            ]
+            "pages": ["iam/users", "iam/service-users"]
           },
           {
             "group": "Account Governance",
-            "pages": [
-              "iam/sso",
-              "iam/rbac",
-              "iam/domain-controls"
-            ]
+            "pages": ["iam/sso", "iam/rbac", "iam/domain-controls"]
           }
         ]
       },
@@ -442,9 +393,7 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "api/index"
-            ]
+            "pages": ["api/index"]
           },
           {
             "group": "API Reference",
@@ -562,9 +511,7 @@
               },
               {
                 "group": "Partners",
-                "pages": [
-                  "api/resources/abuse-reports"
-                ]
+                "pages": ["api/resources/abuse-reports"]
               }
             ]
           }
@@ -575,15 +522,11 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "errors/index"
-            ]
+            "pages": ["errors/index"]
           },
           {
             "group": "Reference",
-            "pages": [
-              "errors/reference"
-            ]
+            "pages": ["errors/reference"]
           }
         ]
       },
@@ -604,7 +547,7 @@
             "pages": []
           },
           {
-            "group": "Identity Aware Proxy", 
+            "group": "Identity Aware Proxy",
             "pages": []
           },
           {
@@ -624,10 +567,7 @@
           },
           {
             "group": "Networking",
-            "pages": [
-              "guides/running-behind-firewalls",
-              "guides/ssh-rdp/index"
-            ]
+            "pages": ["guides/running-behind-firewalls", "guides/ssh-rdp/index"]
           },
           {
             "group": "Using ngrok with",
@@ -635,17 +575,13 @@
           },
           {
             "group": "Integrations",
-            "pages": [
-              "integrations/index"
-            ]
+            "pages": ["integrations/index"]
           }
         ]
       },
       {
         "tab": "FAQ",
-        "pages": [
-          "faq/faq"
-        ]
+        "pages": ["faq/faq"]
       }
     ]
   }

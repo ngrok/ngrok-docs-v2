@@ -1,7 +1,11 @@
-import { cx } from "@ngrok/mantle/cx";
-import type { ComponentProps } from "react";
+import React from "react";
 
-type Props = Omit<ComponentProps<"div">, "children"> & {
+export function YouTubeEmbed({
+  className,
+  title,
+  videoId,
+  ...props
+}: {
   /**
    * The ID of the YouTube video to embed.
    * @example "dQw4w9WgXcQ" from https://www.youtube.com/watch?v=dQw4w9WgXcQ
@@ -12,11 +16,10 @@ type Props = Omit<ComponentProps<"div">, "children"> & {
    * @example "Rick Astley - Never Gonna Give You Up (Video)"
    */
   title: string;
-};
-
-function YouTubeEmbed({ className, title, videoId, ...props }: Props) {
+  className?: string;
+}) {
   return (
-    <div className={cx("relative aspect-video mb-3", className)} {...props}>
+    <div className={`relative aspect-video mb-3 ${className}`} {...props}>
       <iframe
         src={`https://www.youtube.com/embed/${videoId}`}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -27,8 +30,3 @@ function YouTubeEmbed({ className, title, videoId, ...props }: Props) {
     </div>
   );
 }
-
-export {
-  //,
-  YouTubeEmbed,
-};
