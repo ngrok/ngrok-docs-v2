@@ -1,0 +1,652 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "ngrok Documentation",
+  "colors": {
+    "primary": "#ff0000"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Overview",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "overview/index",
+              "what-is-ngrok", 
+              "how-ngrok-works",
+              "why-ngrok",
+              "whats-new"
+            ]
+          },
+          {
+            "group": "Pricing & Limits",
+            "pages": [
+              "pricing-limits/index",
+              "pricing-limits/free-plan-limits",
+              "pricing-limits/traffic-policy-unit-pricing"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Getting Started",
+        "groups": [
+          {
+            "group": "Agent CLI",
+            "pages": [
+              "getting-started/index"
+            ]
+          },
+          {
+            "group": "Cloud Endpoints",
+            "pages": [
+              "getting-started/cloud-endpoints-quickstart"
+            ]
+          },
+          {
+            "group": "SDKs",
+            "pages": [
+              "getting-started/javascript",
+              "getting-started/go",
+              "getting-started/python",
+              "getting-started/rust"
+            ]
+          },
+          {
+            "group": "Kubernetes",
+            "pages": [
+              "getting-started/kubernetes/ingress",
+              "getting-started/kubernetes/gateway-api",
+              "getting-started/kubernetes/crds",
+              "getting-started/kubernetes/endpoints"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Universal Gateway",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "universal-gateway/overview"
+            ]
+          },
+          {
+            "group": "Concepts",
+            "pages": [
+              {
+                "group": "Domains",
+                "pages": [
+                  "universal-gateway/domains",
+                  "universal-gateway/custom-domains"
+                ]
+              },
+              "universal-gateway/tcp-addresses",
+              "universal-gateway/tls-certificates",
+              "universal-gateway/edges"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "universal-gateway/endpoints",
+              {
+                "group": "Types",
+                "pages": [
+                  "universal-gateway/types",
+                  {
+                    "group": "Cloud Endpoints",
+                    "pages": [
+                      "universal-gateway/cloud-endpoints/index",
+                      "universal-gateway/cloud-endpoints/change-domain-endpoint",
+                      {
+                        "group": "Forwarding Traffic",
+                        "pages": [
+                          "universal-gateway/cloud-endpoints/forwarding-and-load-balancing",
+                          "universal-gateway/cloud-endpoints/routing-and-policy-decentralization"
+                        ]
+                      }
+                    ]
+                  },
+                  "universal-gateway/agent-endpoints"
+                ]
+              },
+              {
+                "group": "Protocols",
+                "pages": [
+                  "universal-gateway/protocols",
+                  "universal-gateway/http",
+                  "universal-gateway/tls",
+                  "universal-gateway/tcp"
+                ]
+              },
+              {
+                "group": "Bindings",
+                "pages": [
+                  "universal-gateway/bindings",
+                  "universal-gateway/public-endpoints",
+                  "universal-gateway/internal-endpoints",
+                  "universal-gateway/kubernetes-endpoints"
+                ]
+              },
+              {
+                "group": "Pooling",
+                "pages": [
+                  "universal-gateway/endpoint-pooling",
+                  "universal-gateway/load-balancing-multiple-clouds"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Network",
+            "pages": [
+              "universal-gateway/global-load-balancer",
+              "universal-gateway/tls-termination",
+              "universal-gateway/ddos-protection",
+              "universal-gateway/ip-addresses",
+              "universal-gateway/points-of-presence"
+            ]
+          },
+          {
+            "group": "Examples",
+            "pages": [
+              "universal-gateway/examples"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Traffic Policy",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "traffic-policy/index"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "traffic-policy/getting-started/agent-endpoints/cli"
+            ]
+          },
+          {
+            "group": "Concepts",
+            "pages": [
+              "traffic-policy/concepts/index"
+            ]
+          },
+          {
+            "group": "Actions",
+            "pages": [
+              "traffic-policy/actions/index"
+            ]
+          },
+          {
+            "group": "Macros",
+            "pages": [
+              "traffic-policy/macros/index"
+            ]
+          },
+          {
+            "group": "Secrets",
+            "pages": [
+              "traffic-policy/secrets"
+            ]
+          },
+          {
+            "group": "Variables",
+            "pages": [
+              "traffic-policy/variables/index"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "traffic-policy/identities"
+            ]
+          },
+          {
+            "group": "Examples",
+            "pages": [
+              "traffic-policy/examples/index"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Kubernetes",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "k8s/index"
+            ]
+          },
+          {
+            "group": "How It Works",
+            "pages": [
+              "k8s/how-it-works",
+              "k8s/installation/architecture"
+            ]
+          },
+          {
+            "group": "Local Development",
+            "pages": [
+              "k8s/guides/local-cluster"
+            ]
+          },
+          {
+            "group": "Quickstarts",
+            "pages": [
+              "getting-started/kubernetes/ingress",
+              "getting-started/kubernetes/gateway-api",
+              "getting-started/kubernetes/crds",
+              "getting-started/kubernetes/endpoints"
+            ]
+          },
+          {
+            "group": "Manage",
+            "pages": [
+              "k8s/installation/update",
+              "k8s/installation/helm",
+              "k8s/installation/uninstall"
+            ]
+          },
+          {
+            "group": "Load Balancing",
+            "pages": [
+              "k8s/load-balancing/load-balancing-kubernetes",
+              "k8s/load-balancing/load-balancing-kubernetes-clusters",
+              "k8s/guides/using-loadbalancers"
+            ]
+          },
+          {
+            "group": "Usage Guides",
+            "pages": [
+              "k8s/guides/using-crds",
+              "k8s/guides/endpoint-types",
+              "k8s/guides/bindings",
+              "k8s/guides/pooling",
+              "k8s/guides/custom-domain",
+              "k8s/guides/customer-networks",
+              "k8s/guides/using-gwapi",
+              "k8s/guides/using-ingresses",
+              "k8s/guides/annotations",
+              "k8s/guides/managed-resources",
+              "k8s/guides/finalizers",
+              "k8s/guides/troubleshooting",
+              {
+                "group": "How do I?",
+                "pages": [
+                  "k8s/guides/how-to/request-routing",
+                  "k8s/guides/how-to/tls-routing",
+                  "k8s/guides/how-to/tcp-routing",
+                  "k8s/guides/how-to/manipulate-headers",
+                  "k8s/guides/how-to/redirects",
+                  "k8s/guides/how-to/rewrite-url",
+                  "k8s/guides/how-to/static-response",
+                  "k8s/guides/how-to/terminate-tls",
+                  "k8s/guides/how-to/upstream-tls",
+                  "k8s/guides/how-to/rate-limiting",
+                  "k8s/guides/how-to/deny-requests",
+                  "k8s/guides/how-to/basic-auth",
+                  "k8s/guides/how-to/oauth",
+                  "k8s/guides/how-to/oidc",
+                  "k8s/guides/how-to/jwt-validation",
+                  "k8s/guides/how-to/restrict-ips",
+                  "k8s/guides/how-to/circuit-breaking",
+                  "k8s/guides/how-to/compress-response"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Custom Resources",
+            "pages": [
+              "k8s/crds/index",
+              "k8s/crds/agentendpoint",
+              "k8s/crds/cloudendpoint",
+              "k8s/crds/ngroktrafficpolicy",
+              "k8s/crds/boundendpoint",
+              "k8s/crds/domain",
+              "k8s/crds/kubernetesoperator",
+              "k8s/crds/tunnel"
+            ]
+          },
+          {
+            "group": "Integrations & Platforms",
+            "pages": [
+              "k8s/integrations/argo-cd",
+              "k8s/integrations/aws-eks",
+              "k8s/integrations/microsoft-entra-id",
+              "k8s/integrations/azure-aks",
+              "k8s/integrations/consul",
+              "k8s/integrations/digital-ocean",
+              "k8s/integrations/gke",
+              "k8s/integrations/linkerd",
+              "k8s/integrations/microk8s",
+              "k8s/integrations/rancher",
+              "k8s/integrations/rayfay",
+              "k8s/integrations/spectro-cloud",
+              "k8s/integrations/vcluster"
+            ]
+          },
+          {
+            "group": "Development",
+            "pages": [
+              "k8s/changelog",
+              "k8s/releasing"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Traffic Observability",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "obs/index"
+            ]
+          },
+          {
+            "group": "Traffic Inspection",
+            "pages": [
+              "obs/traffic-inspection"
+            ]
+          },
+          {
+            "group": "Events",
+            "pages": [
+              "obs/events/index",
+              "obs/events/reference"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Secure Tunnels",
+        "groups": [
+          {
+            "group": "Agent",
+            "pages": [
+              "agent/index",
+              "agent/web-inspection-interface",
+              "agent/cli",
+              "agent/cli-api",
+              {
+                "group": "Configuration file",
+                "pages": [
+                  "agent/config/index",
+                  "agent/config/v2",
+                  "agent/config/v3"
+                ]
+              },
+              "agent/api",
+              "agent/ssh-reverse-tunnel-agent",
+              "agent/connect-url",
+              {
+                "group": "Agent TLS Termination",
+                "pages": [
+                  "agent/agent-tls-termination",
+                  "agent/agent-mutual-tls-termination"
+                ]
+              },
+              "agent/changelog",
+              "agent/version-support-policy",
+              "agent/diagnose",
+              "agent/upgrade-v2-v3"
+            ]
+          },
+          {
+            "group": "Agent SDKs",
+            "pages": [
+              "agent-sdks/index"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Identity & Access",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "iam/index"
+            ]
+          },
+          {
+            "group": "Principals",
+            "pages": [
+              "iam/users",
+              "iam/service-users"
+            ]
+          },
+          {
+            "group": "Account Governance",
+            "pages": [
+              "iam/sso",
+              "iam/rbac",
+              "iam/domain-controls"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "api/index"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "api/reference",
+              {
+                "group": "Universal Gateway",
+                "pages": [
+                  "api/resources/endpoints",
+                  "api/resources/reserved-addrs",
+                  "api/resources/reserved-domains",
+                  "api/resources/tls-certificates",
+                  "api/resources/kubernetes-operators",
+                  {
+                    "group": "Edges",
+                    "pages": [
+                      {
+                        "group": "HTTPS Edges",
+                        "pages": [
+                          "api/resources/edges-https",
+                          "api/resources/edges-https-routes",
+                          "api/resources/https-edge-mutual-tls-module",
+                          "api/resources/edge-route-backend-module",
+                          "api/resources/edge-route-circuit-breaker-module",
+                          "api/resources/edge-route-compression-module",
+                          "api/resources/edge-route-ip-restriction-module",
+                          "api/resources/edge-route-o-auth-module",
+                          "api/resources/edge-route-oidc-module",
+                          "api/resources/edge-route-request-headers-module",
+                          "api/resources/edge-route-response-headers-module",
+                          "api/resources/edge-route-saml-module",
+                          "api/resources/edge-route-traffic-policy-module",
+                          "api/resources/edge-route-user-agent-filter-module",
+                          "api/resources/edge-route-webhook-verification-module",
+                          "api/resources/edge-route-websocket-tcp-converter-module",
+                          "api/resources/https-edge-tls-termination-module"
+                        ]
+                      },
+                      {
+                        "group": "TCP Edges",
+                        "pages": [
+                          "api/resources/edges-tcp",
+                          "api/resources/tcp-edge-backend-module",
+                          "api/resources/tcp-edge-ip-restriction-module",
+                          "api/resources/tcp-edge-traffic-policy-module"
+                        ]
+                      },
+                      {
+                        "group": "TLS Edges",
+                        "pages": [
+                          "api/resources/edges-tls",
+                          "api/resources/tls-edge-backend-module",
+                          "api/resources/tls-edge-ip-restriction-module",
+                          "api/resources/tls-edge-mutual-tls-module",
+                          "api/resources/tls-edge-tls-termination-module",
+                          "api/resources/tls-edge-traffic-policy-module"
+                        ]
+                      },
+                      {
+                        "group": "Backends",
+                        "pages": [
+                          "api/resources/failover-backends",
+                          "api/resources/http-response-backends",
+                          "api/resources/tunnel-group-backends",
+                          "api/resources/weighted-backends"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Traffic Policy",
+                "pages": [
+                  "api/resources/certificate-authorities",
+                  "api/resources/ip-policies",
+                  "api/resources/ip-policy-rules",
+                  "api/resources/application-users",
+                  "api/resources/application-sessions"
+                ]
+              },
+              {
+                "group": "Secure Tunnels",
+                "pages": [
+                  "api/resources/agent-ingresses",
+                  "api/resources/tunnels",
+                  "api/resources/tunnel-sessions"
+                ]
+              },
+              {
+                "group": "Observability",
+                "pages": [
+                  "api/resources/event-destinations",
+                  "api/resources/event-sources",
+                  "api/resources/event-subscriptions"
+                ]
+              },
+              {
+                "group": "IAM",
+                "pages": [
+                  "api/resources/ip-restrictions",
+                  "api/resources/api-keys",
+                  "api/resources/ssh-credentials",
+                  "api/resources/credentials",
+                  "api/resources/bot-users"
+                ]
+              },
+              {
+                "group": "SSH Certificates",
+                "pages": [
+                  "api/resources/ssh-certificate-authorities",
+                  "api/resources/ssh-host-certificates",
+                  "api/resources/ssh-user-certificates"
+                ]
+              },
+              {
+                "group": "Partners",
+                "pages": [
+                  "api/resources/abuse-reports"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Errors",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "errors/index"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "errors/reference"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "API Gateway",
+            "pages": [
+              "guides/api-gateway/get-started",
+              "guides/api-gateway/kubernetes",
+              "guides/api-gateway/multicloud",
+              "guides/api-gateway/monitor-ngrok"
+            ]
+          },
+          {
+            "group": "Device Gateway",
+            "pages": []
+          },
+          {
+            "group": "Identity Aware Proxy", 
+            "pages": []
+          },
+          {
+            "group": "Security Best Practices",
+            "pages": [
+              "guides/security-dev-productivity/index",
+              "guides/security-dev-productivity/securing-your-tunnels",
+              "guides/security-dev-productivity/hipaa-compliance"
+            ]
+          },
+          {
+            "group": "Site-to-Site Connectivity",
+            "pages": [
+              "guides/site-to-site-connectivity/index",
+              "guides/site-to-site-connectivity/end-customers"
+            ]
+          },
+          {
+            "group": "Networking",
+            "pages": [
+              "guides/running-behind-firewalls",
+              "guides/ssh-rdp/index"
+            ]
+          },
+          {
+            "group": "Using ngrok with",
+            "pages": []
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/index"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "FAQ",
+        "pages": [
+          "faq/faq"
+        ]
+      }
+    ]
+  }
+}
