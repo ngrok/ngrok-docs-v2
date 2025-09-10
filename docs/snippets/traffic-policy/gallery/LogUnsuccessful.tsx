@@ -1,4 +1,4 @@
-import ConfigExample from "@site/src/components/ConfigExample";
+import { ConfigExample } from "@site/src/components/ConfigExample";
 
 export const LogUnsuccessful = () => (
 	<ConfigExample

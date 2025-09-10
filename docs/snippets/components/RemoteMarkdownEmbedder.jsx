@@ -1,17 +1,13 @@
-import type React from "react";
+
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 interface RemoteMarkdownEmbedderProps {
-  url: string;
-  textToRemove?: string;
-}
-
-const RemoteMarkdownEmbedder: React.FC<RemoteMarkdownEmbedderProps> = ({
+  url= ({
   url,
   textToRemove,
 }: RemoteMarkdownEmbedderProps) => {
-  const [content, setContent] = useState<string>("");
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     fetch(url)
@@ -21,9 +17,9 @@ const RemoteMarkdownEmbedder: React.FC<RemoteMarkdownEmbedderProps> = ({
 
   if (!content) {
     return (
-      <pre className="min-h-[3.25rem] p-4 pr-[3.375rem] font-mono text-mono">
+      
         Loading ...
-      </pre>
+      
     );
   }
 
@@ -31,7 +27,7 @@ const RemoteMarkdownEmbedder: React.FC<RemoteMarkdownEmbedderProps> = ({
     ? content.replace(textToRemove, "")
     : content;
 
-  return <ReactMarkdown>{finalContent}</ReactMarkdown>;
+  return {finalContent};
 };
 
 export default RemoteMarkdownEmbedder;

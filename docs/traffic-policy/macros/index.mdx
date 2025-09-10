@@ -2,10 +2,9 @@
 title: Macros
 sidebar_position: 0
 ---
-ngrok offers a variety of CEL macros that can be used within the Traffic Policy engine to simplify [traffic management](../concepts/expressions) and [dynamic configuration](../concepts/cel-interpolation).  
+
 These macros help you streamline traffic handling by referencing common values and conditions, making it easier to manage complex logic in your traffic policies.
 
-You can use these macros in combination with [expressions](../concepts/expressions) and [actions](../actions) to create dynamic, condition-based traffic flows.
 
 ## Base64
 
@@ -404,7 +403,7 @@ hash.crc64('hello', 'base64') // 'PD7u4tgQAAA='
 
 ### `hash.md5(string) -> string`
 
-<Warning>ing Security Notice
+<Warning>
 MD5 is considered cryptographically broken and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
 </Warning>
@@ -427,7 +426,7 @@ hash.md5('hello', 'base64') // 'XUFAKrxLKna5cZ2REBfFkg=='
 
 ### `hash.sha1(string) -> string`
 
-<Warning>ing Security Notice
+<Warning>
 SHA-1 is considered cryptographically weak and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
 </Warning>
@@ -1228,7 +1227,7 @@ Decodes a percent-encoded string back to its original form.
 
 ### `string.md5() -> string`
 
-<Warning>ing Security Notice
+<Warning>
 MD5 is considered cryptographically broken and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
 </Warning>
@@ -1251,7 +1250,7 @@ Returns the hash in hexadecimal format by default.
 
 ### `string.sha1() -> string`
 
-<Warning>ing Security Notice
+<Warning>
 SHA-1 is considered cryptographically weak and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
 </Warning>

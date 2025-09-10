@@ -1,4 +1,4 @@
-import ConfigExample from "../../src/components/ConfigExample";
+import { ConfigExample } from "../../src/components/ConfigExample";
 
 export const RateLimitPricing = () => (
 	<ConfigExample
