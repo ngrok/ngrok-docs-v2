@@ -1,7 +1,7 @@
 ---
-title: Using ngrok with Minecraft
-sidebar_label: Minecraft
+title: Minecraft
 ---
+# Using ngrok with Minecraft
 
 Minecraft requires the use of an ngrok TCP tunnel to share your server with others. Use the [ngrok agent](/docs/agent/) to open a TCP tunnel on the default Minecraft port, `25565`.
 

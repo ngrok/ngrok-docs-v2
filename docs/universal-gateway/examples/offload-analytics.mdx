@@ -1,9 +1,7 @@
 ---
-title: "Offload Analytics to a Secondary Service"
-description: "With http-request, you can capture observability data from your gateway and send it to a self-hosted analytics service securely and without instrumenting your code."
-sidebar_label: "Offload Analytics"
+description: With http-request, you can capture observability data from your gateway and send it to a self-hosted analytics service securely and without instrumenting your code.
+title: Offload Analytics
 ---
-
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
@@ -54,7 +52,7 @@ on_http_request:
 
 on_http_response:
   - actions:
-      # Send authenticated request to analytics service
+# Offload Analytics to a Secondary Service
       - type: http-request
         config:
           url: https://analytics.internal/api/request

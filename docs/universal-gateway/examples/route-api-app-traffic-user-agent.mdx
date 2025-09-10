@@ -1,9 +1,7 @@
 ---
-title: "Authenticate and Route API vs. App Traffic Based on User Agent"
-description: "Automatically enforce the right type of AuthN and route requests to the appropriate upstream service from the same hostname and path."
-sidebar_label: Route by User Agent
+description: Automatically enforce the right type of AuthN and route requests to the appropriate upstream service from the same hostname and path.
+title: Route by User Agent
 ---
-
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
@@ -54,7 +52,7 @@ You may need to change:
 ```yaml
 on_http_request:
   - expressions:
-      # Check if the client's user agent does not contain 'Mozilla', which means they are an API user
+# Authenticate and Route API vs. App Traffic Based on User Agent
       - "!(req.user_agent.contains('Mozilla'))"
     actions:
       # If true, apply the `jwt-validation` action

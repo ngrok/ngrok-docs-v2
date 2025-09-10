@@ -1,14 +1,10 @@
 ---
 sidebar_position: 9
-title: Install ngrok on Linux ARM64 devices
 description: Learn how to install ngrok on any Linux ARM64 device to tunnel traffic to your upstream services or remotely administer it.
-sidebar_label: Linux (ARM64)
-tags:
-  - guides
-  - agent
-  - iot
-  - devices
+tags: 
+title: Linux (ARM64)
 ---
+# Install ngrok on Linux ARM64 devices
 
 In this guide, you'll learn how to install ngrok on any Linux ARM64 device to forward traffic from public endpoints to your upstream services or for remote management. You'll also create some a traffic policy to protect your device from unauthorized traffic.
 

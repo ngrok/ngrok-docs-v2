@@ -1,9 +1,7 @@
 ---
-title: Errors
-sidebar_label: Overview
 pagination_next: errors/reference
+title: Overview
 ---
-
 # Errors
 
 ## Philosophy

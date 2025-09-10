@@ -1,9 +1,7 @@
 ---
-title: "Route to Endpoints by Geography"
-description: "Show users content based on their region, comply with regulations, or ensure traffic hits the nearest endpoint for the best latency."
-sidebar_label: "Route to Endpoints by Geography"
+description: Show users content based on their region, comply with regulations, or ensure traffic hits the nearest endpoint for the best latency.
+title: Route to Endpoints by Geography
 ---
-
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
@@ -49,7 +47,7 @@ While still viewing your new cloud endpoint in the dashboard, copy and paste the
 ```yaml
 on_http_request:
   - expressions:
-      # Check if the client is from the US
+# Route to Endpoints by Geography
       - "conn.geo.country_code == 'US'"
     actions:
       # Forward the request to the US internal service

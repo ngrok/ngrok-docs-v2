@@ -1,9 +1,7 @@
 ---
-title: "Deploy a Zero-Code Maintenance Mode for Your Services"
-sidebar_label: Maintenence Mode
 description: Learn how to use Traffic Policy to immediately deploy a consistent maintenance message without needing to spin up a new backend service or change DNS records.
+title: Maintenence Mode
 ---
-
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
@@ -52,7 +50,7 @@ When your maintenance window is over and you're ready to route traffic to your u
 ```yaml
 on_http_request:
   - actions:
-  #    - type: custom-response
+# Deploy a Zero-Code Maintenance Mode for Your Services
   #      config:
   #        body: "We're currently undergoing maintenance. Please check back later!"
       - type: forward-internal

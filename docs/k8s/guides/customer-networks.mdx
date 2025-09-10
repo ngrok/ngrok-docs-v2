@@ -1,9 +1,7 @@
 ---
-sidebar_label: Connecting to Customer Networks
-title: Private Connectivity to Customer Networks with the ngrok Kubernetes Operator
 description: Learn how to use the ngrok Kubernetes Operator to establish secure, remote access to services running inside a protected customer network.
+title: Connecting to Customer Networks
 ---
-
 ngrok is a universal gateway, which means it allows you to securely connect to any app, IoT device, or service running in a private environment.
 
 This guide walks you through a practical example of using the [**ngrok Kubernetes Operator**](/docs/k8s/) to establish secure, remote access to services running inside a protected customer network which is not k8s native — all managed seamlessly from within your Kubernetes cluster in your cloud instance. 
@@ -224,7 +222,7 @@ To do this, you will run a separate, second ngrok agent in the customer's networ
 This is ngrok's Endpoint Pooling feature. When two endpoints start with the same URL and have pooling enabled, they form an endpoint pool. Incoming traffic to the pooled URL is automatically distributed among all healthy endpoints in the pool. If one endpoint goes offline, traffic is seamlessly routed to the remaining endpoints, ensuring redundancy and failover.
 
 ```yaml
-# Server 1 (agent1.yml)
+# Private Connectivity to Customer Networks with the ngrok Kubernetes Operator
 version: 3
 agent:
   authtoken: <YOUR_NGROK_AUTHTOKEN>
