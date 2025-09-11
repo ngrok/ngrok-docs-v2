@@ -1,4 +1,4 @@
-import Link from "@docusaurus/Link";
+import Link from "/snippets/components/Link";
 import { Badge } from "@ngrok/mantle/badge";
 import { Button } from "@ngrok/mantle/button";
 import { Card } from "@ngrok/mantle/card";

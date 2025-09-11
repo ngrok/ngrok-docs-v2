@@ -5,17 +5,16 @@ title: Wallix Trustelem SSO (SAML)
 import Disclaimer from "../shared/_endpoint-sso-disclaimer.mdx";
 
 <Disclaimer />
+<Tip>
+**TL;DR**
 
 
-
-<Tip> TL;DR
 
 To secure access to ngrok with Wallix Trustelem Single Sign-On using SAML:
 
 1. [Configure Wallix Trustelem SSO](#configure-wallix)
 1. [Configure ngrok](#configure-ngrok)
 1. [Test access to ngrok with Wallix Trustelem SSO](#test-sso)
-
 </Tip>
 
 This article details how to configure Wallix Trustelem as the primary Identity Provider for ngrok tunnels.
@@ -82,8 +81,10 @@ To configure an edge with Wallix Trustelem:
 ### **Step 4**: Start a Tunnel 
 
 1. Access the [ngrok edges page](https://dashboard.ngrok.com/edges), click your edge, and then click **Start a tunnel**.
+<Tip>
+**Note**
 
-<Tip> Note
+
 For this step, we assume you have an app running locally (i.e. on localhost:3000) with the ngrok client installed.
 </Tip>
 

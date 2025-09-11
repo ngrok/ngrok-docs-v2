@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import DocsCodeBlock from "./code-block";
+import DocsCodeBlock from "/snippets/components/code-block";
 
 interface RemoteYamlBlockProps {
 	url= ({

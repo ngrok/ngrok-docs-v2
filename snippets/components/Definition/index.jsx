@@ -1,4 +1,4 @@
-import Link from "@docusaurus/Link";
+import Link from "/snippets/components/Link";
 import { useLocation } from "@docusaurus/router";
 import { Button } from "@ngrok/mantle/button";
 import { HoverCard } from "@ngrok/mantle/hover-card";

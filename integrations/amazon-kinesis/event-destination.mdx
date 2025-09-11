@@ -10,15 +10,16 @@ tags:
 ---
 
 # AWS Kinesis Event Destination
+<Tip>
+**TL;DR**
 
-<Tip> TL;DR
+
 
 To send ngrok events to Kinesis:
 
 1. [Obtain Kinesis Data Stream ARN](#obtain-kinesis-arn)
 1. [Create Log Export](#create-log-export)
 1. [Create Event Destination](#create-destination)
-
 </Tip>
 
 This guide covers how to send ngrok events including network traffic logs into AWS Kinesis.
@@ -66,14 +67,15 @@ To send the events to Kinesis we'll need to assign an Event Destination to the L
    Kinesis. Using the information provided by your preferred method of creation, either
    **API** or **CLI Script**, create the IAM role and provide the role ARN. For the
    fastest integration or proof of concept, we recommend using the **CLI Script**.
+<Note>
+**SECURITY BEST PRACTICE**
 
-<Note> SECURITY BEST PRACTICE
+
 
 If configuring your IAM role manually, ensure that you configure the Trust Policy with a
 condition that includes the ExternalId. This will ensure that the only data allowed to
 ingested by AWS will be from your ngrok account. If you configure the IAM role with the
 CLI script, this will be done automatically.
-
 </Note>
 
 ![ngrok event destination](img/event_destination.png)

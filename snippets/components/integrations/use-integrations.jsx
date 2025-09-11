@@ -1,5 +1,5 @@
 import { usePluginData } from "@docusaurus/useGlobalData";
-import { parseIntegrations } from "./schema";
+import { parseIntegrations } from "/snippets/components/integrations/schema";
 
 const pluginKey = "ngrok-parse-integrations";
 

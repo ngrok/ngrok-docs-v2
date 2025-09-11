@@ -1,4 +1,4 @@
-import { ConfigExample } from "../../src/components/ConfigExample";
+import { ConfigExample } from "/snippets/components/ConfigExample";
 
 export const AddRobotsTxt = () => (
 	<ConfigExample

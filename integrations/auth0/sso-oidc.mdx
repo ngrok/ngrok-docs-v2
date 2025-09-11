@@ -6,15 +6,16 @@ description: Use Auth0 OIDC to secure access to ngrok endpoints
 import Disclaimer from "../shared/_endpoint-sso-disclaimer.mdx";
 
 <Disclaimer />
+<Tip>
+**TL;DR**
 
-<Tip> TL;DR
+
 
 To secure access to ngrok with Auth0 Single Sign-On using OpenID Connect:
 
 1. [Configure Auth0 SSO](#configure-Auth0)
 1. [Configure ngrok](#configure-ngrok)
 1. [Test access to ngrok with Auth0 SSO](#test-sso)
-
 </Tip>
 
 This article details how to configure Auth0 as the primary Identity Provider for ngrok tunnels.
@@ -127,8 +128,10 @@ To configure an edge with Auth0:
 1. Click **Save** at the top, and then click the left arrow to go back to the **Edges** page.
 
 1. Launch a tunnel connected to your Auth0 edge:
+<Tip>
+**Note**
 
-<Tip> Note
+
 For this step, we assume you have an app running locally (i.e. on localhost:3000) with the ngrok client installed.
 </Tip>
 

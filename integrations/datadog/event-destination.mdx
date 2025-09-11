@@ -9,15 +9,16 @@ tags:
 ---
 
 # Datadog Event Destination
+<Tip>
+**TL;DR**
 
-<Tip> TL;DR
+
 
 To send ngrok events to Datadog:
 
 1. [Get prerequisite information](#prerequisites)
 1. [Create Log Export](#create-log-export)
 1. [Create Event Destination](#create-destination)
-
 </Tip>
 
 This guide covers how to send ngrok events including network traffic logs into Datadog.
@@ -70,10 +71,11 @@ To send the events to Datadog we'll need to assign an Event Destination to the L
 3. Once all required inputs have values, select **Send Test Event** and you should be presented with a Success message. Select **Done** and the Datadog Event Destination setup is complete.
 
 ![ngrok event destination success](img/success.png)
+<Note>
+**TROUBLESHOOTING**
 
-<Note> TROUBLESHOOTING
+
 
 If instead of a Success message you receive a 403 error, double-check your API key and
 validate that you have selected the correct Datadog site.
-
 </Note>

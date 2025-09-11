@@ -3,7 +3,6 @@ title: Load Balancing Between Multiple Clouds
 description: Learn how to load balance traffic between multiple clouds with ngrok.
 ---
 
-import { LangSwitcher } from "/snippets/components/LangSwitcher.jsx";
 ngrok's [Endpoint Pooling](/docs/universal-gateway/endpoint-pooling) allows you to automatically load balance between replicas of your service across multiple clouds by creating two endpoints with the same URL.
 
 This guide will show you how to set up endpoint pooling with a few different methods.
@@ -56,7 +55,7 @@ The following is a simple example of enabling pooling with one of our SDKs.
 ```go title="example.go"
 package main
 
-import (
+{/* import ( */}
 	"context"
 	"fmt"
 	"log"
@@ -105,7 +104,7 @@ return err
 ````
 
 ```javascript title="example.js"
-require('dotenv').config();
+{/* require('dotenv').config(); */}
 const ngrok = require('@ngrok/ngrok');
 
 (async function() {
@@ -150,7 +149,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
 
     // Wait indefinitely
     tokio::signal::ctrl_c().await?;
-    Ok(())
+{/*     Ok(()) */}
 }
 ```
 
@@ -160,7 +159,7 @@ import os
 import ngrok
 import time
 
-load_dotenv()
+{/* load_dotenv() */}
 
 listener = ngrok.forward(
 	# The port your app is running on.
@@ -171,14 +170,14 @@ listener = ngrok.forward(
 )
 
 # Output ngrok url to console
-print(f"Ingress established at {listener.url()}")
+{/* print(f"Ingress established at {listener.url()}") */}
 
 # Keep the listener alive
 try:
     while True:
         time.sleep(1)
 except KeyboardInterrupt:
-    print("Closing listener")
+{/*     print("Closing listener") */}
 ```
 
 </LangSwitcher>

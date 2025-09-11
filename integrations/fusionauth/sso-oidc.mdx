@@ -6,15 +6,16 @@ description: Use FusionAuth SSO to secure access to ngrok endpoints
 import Disclaimer from "../shared/_endpoint-sso-disclaimer.mdx";
 
 <Disclaimer />
+<Tip>
+**TL;DR**
 
-<Tip> TL;DR
+
 
 To secure access to ngrok with FusionAuth Single Sign-On using OpenID Connect:
 
 1. [Configure FusionAuth SSO](#configure-FusionAuth)
 1. [Configure ngrok](#configure-ngrok)
 1. [Test access to ngrok with FusionAuth SSO](#test-sso)
-
 </Tip>
 
 This article details how to configure FusionAuth as the primary Identity Provider for ngrok tunnels.
@@ -102,8 +103,10 @@ To configure an edge with FusionAuth:
 1. Click **Save**.
 
 1. Launch a tunnel connected to your FusionAuth edge:
+<Tip>
+**Note**
 
-<Tip> Note
+
 For this step, we assume you have an app running locally (i.e. on localhost:3000) with the ngrok client installed.
 </Tip>
 

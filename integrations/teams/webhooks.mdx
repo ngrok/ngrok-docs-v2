@@ -5,9 +5,10 @@ title: Microsoft Teams Webhooks
 import InspectingRequests from "../shared/_inspecting-requests.mdx";
 import ReplayingRequests from "../shared/_replaying-requests.mdx";
 
+<Tip>
+**TL;DR**
 
 
-<Tip> TL;DR
 
 To integrate Microsoft Teams webhooks with ngrok:
 
@@ -15,7 +16,6 @@ To integrate Microsoft Teams webhooks with ngrok:
 1. [Launch ngrok.](#start-ngrok) `ngrok http 3000 --url myexample.ngrok.app`
 1. [Configure Microsoft Teams webhooks with your ngrok URL.](#setup-webhook)
 1. [Secure your webhook requests with verification.](#security)
-
 </Tip>
 
 This guide covers how to use ngrok to integrate your localhost app with Microsoft Teams by using Webhooks.
@@ -55,9 +55,8 @@ You can validate that the app is up and running by visiting http://localhost:300
 ## 2. Launch ngrok 
 
 Now that your app is running locally, you can put it on the internet securely with ngrok.
-
 <Info>
-This integration requires an ngrok Pro or Enterprise license because Microsoft Teams validates your ngrok domain and certificate.
+**This integration requires an ngrok Pro or Enterprise license because Microsoft Teams validates your ngrok domain and certificate.**
 </Info>
 
 1. If you're not an ngrok user yet, [sign up for ngrok for free](https://ngrok.com/signup).

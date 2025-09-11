@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import LangSwitcherContext from "./LangSwitcherContext";
+import LangSwitcherContext from "/snippets/components/LangSwitcherContext";
 
 /**
  * Renders its children only if the specified language matches the

@@ -43,9 +43,8 @@ MCP Server Started. Now running on:
 
   http://localhost:3000
 ```
-
 <Note>
-See [the Claude MCP](https://www.claudemcp.com/docs) documentation for more information on how to set up your local server.
+**See [the Claude MCP](https://www.claudemcp.com/docs) documentation for more information on how to set up your local server.**
 </Note>
 
 ### 4. Expose your server with ngrok
@@ -57,8 +56,10 @@ ngrok http 3000
 ```
 
 Copy the HTTPS forwarding URL (e.g., `https://abc123.ngrok.io`) which we will use in the next step.
+<Tip>
+**Get a static URL**
 
-<Tip> Get a static URL
+
 Want a URL that doesn't change every time you restart the agent? Claim a [**free static ngrok URL**](https://dashboard.ngrok.com/domains).
 
 Once you have claimed your free static domain, add the `--url https://<your_static_domain_here>` flag when running the agent.
