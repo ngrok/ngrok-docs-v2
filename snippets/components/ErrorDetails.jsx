@@ -3,7 +3,7 @@ import loadable from "@loadable/component";
 
 export const ErrorDetails = ({ error }) => {
 	const LazyErrorPartial = loadable(
-		() => import(`/docs/errors/details/_${error}.mdx`),
+		() => import(`/snippets/errors/details/_${error}.mdx`),
 	);
 	return (
 		<ErrorBoundary fallback={() => <br />}>

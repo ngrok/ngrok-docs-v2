@@ -3,9 +3,7 @@ hide_table_of_contents: true
 displayed_sidebar: docs
 title: ERR_NGROK_345
 ---
-import { ErrorDetails } from "/snippets/components/ErrorDetails";
-
-
+import ErrorDetails from "/snippets/errors/details/_err_ngrok_345.mdx";
 
 ### Message
 
@@ -14,7 +12,7 @@ Endpoint configuration `ID`s HTTPS module terminates TLS which is incompatible w
 - Modify the endpoint configuration to include the HTTPS module with 'terminate_tls' disabled.
 - OR start an 'http' tunnel with -bind-tls=true or -bind-tls=both instead
 
-<ErrorDetails error="err_ngrok_345" />
+<ErrorDetails />
 
 ### Further help
 
