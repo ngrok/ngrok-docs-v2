@@ -8,14 +8,19 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Overview",
-        "pages": [
-          "overview/index",
-          "what-is-ngrok",
-          "how-ngrok-works",
-          "why-ngrok",
-          "whats-new",
-          "faq/faq"
+        "tab": "Start",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "overview/index",
+              "what-is-ngrok",
+              "how-ngrok-works",
+              "why-ngrok",
+              "whats-new",
+              "faq/faq"
+            ]
+          }
         ]
       },
       {
@@ -32,15 +37,11 @@
           "getting-started/index",
           {
             "group": "Agent CLI",
-            "pages": [
-              "getting-started/index"
-            ]
+            "pages": ["getting-started/index"]
           },
           {
             "group": "Cloud Endpoints",
-            "pages": [
-              "getting-started/cloud-endpoints-quickstart"
-            ]
+            "pages": ["getting-started/cloud-endpoints-quickstart"]
           },
           {
             "group": "SDKs",
@@ -190,9 +191,7 @@
               },
               {
                 "group": "Cloud Endpoints",
-                "pages": [
-                  "traffic-policy/getting-started/cloud-endpoints/api"
-                ]
+                "pages": ["traffic-policy/getting-started/cloud-endpoints/api"]
               }
             ]
           },
@@ -239,15 +238,11 @@
           },
           {
             "group": "Macros",
-            "pages": [
-              "traffic-policy/macros/index"
-            ]
+            "pages": ["traffic-policy/macros/index"]
           },
           {
             "group": "Secrets",
-            "pages": [
-              "traffic-policy/secrets"
-            ]
+            "pages": ["traffic-policy/secrets"]
           },
           {
             "group": "Variables",
@@ -264,9 +259,7 @@
           },
           {
             "group": "Resources",
-            "pages": [
-              "traffic-policy/identities"
-            ]
+            "pages": ["traffic-policy/identities"]
           },
           {
             "group": "Examples",
@@ -294,10 +287,7 @@
           "k8s/index",
           {
             "group": "How It Works",
-            "pages": [
-              "k8s/how-it-works",
-              "k8s/installation/architecture"
-            ]
+            "pages": ["k8s/how-it-works", "k8s/installation/architecture"]
           },
           "k8s/guides/local-cluster",
           {
@@ -407,10 +397,7 @@
           "obs/traffic-inspection",
           {
             "group": "Events",
-            "pages": [
-              "obs/events/index",
-              "obs/events/reference"
-            ]
+            "pages": ["obs/events/index", "obs/events/reference"]
           }
         ],
         "tab": "Traffic Observability"
@@ -450,10 +437,7 @@
           },
           {
             "group": "Agent SDKs",
-            "pages": [
-              "agent-sdks/index",
-              "agent-sdks/index"
-            ]
+            "pages": ["agent-sdks/index", "agent-sdks/index"]
           }
         ],
         "tab": "Secure Tunnels"
@@ -463,18 +447,11 @@
           "iam/index",
           {
             "group": "Principals",
-            "pages": [
-              "iam/users",
-              "iam/service-users"
-            ]
+            "pages": ["iam/users", "iam/service-users"]
           },
           {
             "group": "Account Governance",
-            "pages": [
-              "iam/sso",
-              "iam/rbac",
-              "iam/domain-controls"
-            ]
+            "pages": ["iam/sso", "iam/rbac", "iam/domain-controls"]
           }
         ],
         "tab": "Identity & Access"
@@ -598,9 +575,7 @@
               },
               {
                 "group": "Partners",
-                "pages": [
-                  "api/resources/abuse-reports"
-                ]
+                "pages": ["api/resources/abuse-reports"]
               }
             ]
           }
@@ -608,10 +583,7 @@
         "tab": "API"
       },
       {
-        "pages": [
-          "errors/index",
-          "errors/reference"
-        ],
+        "pages": ["errors/index", "errors/reference"],
         "tab": "Errors"
       },
       {
@@ -636,9 +608,7 @@
         "tab": "Device Gateway"
       },
       {
-        "pages": [
-          "guides/identity-aware-proxy/securing-with-oauth"
-        ],
+        "pages": ["guides/identity-aware-proxy/securing-with-oauth"],
         "tab": "Identity Aware Proxy"
       },
       {
@@ -657,10 +627,7 @@
         "tab": "Site-to-Site Connectivity"
       },
       {
-        "pages": [
-          "guides/running-behind-firewalls",
-          "guides/ssh-rdp/index"
-        ],
+        "pages": ["guides/running-behind-firewalls", "guides/ssh-rdp/index"],
         "tab": "Networking"
       },
       {
@@ -735,10 +702,7 @@
           },
           {
             "group": "Amazon",
-            "pages": [
-              "integrations/amazon/index",
-              "integrations/amazon/oauth"
-            ]
+            "pages": ["integrations/amazon/index", "integrations/amazon/oauth"]
           },
           {
             "group": "Amazon Cloudwatch",
@@ -777,10 +741,7 @@
           },
           {
             "group": "Argocd",
-            "pages": [
-              "integrations/argocd/index",
-              "integrations/argocd/apiops"
-            ]
+            "pages": ["integrations/argocd/index", "integrations/argocd/apiops"]
           },
           {
             "group": "Auth0",
@@ -836,17 +797,11 @@
           },
           {
             "group": "Box",
-            "pages": [
-              "integrations/box/index",
-              "integrations/box/webhooks"
-            ]
+            "pages": ["integrations/box/index", "integrations/box/webhooks"]
           },
           {
             "group": "Brex",
-            "pages": [
-              "integrations/brex/index",
-              "integrations/brex/webhooks"
-            ]
+            "pages": ["integrations/brex/index", "integrations/brex/webhooks"]
           },
           {
             "group": "Buildkite",
@@ -892,10 +847,7 @@
           },
           {
             "group": "Clerk",
-            "pages": [
-              "integrations/clerk/index",
-              "integrations/clerk/webhooks"
-            ]
+            "pages": ["integrations/clerk/index", "integrations/clerk/webhooks"]
           },
           {
             "group": "Coinbase",
@@ -906,10 +858,7 @@
           },
           {
             "group": "Consul",
-            "pages": [
-              "integrations/consul/index",
-              "integrations/consul/k8s"
-            ]
+            "pages": ["integrations/consul/index", "integrations/consul/k8s"]
           },
           {
             "group": "Contentful",
@@ -1017,10 +966,7 @@
           },
           {
             "group": "Google",
-            "pages": [
-              "integrations/google/index",
-              "integrations/google/oauth"
-            ]
+            "pages": ["integrations/google/index", "integrations/google/oauth"]
           },
           {
             "group": "Google Gke",
@@ -1102,17 +1048,11 @@
           },
           {
             "group": "Linkerd",
-            "pages": [
-              "integrations/linkerd/index",
-              "integrations/linkerd/k8s"
-            ]
+            "pages": ["integrations/linkerd/index", "integrations/linkerd/k8s"]
           },
           {
             "group": "Linode",
-            "pages": [
-              "integrations/linode/index",
-              "integrations/linode/gslb"
-            ]
+            "pages": ["integrations/linode/index", "integrations/linode/gslb"]
           },
           {
             "group": "Mailchimp",
@@ -1174,10 +1114,7 @@
           },
           {
             "group": "Mux",
-            "pages": [
-              "integrations/mux/index",
-              "integrations/mux/webhooks"
-            ]
+            "pages": ["integrations/mux/index", "integrations/mux/webhooks"]
           },
           {
             "group": "Okta",
@@ -1192,10 +1129,7 @@
           },
           {
             "group": "Orbit",
-            "pages": [
-              "integrations/orbit/index",
-              "integrations/orbit/webhooks"
-            ]
+            "pages": ["integrations/orbit/index", "integrations/orbit/webhooks"]
           },
           {
             "group": "Pagerduty",
@@ -1213,10 +1147,7 @@
           },
           {
             "group": "Plivo",
-            "pages": [
-              "integrations/plivo/index",
-              "integrations/plivo/webhooks"
-            ]
+            "pages": ["integrations/plivo/index", "integrations/plivo/webhooks"]
           },
           {
             "group": "Pusher",
@@ -1227,17 +1158,11 @@
           },
           {
             "group": "Rafay",
-            "pages": [
-              "integrations/rafay/index",
-              "integrations/rafay/k8s"
-            ]
+            "pages": ["integrations/rafay/index", "integrations/rafay/k8s"]
           },
           {
             "group": "Rancher",
-            "pages": [
-              "integrations/rancher/index",
-              "integrations/rancher/k8s"
-            ]
+            "pages": ["integrations/rancher/index", "integrations/rancher/k8s"]
           },
           {
             "group": "Salesforce",
@@ -1277,10 +1202,7 @@
           },
           {
             "group": "Slack",
-            "pages": [
-              "integrations/slack/index",
-              "integrations/slack/webhooks"
-            ]
+            "pages": ["integrations/slack/index", "integrations/slack/webhooks"]
           },
           {
             "group": "Sonatype Nexus",
@@ -1312,17 +1234,11 @@
           },
           {
             "group": "Svix",
-            "pages": [
-              "integrations/svix/index",
-              "integrations/svix/webhooks"
-            ]
+            "pages": ["integrations/svix/index", "integrations/svix/webhooks"]
           },
           {
             "group": "Teams",
-            "pages": [
-              "integrations/teams/index",
-              "integrations/teams/webhooks"
-            ]
+            "pages": ["integrations/teams/index", "integrations/teams/webhooks"]
           },
           {
             "group": "Terraform",
@@ -1362,10 +1278,7 @@
           },
           {
             "group": "Twitch",
-            "pages": [
-              "integrations/twitch/index",
-              "integrations/twitch/oauth"
-            ]
+            "pages": ["integrations/twitch/index", "integrations/twitch/oauth"]
           },
           {
             "group": "Twitter",
@@ -1397,10 +1310,7 @@
           },
           {
             "group": "Webex",
-            "pages": [
-              "integrations/webex/index",
-              "integrations/webex/webhooks"
-            ]
+            "pages": ["integrations/webex/index", "integrations/webex/webhooks"]
           },
           {
             "group": "Whatsapp",
@@ -1418,10 +1328,7 @@
           },
           {
             "group": "Xero",
-            "pages": [
-              "integrations/xero/index",
-              "integrations/xero/webhooks"
-            ]
+            "pages": ["integrations/xero/index", "integrations/xero/webhooks"]
           },
           {
             "group": "Zendesk",
@@ -1432,10 +1339,7 @@
           },
           {
             "group": "Zoom",
-            "pages": [
-              "integrations/zoom/index",
-              "integrations/zoom/webhooks"
-            ]
+            "pages": ["integrations/zoom/index", "integrations/zoom/webhooks"]
           }
         ],
         "tab": "Integrations"
