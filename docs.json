@@ -20,6 +20,32 @@
               "whats-new",
               "faq/faq"
             ]
+          },
+          {
+            "group": "Endpoint Quickstarts",
+            "pages": [
+              "getting-started/index",
+              "getting-started/cloud-endpoints-quickstart"
+            ]
+          },
+          {
+            "group": "SDK Quickstarts",
+            "pages": [
+              "getting-started/javascript",
+              "getting-started/go",
+              "getting-started/python",
+              "getting-started/rust"
+            ]
+          },
+          {
+            "group": "Kubernetes Operator Quickstarts",
+            "pages": [
+              "getting-started/kubernetes/ingress",
+              "getting-started/kubernetes/ingress",
+              "getting-started/kubernetes/gateway-api",
+              "getting-started/kubernetes/crds",
+              "getting-started/kubernetes/endpoints"
+            ]
           }
         ]
       },
@@ -29,39 +55,6 @@
           "pricing-limits/index",
           "pricing-limits/free-plan-limits",
           "pricing-limits/traffic-policy-unit-pricing"
-        ]
-      },
-      {
-        "tab": "Getting Started",
-        "pages": [
-          "getting-started/index",
-          {
-            "group": "Agent CLI",
-            "pages": ["getting-started/index"]
-          },
-          {
-            "group": "Cloud Endpoints",
-            "pages": ["getting-started/cloud-endpoints-quickstart"]
-          },
-          {
-            "group": "SDKs",
-            "pages": [
-              "getting-started/javascript",
-              "getting-started/go",
-              "getting-started/python",
-              "getting-started/rust"
-            ]
-          },
-          {
-            "group": "Kubernetes",
-            "pages": [
-              "getting-started/kubernetes/ingress",
-              "getting-started/kubernetes/ingress",
-              "getting-started/kubernetes/gateway-api",
-              "getting-started/kubernetes/crds",
-              "getting-started/kubernetes/endpoints"
-            ]
-          }
         ]
       },
       {
