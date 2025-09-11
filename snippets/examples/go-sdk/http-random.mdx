@@ -1,0 +1,12 @@
+```go
+import (
+	"context"
+	"net"
+
+	"golang.ngrok.com/ngrok/v2"
+)
+
+func ngrokListener(ctx context.Context) (net.Listener, error) {
+	return ngrok.Listen(ctx)
+}
+```

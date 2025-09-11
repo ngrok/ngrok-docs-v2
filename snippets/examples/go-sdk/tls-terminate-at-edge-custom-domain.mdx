@@ -1,0 +1,23 @@
+```go
+import (
+	"context"
+	"net"
+
+	"golang.ngrok.com/ngrok/v2"
+)
+
+trafficPolicy := `
+on_tls_request:
+  - actions:
+      - type: terminate-tls
+`
+
+func ngrokListener(ctx context.Context) (net.Listener, error) {
+	return ngrok.Listen(ctx,
+		ngrok.WithURL("tls://your-name.ngrok.app"),
+		ngrok.WithTrafficPolicy(trafficPolicy),
+	)
+}
+```
+
+- [https://pkg.go.dev/golang.ngrok.com/ngrok/v2#WithTrafficPolicy](https://pkg.go.dev/golang.ngrok.com/ngrok/v2#WithTrafficPolicy)

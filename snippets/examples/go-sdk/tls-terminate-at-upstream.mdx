@@ -1,0 +1,14 @@
+```go
+import (
+	"context"
+
+	"golang.ngrok.com/ngrok/v2"
+)
+
+func ngrokForwarder(ctx context.Context) (ngrok.EndpointForwarder, error) {
+	return ngrok.Forward(ctx,
+		ngrok.WithUpstream("tls://localhost:443"),
+		ngrok.WithURL("tls://app.example.com"),
+	)
+}
+```

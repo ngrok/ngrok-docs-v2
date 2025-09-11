@@ -1,0 +1,22 @@
+---
+sidebar_position: 0
+pagination_next: traffic-policy/examples/a-b-tests
+pagination_label: Examples
+categories: 
+- id: security
+name: User-Agent Filtering
+color: green
+examples: 
+- slug: user-agent-filtering
+description: Filter requests based on the User-Agent header.
+title: Overview
+---
+# Traffic Policy Examples
+
+import ExampleHub from "/snippets/components/ExampleHub.jsx";
+
+import Link from '/snippets/components/Link.jsx';
+
+<p className="lg:text-lg">Whether you need an API gateway, multicloud failover, or want to integrate ngrok with your stack, these examples help you compose endpoints and Traffic Policy to orchestrate traffic for common jobs to be done and problems to be solve. Wire it up, secure it, and *ship it already*.</p>
+
+<ExampleHub parentDir="traffic-policy" examples={frontMatter.examples} categories={frontMatter.categories} />

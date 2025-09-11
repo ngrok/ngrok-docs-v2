@@ -1,0 +1,26 @@
+---
+sidebar_position: 0
+pagination_next: traffic-policy/actions/add-headers
+pagination_label: Actions
+categories: 
+- id: traffic-control
+name: Verify Webhook
+description: Validate incoming signatures against a known secret to ensure authenticity.
+actions: 
+- type: verify-webhook
+phases: 
+title: Overview
+---
+import ActionHub from "/snippets/components/ActionHub.jsx";
+
+# Traffic Policy Actions
+
+Traffic Policy Actions enable you to manipulate, route or manage traffic on your endpoints in various ways.
+
+[Learn how actions work →](/traffic-policy/concepts/actions)
+
+## List of Available Actions
+
+The following actions are available for use on your endpoints:
+
+<ActionHub actions={frontMatter.actions} />

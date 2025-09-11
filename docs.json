@@ -1,0 +1,1468 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "ngrok Documentation",
+  "colors": {
+    "primary": "#ff0000"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Start",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "what-is-ngrok",
+              "how-ngrok-works",
+              "why-ngrok",
+              "whats-new",
+              "faq/faq"
+            ]
+          },
+          {
+            "group": "Quickstarts",
+            "pages": [
+              "getting-started/index",
+              "getting-started/cloud-endpoints-quickstart",
+              {
+                "group": "SDKs",
+                "pages": [
+                  "getting-started/javascript",
+                  "getting-started/go",
+                  "getting-started/python",
+                  "getting-started/rust"
+                ]
+              },
+              {
+                "group": "Kubernetes Operator",
+                "pages": [
+                  "getting-started/kubernetes/ingress",
+                  "getting-started/kubernetes/ingress",
+                  "getting-started/kubernetes/gateway-api",
+                  "getting-started/kubernetes/crds",
+                  "getting-started/kubernetes/endpoints"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Products",
+        "menu": [
+          {
+            "item": "Universal Gateway",
+            "pages": [
+              "universal-gateway/overview",
+              {
+                "group": "Concepts",
+                "pages": [
+                  {
+                    "group": "Domains",
+                    "pages": [
+                      "universal-gateway/domains",
+                      "universal-gateway/custom-domains"
+                    ]
+                  },
+                  "universal-gateway/tcp-addresses",
+                  "universal-gateway/tls-certificates",
+                  "universal-gateway/edges"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "pages": [
+                  "universal-gateway/endpoints",
+                  {
+                    "group": "Types",
+                    "pages": [
+                      "universal-gateway/types",
+                      {
+                        "group": "Cloud Endpoints",
+                        "pages": [
+                          "universal-gateway/cloud-endpoints/index",
+                          "universal-gateway/cloud-endpoints/change-domain-endpoint",
+                          {
+                            "group": "Forwarding Traffic",
+                            "pages": [
+                              "universal-gateway/cloud-endpoints/forwarding-and-load-balancing",
+                              "universal-gateway/cloud-endpoints/routing-and-policy-decentralization"
+                            ]
+                          }
+                        ]
+                      },
+                      "universal-gateway/agent-endpoints"
+                    ]
+                  },
+                  {
+                    "group": "Protocols",
+                    "pages": [
+                      "universal-gateway/protocols",
+                      "universal-gateway/http",
+                      "universal-gateway/tls",
+                      "universal-gateway/tcp"
+                    ]
+                  },
+                  {
+                    "group": "Bindings",
+                    "pages": [
+                      "universal-gateway/bindings",
+                      "universal-gateway/public-endpoints",
+                      "universal-gateway/internal-endpoints",
+                      "universal-gateway/kubernetes-endpoints"
+                    ]
+                  },
+                  {
+                    "group": "Pooling",
+                    "pages": [
+                      "universal-gateway/endpoint-pooling",
+                      "universal-gateway/load-balancing-multiple-clouds"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Network",
+                "pages": [
+                  "universal-gateway/global-load-balancer",
+                  "universal-gateway/tls-termination",
+                  "universal-gateway/ddos-protection",
+                  "universal-gateway/ip-addresses",
+                  "universal-gateway/points-of-presence"
+                ]
+              },
+              {
+                "group": "Examples",
+                "pages": [
+                  "universal-gateway/examples",
+                  "universal-gateway/examples/blue-green-deployments",
+                  "universal-gateway/examples/canary-deployments",
+                  "universal-gateway/examples/custom-error-pages",
+                  "universal-gateway/examples/front-door-pattern",
+                  "universal-gateway/examples/ip-restrictions-basic-auth",
+                  "universal-gateway/examples/lock-admin-dashboards",
+                  "universal-gateway/examples/maintenance-mode",
+                  "universal-gateway/examples/minecraft",
+                  "universal-gateway/examples/multiplex",
+                  "universal-gateway/examples/n8n",
+                  "universal-gateway/examples/offload-analytics",
+                  "universal-gateway/examples/ollama",
+                  "universal-gateway/examples/pre-tier-requests",
+                  "universal-gateway/examples/rewrite-headers-redirects",
+                  "universal-gateway/examples/route-api-app-traffic-user-agent",
+                  "universal-gateway/examples/route-by-geography",
+                  "universal-gateway/examples/route-by-oidc",
+                  "universal-gateway/examples/secure-developer-environments",
+                  "universal-gateway/examples/validate-requests-identity",
+                  "universal-gateway/examples/wordpress"
+                ]
+              }
+            ]
+          },
+          {
+            "item": "Traffic Policy",
+            "pages": [
+              "traffic-policy/index",
+              {
+                "group": "Getting Started",
+                "pages": [
+                  {
+                    "group": "Agent Endpoints",
+                    "pages": [
+                      "traffic-policy/getting-started/agent-endpoints/cli",
+                      "traffic-policy/getting-started/agent-endpoints/config-file"
+                    ]
+                  },
+                  {
+                    "group": "Cloud Endpoints",
+                    "pages": [
+                      "traffic-policy/getting-started/cloud-endpoints/api"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Concepts",
+                "pages": [
+                  "traffic-policy/concepts/index",
+                  "traffic-policy/concepts/actions",
+                  "traffic-policy/concepts/cel-interpolation",
+                  "traffic-policy/concepts/expressions",
+                  "traffic-policy/concepts/phase-rules",
+                  "traffic-policy/concepts/phases"
+                ]
+              },
+              {
+                "group": "Actions",
+                "pages": [
+                  "traffic-policy/actions/index",
+                  "traffic-policy/actions/add-headers",
+                  "traffic-policy/actions/basic-auth",
+                  "traffic-policy/actions/circuit-breaker",
+                  "traffic-policy/actions/close-connection",
+                  "traffic-policy/actions/compress-response",
+                  "traffic-policy/actions/custom-response",
+                  "traffic-policy/actions/deny",
+                  "traffic-policy/actions/forward-internal",
+                  "traffic-policy/actions/http-request",
+                  "traffic-policy/actions/jwt-validation",
+                  "traffic-policy/actions/log",
+                  "traffic-policy/actions/oauth",
+                  "traffic-policy/actions/oidc",
+                  "traffic-policy/actions/owasp-crs-request",
+                  "traffic-policy/actions/owasp-crs-response",
+                  "traffic-policy/actions/rate-limit",
+                  "traffic-policy/actions/redirect",
+                  "traffic-policy/actions/remove-headers",
+                  "traffic-policy/actions/restrict-ips",
+                  "traffic-policy/actions/saml",
+                  "traffic-policy/actions/set-vars",
+                  "traffic-policy/actions/terminate-tls",
+                  "traffic-policy/actions/url-rewrite",
+                  "traffic-policy/actions/verify-webhook"
+                ]
+              },
+              {
+                "group": "Macros",
+                "pages": ["traffic-policy/macros/index"]
+              },
+              {
+                "group": "Secrets",
+                "pages": ["traffic-policy/secrets"]
+              },
+              {
+                "group": "Variables",
+                "pages": [
+                  "traffic-policy/variables/index",
+                  "traffic-policy/variables/action",
+                  "traffic-policy/variables/connection",
+                  "traffic-policy/variables/endpoint",
+                  "traffic-policy/variables/ip-intel",
+                  "traffic-policy/variables/req",
+                  "traffic-policy/variables/res",
+                  "traffic-policy/variables/time"
+                ]
+              },
+              {
+                "group": "Resources",
+                "pages": ["traffic-policy/identities"]
+              },
+              {
+                "group": "Examples",
+                "pages": [
+                  "traffic-policy/examples/index",
+                  "traffic-policy/examples/a-b-tests",
+                  "traffic-policy/examples/add-and-remove-headers",
+                  "traffic-policy/examples/add-authentication",
+                  "traffic-policy/examples/block-unwanted-requests",
+                  "traffic-policy/examples/compress-json-responses",
+                  "traffic-policy/examples/enforce-tls",
+                  "traffic-policy/examples/event-logging",
+                  "traffic-policy/examples/oauth-protection",
+                  "traffic-policy/examples/rate-limit-requests",
+                  "traffic-policy/examples/route-requests",
+                  "traffic-policy/examples/url-rewrites",
+                  "traffic-policy/examples/user-agent-filtering"
+                ]
+              }
+            ]
+          },
+          {
+            "item": "Kubernetes",
+            "pages": [
+              "k8s/index",
+              {
+                "group": "How It Works",
+                "pages": ["k8s/how-it-works", "k8s/installation/architecture"]
+              },
+              "k8s/guides/local-cluster",
+              {
+                "group": "Quickstarts",
+                "pages": [
+                  "getting-started/kubernetes/ingress",
+                  "getting-started/kubernetes/ingress",
+                  "getting-started/kubernetes/gateway-api",
+                  "getting-started/kubernetes/crds",
+                  "getting-started/kubernetes/endpoints"
+                ]
+              },
+              {
+                "group": "Manage",
+                "pages": [
+                  "k8s/installation/update",
+                  "k8s/installation/helm",
+                  "k8s/installation/uninstall"
+                ]
+              },
+              {
+                "group": "Load Balancing",
+                "pages": [
+                  "k8s/load-balancing/load-balancing-kubernetes",
+                  "k8s/load-balancing/load-balancing-kubernetes-clusters",
+                  "k8s/guides/using-loadbalancers"
+                ]
+              },
+              {
+                "group": "Usage Guides",
+                "pages": [
+                  "k8s/guides/using-crds",
+                  "k8s/guides/endpoint-types",
+                  "k8s/guides/bindings",
+                  "k8s/guides/pooling",
+                  "k8s/guides/custom-domain",
+                  "k8s/guides/customer-networks",
+                  "k8s/guides/using-gwapi",
+                  "k8s/guides/using-ingresses",
+                  "k8s/guides/annotations",
+                  "k8s/guides/managed-resources",
+                  "k8s/guides/finalizers",
+                  "k8s/guides/troubleshooting",
+                  {
+                    "group": "How do I?",
+                    "pages": [
+                      "k8s/guides/how-to/request-routing",
+                      "k8s/guides/how-to/tls-routing",
+                      "k8s/guides/how-to/tcp-routing",
+                      "k8s/guides/how-to/manipulate-headers",
+                      "k8s/guides/how-to/redirects",
+                      "k8s/guides/how-to/rewrite-url",
+                      "k8s/guides/how-to/static-response",
+                      "k8s/guides/how-to/terminate-tls",
+                      "k8s/guides/how-to/upstream-tls",
+                      "k8s/guides/how-to/rate-limiting",
+                      "k8s/guides/how-to/deny-requests",
+                      "k8s/guides/how-to/basic-auth",
+                      "k8s/guides/how-to/oauth",
+                      "k8s/guides/how-to/oidc",
+                      "k8s/guides/how-to/jwt-validation",
+                      "k8s/guides/how-to/restrict-ips",
+                      "k8s/guides/how-to/circuit-breaking",
+                      "k8s/guides/how-to/compress-response"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Custom Resources",
+                "pages": [
+                  "k8s/crds/index",
+                  "k8s/crds/agentendpoint",
+                  "k8s/crds/cloudendpoint",
+                  "k8s/crds/ngroktrafficpolicy",
+                  "k8s/crds/boundendpoint",
+                  "k8s/crds/domain",
+                  "k8s/crds/kubernetesoperator",
+                  "k8s/crds/tunnel"
+                ]
+              },
+              {
+                "group": "Integrations & Platforms",
+                "pages": [
+                  "k8s/integrations/argo-cd",
+                  "k8s/integrations/aws-eks",
+                  "k8s/integrations/microsoft-entra-id",
+                  "k8s/integrations/azure-aks",
+                  "k8s/integrations/consul",
+                  "k8s/integrations/digital-ocean",
+                  "k8s/integrations/gke",
+                  "k8s/integrations/linkerd",
+                  "k8s/integrations/microk8s",
+                  "k8s/integrations/rancher",
+                  "k8s/integrations/rayfay",
+                  "k8s/integrations/spectro-cloud",
+                  "k8s/integrations/vcluster"
+                ]
+              },
+              "k8s/changelog",
+              "k8s/releasing"
+            ]
+          },
+          {
+            "item": "Secure Tunnels",
+            "pages": [
+              {
+                "group": "Agent",
+                "pages": [
+                  "agent/index",
+                  "agent/web-inspection-interface",
+                  "agent/cli",
+                  "agent/cli-api",
+                  {
+                    "group": "Configuration file",
+                    "pages": [
+                      "agent/config/index",
+                      "agent/config/v2",
+                      "agent/config/v3"
+                    ]
+                  },
+                  "agent/api",
+                  "agent/ssh-reverse-tunnel-agent",
+                  "agent/connect-url",
+                  {
+                    "group": "Agent TLS Termination",
+                    "pages": [
+                      "agent/agent-tls-termination",
+                      "agent/agent-mutual-tls-termination"
+                    ]
+                  },
+                  "agent/changelog",
+                  "agent/version-support-policy",
+                  "agent/diagnose",
+                  "agent/upgrade-v2-v3"
+                ]
+              },
+              "agent-sdks/index"
+            ]
+          },
+          {
+            "item": "Traffic Observability",
+            "pages": [
+              "obs/index",
+              "obs/traffic-inspection",
+              {
+                "group": "Events",
+                "pages": ["obs/events/index", "obs/events/reference"]
+              }
+            ]
+          },
+          {
+            "item": "Identity & Access",
+            "pages": [
+              "iam/index",
+              {
+                "group": "Principals",
+                "pages": ["iam/users", "iam/service-users"]
+              },
+              {
+                "group": "Account Governance",
+                "pages": ["iam/sso", "iam/rbac", "iam/domain-controls"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Build",
+        "menu": [
+          {
+            "item": "Guides",
+            "pages": [
+              {
+                "group": "API Gateway",
+                "pages": [
+                  "guides/api-gateway/get-started",
+                  "guides/api-gateway/kubernetes",
+                  "guides/api-gateway/multicloud",
+                  "guides/api-gateway/monitor-ngrok"
+                ]
+              },
+              {
+                "group": "Device Gateway",
+                "pages": [
+                  "guides/device-gateway/agent",
+                  "guides/device-gateway/arm64",
+                  "guides/device-gateway/linux",
+                  "guides/device-gateway/raspberry-pi",
+                  "guides/device-gateway/raspbian",
+                  "guides/device-gateway/sdk",
+                  "guides/device-gateway/windows"
+                ]
+              },
+              {
+                "group": "Identity Aware Proxy",
+                "pages": ["guides/identity-aware-proxy/securing-with-oauth"]
+              },
+              {
+                "group": "Security Best Practices",
+                "pages": [
+                  "guides/security-dev-productivity/index",
+                  "guides/security-dev-productivity/securing-your-tunnels",
+                  "guides/security-dev-productivity/hipaa-compliance"
+                ]
+              },
+              {
+                "group": "Site-to-Site Connectivity",
+                "pages": [
+                  "guides/site-to-site-connectivity/index",
+                  "guides/site-to-site-connectivity/end-customers"
+                ]
+              },
+              "guides/running-behind-firewalls",
+              "guides/ssh-rdp/index",
+              {
+                "group": "Using ngrok with",
+                "pages": [
+                  "using-ngrok-with/cgnat",
+                  "using-ngrok-with/fastAPI",
+                  "using-ngrok-with/flask",
+                  "using-ngrok-with/ftp",
+                  "using-ngrok-with/godaddy",
+                  "using-ngrok-with/googleColab",
+                  "using-ngrok-with/gRPC",
+                  "using-ngrok-with/java",
+                  "using-ngrok-with/laravel",
+                  "using-ngrok-with/minecraft",
+                  "using-ngrok-with/mongodb",
+                  "using-ngrok-with/mysql",
+                  "using-ngrok-with/nginx",
+                  "using-ngrok-with/openvpn",
+                  "using-ngrok-with/outboundProxy",
+                  "using-ngrok-with/postgresql",
+                  "using-ngrok-with/puppet",
+                  "using-ngrok-with/rtmp",
+                  "using-ngrok-with/smtp",
+                  "using-ngrok-with/ssh",
+                  "using-ngrok-with/using-mcp",
+                  "using-ngrok-with/virtualHosts",
+                  "using-ngrok-with/visualStudio",
+                  "using-ngrok-with/vsCode",
+                  "using-ngrok-with/websockets",
+                  {
+                    "group": "Docker",
+                    "pages": [
+                      "using-ngrok-with/docker/index",
+                      "using-ngrok-with/docker/compose",
+                      "using-ngrok-with/docker/desktop"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "item": "Examples & Samples",
+            "pages": [
+              "universal-gateway/examples",
+              "universal-gateway/examples/blue-green-deployments",
+              "universal-gateway/examples/canary-deployments",
+              "universal-gateway/examples/custom-error-pages",
+              "universal-gateway/examples/front-door-pattern",
+              "universal-gateway/examples/ip-restrictions-basic-auth",
+              "universal-gateway/examples/lock-admin-dashboards",
+              "universal-gateway/examples/maintenance-mode",
+              "universal-gateway/examples/minecraft",
+              "universal-gateway/examples/multiplex",
+              "universal-gateway/examples/n8n",
+              "universal-gateway/examples/offload-analytics",
+              "universal-gateway/examples/ollama",
+              "universal-gateway/examples/pre-tier-requests",
+              "universal-gateway/examples/rewrite-headers-redirects",
+              "universal-gateway/examples/route-api-app-traffic-user-agent",
+              "universal-gateway/examples/route-by-geography",
+              "universal-gateway/examples/route-by-oidc",
+              "universal-gateway/examples/secure-developer-environments",
+              "universal-gateway/examples/validate-requests-identity",
+              "universal-gateway/examples/wordpress"
+            ]
+          },
+          {
+            "item": "Integrations",
+            "pages": [
+              "integrations/index",
+              {
+                "group": "1password",
+                "pages": [
+                  "integrations/1password/index",
+                  "integrations/1password/cli-client"
+                ]
+              },
+              {
+                "group": "Aftership",
+                "pages": [
+                  "integrations/aftership/index",
+                  "integrations/aftership/webhooks"
+                ]
+              },
+              {
+                "group": "Airship",
+                "pages": [
+                  "integrations/airship/index",
+                  "integrations/airship/webhooks"
+                ]
+              },
+              {
+                "group": "Alchemy",
+                "pages": [
+                  "integrations/alchemy/index",
+                  "integrations/alchemy/webhooks"
+                ]
+              },
+              {
+                "group": "Amazon",
+                "pages": [
+                  "integrations/amazon/index",
+                  "integrations/amazon/oauth"
+                ]
+              },
+              {
+                "group": "Amazon Cloudwatch",
+                "pages": [
+                  "integrations/amazon-cloudwatch/index",
+                  "integrations/amazon-cloudwatch/event-destination"
+                ]
+              },
+              {
+                "group": "Amazon Eks",
+                "pages": [
+                  "integrations/amazon-eks/index",
+                  "integrations/amazon-eks/eks"
+                ]
+              },
+              {
+                "group": "Amazon Firehose",
+                "pages": [
+                  "integrations/amazon-firehose/index",
+                  "integrations/amazon-firehose/event-destination"
+                ]
+              },
+              {
+                "group": "Amazon Kinesis",
+                "pages": [
+                  "integrations/amazon-kinesis/index",
+                  "integrations/amazon-kinesis/event-destination"
+                ]
+              },
+              {
+                "group": "Amazon Sns",
+                "pages": [
+                  "integrations/amazon-sns/index",
+                  "integrations/amazon-sns/webhooks"
+                ]
+              },
+              {
+                "group": "Argocd",
+                "pages": [
+                  "integrations/argocd/index",
+                  "integrations/argocd/apiops"
+                ]
+              },
+              {
+                "group": "Auth0",
+                "pages": [
+                  "integrations/auth0/index",
+                  "integrations/auth0/dashboard-sso",
+                  "integrations/auth0/jwt-action",
+                  "integrations/auth0/sso-oidc"
+                ]
+              },
+              {
+                "group": "Autodesk",
+                "pages": [
+                  "integrations/autodesk/index",
+                  "integrations/autodesk/webhooks"
+                ]
+              },
+              {
+                "group": "Azure Ad",
+                "pages": [
+                  "integrations/azure-ad/index",
+                  "integrations/azure-ad/k8s",
+                  "integrations/azure-ad/sso-saml"
+                ]
+              },
+              {
+                "group": "Azure Ad B2c",
+                "pages": [
+                  "integrations/azure-ad-b2c/index",
+                  "integrations/azure-ad-b2c/sso-saml"
+                ]
+              },
+              {
+                "group": "Azure Aks",
+                "pages": [
+                  "integrations/azure-aks/index",
+                  "integrations/azure-aks/k8s"
+                ]
+              },
+              {
+                "group": "Azure Logs Ingestion",
+                "pages": [
+                  "integrations/azure-logs-ingestion/index",
+                  "integrations/azure-logs-ingestion/event-destination"
+                ]
+              },
+              {
+                "group": "Bitbucket",
+                "pages": [
+                  "integrations/bitbucket/index",
+                  "integrations/bitbucket/webhooks"
+                ]
+              },
+              {
+                "group": "Box",
+                "pages": ["integrations/box/index", "integrations/box/webhooks"]
+              },
+              {
+                "group": "Brex",
+                "pages": [
+                  "integrations/brex/index",
+                  "integrations/brex/webhooks"
+                ]
+              },
+              {
+                "group": "Buildkite",
+                "pages": [
+                  "integrations/buildkite/index",
+                  "integrations/buildkite/webhooks"
+                ]
+              },
+              {
+                "group": "Calendly",
+                "pages": [
+                  "integrations/calendly/index",
+                  "integrations/calendly/webhooks"
+                ]
+              },
+              {
+                "group": "Castle",
+                "pages": [
+                  "integrations/castle/index",
+                  "integrations/castle/webhooks"
+                ]
+              },
+              {
+                "group": "Chargify",
+                "pages": [
+                  "integrations/chargify/index",
+                  "integrations/chargify/webhooks"
+                ]
+              },
+              {
+                "group": "Circleci",
+                "pages": [
+                  "integrations/circleci/index",
+                  "integrations/circleci/webhooks"
+                ]
+              },
+              {
+                "group": "Clearbit",
+                "pages": [
+                  "integrations/clearbit/index",
+                  "integrations/clearbit/webhooks"
+                ]
+              },
+              {
+                "group": "Clerk",
+                "pages": [
+                  "integrations/clerk/index",
+                  "integrations/clerk/webhooks"
+                ]
+              },
+              {
+                "group": "Coinbase",
+                "pages": [
+                  "integrations/coinbase/index",
+                  "integrations/coinbase/webhooks"
+                ]
+              },
+              {
+                "group": "Consul",
+                "pages": [
+                  "integrations/consul/index",
+                  "integrations/consul/k8s"
+                ]
+              },
+              {
+                "group": "Contentful",
+                "pages": [
+                  "integrations/contentful/index",
+                  "integrations/contentful/webhooks"
+                ]
+              },
+              {
+                "group": "Curity",
+                "pages": [
+                  "integrations/curity/index",
+                  "integrations/curity/sso-oidc"
+                ]
+              },
+              {
+                "group": "Datadog",
+                "pages": [
+                  "integrations/datadog/index",
+                  "integrations/datadog/event-destination"
+                ]
+              },
+              {
+                "group": "Descope",
+                "pages": [
+                  "integrations/descope/index",
+                  "integrations/descope/sso-oidc",
+                  "integrations/descope/sso-saml"
+                ]
+              },
+              {
+                "group": "Digitalocean",
+                "pages": [
+                  "integrations/digitalocean/index",
+                  "integrations/digitalocean/gslb",
+                  "integrations/digitalocean/k8s"
+                ]
+              },
+              {
+                "group": "Docusign",
+                "pages": [
+                  "integrations/docusign/index",
+                  "integrations/docusign/webhooks"
+                ]
+              },
+              {
+                "group": "Dropbox",
+                "pages": [
+                  "integrations/dropbox/index",
+                  "integrations/dropbox/webhooks"
+                ]
+              },
+              {
+                "group": "Facebook",
+                "pages": [
+                  "integrations/facebook/index",
+                  "integrations/facebook/oauth",
+                  "integrations/facebook/webhooks"
+                ]
+              },
+              {
+                "group": "Facebook Messenger",
+                "pages": [
+                  "integrations/facebook-messenger/index",
+                  "integrations/facebook-messenger/webhooks"
+                ]
+              },
+              {
+                "group": "Frameio",
+                "pages": [
+                  "integrations/frameio/index",
+                  "integrations/frameio/webhooks"
+                ]
+              },
+              {
+                "group": "Frontegg",
+                "pages": [
+                  "integrations/frontegg/index",
+                  "integrations/frontegg/sso-oidc",
+                  "integrations/frontegg/sso-saml"
+                ]
+              },
+              {
+                "group": "Fusionauth",
+                "pages": [
+                  "integrations/fusionauth/index",
+                  "integrations/fusionauth/sso-oidc"
+                ]
+              },
+              {
+                "group": "Github",
+                "pages": [
+                  "integrations/github/index",
+                  "integrations/github/oauth",
+                  "integrations/github/webhooks"
+                ]
+              },
+              {
+                "group": "Gitlab",
+                "pages": [
+                  "integrations/gitlab/index",
+                  "integrations/gitlab/oauth",
+                  "integrations/gitlab/webhooks"
+                ]
+              },
+              {
+                "group": "Google",
+                "pages": [
+                  "integrations/google/index",
+                  "integrations/google/oauth"
+                ]
+              },
+              {
+                "group": "Google Gke",
+                "pages": [
+                  "integrations/google-gke/index",
+                  "integrations/google-gke/google-kubernetes-engine"
+                ]
+              },
+              {
+                "group": "Heroku",
+                "pages": [
+                  "integrations/heroku/index",
+                  "integrations/heroku/webhooks"
+                ]
+              },
+              {
+                "group": "Home Assistant",
+                "pages": [
+                  "integrations/home-assistant/index",
+                  "integrations/home-assistant/home-assistant-with-ngrok"
+                ]
+              },
+              {
+                "group": "Hostedhooks",
+                "pages": [
+                  "integrations/hostedhooks/index",
+                  "integrations/hostedhooks/webhooks"
+                ]
+              },
+              {
+                "group": "Hubspot",
+                "pages": [
+                  "integrations/hubspot/index",
+                  "integrations/hubspot/webhooks"
+                ]
+              },
+              {
+                "group": "Hygraph",
+                "pages": [
+                  "integrations/hygraph/index",
+                  "integrations/hygraph/webhooks"
+                ]
+              },
+              {
+                "group": "Instagram",
+                "pages": [
+                  "integrations/instagram/index",
+                  "integrations/instagram/webhooks"
+                ]
+              },
+              {
+                "group": "Intercom",
+                "pages": [
+                  "integrations/intercom/index",
+                  "integrations/intercom/webhooks"
+                ]
+              },
+              {
+                "group": "Jumpcloud",
+                "pages": [
+                  "integrations/jumpcloud/index",
+                  "integrations/jumpcloud/sso-oidc",
+                  "integrations/jumpcloud/sso-saml"
+                ]
+              },
+              {
+                "group": "Launchdarkly",
+                "pages": [
+                  "integrations/launchdarkly/index",
+                  "integrations/launchdarkly/webhooks"
+                ]
+              },
+              {
+                "group": "Linkedin",
+                "pages": [
+                  "integrations/linkedin/index",
+                  "integrations/linkedin/oauth"
+                ]
+              },
+              {
+                "group": "Linkerd",
+                "pages": [
+                  "integrations/linkerd/index",
+                  "integrations/linkerd/k8s"
+                ]
+              },
+              {
+                "group": "Linode",
+                "pages": [
+                  "integrations/linode/index",
+                  "integrations/linode/gslb"
+                ]
+              },
+              {
+                "group": "Mailchimp",
+                "pages": [
+                  "integrations/mailchimp/index",
+                  "integrations/mailchimp/webhooks"
+                ]
+              },
+              {
+                "group": "Mailgun",
+                "pages": [
+                  "integrations/mailgun/index",
+                  "integrations/mailgun/webhooks"
+                ]
+              },
+              {
+                "group": "Microk8s",
+                "pages": [
+                  "integrations/microk8s/index",
+                  "integrations/microk8s/k8s"
+                ]
+              },
+              {
+                "group": "Microsoft",
+                "pages": [
+                  "integrations/microsoft/index",
+                  "integrations/microsoft/oauth",
+                  "integrations/microsoft/sso-saml"
+                ]
+              },
+              {
+                "group": "Miniorange",
+                "pages": [
+                  "integrations/miniorange/index",
+                  "integrations/miniorange/sso-oidc",
+                  "integrations/miniorange/sso-saml"
+                ]
+              },
+              {
+                "group": "Modern Treasury",
+                "pages": [
+                  "integrations/modern-treasury/index",
+                  "integrations/modern-treasury/webhooks"
+                ]
+              },
+              {
+                "group": "Mongodb",
+                "pages": [
+                  "integrations/mongodb/index",
+                  "integrations/mongodb/webhooks"
+                ]
+              },
+              {
+                "group": "Mqtt Explorer",
+                "pages": [
+                  "integrations/mqtt-explorer/index",
+                  "integrations/mqtt-explorer/mqtt"
+                ]
+              },
+              {
+                "group": "Mux",
+                "pages": ["integrations/mux/index", "integrations/mux/webhooks"]
+              },
+              {
+                "group": "Okta",
+                "pages": [
+                  "integrations/okta/index",
+                  "integrations/okta/dashboard-sso-okta-setup",
+                  "integrations/okta/scim",
+                  "integrations/okta/sso-oidc",
+                  "integrations/okta/sso-saml",
+                  "integrations/okta/webhooks"
+                ]
+              },
+              {
+                "group": "Orbit",
+                "pages": [
+                  "integrations/orbit/index",
+                  "integrations/orbit/webhooks"
+                ]
+              },
+              {
+                "group": "Pagerduty",
+                "pages": [
+                  "integrations/pagerduty/index",
+                  "integrations/pagerduty/webhooks"
+                ]
+              },
+              {
+                "group": "Pinwheel",
+                "pages": [
+                  "integrations/pinwheel/index",
+                  "integrations/pinwheel/webhooks"
+                ]
+              },
+              {
+                "group": "Plivo",
+                "pages": [
+                  "integrations/plivo/index",
+                  "integrations/plivo/webhooks"
+                ]
+              },
+              {
+                "group": "Pusher",
+                "pages": [
+                  "integrations/pusher/index",
+                  "integrations/pusher/webhooks"
+                ]
+              },
+              {
+                "group": "Rafay",
+                "pages": ["integrations/rafay/index", "integrations/rafay/k8s"]
+              },
+              {
+                "group": "Rancher",
+                "pages": [
+                  "integrations/rancher/index",
+                  "integrations/rancher/k8s"
+                ]
+              },
+              {
+                "group": "Salesforce",
+                "pages": [
+                  "integrations/salesforce/index",
+                  "integrations/salesforce/dashboard-sso-with-oidc",
+                  "integrations/salesforce/ssowithendpoints"
+                ]
+              },
+              {
+                "group": "Sendgrid",
+                "pages": [
+                  "integrations/sendgrid/index",
+                  "integrations/sendgrid/webhooks"
+                ]
+              },
+              {
+                "group": "Sentry",
+                "pages": [
+                  "integrations/sentry/index",
+                  "integrations/sentry/webhooks"
+                ]
+              },
+              {
+                "group": "Shopify",
+                "pages": [
+                  "integrations/shopify/index",
+                  "integrations/shopify/webhooks"
+                ]
+              },
+              {
+                "group": "Signalsciences",
+                "pages": [
+                  "integrations/signalsciences/index",
+                  "integrations/signalsciences/webhooks"
+                ]
+              },
+              {
+                "group": "Slack",
+                "pages": [
+                  "integrations/slack/index",
+                  "integrations/slack/webhooks"
+                ]
+              },
+              {
+                "group": "Sonatype Nexus",
+                "pages": [
+                  "integrations/sonatype-nexus/index",
+                  "integrations/sonatype-nexus/webhooks"
+                ]
+              },
+              {
+                "group": "Spectro Cloud",
+                "pages": [
+                  "integrations/spectro-cloud/index",
+                  "integrations/spectro-cloud/k8s"
+                ]
+              },
+              {
+                "group": "Square",
+                "pages": [
+                  "integrations/square/index",
+                  "integrations/square/webhooks"
+                ]
+              },
+              {
+                "group": "Stripe",
+                "pages": [
+                  "integrations/stripe/index",
+                  "integrations/stripe/webhooks"
+                ]
+              },
+              {
+                "group": "Svix",
+                "pages": [
+                  "integrations/svix/index",
+                  "integrations/svix/webhooks"
+                ]
+              },
+              {
+                "group": "Teams",
+                "pages": [
+                  "integrations/teams/index",
+                  "integrations/teams/webhooks"
+                ]
+              },
+              {
+                "group": "Terraform",
+                "pages": [
+                  "integrations/terraform/index",
+                  "integrations/terraform/webhooks"
+                ]
+              },
+              {
+                "group": "Tiktok",
+                "pages": [
+                  "integrations/tiktok/index",
+                  "integrations/tiktok/webhooks"
+                ]
+              },
+              {
+                "group": "Trendmicro",
+                "pages": [
+                  "integrations/trendmicro/index",
+                  "integrations/trendmicro/webhooks"
+                ]
+              },
+              {
+                "group": "Trustelem",
+                "pages": [
+                  "integrations/trustelem/index",
+                  "integrations/trustelem/sso-oidc",
+                  "integrations/trustelem/sso-saml"
+                ]
+              },
+              {
+                "group": "Twilio",
+                "pages": [
+                  "integrations/twilio/index",
+                  "integrations/twilio/webhooks"
+                ]
+              },
+              {
+                "group": "Twitch",
+                "pages": [
+                  "integrations/twitch/index",
+                  "integrations/twitch/oauth"
+                ]
+              },
+              {
+                "group": "Twitter",
+                "pages": [
+                  "integrations/twitter/index",
+                  "integrations/twitter/webhooks"
+                ]
+              },
+              {
+                "group": "Typeform",
+                "pages": [
+                  "integrations/typeform/index",
+                  "integrations/typeform/webhooks"
+                ]
+              },
+              {
+                "group": "Vcluster",
+                "pages": [
+                  "integrations/vcluster/index",
+                  "integrations/vcluster/k8s"
+                ]
+              },
+              {
+                "group": "Vmware",
+                "pages": [
+                  "integrations/vmware/index",
+                  "integrations/vmware/webhooks"
+                ]
+              },
+              {
+                "group": "Webex",
+                "pages": [
+                  "integrations/webex/index",
+                  "integrations/webex/webhooks"
+                ]
+              },
+              {
+                "group": "Whatsapp",
+                "pages": [
+                  "integrations/whatsapp/index",
+                  "integrations/whatsapp/webhooks"
+                ]
+              },
+              {
+                "group": "Worldline",
+                "pages": [
+                  "integrations/worldline/index",
+                  "integrations/worldline/webhooks"
+                ]
+              },
+              {
+                "group": "Xero",
+                "pages": [
+                  "integrations/xero/index",
+                  "integrations/xero/webhooks"
+                ]
+              },
+              {
+                "group": "Zendesk",
+                "pages": [
+                  "integrations/zendesk/index",
+                  "integrations/zendesk/webhooks"
+                ]
+              },
+              {
+                "group": "Zoom",
+                "pages": [
+                  "integrations/zoom/index",
+                  "integrations/zoom/webhooks"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Reference",
+        "menu": [
+          {
+            "item": "SDKs",
+            "pages": [
+              "getting-started/javascript",
+              "getting-started/go",
+              "getting-started/python",
+              "getting-started/rust"
+            ]
+          },
+          {
+            "item": "API Documentation",
+            "pages": [
+              "api/index",
+              {
+                "group": "API Reference",
+                "pages": [
+                  "api/reference",
+                  {
+                    "group": "Universal Gateway",
+                    "pages": [
+                      "api/resources/endpoints",
+                      "api/resources/reserved-addrs",
+                      "api/resources/reserved-domains",
+                      "api/resources/tls-certificates",
+                      "api/resources/kubernetes-operators",
+                      {
+                        "group": "Edges",
+                        "pages": [
+                          {
+                            "group": "HTTPS Edges",
+                            "pages": [
+                              "api/resources/edges-https",
+                              "api/resources/edges-https-routes",
+                              "api/resources/https-edge-mutual-tls-module",
+                              "api/resources/edge-route-backend-module",
+                              "api/resources/edge-route-circuit-breaker-module",
+                              "api/resources/edge-route-compression-module",
+                              "api/resources/edge-route-ip-restriction-module",
+                              "api/resources/edge-route-o-auth-module",
+                              "api/resources/edge-route-oidc-module",
+                              "api/resources/edge-route-request-headers-module",
+                              "api/resources/edge-route-response-headers-module",
+                              "api/resources/edge-route-saml-module",
+                              "api/resources/edge-route-traffic-policy-module",
+                              "api/resources/edge-route-user-agent-filter-module",
+                              "api/resources/edge-route-webhook-verification-module",
+                              "api/resources/edge-route-websocket-tcp-converter-module",
+                              "api/resources/https-edge-tls-termination-module"
+                            ]
+                          },
+                          {
+                            "group": "TCP Edges",
+                            "pages": [
+                              "api/resources/edges-tcp",
+                              "api/resources/tcp-edge-backend-module",
+                              "api/resources/tcp-edge-ip-restriction-module",
+                              "api/resources/tcp-edge-traffic-policy-module"
+                            ]
+                          },
+                          {
+                            "group": "TLS Edges",
+                            "pages": [
+                              "api/resources/edges-tls",
+                              "api/resources/tls-edge-backend-module",
+                              "api/resources/tls-edge-ip-restriction-module",
+                              "api/resources/tls-edge-mutual-tls-module",
+                              "api/resources/tls-edge-tls-termination-module",
+                              "api/resources/tls-edge-traffic-policy-module"
+                            ]
+                          },
+                          {
+                            "group": "Backends",
+                            "pages": [
+                              "api/resources/failover-backends",
+                              "api/resources/http-response-backends",
+                              "api/resources/tunnel-group-backends",
+                              "api/resources/weighted-backends"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Traffic Policy",
+                    "pages": [
+                      "api/resources/certificate-authorities",
+                      "api/resources/ip-policies",
+                      "api/resources/ip-policy-rules",
+                      "api/resources/application-users",
+                      "api/resources/application-sessions"
+                    ]
+                  },
+                  {
+                    "group": "Secure Tunnels",
+                    "pages": [
+                      "api/resources/agent-ingresses",
+                      "api/resources/tunnels",
+                      "api/resources/tunnel-sessions"
+                    ]
+                  },
+                  {
+                    "group": "Observability",
+                    "pages": [
+                      "api/resources/event-destinations",
+                      "api/resources/event-sources",
+                      "api/resources/event-subscriptions"
+                    ]
+                  },
+                  {
+                    "group": "IAM",
+                    "pages": [
+                      "api/resources/ip-restrictions",
+                      "api/resources/api-keys",
+                      "api/resources/ssh-credentials",
+                      "api/resources/credentials",
+                      "api/resources/bot-users"
+                    ]
+                  },
+                  {
+                    "group": "SSH Certificates",
+                    "pages": [
+                      "api/resources/ssh-certificate-authorities",
+                      "api/resources/ssh-host-certificates",
+                      "api/resources/ssh-user-certificates"
+                    ]
+                  },
+                  {
+                    "group": "Partners",
+                    "pages": ["api/resources/abuse-reports"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "item": "CLI Reference",
+            "pages": [
+              "getting-started/index",
+              "getting-started/cloud-endpoints-quickstart"
+            ]
+          },
+          {
+            "item": "Configuration File Reference",
+            "pages": [
+              "agent/config/index",
+              "agent/config/v2",
+              "agent/config/v3"
+            ]
+          },
+          {
+            "item": "Errors",
+            "pages": ["errors/index", "errors/reference"]
+          }
+        ]
+      },
+      {
+        "tab": "Resources",
+        "menu": [
+          {
+            "item": "Getting Started",
+            "pages": ["getting-started/index"]
+          },
+          {
+            "item": "Pricing & Limits",
+            "pages": [
+              "pricing-limits/index",
+              "pricing-limits/free-plan-limits",
+              "pricing-limits/traffic-policy-unit-pricing"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
