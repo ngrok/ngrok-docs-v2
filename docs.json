@@ -13,7 +13,6 @@
           {
             "group": "Getting Started",
             "pages": [
-              "overview/index",
               "what-is-ngrok",
               "how-ngrok-works",
               "why-ngrok",
@@ -56,7 +55,6 @@
             "item": "Universal Gateway",
             "pages": [
               "universal-gateway/overview",
-              "universal-gateway/overview",
               {
                 "group": "Concepts",
                 "pages": [
@@ -75,7 +73,6 @@
               {
                 "group": "Endpoints",
                 "pages": [
-                  "universal-gateway/endpoints",
                   "universal-gateway/endpoints",
                   {
                     "group": "Types",
@@ -133,6 +130,32 @@
                   "universal-gateway/ddos-protection",
                   "universal-gateway/ip-addresses",
                   "universal-gateway/points-of-presence"
+                ]
+              },
+              {
+                "group": "Examples",
+                "pages": [
+                  "universal-gateway/examples",
+                  "universal-gateway/examples/blue-green-deployments",
+                  "universal-gateway/examples/canary-deployments",
+                  "universal-gateway/examples/custom-error-pages",
+                  "universal-gateway/examples/front-door-pattern",
+                  "universal-gateway/examples/ip-restrictions-basic-auth",
+                  "universal-gateway/examples/lock-admin-dashboards",
+                  "universal-gateway/examples/maintenance-mode",
+                  "universal-gateway/examples/minecraft",
+                  "universal-gateway/examples/multiplex",
+                  "universal-gateway/examples/n8n",
+                  "universal-gateway/examples/offload-analytics",
+                  "universal-gateway/examples/ollama",
+                  "universal-gateway/examples/pre-tier-requests",
+                  "universal-gateway/examples/rewrite-headers-redirects",
+                  "universal-gateway/examples/route-api-app-traffic-user-agent",
+                  "universal-gateway/examples/route-by-geography",
+                  "universal-gateway/examples/route-by-oidc",
+                  "universal-gateway/examples/secure-developer-environments",
+                  "universal-gateway/examples/validate-requests-identity",
+                  "universal-gateway/examples/wordpress"
                 ]
               }
             ]
@@ -389,10 +412,7 @@
                   "agent/upgrade-v2-v3"
                 ]
               },
-              {
-                "group": "Agent SDKs",
-                "pages": ["agent-sdks/index", "agent-sdks/index"]
-              }
+              "agent-sdks/index"
             ]
           },
           {
@@ -539,7 +559,6 @@
           {
             "item": "Integrations",
             "pages": [
-              "integrations/index",
               "integrations/index",
               {
                 "group": "1password",
