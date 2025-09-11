@@ -17,7 +17,7 @@ import ExampleHub from "/snippets/components/ExampleHub.jsx";
 import { Separator } from "@ngrok/mantle/separator";
 import { Card } from "@ngrok/mantle/card";
 
-import Link from '/snippets/components/Link.jsx';
+import { Link } from '/snippets/components/Link.jsx';
 
 <p className="lg:text-lg">Whether you need an API gateway, multicloud failover, or want to integrate ngrok with your stack, these examples help you compose endpoints and Traffic Policy to orchestrate traffic for common jobs to be done and problems to be solve. Wire it up, secure it, and *ship it already*.</p>
 
@@ -26,10 +26,10 @@ import Link from '/snippets/components/Link.jsx';
 
 <div className="ngrok--cards grid md:grid-cols-2 gap-4">
 	<Link to="https://ngrok.com/info/submit-examples-gallery">
-		<Card.Root className="flex h-full flex-col bg-teal-500/20 text-teal-700 hover:bg-teal-500/10">
-			<Card.Header className="py-6">
-				<Card.Title className="mb-0 text-teal-700">Want to contribute to the examples gallery?</Card.Title>
-			</Card.Header>
-		</Card.Root>
+		<div id="card-root" className="flex h-full flex-col bg-teal-500/20 text-teal-700 hover:bg-teal-500/10">
+			<div id="card-header" className="py-6">
+				<div id="card-title" className="mb-0 text-teal-700">Want to contribute to the examples gallery?</div>
+			</div>
+		</div>
 	</Link>
 </div>

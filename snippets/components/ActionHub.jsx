@@ -1,7 +1,4 @@
-import Link from "/snippets/components/Link";
-import { Badge } from "@ngrok/mantle/badge";
-import { Button } from "@ngrok/mantle/button";
-import { Card } from "@ngrok/mantle/card";
+import { Link } from "/snippets/components/Link";
 import { Input, InputCapture } from "@ngrok/mantle/input";
 import { Select } from "@ngrok/mantle/select";
 import { MagnifyingGlass } from "@phosphor-icons/react";
@@ -118,14 +115,14 @@ export const ActionHub = ({ actions }) => {
 							to={`/traffic-policy/actions/${action.type}`}
 							className="col-span-1"
 						>
-							<Card.Root className="flex h-full flex-col divide-y-0 hover:bg-card-hover">
+							<div id="card-root" className="flex h-full flex-col divide-y-0 hover:bg-card-hover">
 								<h3 className="m-0 flex items-baseline gap-2 px-4 pb-2 pt-4">
 									{action.type}
 								</h3>
-								<Card.Body className="flex-grow p-0 px-4">
+								<div id="card-body" className="flex-grow p-0 px-4">
 									<p className="m-0 p-0">{action.description}</p>
-								</Card.Body>
-								<Card.Footer className="px-4 pb-4">
+								</div>
+								<div id="card-footer" className="px-4 pb-4">
 									<div className="flex flex-wrap gap-2">
 										{action.phases
 											.sort((a, b) => a.localeCompare(b))
@@ -133,27 +130,27 @@ export const ActionHub = ({ actions }) => {
 												switch (phase) {
 													case "on_tcp_connect":
 														return (
-															<Badge appearance="muted" color="blue">
+															<span id="badge" appearance="muted" color="blue">
 																{phase}
-															</Badge>
+															</span>
 														);
 													case "on_http_request":
 														return (
-															<Badge appearance="muted" color="pink">
+															<span id="badge" appearance="muted" color="pink">
 																{phase}
-															</Badge>
+															</span>
 														);
 													case "on_http_response":
 														return (
-															<Badge appearance="muted" color="pink">
+															<span id="badge" appearance="muted" color="pink">
 																{phase}
-															</Badge>
+															</span>
 														);
 												}
 											})}
 									</div>
-								</Card.Footer>
-							</Card.Root>
+								</div>
+							</div>
 						</Link>
 					))}
 				</div>
@@ -165,9 +162,9 @@ export const ActionHub = ({ actions }) => {
 						<b>{phaseFilter}</b> phase.
 					</p>
 					<div>
-						<Button type="button" onClick={clearFilters}>
+						<button type="button" onClick={clearFilters}>
 							Clear Filters
-						</Button>
+						</button>
 					</div>
 				</div>
 			)}
