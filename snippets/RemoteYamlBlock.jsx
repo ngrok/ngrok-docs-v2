@@ -1,17 +1,13 @@
-
-import DocsCodeBlock from "/snippets/code-block";
-
-interface RemoteYamlBlockProps {
-	url= ({
+export const RemoteYamlBlock = ({
 	url,
 	title,
-}: RemoteYamlBlockProps) => {
+}) => {
 	const [yamlContent, setYamlContent] = useState("");
 
 	useEffect(() => {
 		fetch(url)
 			.then((res) => {
-				if (!res.ok) throw new Error(`Failed to fetch YAML);
+				if (!res.ok) throw new Error(`Failed to fetch YAML: ${res.statusText}`);
 				return res.text();
 			})
 			.then((data) => setYamlContent(data))
@@ -21,11 +17,13 @@ interface RemoteYamlBlockProps {
 			});
 	}, [url]);
 
+	const snippet = `
+	\`\`\`yml ${title || ""}
+	${yamlContent}	
+	\`\`\`
+	  `;
+
 	return (
-		
-			{yamlContent || "Loading..."}
-		
+		snippet
 	);
 };
-
-export default RemoteYamlBlock;

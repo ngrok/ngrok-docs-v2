@@ -1,4 +1,4 @@
-import Link from "@docusaurus/Link";
+import {Link} from "/snippets/Link.jsx";
 
 const DefaultCategoryValue = "any";
 const DefaultPhaseValue = "any";
