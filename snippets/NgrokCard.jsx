@@ -1,53 +1,44 @@
-import { Link } from "/snippets/Link.jsx";
-import { clsx } from "clsx";
+import {Link} from "/snippets/Link.jsx";
 
 const cardSizes = ["xs", "sm", "md", "lg", "xl"];
 
-type CardHeaderProps = {
-	size?: CardSize;
-	title, title }: CardHeaderProps) {
+function CardHeader({ size, title }) {
 	switch (size) {
 		case "xs":
 		case "sm":
-			return {title};
+			return <h4 className="fw-600">{title}</h4>;
 
 		case "xl":
-			return {title};
+			return <h2 className="fw-600">{title}</h2>;
 
-		default="fw-600">{title};
+		default:
+			return <h3 className="fw-600">{title}</h3>;
 	}
 }
 
-type CardHeadingProps = {
-	icon, size, title }: CardHeadingProps) {
+function CardHeading({ icon, size, title }) {
 	if (icon) {
 		return (
-			
-				{title && }
+			<div className="ngrok--card-heading jc-space-between">
+				{title && <CardHeader size={size} title={title} />}
 				{icon}
-			
+			</div>
 		);
 	}
 
 	if (title) {
 		return (
-			
-				
-			
+			<div className="ngrok--card-heading">
+				<CardHeader size={size} title={title} />
+			</div>
 		);
 	}
 
 	return null;
 }
 
-type Props = {
-	description?: string | undefined;
-	icon?: React.ReactNode;
-	img?: string;
-	imgAlt?: string;
-	note?: boolean;
-	size?: CardSize;
-	title,
+export const NgrokCard = ({
+	description,
 	icon,
 	img,
 	imgAlt,
@@ -55,13 +46,24 @@ type Props = {
 	size,
 	title,
 	to,
-}: Props) {
+}) => {
 	return (
-		
-				{img && }
-				
-				{description && {description}}
-			
-		
+		<Link
+			to={to}
+			className="rounded-md text-inherit no-underline hover:text-inherit hover:no-underline focus:text-inherit focus:no-underline"
+		>
+			<div
+				className={clsx("ngrok--card h-full", {
+					"ngrok--card-note": note,
+					"ngrok--card-sm": size === "sm",
+					"ngrok--card-lg": size === "lg",
+					"ngrok--card-xl": size === "xl",
+				})}
+			>
+				{img && <img alt={imgAlt} src={img} />}
+				<CardHeading size={size} title={title} icon={icon} />
+				{description && <p>{description}</p>}
+			</div>
+		</Link>
 	);
 }

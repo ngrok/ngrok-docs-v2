@@ -117,6 +117,7 @@ export default function ExampleHub({ examples, categories, parentDir }) {
 														);
 													})}
 											</div>
+									</Card>
 								</Link>
 							))}
 						</div>

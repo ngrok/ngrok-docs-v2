@@ -1,4 +1,4 @@
-export const ThemImage = ({
+export const ThemeImage = ({
 	darkSrc,
 	lightSrc,
 	alt,

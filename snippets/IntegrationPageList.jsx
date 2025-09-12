@@ -1,8 +1,6 @@
-import NgrokCard from "/snippets/NgrokCard";
-import { useIntegration } from "./integrations/use-integrations";
+import { NgrokCard } from "/snippets/NgrokCard.jsx";
 
-type Props = {
-	name) {
+export const IntegrationPageList = ({ name }) => {
 	const integration = useIntegration(name);
 
 	if (!integration) {
@@ -10,12 +8,17 @@ type Props = {
 	}
 
 	return (
-		
+		<ul className="m-0 mb-5 grid list-none grid-cols-2 gap-5 p-0">
 			{integration.docs.map((doc) => (
-				
-					
-				
+				<li className="last-of-type:col-span-full" key={doc.path}>
+					<NgrokCard
+						to={doc.path}
+						size="sm"
+						title={doc.frontMatter?.title || doc.contentTitle || "Integration"}
+						description={doc.frontMatter?.description || doc.excerpt}
+					/>
+				</li>
 			))}
-		
+		</ul>
 	);
 }
