@@ -9,7 +9,7 @@ export const ConfigItem = ({
 }) => {
   const id = title.replace(/\.|\s|\*/g, "_");
   return (
-    <li className="space-y-2 p-4 px-2 pb-3">
+    <li className="space-y-2 p-4 px-2 pb-3 list-none">
       <h4
         className="m-0 flex gap-2 self-baseline p-0 text-sm font-normal leading-none"
         id={id}
@@ -54,8 +54,8 @@ export const ConfigChildren = ({
 
 export const ConfigEnum = ({ label, children }) => {
   return (
-    <ul className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start rounded-md border border-gray-200 p-0 dark:divide-gray-800 dark:border-gray-800 [&_li+li]:mt-0 [&_li]:py-2">
-      <li className="px-4 font-semibold">
+    <ul className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start rounded-md border border-gray-200 p-0 dark:divide-gray-800 dark:border-gray-800 [&_li+li]:mt-0 [&_li]:py-2 list-none">
+      <li className="px-4 font-semibold list-none">
         {label ? label : "Possible enum values"}
       </li>
       {children}
@@ -64,12 +64,12 @@ export const ConfigEnum = ({ label, children }) => {
 };
 
 export const ConfigEnumOption = ({ children }) => {
-  return <li className="space-y-2 px-4">{children}</li>;
+  return <li className="space-y-2 px-4 list-none">{children}</li>;
 };
 
 export const Config = ({ children }) => {
   return (
-    <ul className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start rounded-md border border-gray-200 p-0 dark:divide-gray-800 dark:border-gray-800">
+    <ul className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start rounded-md border border-gray-200 p-0 dark:divide-gray-800 dark:border-gray-800 list-none">
       {children}
     </ul>
   );
