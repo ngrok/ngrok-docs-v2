@@ -1,4 +1,4 @@
-import NgrokCard from "/snippets/components/NgrokCard";
+import NgrokCard from "/snippets/NgrokCard";
 import { useIntegration } from "./integrations/use-integrations";
 
 type Props = {

@@ -3,7 +3,7 @@ import Tabs from "@theme/Tabs";
 
 import YAML, { type ToStringOptions } from "yaml";
 import { LangSwitcher } from "./LangSwitcher";
-import DocsCodeBlock from "/snippets/components/code-block";
+import DocsCodeBlock from "/snippets/code-block";
 
 const showExample = (
 	defaultTitle,

@@ -6,7 +6,7 @@ import { Card } from "@ngrok/mantle/card";
 import { Input, InputCapture } from "@ngrok/mantle/input";
 import { Select } from "@ngrok/mantle/select";
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import { useState } from "react";
+
 
 const DefaultCategoryValue = "any";
 const DefaultPhaseValue = "any";

@@ -1,4 +1,4 @@
-import { ConfigExample } from "/snippets/components/ConfigExample";
+import { ConfigExample } from "/snippets/ConfigExample";
 
 export const GettingStarted = () => (
 	<ConfigExample

@@ -1,4 +1,4 @@
-import NgrokCard from "/snippets/components/NgrokCard";
+import NgrokCard from "/snippets/NgrokCard";
 import { useIntegrations } from "./integrations/use-integrations";
 
 export const IntegrationsList = () {

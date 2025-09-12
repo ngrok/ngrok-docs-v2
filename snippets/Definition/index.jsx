@@ -1,4 +1,4 @@
-import { Link } from "/snippets/components/Link.jsx";
+import { Link } from "/snippets/Link.jsx";
 import { Button } from "@ngrok/mantle/button";
 import { HoverCard } from "@ngrok/mantle/hover-card";
 import { Icon } from "@ngrok/mantle/icon";

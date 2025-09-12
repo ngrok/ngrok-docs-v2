@@ -1,4 +1,4 @@
-import { Link } from "/snippets/components/Link";
+import { Link } from "/snippets/Link.jsx";
 import { clsx } from "clsx";
 
 const cardSizes = ["xs", "sm", "md", "lg", "xl"];

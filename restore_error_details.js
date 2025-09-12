@@ -39,7 +39,7 @@ function restoreErrorDetails(filePath) {
   const beforeFrontmatter = content.substring(0, frontmatterEnd);
   const afterFrontmatter = content.substring(frontmatterEnd);
   
-  const importStatement = `import { ErrorDetails } from "/snippets/components/ErrorDetails";\n`;
+  const importStatement = `import { ErrorDetails } from "/snippets/ErrorDetails";\n`;
   content = beforeFrontmatter + '\n' + importStatement + afterFrontmatter;
   
   // Find where to add the ErrorDetails component - after the Message section

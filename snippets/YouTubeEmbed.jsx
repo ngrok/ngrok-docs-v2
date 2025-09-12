@@ -1,5 +1,3 @@
-import React from "react";
-
 export const YouTubeEmbed = ({ className, title, videoId, ...props }) => {
   return (
     <div className={`relative aspect-video mb-3 ${className}`} {...props}>
