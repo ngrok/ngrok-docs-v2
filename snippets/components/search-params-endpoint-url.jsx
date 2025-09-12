@@ -1,4 +1,3 @@
-import { useLocation } from "@docusaurus/router";
 import { useMemo } from "react";
 
 const searchParamKey = "endpoint_url";
@@ -8,7 +7,7 @@ const searchParamKey = "endpoint_url";
  *
  * Provide a `fallback` to render when the search param is not present.
  */
-function EndpointUrlHostname({ fallback }) {
+export const EndpointUrlHostname = ({ fallback }) => {
 	const endpointUrl = useEndpointUrlFromSearchParams();
 	return endpointUrl?.hostname ?? fallback;
 }
@@ -18,7 +17,7 @@ function EndpointUrlHostname({ fallback }) {
  *
  * Provide a `fallback` to render when the search param is not present.
  */
-function EndpointUrlOrigin({ fallback }) {
+export const EndpointUrlOrigin = ({ fallback }) => {
 	const endpointUrl = useEndpointUrlFromSearchParams();
 	return endpointUrl?.origin ?? fallback;
 }
@@ -26,24 +25,17 @@ function EndpointUrlOrigin({ fallback }) {
 /**
  * Returns the `endpoint_url` search param as a URL, if present.
  */
-function useEndpointUrlFromSearchParams() {
+export const useEndpointUrlFromSearchParams = () => {
 	const location = window.location;
 	const searchParams = new URLSearchParams(location.search);
 	const endpointUrl = toUrl(searchParams.get(searchParamKey));
 	return useMemo(() => endpointUrl, [endpointUrl]);
 }
 
-export {
-	//,
-	EndpointUrlHostname,
-	EndpointUrlOrigin,
-	useEndpointUrlFromSearchParams,
-};
-
 /**
  * Converts a string to a URL, or `undefined` if the given value is not a valid URL.
  */
-function toUrl(value) {
+const toUrl = (value) => {
 	if (!value) {
 		return undefined;
 	}
