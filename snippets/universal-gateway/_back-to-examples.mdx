@@ -1,22 +1,19 @@
-import { Card } from "@ngrok/mantle/card";
-import { Separator } from "@ngrok/mantle/separator";
-
 import { Link } from '/snippets/Link.jsx';
 
-<Separator className="my-8" semantic />
+<hr className="my-8" semantic />
 <div className="ngrok--cards grid md:grid-cols-2 gap-4">
 	<Link to="/docs/universal-gateway/examples">
-		<div id="card-root" className="flex h-full flex-col hover:bg-card-hover">
+		<Card id="card-root" className="flex h-full flex-col hover:bg-card-hover">
 			<div id="card-header" className="py-6">
 				<div id="card-title" className="mb-0">&larr; Back to other examples</div>
 			</div>
-		</div>
+		</Card>
 	</Link>
 	<Link to="https://ngrok.com/info/submit-examples-gallery">
-		<div id="card-root" className="flex h-full flex-col bg-teal-500/20 text-teal-700 hover:bg-teal-500/10">
+		<Card id="card-root" className="flex h-full flex-col bg-teal-500/20 text-teal-700 hover:bg-teal-500/10">
 			<div id="card-header" className="py-6">
 				<div id="card-title" className="mb-0 text-teal-700">Want to contribute to the examples gallery?</div>
 			</div>
-		</div>
+		</Card>
 	</Link>
 </div>

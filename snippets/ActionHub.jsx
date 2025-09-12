@@ -1,8 +1,4 @@
 import { Link } from "/snippets/Link.jsx";
-import { Input, InputCapture } from "@ngrok/mantle/input";
-import { Select } from "@ngrok/mantle/select";
-import { MagnifyingGlass } from "@phosphor-icons/react";
-
 
 const DefaultPhaseValue = "any";
 const DefaultProtocolValue = "any";
@@ -64,46 +60,43 @@ export const ActionHub = ({ actions }) => {
 	return (
 		<>
 			<div className="mb-4 flex flex-wrap justify-between gap-4">
-				<Input
-					className="max-w-64 font-sans"
-					placeholder="Filter..."
-					value={actionSearch}
-					onChange={(event) => setActionSearch(event.target.value)}
-				>
-					<MagnifyingGlass />
-					<InputCapture />
-				</Input>
+				<div className="relative max-w-64">
+					<Icon icon="search" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+					<input
+						type="text"
+						className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md font-sans"
+						placeholder="Filter..."
+						value={actionSearch}
+						onChange={(event) => setActionSearch(event.target.value)}
+					/>
+				</div>
 
 				<div className="flex gap-2">
-					<Select.Root value={protocolFilter} onValueChange={setProtocolFilter}>
-						<Select.Trigger className="w-[180px]">
-							<Select.Value placeholder="Filter by Phase" />
-						</Select.Trigger>
-						<Select.Content width="trigger">
-							<Select.Item value={DefaultProtocolValue}>
-								All Protocols
-							</Select.Item>
-							{Object.keys(Protocols).map((protocol) => (
-								<Select.Item key={protocol} value={protocol}>
-									{protocol}
-								</Select.Item>
-							))}
-						</Select.Content>
-					</Select.Root>
+					<select 
+						className="w-[180px] px-3 py-2 border border-gray-300 rounded-md bg-white"
+						value={protocolFilter} 
+						onChange={(e) => setProtocolFilter(e.target.value)}
+					>
+						<option value={DefaultProtocolValue}>All Protocols</option>
+						{Object.keys(Protocols).map((protocol) => (
+							<option key={protocol} value={protocol}>
+								{protocol}
+							</option>
+						))}
+					</select>
 
-					<Select.Root value={phaseFilter} onValueChange={setPhaseFilter}>
-						<Select.Trigger className="w-[180px]">
-							<Select.Value placeholder="Filter by Phase" />
-						</Select.Trigger>
-						<Select.Content width="trigger">
-							<Select.Item value={DefaultPhaseValue}>All Phases</Select.Item>
-							{Phases.map((phase) => (
-								<Select.Item key={phase} value={phase}>
-									{phase}
-								</Select.Item>
-							))}
-						</Select.Content>
-					</Select.Root>
+					<select 
+						className="w-[180px] px-3 py-2 border border-gray-300 rounded-md bg-white"
+						value={phaseFilter} 
+						onChange={(e) => setPhaseFilter(e.target.value)}
+					>
+						<option value={DefaultPhaseValue}>All Phases</option>
+						{Phases.map((phase) => (
+							<option key={phase} value={phase}>
+								{phase}
+							</option>
+						))}
+					</select>
 				</div>
 			</div>
 
@@ -115,7 +108,7 @@ export const ActionHub = ({ actions }) => {
 							to={`/traffic-policy/actions/${action.type}`}
 							className="col-span-1"
 						>
-							<div id="card-root" className="flex h-full flex-col divide-y-0 hover:bg-card-hover">
+							<Card className="flex h-full flex-col divide-y-0 hover:bg-card-hover">
 								<h3 className="m-0 flex items-baseline gap-2 px-4 pb-2 pt-4">
 									{action.type}
 								</h3>
@@ -150,7 +143,7 @@ export const ActionHub = ({ actions }) => {
 											})}
 									</div>
 								</div>
-							</div>
+							</Card>
 						</Link>
 					))}
 				</div>
