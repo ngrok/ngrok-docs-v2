@@ -1,5 +1,4 @@
 
-import { createContext } from "react";
 
 export type LangSwitcherContextType = {
 	selectedLanguage) => void);

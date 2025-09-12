@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 
 const searchParamKey = "endpoint_url";
 

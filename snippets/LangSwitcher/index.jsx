@@ -1,6 +1,5 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import clsx from "clsx";
-import { useContext } from "react";
 import { CodeBlockWithInfo } from "../CodeBlockWithInfo";
 import { CodeBlockFallback } from "../code-block";
 import LangSwitcherContext, {
