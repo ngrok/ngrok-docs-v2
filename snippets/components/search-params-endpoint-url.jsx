@@ -1,9 +1,5 @@
 import { useLocation } from "@docusaurus/router";
-import { type ReactNode, useMemo } from "react";
-
-type Props = {
-	fallback?: ReactNode;
-};
+import { useMemo } from "react";
 
 const searchParamKey = "endpoint_url";
 
@@ -12,7 +8,7 @@ const searchParamKey = "endpoint_url";
  *
  * Provide a `fallback` to render when the search param is not present.
  */
-function EndpointUrlHostname({ fallback }: Props) {
+function EndpointUrlHostname({ fallback }) {
 	const endpointUrl = useEndpointUrlFromSearchParams();
 	return endpointUrl?.hostname ?? fallback;
 }
@@ -22,7 +18,7 @@ function EndpointUrlHostname({ fallback }: Props) {
  *
  * Provide a `fallback` to render when the search param is not present.
  */
-function EndpointUrlOrigin({ fallback }: Props) {
+function EndpointUrlOrigin({ fallback }) {
 	const endpointUrl = useEndpointUrlFromSearchParams();
 	return endpointUrl?.origin ?? fallback;
 }
@@ -31,7 +27,7 @@ function EndpointUrlOrigin({ fallback }: Props) {
  * Returns the `endpoint_url` search param as a URL, if present.
  */
 function useEndpointUrlFromSearchParams() {
-	const location = useLocation();
+	const location = window.location;
 	const searchParams = new URLSearchParams(location.search);
 	const endpointUrl = toUrl(searchParams.get(searchParamKey));
 	return useMemo(() => endpointUrl, [endpointUrl]);
