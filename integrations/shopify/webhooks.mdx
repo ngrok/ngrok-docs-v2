@@ -2,12 +2,13 @@
 description: Develop and test Shopify webhooks from localhost
 title: Shopify Webhook
 ---
-import InspectingRequests from "../shared/_inspecting-requests.mdx";
-import ReplayingRequests from "../shared/_replaying-requests.mdx";
+import InspectingRequests from "/snippets/integrations/_inspecting-requests.mdx";
+import ReplayingRequests from "/snippets/integrations/_replaying-requests.mdx";
+
+<Tip>
+**TL;DR**
 
 
-
-<Tip> TL;DR
 
 To integrate Shopify webhooks with ngrok:
 
@@ -15,7 +16,6 @@ To integrate Shopify webhooks with ngrok:
 1. [Launch ngrok.](#start-ngrok) `ngrok http 3000`
 1. [Configure Shopify webhooks with your ngrok URL.](#setup-webhook)
 1. [Secure your webhook requests with verification.](#security)
-
 </Tip>
 
 This guide covers how to use ngrok to integrate your localhost app with Shopify by using Webhooks.
@@ -27,15 +27,16 @@ By integrating ngrok with Shopify, you can:
 - **Inspect and troubleshoot requests from Shopify** in real-time via the inspection UI and API.
 - **Modify and Replay Shopify Webhook requests** with a single click and without spending time reproducing events manually in your Shopify store.
 - **Secure your app with Shopify validation provided by ngrok**. Invalid requests are blocked by ngrok before reaching your app.
+<Tip>
+**TL;DR**
 
-<Tip> TL;DR
+
 
 1. [Launch your local webhook.](#start-your-app) `npm start`
 2. [Launch ngrok.](#start-ngrok) `ngrok http 3000`
 3. [Configure Shopify webhooks with your ngrok URL.](#setup-webhook)
 
 4. **Bonus!** [Secure your webhook requests with verification.](#security)
-
 </Tip>
 
 ## **Step 1**: Start your app 

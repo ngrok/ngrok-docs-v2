@@ -2,13 +2,13 @@
 description: Use Microsoft Azure AD B2C to secure access to ngrok endpoints
 title: Azure Active Directory B2C SSO (SAML)
 ---
-import Disclaimer from "../shared/_endpoint-sso-disclaimer.mdx";
+import Disclaimer from "/snippets/integrations/_endpoint-sso-disclaimer.mdx";
 
 <Disclaimer />
+<Tip>
+**TL;DR**
 
 
-
-<Tip> TL;DR
 To have ngrok enforce Single Sign-On using SAML with Azure Active Directory B2C (Azure AD B2C):
 
 1. [Create an ngrok Edge](#create-edge)
@@ -17,7 +17,6 @@ To have ngrok enforce Single Sign-On using SAML with Azure Active Directory B2C 
 1. [Update the ngrok Edge with the IdP metadata](#update-ngrok-edge)
 1. [Test your integration](#test-integration)
 1. [Bonus: Update your Azure AD B2C custom policies to support the password reset flow](#bonus)
-
 </Tip>
 
 This article details how to configure Azure AD B2C as an Identity Provider for your ngrok Edge. By integrating Azure AD B2C with ngrok, you can:
@@ -94,8 +93,10 @@ To configure ngrok tunnels with Azure AD B2C, you must have:
 1. Click **Save**
 
 ## Step 5: Test the integration 
+<Tip>
+**Note**
 
-<Tip> Note
+
 For this step, we assume you have an app running locally (i.e. on localhost:3000) with the ngrok client installed.
 </Tip>
 

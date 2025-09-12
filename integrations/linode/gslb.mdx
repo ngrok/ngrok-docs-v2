@@ -2,7 +2,10 @@
 description: In this guide, you'll learn how to layer load balancing between three or more globally-distributed, cloud-based virtual machines in Linode.
 title: Use ngrok's Global Server Load Balancing with Linode
 ---
-<Tip> TL;DR
+<Tip>
+**TL;DR**
+
+
 
 To use ngrok's [Global Load Balancer](/universal-gateway/global-load-balancer/) with Linode:
 
@@ -13,7 +16,6 @@ To use ngrok's [Global Load Balancer](/universal-gateway/global-load-balancer/) 
 5. [Install the ngrok agent and an example workload on each VM](#install-ngrok-agent)
 6. [Test out ngrok's Global Server Load Balancing](#test-gslb)
 7. [(optional) Enable the Traffic Policy module for API gateway features](#enable-traffic-policy)
-
 </Tip>
 
 In this guide, you'll learn how to layer ngrok's [Global Load Balancer](/universal-gateway/global-load-balancer/) (GSLB) on top of a VM-based deployment on Linode.
@@ -21,15 +23,16 @@ In this guide, you'll learn how to layer ngrok's [Global Load Balancer](/univers
 GLSB improves the performance and resiliency for your apps by distributing traffic to the nearest Point of Prescence (PoP) and the upstream service. Unlike a traditional GSLB deployment, ngrok automatically routes traffic without requiring you to deploy new infrastructure, provision IPs, or change DNS records. All you have to do is configure your ngrok agents for a simple path to high availability, horizontal scaling, A/B testing, and more.
 
 ngrok's GSLB even works on top of Linode's internal load balancing mechanism, NodeBalancer, for additional global resiliency and latency improvements.
+<Warning>
+**This how-to guide requires:**
 
-<Warning> This how-to guide requires:
+
 
 1. An [ngrok account](https://ngrok.com/signup).
 1. An account with [Linode](https://login.linode.com/signup).
 1. Three Ubuntu 24.04 virtual machines (VMs) in three globally-distributed regions (e.g. Atlanta, Osaka, and Frankfurt):
    - Hostnames should be unique, ideally using the location of the datacenter (e.g. `atlanta`, `osaka`, and `frankfurt`).
    - [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on each VM.
-
 </Warning>
 
 ## **Step 1**: Reserve your ngrok domain 
@@ -62,11 +65,12 @@ Export a variable for your new domain, which will be used in following API calls
 ```bash
 export NGROK_DOMAIN=<YOUR-NGROK-DOMAIN>
 ```
+<Tip>
+**Custom domains within ngrok**
 
-<Tip> Custom domains within ngrok
+
 
 Using CNAMEs, ngrok can host an endpoint on your domain while also managing the complete TLS certificate lifecycle on your behalf. If you'd prefer to use a custom domain rather than an ngrok-managed one, [follow our guide](/universal-gateway/custom-domains/) to set up your DNS and replace your custom domain in the `export` command above.
-
 </Tip>
 
 ## **Step 2**: Create your ngrok Edge 

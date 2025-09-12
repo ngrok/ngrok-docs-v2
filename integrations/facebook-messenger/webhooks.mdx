@@ -2,12 +2,13 @@
 description: Develop and test Facebook Messenger webhooks from localhost
 title: Facebook Messenger Webhooks
 ---
-import InspectingRequests from "../shared/_inspecting-requests.mdx";
-import ReplayingRequests from "../shared/_replaying-requests.mdx";
+import InspectingRequests from "/snippets/integrations/_inspecting-requests.mdx";
+import ReplayingRequests from "/snippets/integrations/_replaying-requests.mdx";
+
+<Tip>
+**TL;DR**
 
 
-
-<Tip> TL;DR
 
 To integrate Facebook Messenger webhooks with ngrok:
 
@@ -15,7 +16,6 @@ To integrate Facebook Messenger webhooks with ngrok:
 1. [Launch ngrok.](#start-ngrok) `ngrok http 3000 --url myexample.ngrok.app`
 1. [Configure Facebook webhooks with your ngrok URL.](#setup-webhook)
 1. [Secure your webhook requests with verification.](#security)
-
 </Tip>
 
 This guide covers how to use ngrok to integrate your localhost app with Facebook by using Webhooks.

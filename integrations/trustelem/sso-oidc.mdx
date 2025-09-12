@@ -3,20 +3,21 @@ title: Wallix Trustelem Endpoint SSO (OpenID Connect)
 description: Use Wallix Trustelem OIDC to secure access to ngrok endpoints
 ---
 
-import Disclaimer from "../shared/_endpoint-sso-disclaimer.mdx";
+import Disclaimer from "/snippets/integrations/_endpoint-sso-disclaimer.mdx";
 
 <Disclaimer />
 
 # Wallix Trustelem SSO (OpenID Connect)
+<Tip>
+**TL;DR**
 
-<Tip> TL;DR
+
 
 To secure access to ngrok with Wallix Trustelem Single Sign-On using OpenID Connect:
 
 1. [Configure Wallix Trustelem SSO](#configure-wallix)
 1. [Configure ngrok](#configure-ngrok)
 1. [Test access to ngrok with Wallix Trustelem SSO](#test-sso)
-
 </Tip>
 
 This article details how to configure Wallix Trustelem as the primary Identity Provider for ngrok tunnels.
@@ -115,8 +116,10 @@ To configure an edge with Wallix Trustelem:
 1. Click **Save** at the top.
 
 1. Launch a tunnel connected to your Wallix Trustelem edge:
+<Tip>
+**Note**
 
-<Tip> Note
+
 For this step, we assume you have an app running locally (i.e. on localhost:3000) with the ngrok client installed.
 </Tip>
 

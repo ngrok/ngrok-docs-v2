@@ -1,9 +1,8 @@
 ---
-title: ngrok Agent CLI Quickstart
-pagination_next: getting-started/cloud-endpoints-quickstart
+title: Agent CLI Quickstart
+sidebarTitle: Agent CLI
 ---
 
-import { LangSwitcher } from "/snippets/components/LangSwitcher.jsx";
 ngrok's core functionality is built around [Agent Endpoints](/universal-gateway/agent-endpoints/): ephemeral tunnels that connect your locally running apps to the internet through the ngrok cloud service.
 Common use cases include granting remote access to IoT devices, enabling your Kubernetes clusters to communicate with each other, and allowing external connections to a local gaming server.
 
@@ -103,7 +102,7 @@ server.listen(port, () => {
 ```go title="service.go"
 package main
 
-import (
+{/* import ( */}
 	"fmt"
 	"net/http"
 )
@@ -142,11 +141,11 @@ class MyHandler(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=MyHandler, port=8080):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print(f"Serving custom HTML at http://localhost:{port}")
+{/*     print(f"Serving custom HTML at http://localhost:{port}") */}
     httpd.serve_forever()
 
 if __name__ == "__main__":
-    run()
+{/*     run() */}
 ```
 
 </CodeGroup>

@@ -1,9 +1,7 @@
 ---
-title: Using Ingresses
-pagination_next: k8s/guides/using-loadbalancers
+  title: How the ngrok Operator Uses Ingresses
+  sidebarTitle: Using Ingresses
 ---
-
-## How the ngrok Operator Uses Ingresses
 
 The ngrok Kubernetes operator consumes `Ingress` resources and translates them into the native ngrok `CloudEndpoint` and `AgentEndpoint` custom resources.
 Each hostname from the `Ingress` resources you configure will cause the operator to create a `CloudEndpoint` for the hostname.
