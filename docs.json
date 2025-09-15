@@ -1,24 +1,24 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "ngrok documentation",
+  "name": "ngrok documentation1",
   "colors": {
     "primary": "#273FC3",
-		"light": "#699AFC",
-		"dark": "#699AFC"
+    "light": "#699AFC",
+    "dark": "#699AFC"
   },
   "favicon": "favicon.ico",
   "logo": {
     "light": "logo/light.svg",
     "dark": "logo/dark.svg"
   },
-	"footer": {
-		"socials": {
-			"x": "https://x.com/ngrokhq",
-			"github": "https://github.com/ngrok",
-			"linkedin": "https://linkedin.com/company/ngrok"
-		}
-	},
+  "footer": {
+    "socials": {
+      "x": "https://x.com/ngrokhq",
+      "github": "https://github.com/ngrok",
+      "linkedin": "https://linkedin.com/company/ngrok"
+    }
+  },
   "navigation": {
     "tabs": [
       {
