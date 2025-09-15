@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const https = require('https');
-const path = require('path');
+const path = require('path')
 
 const CHANGELOG_URL = 'https://raw.githubusercontent.com/ngrok/ngrok-operator/refs/heads/main/CHANGELOG.md';
 const OUTPUT_PATH = path.join(__dirname, '..', 'snippets', 'k8s', '_changelog.mdx');
