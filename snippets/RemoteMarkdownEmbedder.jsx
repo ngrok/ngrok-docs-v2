@@ -1,8 +1,9 @@
-const RemoteMarkdownEmbedder = ({
+export const RemoteMarkdownEmbedder = ({
 	url,
 	textToRemove,
 }) => {
-	const [content, setContent] = useState<string>("");
+
+	const [content, setContent] = useState("");
 
 	useEffect(() => {
 		fetch(url)
@@ -22,7 +23,6 @@ const RemoteMarkdownEmbedder = ({
 		? content.replace(textToRemove, "")
 		: content;
 
-	return <span>{finalContent}</span>;
+	return `${finalContent}`;
 };
 
-export default RemoteMarkdownEmbedder;
