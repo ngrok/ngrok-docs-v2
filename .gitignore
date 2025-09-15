@@ -26,3 +26,4 @@ pnpm-debug.log*
 .mintlify/
 
 # Generated files
+snippets/k8s/_changelog.mdx
