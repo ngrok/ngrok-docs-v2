@@ -79,9 +79,11 @@ async function parseIntegrations() {
             fs.mkdirSync(snippetsDir, { recursive: true });
         }
 
+        const filePath = "snippets/custom-scripts/data/integrations.json";
+
         // Write to file
-        fs.writeFileSync("snippets/integrations.json", JSON.stringify(sortedIntegrations, null, 2));
-        console.log(`Successfully parsed ${sortedIntegrations.length} integrations and wrote to snippets/integrations.json`);
+        fs.writeFileSync(filePath, JSON.stringify(sortedIntegrations, null, 2));
+        console.log(`Successfully parsed ${sortedIntegrations.length} integrations and wrote to ${filePath}`);
         
     } catch (error) {
         console.error("Error parsing integrations:", error);
