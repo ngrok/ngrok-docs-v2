@@ -238,15 +238,11 @@
               },
               {
                 "group": "Macros",
-                "pages": [
-                  "traffic-policy/macros/index"
-                ]
+                "pages": ["traffic-policy/macros/index"]
               },
               {
                 "group": "Secrets",
-                "pages": [
-                  "traffic-policy/secrets"
-                ]
+                "pages": ["traffic-policy/secrets"]
               },
               {
                 "group": "Variables",
@@ -263,9 +259,7 @@
               },
               {
                 "group": "Resources",
-                "pages": [
-                  "traffic-policy/identities"
-                ]
+                "pages": ["traffic-policy/identities"]
               },
               {
                 "group": "Examples",
@@ -293,10 +287,7 @@
               "k8s/index",
               {
                 "group": "How It Works",
-                "pages": [
-                  "k8s/how-it-works",
-                  "k8s/installation/architecture"
-                ]
+                "pages": ["k8s/how-it-works", "k8s/installation/architecture"]
               },
               "k8s/guides/local-cluster",
               {
@@ -444,10 +435,7 @@
               "obs/traffic-inspection",
               {
                 "group": "Events",
-                "pages": [
-                  "obs/events/index",
-                  "obs/events/reference"
-                ]
+                "pages": ["obs/events/index", "obs/events/reference"]
               }
             ]
           },
@@ -457,18 +445,11 @@
               "iam/index",
               {
                 "group": "Principals",
-                "pages": [
-                  "iam/users",
-                  "iam/service-users"
-                ]
+                "pages": ["iam/users", "iam/service-users"]
               },
               {
                 "group": "Account Governance",
-                "pages": [
-                  "iam/sso",
-                  "iam/rbac",
-                  "iam/domain-controls"
-                ]
+                "pages": ["iam/sso", "iam/rbac", "iam/domain-controls"]
               }
             ]
           }
@@ -503,9 +484,7 @@
               },
               {
                 "group": "Identity Aware Proxy",
-                "pages": [
-                  "guides/identity-aware-proxy/securing-with-oauth"
-                ]
+                "pages": ["guides/identity-aware-proxy/securing-with-oauth"]
               },
               {
                 "group": "Security Best Practices",
@@ -616,7 +595,7 @@
               },
               "integrations/autodesk/webhooks",
               {
-                "group": "Azure Ad",
+                "group": "Azure AD",
                 "pages": [
                   "integrations/azure-ad/index",
                   "integrations/azure-ad/k8s",
@@ -934,9 +913,7 @@
                   },
                   {
                     "group": "Partners",
-                    "pages": [
-                      "api/resources/abuse-reports"
-                    ]
+                    "pages": ["api/resources/abuse-reports"]
                   }
                 ]
               }
@@ -959,10 +936,7 @@
           },
           {
             "item": "Errors",
-            "pages": [
-              "errors/index",
-              "errors/reference"
-            ]
+            "pages": ["errors/index", "errors/reference"]
           }
         ]
       },
@@ -971,9 +945,7 @@
         "menu": [
           {
             "item": "Getting Started",
-            "pages": [
-              "getting-started/index"
-            ]
+            "pages": ["getting-started/index"]
           },
           {
             "item": "Pricing & Limits",
