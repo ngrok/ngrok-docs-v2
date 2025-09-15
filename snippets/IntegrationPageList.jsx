@@ -329,7 +329,7 @@ export const IntegrationPageList = ({ name }) => {
 		  }
 		},
 		{
-		  "name": "azure-ad",
+		  "name": "microsoft-entra-id",
 		  "path": "/integrations/azure-ad",
 		  "docs": [
 			{
