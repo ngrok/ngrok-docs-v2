@@ -584,211 +584,161 @@
           {
             "item": "Integrations",
             "pages": [
-              "integrations/index",
-              "integrations/1password/cli-client",
-              "integrations/aftership/webhooks",
-              "integrations/airship/webhooks",
-              "integrations/alchemy/webhooks",
-              "integrations/amazon/oauth",
-              "integrations/amazon-cloudwatch/event-destination",
-              "integrations/amazon-eks/eks",
-              "integrations/amazon-firehose/event-destination",
-              "integrations/amazon-kinesis/event-destination",
-              "integrations/amazon-sns/webhooks",
-              "integrations/argocd/apiops",
               {
-                "group": "Auth0",
+                "group": "General Guides",
                 "pages": [
-                  "integrations/auth0/index",
-                  "integrations/auth0/dashboard-sso",
-                  "integrations/auth0/jwt-action",
-                  "integrations/auth0/sso-oidc"
-                ]
-              },
-              "integrations/autodesk/webhooks",
-              {
-                "group": "Azure AD",
-                "pages": [
-                  "integrations/azure-ad/index",
-                  "integrations/azure-ad/k8s",
-                  "integrations/azure-ad/sso-saml"
-                ]
-              },
-              "integrations/azure-ad-b2c/sso-saml",
-              "integrations/azure-aks/k8s",
-              "integrations/azure-logs-ingestion/event-destination",
-              "integrations/bitbucket/webhooks",
-              "integrations/box/webhooks",
-              "integrations/brex/webhooks",
-              "integrations/buildkite/webhooks",
-              "integrations/calendly/webhooks",
-              "integrations/castle/webhooks",
-              "integrations/chargify/webhooks",
-              "integrations/circleci/webhooks",
-              "integrations/clearbit/webhooks",
-              "integrations/clerk/webhooks",
-              "integrations/coinbase/webhooks",
-              "integrations/consul/k8s",
-              "integrations/contentful/webhooks",
-              "integrations/curity/sso-oidc",
-              "integrations/datadog/event-destination",
-              {
-                "group": "Descope",
-                "pages": [
-                  "integrations/descope/index",
-                  "integrations/descope/sso-oidc",
-                  "integrations/descope/sso-saml"
+                  "integrations/guides/linode-gslb",
+                  "integrations/guides/mqtt"
                 ]
               },
               {
-                "group": "Digitalocean",
+                "group": "CLI & Credentials",
                 "pages": [
-                  "integrations/digitalocean/index",
-                  "integrations/digitalocean/gslb",
-                  "integrations/digitalocean/k8s"
-                ]
-              },
-              "integrations/docusign/webhooks",
-              "integrations/dropbox/webhooks",
-              {
-                "group": "Facebook",
-                "pages": [
-                  "integrations/facebook/index",
-                  "integrations/facebook/oauth",
-                  "integrations/facebook/webhooks"
-                ]
-              },
-              "integrations/facebook-messenger/webhooks",
-              "integrations/frameio/webhooks",
-              {
-                "group": "Frontegg",
-                "pages": [
-                  "integrations/frontegg/index",
-                  "integrations/frontegg/sso-oidc",
-                  "integrations/frontegg/sso-saml"
-                ]
-              },
-              "integrations/fusionauth/sso-oidc",
-              {
-                "group": "Github",
-                "pages": [
-                  "integrations/github/index",
-                  "integrations/github/oauth",
-                  "integrations/github/webhooks"
+                  "integrations/cli-credentials/cli-client",
+                  "integrations/cli-credentials/home-assistant-with-ngrok"
                 ]
               },
               {
-                "group": "Gitlab",
+                "group": "Event Destinations",
                 "pages": [
-                  "integrations/gitlab/index",
-                  "integrations/gitlab/oauth",
-                  "integrations/gitlab/webhooks"
-                ]
-              },
-              "integrations/google/oauth",
-              "integrations/google-gke/google-kubernetes-engine",
-              "integrations/heroku/webhooks",
-              "integrations/home-assistant/home-assistant-with-ngrok",
-              "integrations/hostedhooks/webhooks",
-              "integrations/hubspot/webhooks",
-              "integrations/hygraph/webhooks",
-              "integrations/instagram/webhooks",
-              "integrations/intercom/webhooks",
-              {
-                "group": "Jumpcloud",
-                "pages": [
-                  "integrations/jumpcloud/index",
-                  "integrations/jumpcloud/sso-oidc",
-                  "integrations/jumpcloud/sso-saml"
-                ]
-              },
-              "integrations/launchdarkly/webhooks",
-              "integrations/linkedin/oauth",
-              "integrations/linkerd/k8s",
-              "integrations/linode/gslb",
-              "integrations/mailchimp/webhooks",
-              "integrations/mailgun/webhooks",
-              "integrations/microk8s/k8s",
-              {
-                "group": "Microsoft",
-                "pages": [
-                  "integrations/microsoft/index",
-                  "integrations/microsoft/oauth",
-                  "integrations/microsoft/sso-saml"
+                  "integrations/event-destinations/amazon-cloudwatch-event-destination",
+                  "integrations/event-destinations/amazon-firehose-event-destination",
+                  "integrations/event-destinations/amazon-kinesis-event-destination",
+                  "integrations/event-destinations/azure-logs-event-destination",
+                  "integrations/event-destinations/datadog-event-destination"
                 ]
               },
               {
-                "group": "Miniorange",
+                "group": "OAuth",
                 "pages": [
-                  "integrations/miniorange/index",
-                  "integrations/miniorange/sso-oidc",
-                  "integrations/miniorange/sso-saml"
+                  "integrations/oauth/facebook-oauth",
+                  "integrations/oauth/github-oauth",
+                  "integrations/oauth/gitlab-oauth",
+                  "integrations/oauth/google-oauth",
+                  "integrations/oauth/jwt-action",
+                  "integrations/oauth/linkedin-oauth",
+                  "integrations/oauth/microsoft-oauth",
+                  "integrations/oauth/oauth",
+                  "integrations/oauth/twitch-oauth"
                 ]
               },
-              "integrations/modern-treasury/webhooks",
-              "integrations/mongodb/webhooks",
-              "integrations/mqtt-explorer/mqtt",
-              "integrations/mux/webhooks",
               {
-                "group": "Okta",
+                "group": "Dashboard SSO",
                 "pages": [
-                  "integrations/okta/index",
-                  "integrations/okta/dashboard-sso-okta-setup",
-                  "integrations/okta/scim",
-                  "integrations/okta/sso-oidc",
-                  "integrations/okta/sso-saml",
-                  "integrations/okta/webhooks"
+                  "integrations/dashboard-sso/auth0-dashboard-sso",
+                  "integrations/dashboard-sso/azure-ad-sso-saml",
+                  "integrations/dashboard-sso/curity-sso-oidc",
+                  "integrations/dashboard-sso/dashboard-sso-okta-setup",
+                  "integrations/dashboard-sso/descope-sso-oidc",
+                  "integrations/dashboard-sso/descope-sso-saml",
+                  "integrations/dashboard-sso/frontegg-sso-oidc",
+                  "integrations/dashboard-sso/frontegg-sso-saml",
+                  "integrations/dashboard-sso/fusionauth-sso-oidc",
+                  "integrations/dashboard-sso/jumpcloud-sso-oidc",
+                  "integrations/dashboard-sso/jumpcloud-sso-saml",
+                  "integrations/dashboard-sso/microsoft-sso-saml",
+                  "integrations/dashboard-sso/miniorange-sso-oidc",
+                  "integrations/dashboard-sso/miniorange-sso-saml",
+                  "integrations/dashboard-sso/okta-sso-oidc",
+                  "integrations/dashboard-sso/okta-sso-saml",
+                  "integrations/dashboard-sso/salesforce-dashboard-sso-with-oidc",
+                  "integrations/dashboard-sso/scim",
+                  "integrations/dashboard-sso/sso-oidc",
+                  "integrations/dashboard-sso/sso-saml",
+                  "integrations/dashboard-sso/ssowithendpoints",
+                  "integrations/dashboard-sso/trustelem-sso-oidc",
+                  "integrations/dashboard-sso/trustelem-sso-saml"
                 ]
               },
-              "integrations/orbit/webhooks",
-              "integrations/pagerduty/webhooks",
-              "integrations/pinwheel/webhooks",
-              "integrations/plivo/webhooks",
-              "integrations/pusher/webhooks",
-              "integrations/rafay/k8s",
-              "integrations/rancher/k8s",
               {
-                "group": "Salesforce",
+                "group": "Kubernetes Ingress",
                 "pages": [
-                  "integrations/salesforce/index",
-                  "integrations/salesforce/dashboard-sso-with-oidc",
-                  "integrations/salesforce/ssowithendpoints"
+                  "integrations/kubernetes-ingress/apiops",
+                  "integrations/kubernetes-ingress/azure-ad-k8s",
+                  "integrations/kubernetes-ingress/azure-aks-k8s",
+                  "integrations/kubernetes-ingress/consul-k8s",
+                  "integrations/kubernetes-ingress/digitalocean-k8s",
+                  "integrations/kubernetes-ingress/eks",
+                  "integrations/kubernetes-ingress/google-kubernetes-engine",
+                  "integrations/kubernetes-ingress/gslb",
+                  "integrations/kubernetes-ingress/k8s",
+                  "integrations/kubernetes-ingress/microk8s-k8s",
+                  "integrations/kubernetes-ingress/rafay-k8s",
+                  "integrations/kubernetes-ingress/rancher-k8s",
+                  "integrations/kubernetes-ingress/spectro-cloud-k8s",
+                  "integrations/kubernetes-ingress/vcluster-k8s"
                 ]
               },
-              "integrations/sendgrid/webhooks",
-              "integrations/sentry/webhooks",
-              "integrations/shopify/webhooks",
-              "integrations/signalsciences/webhooks",
-              "integrations/slack/webhooks",
-              "integrations/sonatype-nexus/webhooks",
-              "integrations/spectro-cloud/k8s",
-              "integrations/square/webhooks",
-              "integrations/stripe/webhooks",
-              "integrations/svix/webhooks",
-              "integrations/teams/webhooks",
-              "integrations/terraform/webhooks",
-              "integrations/tiktok/webhooks",
-              "integrations/trendmicro/webhooks",
               {
-                "group": "Trustelem",
+                "group": "Webhooks",
                 "pages": [
-                  "integrations/trustelem/index",
-                  "integrations/trustelem/sso-oidc",
-                  "integrations/trustelem/sso-saml"
+                  "integrations/webhooks/aftership-webhooks",
+                  "integrations/webhooks/airship-webhooks",
+                  "integrations/webhooks/alchemy-webhooks",
+                  "integrations/webhooks/amazon-sns-webhooks",
+                  "integrations/webhooks/autodesk-webhooks",
+                  "integrations/webhooks/bitbucket-webhooks",
+                  "integrations/webhooks/box-webhooks",
+                  "integrations/webhooks/brex-webhooks",
+                  "integrations/webhooks/buildkite-webhooks",
+                  "integrations/webhooks/calendly-webhooks",
+                  "integrations/webhooks/castle-webhooks",
+                  "integrations/webhooks/chargify-webhooks",
+                  "integrations/webhooks/circleci-webhooks",
+                  "integrations/webhooks/clearbit-webhooks",
+                  "integrations/webhooks/clerk-webhooks",
+                  "integrations/webhooks/coinbase-webhooks",
+                  "integrations/webhooks/contentful-webhooks",
+                  "integrations/webhooks/docusign-webhooks",
+                  "integrations/webhooks/dropbox-webhooks",
+                  "integrations/webhooks/facebook-messenger-webhooks",
+                  "integrations/webhooks/facebook-webhooks",
+                  "integrations/webhooks/frameio-webhooks",
+                  "integrations/webhooks/github-webhooks",
+                  "integrations/webhooks/gitlab-webhooks",
+                  "integrations/webhooks/heroku-webhooks",
+                  "integrations/webhooks/hostedhooks-webhooks",
+                  "integrations/webhooks/hubspot-webhooks",
+                  "integrations/webhooks/hygraph-webhooks",
+                  "integrations/webhooks/instagram-webhooks",
+                  "integrations/webhooks/intercom-webhooks",
+                  "integrations/webhooks/launchdarkly-webhooks",
+                  "integrations/webhooks/mailchimp-webhooks",
+                  "integrations/webhooks/mailgun-webhooks",
+                  "integrations/webhooks/modern-treasury-webhooks",
+                  "integrations/webhooks/mongodb-webhooks",
+                  "integrations/webhooks/mux-webhooks",
+                  "integrations/webhooks/okta-webhooks",
+                  "integrations/webhooks/orbit-webhooks",
+                  "integrations/webhooks/pagerduty-webhooks",
+                  "integrations/webhooks/pinwheel-webhooks",
+                  "integrations/webhooks/plivo-webhooks",
+                  "integrations/webhooks/pusher-webhooks",
+                  "integrations/webhooks/sendgrid-webhooks",
+                  "integrations/webhooks/sentry-webhooks",
+                  "integrations/webhooks/shopify-webhooks",
+                  "integrations/webhooks/signalsciences-webhooks",
+                  "integrations/webhooks/slack-webhooks",
+                  "integrations/webhooks/sonatype-nexus-webhooks",
+                  "integrations/webhooks/square-webhooks",
+                  "integrations/webhooks/stripe-webhooks",
+                  "integrations/webhooks/svix-webhooks",
+                  "integrations/webhooks/teams-webhooks",
+                  "integrations/webhooks/terraform-webhooks",
+                  "integrations/webhooks/tiktok-webhooks",
+                  "integrations/webhooks/trendmicro-webhooks",
+                  "integrations/webhooks/twilio-webhooks",
+                  "integrations/webhooks/twitter-webhooks",
+                  "integrations/webhooks/typeform-webhooks",
+                  "integrations/webhooks/vmware-webhooks",
+                  "integrations/webhooks/webex-webhooks",
+                  "integrations/webhooks/whatsapp-webhooks",
+                  "integrations/webhooks/worldline-webhooks",
+                  "integrations/webhooks/xero-webhooks",
+                  "integrations/webhooks/zendesk-webhooks",
+                  "integrations/webhooks/zoom-webhooks"
                 ]
-              },
-              "integrations/twilio/webhooks",
-              "integrations/twitch/oauth",
-              "integrations/twitter/webhooks",
-              "integrations/typeform/webhooks",
-              "integrations/vcluster/k8s",
-              "integrations/vmware/webhooks",
-              "integrations/webex/webhooks",
-              "integrations/whatsapp/webhooks",
-              "integrations/worldline/webhooks",
-              "integrations/xero/webhooks",
-              "integrations/zendesk/webhooks",
-              "integrations/zoom/webhooks"
+              }
             ]
           }
         ]
