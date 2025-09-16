@@ -587,6 +587,7 @@
               {
                 "group": "General Guides",
                 "pages": [
+                  "integrations/guides/home-assistant-with-ngrok",
                   "integrations/guides/linode-gslb",
                   "integrations/guides/mqtt"
                 ]
@@ -594,8 +595,7 @@
               {
                 "group": "CLI & Credentials",
                 "pages": [
-                  "integrations/cli-credentials/cli-client",
-                  "integrations/cli-credentials/home-assistant-with-ngrok"
+                  "integrations/cli-credentials/1password"
                 ]
               },
               {
@@ -609,13 +609,18 @@
                 ]
               },
               {
+                "group": "JWT Validation",
+                "pages": [
+                  "integrations/jwt-validation/auth0"
+                ]
+              },
+              {
                 "group": "OAuth",
                 "pages": [
                   "integrations/oauth/facebook-oauth",
                   "integrations/oauth/github-oauth",
                   "integrations/oauth/gitlab-oauth",
                   "integrations/oauth/google-oauth",
-                  "integrations/oauth/jwt-action",
                   "integrations/oauth/linkedin-oauth",
                   "integrations/oauth/microsoft-oauth",
                   "integrations/oauth/oauth",
