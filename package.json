@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "node custom-scripts2/fetch-k8s-changelog.js",
+    "build": "mint build",
     "dev": "mint dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
