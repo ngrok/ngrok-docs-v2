@@ -589,14 +589,47 @@
                 "group": "General Guides",
                 "pages": [
                   "integrations/guides/home-assistant-with-ngrok",
-                  "integrations/guides/linode-gslb",
                   "integrations/guides/mqtt"
                 ]
               },
               {
-                "group": "CLI & Credentials",
+                "group": "CLI Credentials",
                 "pages": [
                   "integrations/cli-credentials/1password"
+                ]
+              },
+
+              {
+                "group": "Dashboard SSO",
+                "pages": [
+                  "integrations/dashboard-sso/auth0-dashboard-sso-saml",
+                  "integrations/dashboard-sso/okta-dashboard-sso-oidc",
+                  "integrations/dashboard-sso/okta-dashboard-sso-scim",
+                  "integrations/dashboard-sso/salesforce-dashboard-sso-oidc"
+                ]
+              },
+
+              {
+                "group": "Endpoints SSO",
+                "pages": [
+                  "integrations/endpoint-sso/auth0-sso-oidc",
+                  "integrations/endpoint-sso/azure-sso-saml",
+                  "integrations/endpoint-sso/curity-sso-oidc",
+                  "integrations/endpoint-sso/descope-sso-oidc",
+                  "integrations/endpoint-sso/descope-sso-saml",
+                  "integrations/endpoint-sso/frontegg-sso-oidc",
+                  "integrations/endpoint-sso/frontegg-sso-saml",
+                  "integrations/endpoint-sso/fusionauth-sso-oidc",
+                  "integrations/endpoint-sso/jumpcloud-sso-oidc",
+                  "integrations/endpoint-sso/jumpcloud-sso-saml",
+                  "integrations/endpoint-sso/microsoft-sso-saml",
+                  "integrations/endpoint-sso/miniorange-sso-oidc",
+                  "integrations/endpoint-sso/miniorange-sso-saml",
+                  "integrations/endpoint-sso/okta-sso-oidc",
+                  "integrations/endpoint-sso/okta-sso-saml",
+                  "integrations/endpoint-sso/salesforce-sso-oidc",
+                  "integrations/endpoint-sso/trustelem-sso-oidc",
+                  "integrations/endpoint-sso/trustelem-sso-saml"
                 ]
               },
               {
@@ -616,47 +649,6 @@
                 ]
               },
               {
-                "group": "OAuth",
-                "pages": [
-                  "integrations/oauth/facebook-oauth",
-                  "integrations/oauth/github-oauth",
-                  "integrations/oauth/gitlab-oauth",
-                  "integrations/oauth/google-oauth",
-                  "integrations/oauth/linkedin-oauth",
-                  "integrations/oauth/microsoft-oauth",
-                  "integrations/oauth/oauth",
-                  "integrations/oauth/twitch-oauth"
-                ]
-              },
-              {
-                "group": "Dashboard SSO",
-                "pages": [
-                  "integrations/dashboard-sso/auth0-dashboard-sso",
-                  "integrations/dashboard-sso/azure-ad-sso-saml",
-                  "integrations/dashboard-sso/curity-sso-oidc",
-                  "integrations/dashboard-sso/dashboard-sso-okta-setup",
-                  "integrations/dashboard-sso/descope-sso-oidc",
-                  "integrations/dashboard-sso/descope-sso-saml",
-                  "integrations/dashboard-sso/frontegg-sso-oidc",
-                  "integrations/dashboard-sso/frontegg-sso-saml",
-                  "integrations/dashboard-sso/fusionauth-sso-oidc",
-                  "integrations/dashboard-sso/jumpcloud-sso-oidc",
-                  "integrations/dashboard-sso/jumpcloud-sso-saml",
-                  "integrations/dashboard-sso/microsoft-sso-saml",
-                  "integrations/dashboard-sso/miniorange-sso-oidc",
-                  "integrations/dashboard-sso/miniorange-sso-saml",
-                  "integrations/dashboard-sso/okta-sso-oidc",
-                  "integrations/dashboard-sso/okta-sso-saml",
-                  "integrations/dashboard-sso/salesforce-dashboard-sso-with-oidc",
-                  "integrations/dashboard-sso/scim",
-                  "integrations/dashboard-sso/sso-oidc",
-                  "integrations/dashboard-sso/sso-saml",
-                  "integrations/dashboard-sso/ssowithendpoints",
-                  "integrations/dashboard-sso/trustelem-sso-oidc",
-                  "integrations/dashboard-sso/trustelem-sso-saml"
-                ]
-              },
-              {
                 "group": "Kubernetes Ingress",
                 "pages": [
                   "integrations/kubernetes-ingress/apiops",
@@ -673,6 +665,19 @@
                   "integrations/kubernetes-ingress/rancher-k8s",
                   "integrations/kubernetes-ingress/spectro-cloud-k8s",
                   "integrations/kubernetes-ingress/vcluster-k8s"
+                ]
+              },
+              {
+                "group": "OAuth",
+                "pages": [
+                  "integrations/oauth/facebook-oauth",
+                  "integrations/oauth/github-oauth",
+                  "integrations/oauth/gitlab-oauth",
+                  "integrations/oauth/google-oauth",
+                  "integrations/oauth/linkedin-oauth",
+                  "integrations/oauth/microsoft-oauth",
+                  "integrations/oauth/oauth",
+                  "integrations/oauth/twitch-oauth"
                 ]
               },
               {
