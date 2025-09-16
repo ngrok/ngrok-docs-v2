@@ -69,16 +69,46 @@ async function parseIntegrations() {
             integrations.push(integration);
         }
 
-        // Sort integrations by name
+        // Flatten and sort integrations by name
         const sortedIntegrations = integrations.map(i=>i.docs).flat().sort((a, b) => a.contentTitle && b.contentTitle ? a.contentTitle.localeCompare(b.contentTitle): -1 );
         
+        // Load categories to assign category information to each integration
+        const categoriesPath = "snippets/custom-scripts/data/integrations/integrationCategories.json";
+        let categories = [];
+        try {
+            const categoriesContent = fs.readFileSync(categoriesPath, 'utf8');
+            categories = JSON.parse(categoriesContent);
+        } catch (error) {
+            console.warn(`Could not load categories from ${categoriesPath}:`, error.message);
+        }
+        
+        // Add category information to each integration
+        if (categories.length > 0) {
+            sortedIntegrations.forEach(integration => {
+                // Find which category contains this integration's path
+                for (const category of categories) {
+                    if (category.items.includes(integration.path)) {
+                        integration.category = category.name;
+                        break;
+                    }
+                }
+                
+                // If no category found, it might be uncategorized
+                if (!integration.category) {
+                    integration.category = 'uncategorized';
+                }
+            });
+            
+            console.log(`Added category information to ${sortedIntegrations.length} integrations`);
+        }
+        
         // Ensure snippets directory exists
-        const snippetsDir = path.dirname("snippets/integrations.json");
+        const snippetsDir = path.dirname("snippets/data/integrations/integrations.json");
         if (!fs.existsSync(snippetsDir)) {
             fs.mkdirSync(snippetsDir, { recursive: true });
         }
 
-        const filePath = "snippets/custom-scripts/data/integrations.json";
+        const filePath = "snippets/custom-scripts/data/integrations/integrations.json";
 
         // Write to file
         fs.writeFileSync(filePath, JSON.stringify(sortedIntegrations, null, 2));

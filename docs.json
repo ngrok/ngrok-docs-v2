@@ -584,6 +584,7 @@
           {
             "item": "Integrations",
             "pages": [
+              "integrations/index",
               {
                 "group": "General Guides",
                 "pages": [
