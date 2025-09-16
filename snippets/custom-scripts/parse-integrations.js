@@ -61,7 +61,6 @@ async function parseIntegrations() {
                 integration.docs.push({
                     path: path.join(integration.path, fileToPath(fileName)),
                     frontMatter: parsed.data,
-                    content: parsed.content,
                     contentTitle: parsed.data.title || undefined,
                     excerpt: parsed.excerpt || undefined
                 });
@@ -71,7 +70,7 @@ async function parseIntegrations() {
         }
 
         // Sort integrations by name
-        const sortedIntegrations = integrations.sort((a, b) => a.name.localeCompare(b.name));
+        const sortedIntegrations = integrations.map(i=>i.docs).flat().sort((a, b) => a.contentTitle && b.contentTitle ? a.contentTitle.localeCompare(b.contentTitle): -1 );
         
         // Ensure snippets directory exists
         const snippetsDir = path.dirname("snippets/integrations.json");

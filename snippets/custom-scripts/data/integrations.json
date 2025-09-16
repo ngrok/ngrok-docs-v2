@@ -1,0 +1,1029 @@
+[
+  {
+    "path": "/integrations/1password/cli-client",
+    "frontMatter": {
+      "title": "1Password ngrok shell plugin",
+      "description": "Secure your ngrok credentials with 1Password",
+      "tags": [
+        "1password",
+        "security",
+        "password vault",
+        "command line"
+      ]
+    },
+    "contentTitle": "1Password ngrok shell plugin"
+  },
+  {
+    "path": "/integrations/aftership/webhooks",
+    "frontMatter": {
+      "description": "Develop and test AfterShip webhooks from localhost",
+      "title": "AfterShip Webhooks"
+    },
+    "contentTitle": "AfterShip Webhooks"
+  },
+  {
+    "path": "/integrations/airship/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Airship webhooks from localhost",
+      "title": "Airship Webhooks"
+    },
+    "contentTitle": "Airship Webhooks"
+  },
+  {
+    "path": "/integrations/alchemy/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Alchemy webhooks from localhost",
+      "title": "Alchemy Webhooks"
+    },
+    "contentTitle": "Alchemy Webhooks"
+  },
+  {
+    "path": "/integrations/amazon/oauth",
+    "frontMatter": {
+      "description": "Authenticate users with Amazon OAuth",
+      "title": "Amazon OAuth"
+    },
+    "contentTitle": "Amazon OAuth"
+  },
+  {
+    "path": "/integrations/amazon-sns/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Amazon SNS webhooks from localhost",
+      "title": "Amazon SNS Webhooks"
+    },
+    "contentTitle": "Amazon SNS Webhooks"
+  },
+  {
+    "path": "/integrations/auth0/sso-oidc",
+    "frontMatter": {
+      "title": "Auth0 Endpoint SSO (OpenID Connect)",
+      "description": "Use Auth0 OIDC to secure access to ngrok endpoints"
+    },
+    "contentTitle": "Auth0 Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/autodesk/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Autodesk webhooks from localhost",
+      "title": "Autodesk Platform Services Webhooks"
+    },
+    "contentTitle": "Autodesk Platform Services Webhooks"
+  },
+  {
+    "path": "/integrations/azure-ad-b2c/sso-saml",
+    "frontMatter": {
+      "description": "Use Microsoft Azure AD B2C to secure access to ngrok endpoints",
+      "title": "Azure Active Directory B2C SSO (SAML)"
+    },
+    "contentTitle": "Azure Active Directory B2C SSO (SAML)"
+  },
+  {
+    "path": "/integrations/bitbucket/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Bitbucket webhooks from localhost",
+      "title": "Bitbucket Repository Webhooks"
+    },
+    "contentTitle": "Bitbucket Repository Webhooks"
+  },
+  {
+    "path": "/integrations/box/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Box webhooks from localhost",
+      "title": "Box Webhooks"
+    },
+    "contentTitle": "Box Webhooks"
+  },
+  {
+    "path": "/integrations/brex/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Brex webhooks from localhost",
+      "title": "Brex Webhooks"
+    },
+    "contentTitle": "Brex Webhooks"
+  },
+  {
+    "path": "/integrations/buildkite/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Buildkite webhooks from localhost",
+      "title": "Buildkite Webhooks"
+    },
+    "contentTitle": "Buildkite Webhooks"
+  },
+  {
+    "path": "/integrations/calendly/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Calendly webhooks from localhost",
+      "title": "Calendly Webhooks"
+    },
+    "contentTitle": "Calendly Webhooks"
+  },
+  {
+    "path": "/integrations/castle/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Castle webhooks from localhost",
+      "title": "Castle Webhooks"
+    },
+    "contentTitle": "Castle Webhooks"
+  },
+  {
+    "path": "/integrations/chargify/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Chargify webhooks from localhost",
+      "title": "Chargify Webhooks"
+    },
+    "contentTitle": "Chargify Webhooks"
+  },
+  {
+    "path": "/integrations/circleci/webhooks",
+    "frontMatter": {
+      "description": "Develop and test CircleCI webhooks from localhost",
+      "title": "CircleCI Webhooks"
+    },
+    "contentTitle": "CircleCI Webhooks"
+  },
+  {
+    "path": "/integrations/webex/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Webex webhooks from localhost",
+      "title": "Cisco Webex Webhooks"
+    },
+    "contentTitle": "Cisco Webex Webhooks"
+  },
+  {
+    "path": "/integrations/clearbit/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Clearbit webhooks from localhost",
+      "title": "Clearbit Webhooks"
+    },
+    "contentTitle": "Clearbit Webhooks"
+  },
+  {
+    "path": "/integrations/clerk/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Clerk webhooks from localhost",
+      "title": "Clerk Webhooks"
+    },
+    "contentTitle": "Clerk Webhooks"
+  },
+  {
+    "path": "/integrations/coinbase/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Coinbase webhooks from localhost",
+      "title": "Coinbase Webhooks"
+    },
+    "contentTitle": "Coinbase Webhooks"
+  },
+  {
+    "path": "/integrations/auth0/dashboard-sso",
+    "frontMatter": {
+      "title": "Configure Auth0 Single Sign-On with SAML",
+      "description": "Configure Single Sign-On for your ngrok dashboard using Auth0 as the Identity Provider"
+    },
+    "contentTitle": "Configure Auth0 Single Sign-On with SAML"
+  },
+  {
+    "path": "/integrations/contentful/webhooks",
+    "frontMatter": {
+      "title": "Contentful Webhooks"
+    },
+    "contentTitle": "Contentful Webhooks"
+  },
+  {
+    "path": "/integrations/curity/sso-oidc",
+    "frontMatter": {
+      "description": "Use Curity Identity Server to secure access to ngrok endpoints",
+      "title": "Curity Identity Server (OpenID Connect)"
+    },
+    "contentTitle": "Curity Identity Server (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/argocd/apiops",
+    "frontMatter": {
+      "title": "Deploy a production API and gateway with APIOps using Argo CD and ngrok",
+      "description": "Deploy an API using a APIOps-based deployment and lifecycle management process with Argo CD, ngrok's API gateway, the ngrok Kubernetes Operator, and the Kubernetes Gateway API."
+    },
+    "contentTitle": "Deploy a production API and gateway with APIOps using Argo CD and ngrok"
+  },
+  {
+    "path": "/integrations/descope/sso-oidc",
+    "frontMatter": {
+      "title": "Descope Endpoint SSO (OpenID Connect)",
+      "description": "Use Descope OIDC to secure access to ngrok endpoints"
+    },
+    "contentTitle": "Descope Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/descope/sso-saml",
+    "frontMatter": {
+      "description": "Use Descope SAML to secure access to ngrok endpoints",
+      "title": "Descope SSO (SAML)"
+    },
+    "contentTitle": "Descope SSO (SAML)"
+  },
+  {
+    "path": "/integrations/docusign/webhooks",
+    "frontMatter": {
+      "description": "Develop and test DocuSign webhooks from localhost",
+      "title": "DocuSign Webhooks"
+    },
+    "contentTitle": "DocuSign Webhooks"
+  },
+  {
+    "path": "/integrations/dropbox/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Dropbox webhooks from localhost",
+      "title": "Dropbox Webhooks"
+    },
+    "contentTitle": "Dropbox Webhooks"
+  },
+  {
+    "path": "/integrations/auth0/jwt-action",
+    "frontMatter": {
+      "title": "Enable JWT validation with Auth0",
+      "description": "Configure JWT Validation for tokens issued from Auth0"
+    },
+    "contentTitle": "Enable JWT validation with Auth0"
+  },
+  {
+    "path": "/integrations/facebook-messenger/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Facebook Messenger webhooks from localhost",
+      "title": "Facebook Messenger Webhooks"
+    },
+    "contentTitle": "Facebook Messenger Webhooks"
+  },
+  {
+    "path": "/integrations/facebook/oauth",
+    "frontMatter": {
+      "description": "Authenticate users via Facebook OAuth",
+      "title": "Facebook OAuth"
+    },
+    "contentTitle": "Facebook OAuth"
+  },
+  {
+    "path": "/integrations/facebook/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Facebook webhooks from localhost",
+      "title": "Facebook Webhooks"
+    },
+    "contentTitle": "Facebook Webhooks"
+  },
+  {
+    "path": "/integrations/frameio/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Frame.io webhooks from localhost",
+      "title": "Frame.io Webhooks"
+    },
+    "contentTitle": "Frame.io Webhooks"
+  },
+  {
+    "path": "/integrations/frontegg/sso-oidc",
+    "frontMatter": {
+      "title": "Frontegg Endpoint SSO (OpenID Connect)",
+      "description": "Use Frontegg OIDC to secure access to ngrok endpoints"
+    },
+    "contentTitle": "Frontegg Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/frontegg/sso-saml",
+    "frontMatter": {
+      "description": "Use Frontegg SAML to secure access to ngrok endpoints",
+      "title": "Frontegg SSO (SAML)"
+    },
+    "contentTitle": "Frontegg SSO (SAML)"
+  },
+  {
+    "path": "/integrations/fusionauth/sso-oidc",
+    "frontMatter": {
+      "title": "FusionAuth Endpoint SSO (OpenID Connect)",
+      "description": "Use FusionAuth SSO to secure access to ngrok endpoints"
+    },
+    "contentTitle": "FusionAuth Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/github/oauth",
+    "frontMatter": {
+      "description": "Authenticate users via GitHub OAuth",
+      "title": "GitHub OAuth"
+    },
+    "contentTitle": "GitHub OAuth"
+  },
+  {
+    "path": "/integrations/github/webhooks",
+    "frontMatter": {
+      "description": "Develop and test GitHub webhooks from localhost",
+      "title": "GitHub Repository Webhooks"
+    },
+    "contentTitle": "GitHub Repository Webhooks"
+  },
+  {
+    "path": "/integrations/gitlab/oauth",
+    "frontMatter": {
+      "description": "Authenticate users via GitLab OAuth",
+      "title": "GitLab"
+    },
+    "contentTitle": "GitLab"
+  },
+  {
+    "path": "/integrations/gitlab/webhooks",
+    "frontMatter": {
+      "description": "Develop and test GitLab webhooks from localhost",
+      "title": "GitLab Repository Webhooks"
+    },
+    "contentTitle": "GitLab Repository Webhooks"
+  },
+  {
+    "path": "/integrations/google/oauth",
+    "frontMatter": {
+      "description": "Authenticate users with Google OAuth",
+      "title": "Google OAuth"
+    },
+    "contentTitle": "Google OAuth"
+  },
+  {
+    "path": "/integrations/heroku/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Heroku webhooks from localhost",
+      "title": "Heroku Webhooks"
+    },
+    "contentTitle": "Heroku Webhooks"
+  },
+  {
+    "path": "/integrations/home-assistant/home-assistant-with-ngrok",
+    "frontMatter": {
+      "title": "Home Assistant",
+      "description": "Access your Home Assistant instance from anywhere with ngrok.",
+      "tags": [
+        "home assistant",
+        "security",
+        "docker",
+        "iot"
+      ]
+    },
+    "contentTitle": "Home Assistant"
+  },
+  {
+    "path": "/integrations/hostedhooks/webhooks",
+    "frontMatter": {
+      "description": "Develop and test HostedHooks webhooks from localhost",
+      "title": "HostedHooks Webhooks"
+    },
+    "contentTitle": "HostedHooks Webhooks"
+  },
+  {
+    "path": "/integrations/hubspot/webhooks",
+    "frontMatter": {
+      "description": "Develop and test HubSpot webhooks from localhost",
+      "title": "HubSpot Webhooks"
+    },
+    "contentTitle": "HubSpot Webhooks"
+  },
+  {
+    "path": "/integrations/hygraph/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Hygraph webhooks from localhost",
+      "title": "Hygraph Webhooks"
+    },
+    "contentTitle": "Hygraph Webhooks"
+  },
+  {
+    "path": "/integrations/linkerd/k8s",
+    "frontMatter": {
+      "description": "Set up a local cluster to demonstrate how to use the ngrok Kubernetes Operator with Linkerd.",
+      "title": "Ingress to a microservices-based application connected via Linkerd's service mesh"
+    },
+    "contentTitle": "Ingress to a microservices-based application connected via Linkerd's service mesh"
+  },
+  {
+    "path": "/integrations/azure-ad/k8s",
+    "frontMatter": {
+      "description": "Add ingress to any app running in Kubernetes, then restrict access to only users authorized through Microsoft Entra ID, using the ngrok Kubernetes Operator.",
+      "title": "Ingress to apps secured by Microsoft Entra ID in Kubernetes"
+    },
+    "contentTitle": "Ingress to apps secured by Microsoft Entra ID in Kubernetes"
+  },
+  {
+    "path": "/integrations/vcluster/k8s",
+    "frontMatter": {
+      "title": "Ingress to Kubernetes apps and srevices with vcluster",
+      "description": "Setup a local virtual cluster to demonstrate how to use the ngrok Kubernetes Operator with vcluster."
+    },
+    "contentTitle": "Ingress to Kubernetes apps and srevices with vcluster"
+  },
+  {
+    "path": "/integrations/azure-aks/k8s",
+    "frontMatter": {
+      "title": "Ingress to Kubernetes apps deployed on Azure Kubernetes Service (AKS)",
+      "description": "Learn how to deploy a new Kubernetes cluster and demo app via AKS, then add ingress to applications with ngrok's Kubernetes Operator."
+    },
+    "contentTitle": "Ingress to Kubernetes apps deployed on Azure Kubernetes Service (AKS)"
+  },
+  {
+    "path": "/integrations/spectro-cloud/k8s",
+    "frontMatter": {
+      "description": "Add ingress to any app running in a Kubernetes cluster managed by Spectro Cloud's Palette platform using the ngrok Kubernetes Operator.",
+      "title": "Ingress to Kubernetes apps deployed on Spectro Cloud Palette"
+    },
+    "contentTitle": "Ingress to Kubernetes apps deployed on Spectro Cloud Palette"
+  },
+  {
+    "path": "/integrations/rafay/k8s",
+    "frontMatter": {
+      "title": "Ingress to Kubernetes apps managed by Rafay",
+      "description": "Add ingress to any app running in a Kubernetes cluster managed by Rafay using the ngrok Kubernetes Operator."
+    },
+    "contentTitle": "Ingress to Kubernetes apps managed by Rafay"
+  },
+  {
+    "path": "/integrations/digitalocean/k8s",
+    "frontMatter": {
+      "title": "Ingress to Kubernetes apps on clusters managed by DigitalOcean",
+      "description": "Add Kubernetes ingress to any app running in a cluster managed by DigitalOcean using the ngrok Kubernetes Operator."
+    },
+    "contentTitle": "Ingress to Kubernetes apps on clusters managed by DigitalOcean"
+  },
+  {
+    "path": "/integrations/instagram/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Instagram webhooks from localhost",
+      "title": "Instagram Webhooks"
+    },
+    "contentTitle": "Instagram Webhooks"
+  },
+  {
+    "path": "/integrations/azure-logs-ingestion/event-destination",
+    "frontMatter": {
+      "title": "Integrate with the Azure Logs Ingestion API",
+      "description": "Send network traffic logs from ngrok to Azure Logs Ingestion",
+      "tags": [
+        "events",
+        "logs",
+        "azure",
+        "event destinations"
+      ]
+    },
+    "contentTitle": "Integrate with the Azure Logs Ingestion API"
+  },
+  {
+    "path": "/integrations/intercom/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Intercom webhooks from localhost",
+      "title": "Intercom Webhooks"
+    },
+    "contentTitle": "Intercom Webhooks"
+  },
+  {
+    "path": "/integrations/jumpcloud/sso-oidc",
+    "frontMatter": {
+      "title": "JumpCloud Endpoint SSO (OpenID Connect)",
+      "description": "Use JumpCloud OIDC to secure access to ngrok endpoints"
+    },
+    "contentTitle": "JumpCloud Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/jumpcloud/sso-saml",
+    "frontMatter": {
+      "description": "Use JumpCloud SAML to secure access to ngrok endpoints",
+      "title": "JumpCloud SSO (SAML)"
+    },
+    "contentTitle": "JumpCloud SSO (SAML)"
+  },
+  {
+    "path": "/integrations/rancher/k8s",
+    "frontMatter": {
+      "title": "Kubernetes ingress to applications and clusters managed by Rancher",
+      "description": "Set up a local installation of Rancher to deploy a new RKE2 cluster and add ingress to applications with ngrok's Kubernetes Operator."
+    },
+    "contentTitle": "Kubernetes ingress to applications and clusters managed by Rancher"
+  },
+  {
+    "path": "/integrations/microk8s/k8s",
+    "frontMatter": {
+      "title": "Kubernetes ingress to apps/APIs on clusters managed by Canonical MicroK8s",
+      "description": "Add ingress to any app running in a Kubernetes cluster managed by Canonical Microk8s using the ngrok Kubernetes Operator."
+    },
+    "contentTitle": "Kubernetes ingress to apps/APIs on clusters managed by Canonical MicroK8s"
+  },
+  {
+    "path": "/integrations/google-gke/google-kubernetes-engine",
+    "frontMatter": {
+      "title": "Kubernetes ingress to GKE services with ngrok",
+      "description": "Learn how to use the ngrok Kubernetes Operator on Google Kubernetes Engine (GKE) to quickly add secure Kubernetes ingress to your apps or APIs.",
+      "tags": [
+        "kubernetes",
+        "k8s",
+        "google kubernetes engine",
+        "gke",
+        "google",
+        "ingress controller"
+      ]
+    },
+    "contentTitle": "Kubernetes ingress to GKE services with ngrok"
+  },
+  {
+    "path": "/integrations/amazon-eks/eks",
+    "frontMatter": {
+      "title": "Kubernetes ingress to services hosted on EKS",
+      "description": "Learn how to get started running the ngrok Kubernetes Operator on AWS EKS",
+      "tags": [
+        "kubernetes",
+        "k8s",
+        "eks",
+        "elastic kubernetes service",
+        "ingress controller",
+        "kubernetes operator",
+        "operator"
+      ]
+    },
+    "contentTitle": "Kubernetes ingress to services hosted on EKS"
+  },
+  {
+    "path": "/integrations/consul/k8s",
+    "frontMatter": {
+      "title": "Kubernetes ingress to services in a Consul service mesh",
+      "description": "Setup a local Consul Service mesh to demonstrate how to use the ngrok Kubernetes Operator with Consul."
+    },
+    "contentTitle": "Kubernetes ingress to services in a Consul service mesh"
+  },
+  {
+    "path": "/integrations/launchdarkly/webhooks",
+    "frontMatter": {
+      "description": "Develop and test LaunchDarkly webhooks from localhost",
+      "title": "LaunchDarkly Webhooks"
+    },
+    "contentTitle": "LaunchDarkly Webhooks"
+  },
+  {
+    "path": "/integrations/linkedin/oauth",
+    "frontMatter": {
+      "description": "Authenticate users with LinkedIn OAuth",
+      "title": "LinkedIn"
+    },
+    "contentTitle": "LinkedIn"
+  },
+  {
+    "path": "/integrations/mailchimp/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Mailchimp webhooks from localhost",
+      "title": "Mailchimp Webhooks"
+    },
+    "contentTitle": "Mailchimp Webhooks"
+  },
+  {
+    "path": "/integrations/mailgun/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Mailgun webhooks from localhost",
+      "title": "Mailgun Webhooks"
+    },
+    "contentTitle": "Mailgun Webhooks"
+  },
+  {
+    "path": "/integrations/azure-ad/sso-saml",
+    "frontMatter": {
+      "description": "Use Microsoft Entra ID to secure access to ngrok endpoints",
+      "title": "Microsoft Entra ID SSO (SAML)"
+    },
+    "contentTitle": "Microsoft Entra ID SSO (SAML)"
+  },
+  {
+    "path": "/integrations/microsoft/sso-saml",
+    "frontMatter": {
+      "description": "Use SAML with Microsoft Entra ID to provide SSO to the ngrok Dashboard",
+      "title": "Microsoft Entra ID SSO (SAML)"
+    },
+    "contentTitle": "Microsoft Entra ID SSO (SAML)"
+  },
+  {
+    "path": "/integrations/microsoft/oauth",
+    "frontMatter": {
+      "description": "Authenticate users with Microsoft Entra ID OAuth",
+      "title": "Microsoft OAuth"
+    },
+    "contentTitle": "Microsoft OAuth"
+  },
+  {
+    "path": "/integrations/teams/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Microsoft Teams webhooks from localhost",
+      "title": "Microsoft Teams Webhooks"
+    },
+    "contentTitle": "Microsoft Teams Webhooks"
+  },
+  {
+    "path": "/integrations/miniorange/sso-oidc",
+    "frontMatter": {
+      "title": "miniOrange Endpoint SSO (OpenID Connect)",
+      "description": "Use miniOrange OIDC to secure access to ngrok endpoints"
+    },
+    "contentTitle": "miniOrange Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/miniorange/sso-saml",
+    "frontMatter": {
+      "description": "Use miniOrange SAML to secure access to ngrok endpoints",
+      "title": "miniOrange SSO (SAML)"
+    },
+    "contentTitle": "miniOrange SSO (SAML)"
+  },
+  {
+    "path": "/integrations/modern-treasury/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Modern Treasury webhooks from localhost",
+      "title": "Modern Treasury Webhooks"
+    },
+    "contentTitle": "Modern Treasury Webhooks"
+  },
+  {
+    "path": "/integrations/mongodb/webhooks",
+    "frontMatter": {
+      "description": "Develop and test MongoDB webhooks from localhost",
+      "title": "MongoDB Webhooks"
+    },
+    "contentTitle": "MongoDB Webhooks"
+  },
+  {
+    "path": "/integrations/mqtt-explorer/mqtt",
+    "frontMatter": {
+      "description": "Communicate with your MQTT server",
+      "title": "MQTT"
+    },
+    "contentTitle": "MQTT"
+  },
+  {
+    "path": "/integrations/mux/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Mux webhooks from localhost",
+      "title": "Mux Webhooks"
+    },
+    "contentTitle": "Mux Webhooks"
+  },
+  {
+    "path": "/integrations/okta/dashboard-sso-okta-setup",
+    "frontMatter": {
+      "description": "How to use Okta SSO to sign into the ngrok dashboard",
+      "title": "Okta Dashboard SSO Setup"
+    },
+    "contentTitle": "Okta Dashboard SSO Setup"
+  },
+  {
+    "path": "/integrations/okta/sso-oidc",
+    "frontMatter": {
+      "title": "Okta Endpoint SSO (OpenID Connect)",
+      "description": "Use Okta OIDC to secure access to ngrok endpoints"
+    },
+    "contentTitle": "Okta Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/okta/sso-saml",
+    "frontMatter": {
+      "description": "Use Okta SAML to secure access to ngrok endpoints",
+      "title": "Okta Endpoint SSO (SAML)"
+    },
+    "contentTitle": "Okta Endpoint SSO (SAML)"
+  },
+  {
+    "path": "/integrations/okta/scim",
+    "frontMatter": {
+      "title": "Okta SCIM User Provisioning",
+      "description": "Enable automated user provisioning via SCIM",
+      "tags": [
+        "okta",
+        "scim",
+        "user provisioning",
+        "dashboard sso"
+      ]
+    },
+    "contentTitle": "Okta SCIM User Provisioning"
+  },
+  {
+    "path": "/integrations/okta/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Okta webhooks from localhost",
+      "title": "Okta Webhooks"
+    },
+    "contentTitle": "Okta Webhooks"
+  },
+  {
+    "path": "/integrations/orbit/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Orbit webhooks from localhost",
+      "title": "Orbit Webhooks"
+    },
+    "contentTitle": "Orbit Webhooks"
+  },
+  {
+    "path": "/integrations/pagerduty/webhooks",
+    "frontMatter": {
+      "description": "Develop and test PagerDuty webhooks from localhost",
+      "title": "PagerDuty Webhooks"
+    },
+    "contentTitle": "PagerDuty Webhooks"
+  },
+  {
+    "path": "/integrations/pinwheel/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Pinwheel webhooks from localhost",
+      "title": "Pinwheel Webhooks"
+    },
+    "contentTitle": "Pinwheel Webhooks"
+  },
+  {
+    "path": "/integrations/plivo/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Plivo webhooks from localhost",
+      "title": "Plivo Webhooks"
+    },
+    "contentTitle": "Plivo Webhooks"
+  },
+  {
+    "path": "/integrations/pusher/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Pusher webhooks from localhost",
+      "title": "Pusher Webhooks"
+    },
+    "contentTitle": "Pusher Webhooks"
+  },
+  {
+    "path": "/integrations/salesforce/dashboard-sso-with-oidc",
+    "frontMatter": {
+      "title": "Salesforce Dashboard Single Sign-On (SSO) Using OIDC",
+      "description": "Use Salesforce's managed applications to add SSO for your ngrok dashboard using the OIDC integration"
+    },
+    "contentTitle": "Salesforce Dashboard Single Sign-On (SSO) Using OIDC"
+  },
+  {
+    "path": "/integrations/salesforce/ssowithendpoints",
+    "frontMatter": {
+      "title": "Secure ngrok Endpoints using Salesforce OpenID Connect",
+      "description": "Use Salesforce's managed applications to add SSO for your ngrok resources"
+    },
+    "contentTitle": "Secure ngrok Endpoints using Salesforce OpenID Connect"
+  },
+  {
+    "path": "/integrations/amazon-cloudwatch/event-destination",
+    "frontMatter": {
+      "title": "Send Network Logs from ngrok to AWS CloudWatch",
+      "description": "Send network traffic logs from ngrok to AWS CloudWatch",
+      "tags": [
+        "events",
+        "logs",
+        "cloudwatch",
+        "aws",
+        "event destinations"
+      ]
+    },
+    "contentTitle": "Send Network Logs from ngrok to AWS CloudWatch"
+  },
+  {
+    "path": "/integrations/amazon-firehose/event-destination",
+    "frontMatter": {
+      "title": "Send Network Logs from ngrok to AWS Firehose",
+      "description": "Send network traffic logs from ngrok to AWS Firehose",
+      "tags": [
+        "events",
+        "logs",
+        "firehose",
+        "aws",
+        "event destinations"
+      ]
+    },
+    "contentTitle": "Send Network Logs from ngrok to AWS Firehose"
+  },
+  {
+    "path": "/integrations/amazon-kinesis/event-destination",
+    "frontMatter": {
+      "title": "Send Network Logs from ngrok to AWS Kinesis",
+      "description": "Send network traffic logs from ngrok to AWS Kinesis",
+      "tags": [
+        "events",
+        "logs",
+        "kinesis",
+        "aws",
+        "event destinations"
+      ]
+    },
+    "contentTitle": "Send Network Logs from ngrok to AWS Kinesis"
+  },
+  {
+    "path": "/integrations/datadog/event-destination",
+    "frontMatter": {
+      "title": "Send Network Logs from ngrok to Datadog",
+      "description": "Send network traffic logs from ngrok to Datadog",
+      "tags": [
+        "events",
+        "logs",
+        "datadog",
+        "event destinations"
+      ]
+    },
+    "contentTitle": "Send Network Logs from ngrok to Datadog"
+  },
+  {
+    "path": "/integrations/sendgrid/webhooks",
+    "frontMatter": {
+      "description": "Develop and test SendGrid webhooks from localhost",
+      "title": "SendGrid Webhooks"
+    },
+    "contentTitle": "SendGrid Webhooks"
+  },
+  {
+    "path": "/integrations/sentry/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Sentry webhooks from localhost",
+      "title": "Sentry Webhooks"
+    },
+    "contentTitle": "Sentry Webhooks"
+  },
+  {
+    "path": "/integrations/shopify/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Shopify webhooks from localhost",
+      "title": "Shopify Webhook"
+    },
+    "contentTitle": "Shopify Webhook"
+  },
+  {
+    "path": "/integrations/signalsciences/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Signal Sciences webhooks from localhost",
+      "title": "Signal Sciences Webhooks"
+    },
+    "contentTitle": "Signal Sciences Webhooks"
+  },
+  {
+    "path": "/integrations/slack/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Slack webhooks from localhost",
+      "title": "Slack Webhook"
+    },
+    "contentTitle": "Slack Webhook"
+  },
+  {
+    "path": "/integrations/sonatype-nexus/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Sonatype Nexus webhooks from localhost",
+      "title": "Sonatype Nexus Webhooks"
+    },
+    "contentTitle": "Sonatype Nexus Webhooks"
+  },
+  {
+    "path": "/integrations/square/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Square webhooks from localhost",
+      "title": "Square Webhooks"
+    },
+    "contentTitle": "Square Webhooks"
+  },
+  {
+    "path": "/integrations/stripe/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Stripe webhooks from localhost",
+      "title": "Stripe Webhook"
+    },
+    "contentTitle": "Stripe Webhook"
+  },
+  {
+    "path": "/integrations/svix/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Svix webhooks from localhost",
+      "title": "Svix Webhooks"
+    },
+    "contentTitle": "Svix Webhooks"
+  },
+  {
+    "path": "/integrations/terraform/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Terraform webhooks from localhost",
+      "title": "Terraform Cloud Webhooks"
+    },
+    "contentTitle": "Terraform Cloud Webhooks"
+  },
+  {
+    "path": "/integrations/tiktok/webhooks",
+    "frontMatter": {
+      "description": "Develop and test TikTok webhooks from localhost",
+      "title": "TikTok Webhooks"
+    },
+    "contentTitle": "TikTok Webhooks"
+  },
+  {
+    "path": "/integrations/trendmicro/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Trend Micro webhooks from localhost",
+      "title": "Trend Micro Webhooks"
+    },
+    "contentTitle": "Trend Micro Webhooks"
+  },
+  {
+    "path": "/integrations/twilio/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Twilio webhooks from localhost",
+      "title": "Twilio SMS Webhooks"
+    },
+    "contentTitle": "Twilio SMS Webhooks"
+  },
+  {
+    "path": "/integrations/twitch/oauth",
+    "frontMatter": {
+      "description": "Authenticate users with Twitch OAuth",
+      "title": "Twitch"
+    },
+    "contentTitle": "Twitch"
+  },
+  {
+    "path": "/integrations/typeform/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Typeform webhooks from localhost",
+      "title": "Typeform Webhooks"
+    },
+    "contentTitle": "Typeform Webhooks"
+  },
+  {
+    "path": "/integrations/digitalocean/gslb",
+    "frontMatter": {
+      "description": "In this guide, you'll learn how to layer load balancing between three or more globally-distributed, cloud-based virtual machines in DigitalOcean.",
+      "title": "Use ngrok's Global Server Load Balancing with DigitalOcean"
+    },
+    "contentTitle": "Use ngrok's Global Server Load Balancing with DigitalOcean"
+  },
+  {
+    "path": "/integrations/linode/gslb",
+    "frontMatter": {
+      "description": "In this guide, you'll learn how to layer load balancing between three or more globally-distributed, cloud-based virtual machines in Linode.",
+      "title": "Use ngrok's Global Server Load Balancing with Linode"
+    },
+    "contentTitle": "Use ngrok's Global Server Load Balancing with Linode"
+  },
+  {
+    "path": "/integrations/vmware/webhooks",
+    "frontMatter": {
+      "description": "Develop and test VMware webhooks from localhost",
+      "title": "VMware Workspace ONE Webhooks"
+    },
+    "contentTitle": "VMware Workspace ONE Webhooks"
+  },
+  {
+    "path": "/integrations/trustelem/sso-oidc",
+    "frontMatter": {
+      "title": "Wallix Trustelem Endpoint SSO (OpenID Connect)",
+      "description": "Use Wallix Trustelem OIDC to secure access to ngrok endpoints"
+    },
+    "contentTitle": "Wallix Trustelem Endpoint SSO (OpenID Connect)"
+  },
+  {
+    "path": "/integrations/trustelem/sso-saml",
+    "frontMatter": {
+      "description": "Use Wallix Trustelem SAML to secure access to ngrok endpoints",
+      "title": "Wallix Trustelem SSO (SAML)"
+    },
+    "contentTitle": "Wallix Trustelem SSO (SAML)"
+  },
+  {
+    "path": "/integrations/whatsapp/webhooks",
+    "frontMatter": {
+      "description": "Develop and test WhatsApp webhooks from localhost",
+      "title": "WhatsApp Webhooks"
+    },
+    "contentTitle": "WhatsApp Webhooks"
+  },
+  {
+    "path": "/integrations/worldline/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Worldline webhooks from localhost",
+      "title": "Worldline Webhooks"
+    },
+    "contentTitle": "Worldline Webhooks"
+  },
+  {
+    "path": "/integrations/twitter/webhooks",
+    "frontMatter": {
+      "description": "Develop and test X (formerly Twitter) webhooks from localhost",
+      "title": "X (formerly Twitter) Webhooks"
+    },
+    "contentTitle": "X (formerly Twitter) Webhooks"
+  },
+  {
+    "path": "/integrations/xero/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Xero webhooks from localhost",
+      "title": "Xero Webhooks"
+    },
+    "contentTitle": "Xero Webhooks"
+  },
+  {
+    "path": "/integrations/zendesk/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Zendesk webhooks from localhost",
+      "title": "Zendesk Webhooks"
+    },
+    "contentTitle": "Zendesk Webhooks"
+  },
+  {
+    "path": "/integrations/zoom/webhooks",
+    "frontMatter": {
+      "description": "Develop and test Zoom webhooks from localhost",
+      "title": "Zoom Webhooks"
+    },
+    "contentTitle": "Zoom Webhooks"
+  }
+]
