@@ -63,7 +63,7 @@ Once your app is running successfully on localhost, let's get it on the internet
    ```
 
 5. ngrok will display a url where your example applicaiton is exposed to the internet (copy this URL for use with Twilio).
-   ![ngrok agent running](img/launch_ngrok_tunnel.png)
+   ![ngrok agent running](../img/twilio/img/launch_ngrok_tunnel.png)
 
 ## **Step 3**: Integrate Twilio SMS Webhook 
 
@@ -72,7 +72,7 @@ Now that you have your local environment on the internet, let's configure Twilio
 1. Sign in to your Twilio account.
 2. From the Twilio Console, go to **Develop** > **# Phone Numbers** > **Manage** > **Active Numbers** and select a number to add a webhook to.
 3. At the bottom of the page, under Messaging, (1) add your ngrok url (don't forget to append /sms) under Webhook and (2) change the type to HTTP Post.
-   ![Twilio SMS Webhook Config Screen](img/add_ngrok_url_to_Twilio.png)
+   ![Twilio SMS Webhook Config Screen](../img/twilio/img/add_ngrok_url_to_Twilio.png)
 4. Save the phone number configuration.
 
 Congrats, everything is configured! Now it's time to test.

@@ -28,7 +28,7 @@ Using salesforce OAuth enables you to give users of your application, API, Datab
 1. Navigate to the **App Manager** in Salesforce.
 2. Click on **New External Client App**.
 
-![Salesforce Setup](img/external_client_create.png)
+![Salesforce Setup](../img/salesforce/img/external_client_create.png)
 
 ## 2. Configure the External Client App
 
@@ -45,7 +45,7 @@ Using salesforce OAuth enables you to give users of your application, API, Datab
      - Set the Callback URL to `https://idp.ngrok.com/oauth2/callback`
      - Make sure "All Users can self authorize" is checked
      - Make sure the following scopes are selected
-       ![OAuth Scopes](img/oauthscopes.png)
+       ![OAuth Scopes](../img/salesforce/img/oauthscopes.png)
      - Use the cloud endpoint URL you create in the next step as your **OAuth Start URL**
      - Under Permitted Users, make sure all users can self authorize
    - Under Flow Enablement
@@ -57,13 +57,13 @@ Using salesforce OAuth enables you to give users of your application, API, Datab
 
 ## 4. Verify your Salesforce External Client Application Configuration
 
-![Final OAuth Config](img/oauthconfig.png)
+![Final OAuth Config](../img/salesforce/img/oauthconfig.png)
 
 ## 5. Obtain the Client ID and Client Secret
 
 1. After saving your external client app, go to **Settings** and then under **OAuth Settings** click on the following button to see your Client ID and Client Secret:
 
-![Client ID and Client Secret](img/keyandsecret.png)
+![Client ID and Client Secret](../img/salesforce/img/keyandsecret.png)
 
 ## 6. Create a Cloud Endpoint and Configure OIDC Traffic Policy Action
 

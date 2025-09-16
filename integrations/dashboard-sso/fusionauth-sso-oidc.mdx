@@ -57,7 +57,7 @@ To integrate ngrok with FusionAuth SSO, you will need to:
 1. Click the `Save` button.
 1. You should see values in the **Client Id** and **Client secret** fields. Copy them; ou’ll use them in the [Configure ngrok](#configure-ngrok) step.
 1. Your Application should look like this:
-   ![Application Configuration](img/application-configuration.png)
+   ![Application Configuration](../img/fusionauth/img/application-configuration.png)
 
 ## **Step 2**: Configure ngrok 
 
@@ -95,7 +95,7 @@ To configure an edge with FusionAuth:
 1. On the edge settings, click **OIDC**.
 1. Click **Begin setup** and enter the following:
 
-   ![FusionAuth config in ngrok](img/ngrok-edge.png)
+   ![FusionAuth config in ngrok](../img/fusionauth/img/ngrok-edge.png)
    - **Issuer URL**: Your FusionAuth tenant url (i.e. https://acme.fusionauth.com).
    - **Client ID**: The client id copied from FusionAuth
    - **Client Secret**: The client secret copied from FusionAuth
@@ -113,7 +113,7 @@ For this step, we assume you have an app running locally (i.e. on localhost:3000
 1.  Click **Start a tunnel**.
 1.  Click the **copy icon** next to the tunnel command.
 
-    ![tunnel config](img/fa-2.png)
+    ![tunnel config](../img/fusionauth/img/fa-2.png)
 
 1.  Launch a tunnel:
     - Launch a terminal
@@ -124,10 +124,10 @@ For this step, we assume you have an app running locally (i.e. on localhost:3000
     - Close the **Start a tunnel** and the **Tunnel group** tabs
     - Refresh the test edge page. Under traffic, You will see the message _You have 1 tunnel online. Start additional tunnels to begin load balancing_
 
-    ![tunnel confirmed](img/fa-3.png)
+    ![tunnel confirmed](../img/fusionauth/img/fa-3.png)
 
 1.  In the **Endpoints** section, copy the **endpoint URL**. (you will use this url to test the FusionAuth Authentication)
-    ![tunnel url](img/ngrok-url.png)
+    ![tunnel url](../img/fusionauth/img/ngrok-url.png)
 
 ## Step 3: Test the integration 
 
