@@ -4,21 +4,21 @@
   "name": "ngrok documentation",
   "colors": {
     "primary": "#273FC3",
-		"light": "#699AFC",
-		"dark": "#699AFC"
+    "light": "#699AFC",
+    "dark": "#699AFC"
   },
   "favicon": "favicon.ico",
   "logo": {
     "light": "logo/light.svg",
     "dark": "logo/dark.svg"
   },
-	"footer": {
-		"socials": {
-			"x": "https://x.com/ngrokhq",
-			"github": "https://github.com/ngrok",
-			"linkedin": "https://linkedin.com/company/ngrok"
-		}
-	},
+  "footer": {
+    "socials": {
+      "x": "https://x.com/ngrokhq",
+      "github": "https://github.com/ngrok",
+      "linkedin": "https://linkedin.com/company/ngrok"
+    }
+  },
   "navigation": {
     "tabs": [
       {
