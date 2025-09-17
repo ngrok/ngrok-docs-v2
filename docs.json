@@ -291,18 +291,15 @@
             "item": "Kubernetes",
             "pages": [
               "k8s/index",
-              {
-                "group": "How It Works",
-                "pages": ["k8s/how-it-works", "k8s/installation/architecture"]
-              },
+              "k8s/how-it-works",
+              "k8s/installation/architecture",
               "k8s/guides/local-cluster",
               {
                 "group": "Quickstarts",
                 "pages": [
                   "getting-started/kubernetes/ingress",
-                  "getting-started/kubernetes/ingress",
-                  "getting-started/kubernetes/gateway-api",
                   "getting-started/kubernetes/crds",
+                  "getting-started/kubernetes/gateway-api",
                   "getting-started/kubernetes/endpoints"
                 ]
               },
