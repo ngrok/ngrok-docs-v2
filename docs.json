@@ -248,14 +248,8 @@
                   "traffic-policy/actions/verify-webhook"
                 ]
               },
-              {
-                "group": "Macros",
-                "pages": ["traffic-policy/macros/index"]
-              },
-              {
-                "group": "Secrets",
-                "pages": ["traffic-policy/secrets"]
-              },
+              "traffic-policy/macros/index",
+              "traffic-policy/secrets",
               {
                 "group": "Variables",
                 "pages": [
