@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "node custom-scripts2/fetch-k8s-changelog.js",
     "build": "mint build",
     "dev": "mint dev",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +15,7 @@
   "dependencies": {
     "@ngrok/mantle": "^0.52.7",
     "@types/react": "^19.1.12",
+    "gray-matter": "^4.0.3",
     "react": "^19.1.1",
     "react-markdown": "^10.1.0"
   }

@@ -2,7 +2,7 @@ import { Config, ConfigItem } from "/snippets/ConfigTable.jsx";
 
 ## Configuration Reference
 
-This is the [Traffic Policy](/docs/traffic-policy/) configuration
+This is the [Traffic Policy](/traffic-policy/) configuration
 reference for this action.
 
 ### Supported Phases
@@ -26,16 +26,14 @@ reference for this action.
         <Warning>
             Credentials use a `username:password` format where username, password, or the entire credential can be CEL expressions.
             CEL expressions cannot embed the `:` delimiter within username or password components.
-            <br />
-            **Valid patterns:**
 
+            **Valid patterns:**
             - `${CEL_EXPRESSION}:password` - CEL username, literal password (or vice versa)
             - `${CEL_EXPRESSION}:${CEL_EXPRESSION}` - both username and password as separate CEL expressions
             - `${CEL_EXPRESSION}` - entire credential as single CEL expression
             - `user-prefix${CEL_EXPRESSION}:password` - partial CEL substitution within username (or password)
-            <br />
-            **Invalid patterns:**
 
+            **Invalid patterns:**
             - `${CEL_EXPRESSION}password` - CEL expression without proper boundaries
             - `user-prefix${CEL_EXPRESSION}password-suffix` - CEL expression spanning username and password components
         </Warning>

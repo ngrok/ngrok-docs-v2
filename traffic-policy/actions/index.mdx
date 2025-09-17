@@ -10,9 +10,10 @@ actions:
 - type: verify-webhook
 phases: 
 title: "Traffic Policy Actions"
+sidebarTitle: Overview
 ---
 
-import ActionHub from "/snippets/ActionHub.jsx";
+import {ActionHub} from "/snippets/ActionHub.jsx";
 
 Traffic Policy Actions enable you to manipulate, route or manage traffic on your endpoints in various ways.
 
@@ -22,4 +23,4 @@ Traffic Policy Actions enable you to manipulate, route or manage traffic on your
 
 The following actions are available for use on your endpoints:
 
-<ActionHub actions={frontMatter.actions} />
+<ActionHub />

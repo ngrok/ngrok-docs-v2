@@ -3,7 +3,7 @@ title: Load Balancing Between Multiple Clouds
 description: Learn how to load balance traffic between multiple clouds with ngrok.
 ---
 
-ngrok's [Endpoint Pooling](/docs/universal-gateway/endpoint-pooling) allows you to automatically load balance between replicas of your service across multiple clouds by creating two endpoints with the same URL.
+ngrok's [Endpoint Pooling](/universal-gateway/endpoint-pooling) allows you to automatically load balance between replicas of your service across multiple clouds by creating two endpoints with the same URL.
 
 This guide will show you how to set up endpoint pooling with a few different methods.
 
@@ -15,14 +15,14 @@ This guide will reference reserved domains frequently. You can reserve a free do
 
 ngrok's Endpoint Pooling:
 
-- Works with the [agent CLI](/docs/agent),
-  [SDKs](/docs/agent-sdks/) and our [Kubernetes Operator](/docs/k8s). You can even use all these tools in a single pool.
+- Works with the [agent CLI](/agent),
+  [SDKs](/agent-sdks/) and our [Kubernetes Operator](/k8s). You can even use all these tools in a single pool.
 - Lets you migrate from one deployment strategy to another without hard cut-overs, like moving from using the agent for ingress to embedding ngrok directly in your app/API with an SDK.
-- Works with [Traffic Policy](/docs/traffic-policy), enabling you to manage traffic identically across all your replicas from a single "front door," or enforce different policies for each replica.
+- Works with [Traffic Policy](/traffic-policy), enabling you to manage traffic identically across all your replicas from a single "front door," or enforce different policies for each replica.
 
 ## Using the CLI
 
-Start with a single [agent endpoint](/docs/universal-gateway/agent-endpoints/) on an ngrok URL, or a [reserved domain](https://dashboard.ngrok.com/domains), with the `--pooling-enabled` flag on.
+Start with a single [agent endpoint](/universal-gateway/agent-endpoints/) on an ngrok URL, or a [reserved domain](https://dashboard.ngrok.com/domains), with the `--pooling-enabled` flag on.
 
 ```bash mode="cli"
 ngrok http 8000 --url your-reserved-domain --pooling-enabled true
@@ -47,7 +47,7 @@ You can verify pooling works in a few ways:
 ## Using SDKs and other tools
 
 Pooling isn't limited to how you start a given service or its replicas.
-If you've already started up one agent endpoint with the CLI, you can start up another with one of our [SDKs](/docs/agent-sdks) or the [Kubernetes Operator](/docs/k8s) to load-balance between them.
+If you've already started up one agent endpoint with the CLI, you can start up another with one of our [SDKs](/agent-sdks) or the [Kubernetes Operator](/k8s) to load-balance between them.
 
 The following is a simple example of enabling pooling with one of our SDKs.
 
@@ -188,9 +188,9 @@ If you already have a pool of endpoints created by agent CLIs, make a few reques
 ## Using Cloud Endpoints
 
 You can use Endpoint Pooling with Cloud Endpoints for custom traffic management.
-Pooling works with [internal Agent Endpoints](/docs/universal-gateway/internal-endpoints/), which can only receive traffic from other endpoints associated with your ngrok account.
+Pooling works with [internal Agent Endpoints](/universal-gateway/internal-endpoints/), which can only receive traffic from other endpoints associated with your ngrok account.
 
-A [Cloud Endpoint](/docs/universal-gateway/cloud-endpoints/) is a persistent public endpoint where you can manage a traffic policy for any upstream endpoints it forwards traffic to.
+A [Cloud Endpoint](/universal-gateway/cloud-endpoints/) is a persistent public endpoint where you can manage a traffic policy for any upstream endpoints it forwards traffic to.
 Forwarding traffic from a cloud endpoint to a pool of internal endpoints gives you a single "front door" for your multicloud load-balanced services.
 
 ### 1. Set up your internal Agent Endpoints
@@ -253,13 +253,13 @@ If you opted for a Cloud Endpoint that routes traffic to a pool of internal
 Agent Endpoints, you can now filter, manage, and orchestrate traffic from that
 single endpoint using Traffic Policy. Here's a few of our most popular actions:
 
-- [`oauth`](/docs/traffic-policy/actions/oauth)
-- [`url-redirect`](/docs/traffic-policy/actions/redirect)
-- [`set-vars`](/docs/traffic-policy/actions/set-vars)
-- [`add-headers`](/docs/traffic-policy/actions/add-headers)
+- [`oauth`](/traffic-policy/actions/oauth)
+- [`url-redirect`](/traffic-policy/actions/redirect)
+- [`set-vars`](/traffic-policy/actions/set-vars)
+- [`add-headers`](/traffic-policy/actions/add-headers)
 
 We didn't cover Kubernetes deployments in this guide, but we have a similar
 quickstart guide for [load-balancing K8s
-services](/docs/k8s/load-balancing/load-balancing-kubernetes). If you're
+services](/k8s/load-balancing/load-balancing-kubernetes). If you're
 interested in a more production-ready deployment, take a look at our [multicloud
-API gateway setup tutorial](/docs/guides/api-gateway/multicloud).
+API gateway setup tutorial](/guides/api-gateway/multicloud).
