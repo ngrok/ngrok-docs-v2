@@ -19,7 +19,7 @@ Here is what you'll be building with:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and [Helm
   3.0.0+](https://helm.sh/docs/intro/install/) installed on your local
   workstation.
-- The [ngrok Kubernetes Operator](/docs/k8s/) installed on
+- The [ngrok Kubernetes Operator](/k8s/) installed on
   your cluster.
 - A reserved domain, which you can get in the ngrok
   [dashboard](https://dashboard.ngrok.com/domains) or with the [ngrok
@@ -53,7 +53,7 @@ In this guide, we'll stick with the CLI as much as possible to showcase how tigh
 
 1. Now you can install the ngrok Kubernetes Operator to provide ingress to our services.
 
-   Check out our [Operator installation doc](/docs/k8s/installation/helm/) for details on how to use Helm to install with your ngrok credentials.
+   Check out our [Operator installation doc](/k8s/installation/helm/) for details on how to use Helm to install with your ngrok credentials.
 
    Your new Kubernetes cluster, managed by DigitalOcean, is all set up—and with the ngrok Kubernetes Operator installed with a single option on the CLI.
 
@@ -220,8 +220,8 @@ To demonstrate how ingress configuration and [OAuth support](/traffic-policy/act
 1. When you open your demo app again, you'll be asked to log in via Google.
    That's a start, but what if you want to authenticate only yourself or colleagues?
 
-1. You can use [expressions](/docs/traffic-policy/concepts/expressions) and [CEL
-   interpolation](/docs/traffic-policy/concepts/cel-interpolation) to filter out
+1. You can use [expressions](/traffic-policy/concepts/expressions) and [CEL
+   interpolation](/traffic-policy/concepts/cel-interpolation) to filter out
    and reject OAuth logins that don't contain `example.com`. Update the
    `NgrokTrafficPolicy` portion of your manifest after changing `example.com` to
    your domain.
@@ -255,4 +255,4 @@ To demonstrate how ingress configuration and [OAuth support](/traffic-policy/act
 
 You've now used the open-source ngrok Kubernetes Operator to add public ingress to an example app on a Kubernetes cluster managed by DigitalOcean. Because ngrok abstracts ingress and middleware execution to its cloud service, and thanks to DigitalOcean's `doctl` tool, you can quickly deploy new clusters, apps, and helpful services without leaving your CLI.
 
-Learn more about the ngrok Kubernetes Operator, or contribute to its ongoing development, by checking out the [GitHub repository](https://github.com/ngrok/ngrok-operator). We also have an extensive explainer for [how the Operator works](/docs/k8s/how-it-works/), plus additional [documentation](/docs/k8s/), which also includes details on leveraging the new Kubernetes Gateway API.
+Learn more about the ngrok Kubernetes Operator, or contribute to its ongoing development, by checking out the [GitHub repository](https://github.com/ngrok/ngrok-operator). We also have an extensive explainer for [how the Operator works](/k8s/how-it-works/), plus additional [documentation](/k8s/), which also includes details on leveraging the new Kubernetes Gateway API.

@@ -20,7 +20,7 @@ The [ngrok Kubernetes Operator](https://github.com/ngrok/ngrok-operator) is our 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and [Helm
   3.0.0+](https://helm.sh/docs/intro/install/) installed on your local
   workstation.
-- The [ngrok Kubernetes Operator](/docs/k8s/) installed on
+- The [ngrok Kubernetes Operator](/k8s/) installed on
   your cluster.
 - A reserved domain, which you can get in the ngrok
   [dashboard](https://dashboard.ngrok.com/domains) or with the [ngrok
@@ -126,8 +126,8 @@ spec:
 
 ## Add edge security to your app 
 
-With our [Traffic Policy system](/docs/traffic-policy/) and the [`oauth`
-action](/docs/traffic-policy/actions/oauth), ngrok manages OAuth protection
+With our [Traffic Policy system](/traffic-policy/) and the [`oauth`
+action](/traffic-policy/actions/oauth), ngrok manages OAuth protection
 entirely at its cloud service. ngrok's edge authenticates and authorizes all
 requests before allowing ingress and access to your endpoint, meaning you don't
 need to add any additional services to your cluster, or alter any routes.
@@ -136,7 +136,7 @@ To enable the `oauth` action, you'll create a new `NgrokTrafficPolicy` custom
 resource and apply it to your entire `Ingress` with an annotation. You can also
 apply the policy to just a specific backend or as the default backend for an
 `Ingress`—see our doc on using the [Operator with
-Ingresses](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress).
+Ingresses](/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress).
 
 1. Edit your existing `2048.yaml` manifest with the following, leaving the
    `Service` and `Deployment` as they were. Note the new `annotations` field and
@@ -190,8 +190,8 @@ Ingresses](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingre
 1. When you open your demo app again, you'll be asked to log in via Google.
    That's a start, but what if you want to authenticate only yourself or colleagues?
 
-1. You can use [expressions](/docs/traffic-policy/concepts/expressions) and [CEL
-   interpolation](/docs/traffic-policy/concepts/cel-interpolation) to filter out
+1. You can use [expressions](/traffic-policy/concepts/expressions) and [CEL
+   interpolation](/traffic-policy/concepts/cel-interpolation) to filter out
    and reject OAuth logins that don't contain `example.com`. Update the
    `NgrokTrafficPolicy` portion of your manifest after changing `example.com` to
    your domain.

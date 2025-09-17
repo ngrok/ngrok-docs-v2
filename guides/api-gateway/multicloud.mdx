@@ -23,8 +23,8 @@ In this tutorial, you'll learn how to implement ngrok as a multicloud API
 gateway in a Kubernetes environment with these broad steps:
 
 1. Deploy the ngrok Kubernetes Operator to your clusters in multiple clouds.
-2. Set up a single hostname, attached to a [Cloud Endpoint](/docs/universal-gateway/cloud-endpoints/) that routes traffic to services on multiple clouds based on pathname, an internal [Agent
-   Endpoint](/docs/universal-gateway/agent-endpoints) then receives in your cluster.
+2. Set up a single hostname, attached to a [Cloud Endpoint](/universal-gateway/cloud-endpoints/) that routes traffic to services on multiple clouds based on pathname, an internal [Agent
+   Endpoint](/universal-gateway/agent-endpoints) then receives in your cluster.
 3. Add traffic management rules, like JWT validation and rate limiting, to all
    or some of your API services.
 
@@ -43,9 +43,9 @@ will look like:
 - **A Kubernetes cluster on each cloud**.
 - **A reserved domain**, which you can get [in the ngrok
   dashboard](https://dashboard.ngrok.com/domains) or with the [ngrok
-  API](/docs/api/resources/reserved-domains/#create-reserved-domain).
+  API](/api/resources/reserved-domains/#create-reserved-domain).
   - You can choose from an ngrok subdomain or bring your own [custom branded
-    domain](/docs/universal-gateway/custom-domains), like
+    domain](/universal-gateway/custom-domains), like
     `https://api.example.com`.
   - We'll refer to this domain as `<YOUR_NGROK_DOMAIN>`.
 - An [**Auth0
@@ -151,7 +151,7 @@ Apply these with `kubectl apply -f ...` into the respective cloud and cluster.
 
 ## 1. Deploy the ngrok Kubernetes Operator
 
-You can check out our [installation doc](/docs/k8s/installation/helm) for more details and
+You can check out our [installation doc](/k8s/installation/helm) for more details and
 options on this process, but as a quickstart, add the ngrok Kubernetes Operator
 repo to Helm.
 
@@ -258,7 +258,7 @@ configured and managed in different ways.
     <Tab>
 
     		The `ngrok` CLI provides a helpful wrapper around the [ngrok
-    		API](/docs/api), which you can use to create a cloud endpoint and
+    		API](/api), which you can use to create a cloud endpoint and
     		apply a file containing Traffic Policy rules.
 
     		Because every cloud endpoint must contain a Traffic Policy rule, create a
@@ -297,15 +297,15 @@ configured and managed in different ways.
 Your front door is ready, but it currently doesn't have any logic for routing
 traffic to your API services in multiple clouds.
 
-Enter our [Traffic Policy system](/docs/traffic-policy), which lets you filter
+Enter our [Traffic Policy system](/traffic-policy), which lets you filter
 traffic based on its properties and take action as it passes through ngrok's
 global network. Two important concepts of Traffic Policy to note:
 
-- [Phases](/docs/traffic-policy/concepts/phases) are the distinct points in the lifecycle of
+- [Phases](/traffic-policy/concepts/phases) are the distinct points in the lifecycle of
   a request where you can filter and take action. For this use case, we're using
   `on_http_request`, which activates when ngrok receives an HTTP request over an
   established connection.
-- [Expressions](/docs/traffic-policy/concepts/expressions) define when to run
+- [Expressions](/traffic-policy/concepts/expressions) define when to run
   your actions. They're written in [Common Expression
   Language](https://github.com/google/cel-spec), and must evaluate to `true` to
   run the corresponding action.
@@ -318,7 +318,7 @@ The rules below:
    forward them to your internal agent endpoint in cloud B.
 
 You can also [route by other
-properties](/docs/traffic-policy/examples/route-requests), like subdomains and
+properties](/traffic-policy/examples/route-requests), like subdomains and
 headers.
 
 <Tabs>
@@ -419,7 +419,7 @@ specific services.
 API authentication is too important not to apply consistently across all your
 APIs and requests. That's where the always-on, _front door to all your routes_
 quality of a cloud endpoint comes in handy—you can apply the [`jwt-validation`
-action](/docs/traffic-policy/actions/jwt-validation) once for dependable AuthN
+action](/traffic-policy/actions/jwt-validation) once for dependable AuthN
 no matter how many services you end up deploying behind your multicloud API
 gateway.
 
@@ -458,7 +458,7 @@ The rule below builds on top of the previous cloud endpoint policy to:
 
 You'll need to change the variables accordingly—if you're not sure where to find
 this information, we have a full [integration
-guide](/docs/integrations/auth0/jwt-action) with more details.
+guide](/integrations/auth0/jwt-action) with more details.
 
 ```yaml mode="traffic-policy" title="policy.yaml"
 on_http_request:
@@ -507,7 +507,7 @@ the demo service), needs additional protection from unintentional misuse and
 malicious attacks.
 
 The [`rate-limit` Traffic Policy
-action](/docs/traffic-policy/actions/rate-limit) allows you to reject requests
+action](/traffic-policy/actions/rate-limit) allows you to reject requests
 with a `429` error code once a user or group have exceeded your customizable
 threshold, and the `AgentEndpoint` CRD allows you to define a Traffic Policy for
 just that endpoint.
@@ -575,9 +575,9 @@ beginning. Next up, we recommend you:
 
 1. Check out your [Traffic
    Inspector](https://dashboard.ngrok.com/observability/traffic-inspector)
-   ([documentation](/docs/obs/traffic-inspection#ngrok-traffic-inspector)) to
+   ([documentation](/obs/traffic-inspection#ngrok-traffic-inspector)) to
    observe, modify, and replay requests across your API gateway.
 2. Explore other opportunities to manage and take action on API traffic in our
-   [Traffic Policy documentation](/docs/traffic-policy).
+   [Traffic Policy documentation](/traffic-policy).
    performing at all times, and be alerted to errors.
-3. Learn [how to monitor your API traffic](/docs/guides/api-gateway/monitor-ngrok/), so you'll know how your service is performing at all times, and be alerted to errors.
+3. Learn [how to monitor your API traffic](/guides/api-gateway/monitor-ngrok/), so you'll know how your service is performing at all times, and be alerted to errors.

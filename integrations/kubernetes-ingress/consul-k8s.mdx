@@ -132,7 +132,7 @@ traffic between the ngrok Kubernetes Operator and our services.
     consul.hashicorp.com/transparent-proxy-exclude-outbound-cidrs: "10.96.0.1/32"
     ```
 
-    Check out our [Operator installation doc](/docs/k8s/installation/helm/) for details on how to use Helm to install with your ngrok credentials. Once you've done that, you can run the command below to set the appropriate annotations.
+    Check out our [Operator installation doc](/k8s/installation/helm/) for details on how to use Helm to install with your ngrok credentials. Once you've done that, you can run the command below to set the appropriate annotations.
 
     ```bash
     helm install ngrok-operator ngrok/ngrok-operator \
@@ -266,8 +266,8 @@ Open your `<NGROK_DOMAIN>` domain in your browser and see the HashiCups applicat
 Let's take your ingress needs a little further by assuming you want to add edge security, in the form of Google OAuth,
 to the endpoint where your 2048 application is humming along.
 
-With our [Traffic Policy system](/docs/traffic-policy/) and the [`oauth`
-action](/docs/traffic-policy/actions/oauth), ngrok manages OAuth protection
+With our [Traffic Policy system](/traffic-policy/) and the [`oauth`
+action](/traffic-policy/actions/oauth), ngrok manages OAuth protection
 entirely at the ngrok cloud service, which means you don't need to add any
 additional services to your cluster, or alter routes, to ensure ngrok's edge
 authenticates and authorizes all requests before allowing ingress and access to
@@ -277,7 +277,7 @@ To enable the `oauth` action, you'll create a new `NgrokTrafficPolicy` custom
 resource and apply it to your entire `Ingress` with an annotation. You can also
 apply the policy to just a specific backend or as the default backend for an
 `Ingress`—see our doc on using the [Operator with
-Ingresses](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress).
+Ingresses](/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress).
 
 1. Edit your existing ingress configuration with the following—note the new `annotations` field and
    the `NgrokTrafficPolicy` CR.
@@ -330,8 +330,8 @@ Ingresses](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingre
 1. When you open your demo app again, you'll be asked to log in via Google.
    That's a start, but what if you want to authenticate only yourself or colleagues?
 
-1. You can use [expressions](/docs/traffic-policy/concepts/expressions) and [CEL
-   interpolation](/docs/traffic-policy/concepts/cel-interpolation) to filter out
+1. You can use [expressions](/traffic-policy/concepts/expressions) and [CEL
+   interpolation](/traffic-policy/concepts/cel-interpolation) to filter out
    and reject OAuth logins that don't contain `example.com`. Update the
    `NgrokTrafficPolicy` portion of your manifest after changing `example.com` to
    your domain.

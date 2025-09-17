@@ -19,7 +19,7 @@ Here is what you'll be building with:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and [Helm
   3.0.0+](https://helm.sh/docs/intro/install/) installed on your local
   workstation.
-- The [ngrok Kubernetes Operator](/docs/k8s/) installed on
+- The [ngrok Kubernetes Operator](/k8s/) installed on
   your cluster.
 - A reserved domain, which you can get in the ngrok
   [dashboard](https://dashboard.ngrok.com/domains) or with the [ngrok
@@ -347,8 +347,8 @@ Next, you'll configure and deploy the [ngrok Kubernetes Operator](https://github
 
 Now that your demo app is publicly accessible through the ngrok cloud service, you can quickly layer on [additional capabilities](/universal-gateway/http/), like authentication, without configuring and deploying complex infrastructure. Let's see how that works for restricting access to individual Google accounts or any Google account under a specific domain name.
 
-With our [Traffic Policy system](/docs/traffic-policy/) and the [`oauth`
-action](/docs/traffic-policy/actions/oauth), ngrok manages OAuth protection
+With our [Traffic Policy system](/traffic-policy/) and the [`oauth`
+action](/traffic-policy/actions/oauth), ngrok manages OAuth protection
 entirely at the ngrok cloud service, which means you don't need to add any
 additional services to your cluster, or alter routes, to ensure ngrok's edge
 authenticates and authorizes all requests before allowing ingress and access to
@@ -358,7 +358,7 @@ To enable the `oauth` action, you'll create a new `NgrokTrafficPolicy` custom
 resource and apply it to your entire `Ingress` with an annotation. You can also
 apply the policy to just a specific backend or as the default backend for an
 `Ingress`—see our doc on using the [Operator with
-Ingresses](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress).
+Ingresses](/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress).
 
 1. Edit your existing ingress YAML with the following. Note the new `annotations` field and
    the `NgrokTrafficPolicy` CR.
@@ -405,8 +405,8 @@ Ingresses](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingre
 1. When you open your demo app again, you'll be asked to log in via Google.
    That's a start, but what if you want to authenticate only yourself or colleagues?
 
-1. You can use [expressions](/docs/traffic-policy/concepts/expressions) and [CEL
-   interpolation](/docs/traffic-policy/concepts/cel-interpolation) to filter out
+1. You can use [expressions](/traffic-policy/concepts/expressions) and [CEL
+   interpolation](/traffic-policy/concepts/cel-interpolation) to filter out
    and reject OAuth logins that don't contain `example.com`. Update the
    `NgrokTrafficPolicy` portion of your manifest after changing `example.com` to
    your domain.
@@ -440,8 +440,8 @@ Ingresses](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingre
 
 You've now used the open source ngrok Kubernetes Operator to add public ingress to a demo app on a cluster managed in AKS without having to worry about complex Kubernetes networking configurations. Because ngrok abstracts ingress and middleware execution to its cloud service, you can follow a similar process to route public traffic to your next production-ready app.
 
-For next steps, explore our [Kubernetes docs](/docs/k8s/) for more details on
+For next steps, explore our [Kubernetes docs](/k8s/) for more details on
 how the Operator works, different ways you can integrate ngrok with an existing
 production cluster, or use more advanced features like
-[bindings](/docs/k8s/guides/bindings/) or [endpoint
-pooling](/docs/k8s/guides/pooling/).
+[bindings](/k8s/guides/bindings/) or [endpoint
+pooling](/k8s/guides/pooling/).

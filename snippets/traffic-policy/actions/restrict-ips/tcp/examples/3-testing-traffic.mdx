@@ -3,8 +3,8 @@
 ### Test Restricting IPs
 
 The following [Traffic Policy](/traffic-policy)
-configuration demonstrates how to test restricting IPs using the [`log`](/docs/traffic-policy/actions/log/)
-action with the `restrict-ips` action and [IP Policies](/docs/api/resources/ip-policies/).
+configuration demonstrates how to test restricting IPs using the [`log`](/traffic-policy/actions/log/)
+action with the `restrict-ips` action and [IP Policies](/api/resources/ip-policies/).
 
 #### Example Traffic Policy Document
 
@@ -59,8 +59,8 @@ on_tcp_connect:
 </CodeGroup>
 
 This configuration will test the incoming client IP against the specified
-[IP Policy](/docs/api/resources/ip-policies/) `ipp_1yjqdrIBwgciY2I9zH2EelgBbJF`
-without enforcing it, then log the result using the [`log`](/docs/traffic-policy/actions/log/)
+[IP Policy](/api/resources/ip-policies/) `ipp_1yjqdrIBwgciY2I9zH2EelgBbJF`
+without enforcing it, then log the result using the [`log`](/traffic-policy/actions/log/)
 action.
 
 #### Example Request

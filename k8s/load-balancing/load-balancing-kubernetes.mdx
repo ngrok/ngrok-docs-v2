@@ -17,16 +17,16 @@ horizontally scale, but Kubernetes can't help if you want to:
 
 <YouTubeEmbed videoId="xD1hZ84uEJs" title="Multi-cluster (and multi-cloud!) ingress in 60 seconds with ngrok" />
 
-[Endpoint Pooling](/docs/universal-gateway/endpoint-pooling/) makes load
+[Endpoint Pooling](/universal-gateway/endpoint-pooling/) makes load
 balancing between Kubernetes services simple—you only need to create two
 endpoints with the same URL. Here's how that works in your clusters, whether
 you're using our `AgentEndpoint` custom resource,
-[Ingress](/docs/k8s/guides/using-ingresses) objects, or [Gateway
-API](/docs/k8s/guides/using-gwapi) resources.
+[Ingress](/k8s/guides/using-ingresses) objects, or [Gateway
+API](/k8s/guides/using-gwapi) resources.
 
 ## 1. Install the ngrok Kubernetes Operator
 
-Check out our [installation instructions](/docs/k8s/installation/helm/) for
+Check out our [installation instructions](/k8s/installation/helm/) for
 details on how to use Helm to deploy the open-source Operator to each cluster
 you'd like to load-balance between.
 
@@ -136,9 +136,9 @@ other clusters or clouds to add many other agent endpoints to the pool—there's
 no limit on how many services can share traffic on a single URL.
 
 You might also consider creating a single [Cloud
-Endpoint](/docs/universal-gateway/cloud-endpoints/) that serves as the "front
+Endpoint](/universal-gateway/cloud-endpoints/) that serves as the "front
 door" to all your Kubernetes services, then create a pool of [internal Agent
-Endpoints](/docs/universal-gateway/internal-endpoints/) on a pooled URL like
+Endpoints](/universal-gateway/internal-endpoints/) on a pooled URL like
 `https://example.internal`. Curious? We have a [step-by-step
-guide](/docs/k8s/load-balancing/load-balancing-kubernetes-clusters) that
+guide](/k8s/load-balancing/load-balancing-kubernetes-clusters) that
 details the entire process.

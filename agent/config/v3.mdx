@@ -17,7 +17,7 @@ There are important differences between the v3 ngrok Agent Configuration file an
 - Deprecated the `tunnels` field in favor of [`endpoints`](#endpoint-definitions).
 - Changed `server_addr` agent configuration field to [`connect_url`](#connect_url).
 - Changed `root_cas` agent configuration field to [`connect_cas`](#connect_cas).
-- Labeled tunnels are no longer supported in v3. Use [endpoints](/docs/api/resources/endpoints/) instead.
+- Labeled tunnels are no longer supported in v3. Use [endpoints](/api/resources/endpoints/) instead.
 
 ## Migrating from v2
 
@@ -161,7 +161,7 @@ How long to wait when establishing an agent session connection to the ngrok serv
 
 #### `connect_url`
 
-This is the URL of the ngrok server to connect to. You should set this if you are using a custom Connect URL. See [the Connect URL docs](/docs/agent/connect-url/) for more information.
+This is the URL of the ngrok server to connect to. You should set this if you are using a custom Connect URL. See [the Connect URL docs](/agent/connect-url/) for more information.
 
 #### `console_ui`
 
@@ -434,7 +434,7 @@ endpoints:
 #### `bindings`
 
 String[]. Allows you to configure the bindings for this endpoint. Currently only one binding may be provided.
-The allowed values are `internal`, `public`, and `kubernetes` which allow you to create [public](/docs/universal-gateway/public-endpoints/), [internal](/docs/universal-gateway/internal-endpoints/), and [kubernetes endpoints](/docs/universal-gateway/kubernetes-endpoints/).
+The allowed values are `internal`, `public`, and `kubernetes` which allow you to create [public](/universal-gateway/public-endpoints/), [internal](/universal-gateway/internal-endpoints/), and [kubernetes endpoints](/universal-gateway/kubernetes-endpoints/).
 This field is mainly only truly necessary for creating kubernetes endpoints as the default for all endpoints is to have a `public` binding, and an `internal` binding is automatically inferred when the endpoint URL ends in `.internal`.
 To create a kubernetes endpoint (which projects the endpoint into one or more kubernetes clusters running the ngrok operator as a `Service` resource), set the `bindings` field to `["kubernetes"]`.
 

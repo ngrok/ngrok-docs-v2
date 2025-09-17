@@ -16,12 +16,12 @@ This way, your users can hit the same hostname, authenticate themselves, and get
 
 ## 1. Set up your JWT provider
 
-You can use any provider/issuer, but we have a guide for defining an API and [generating tokens with Auth0](/docs/integrations/auth0/jwt-action/).
+You can use any provider/issuer, but we have a guide for defining an API and [generating tokens with Auth0](/integrations/auth0/jwt-action/).
 
 ## 2. Start internal endpoints for your services
 
-Start an internal [Agent Endpoint](/docs/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your app service listens.
-You can also use one of our [SDKs](/docs/agent-sdks) or the [Kubernetes Operator](/docs/k8s).
+Start an internal [Agent Endpoint](/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your app service listens.
+You can also use one of our [SDKs](/agent-sdks) or the [Kubernetes Operator](/k8s).
 
 ```bash
 ngrok http 8080 --url https://web-service.internal
@@ -124,8 +124,8 @@ curl https://your-service.ngrok.app \
 
 ## What's next?
 
-- Read more about [Traffic Policy](/docs/traffic-policy) and its [core concepts](/docs/traffic-policy/concepts).
-- Explore all the configuration options in the [`jwt-validate`](/docs/traffic-policy/actions/jwt-validation) and [`oauth`](/docs/traffic-policy/actions/oauth) actions.
+- Read more about [Traffic Policy](/traffic-policy) and its [core concepts](/traffic-policy/concepts).
+- Explore all the configuration options in the [`jwt-validate`](/traffic-policy/actions/jwt-validation) and [`oauth`](/traffic-policy/actions/oauth) actions.
 - View your traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector).
 
 <Back />
