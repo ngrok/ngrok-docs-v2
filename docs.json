@@ -375,19 +375,20 @@
               {
                 "group": "Integrations & Platforms",
                 "pages": [
-                  "k8s/integrations/argo-cd",
-                  "k8s/integrations/aws-eks",
-                  "k8s/integrations/microsoft-entra-id",
-                  "k8s/integrations/azure-aks",
-                  "k8s/integrations/consul",
-                  "k8s/integrations/digital-ocean",
-                  "k8s/integrations/gke",
-                  "k8s/integrations/linkerd",
-                  "k8s/integrations/microk8s",
-                  "k8s/integrations/rancher",
-                  "k8s/integrations/rayfay",
-                  "k8s/integrations/spectro-cloud",
-                  "k8s/integrations/vcluster"
+                  "integrations/kubernetes-ingress/apiops",
+                  "integrations/kubernetes-ingress/azure-ad-k8s",
+                  "integrations/kubernetes-ingress/azure-aks-k8s",
+                  "integrations/kubernetes-ingress/consul-k8s",
+                  "integrations/kubernetes-ingress/digitalocean-k8s",
+                  "integrations/kubernetes-ingress/eks",
+                  "integrations/kubernetes-ingress/google-kubernetes-engine",
+                  "integrations/kubernetes-ingress/gslb",
+                  "integrations/kubernetes-ingress/k8s",
+                  "integrations/kubernetes-ingress/microk8s-k8s",
+                  "integrations/kubernetes-ingress/rafay-k8s",
+                  "integrations/kubernetes-ingress/rancher-k8s",
+                  "integrations/kubernetes-ingress/spectro-cloud-k8s",
+                  "integrations/kubernetes-ingress/vcluster-k8s"
                 ]
               },
               "k8s/changelog",
