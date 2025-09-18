@@ -1,5 +1,7 @@
 ---
-title: Log
+title: Log Action
+sidebarTitle: JWT Validation
+description: The JWT Validation action enables you to validate JSON Web Tokens (JWT) on your endpoints before routing traffic to your upstream service.
 ---
 
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
@@ -54,6 +56,7 @@ When this action is executed, the specified metadata will be collected on the
 [http_request_complete.v0](/obs/events/reference/#http_request_completev0) event
 under `traffic_policy.logs` key.
 
+## Examples
 
 ### Logging with CEL Interpolation
 
