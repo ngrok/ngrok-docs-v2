@@ -79,6 +79,8 @@ The target must be of the same protocol (i.e. an HTTP Endpoint may only forward 
 
 In addition, the target's traffic policy may only specify policy for the current protocol, for example if `forward-internal` is used in the `on_http_request` phase, the internal endpoint may only have `on_http_request` and `on_http_response` sections.
 
+## Examples
+
 ### Basic Example
 
 This example configuration will set up a public endpoint (`forward-internal-example.ngrok.app`) forwarding all traffic it receives to a internal endpoint (`example.internal`) that forwards the request to port `80` on your local machine. Since it is forwarding all traffic to the internal endpoint, no traffic will be sent to `8080` which is the upstream port for the public endpoint.
@@ -86,7 +88,7 @@ This example configuration will set up a public endpoint (`forward-internal-exam
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-28}
+```yaml policy.yml
 on_http_request:
   - actions:
       - type: forward-internal
@@ -94,7 +96,7 @@ on_http_request:
           url: https://example.internal
 ```
 
-```json policy.json {5-51}
+```json policy.json
 {
   "on_http_request": [
     {
