@@ -1,23 +1,87 @@
 ---
 title: Redirect
 ---
-import ActionBehavior from "/snippets/traffic-policy/actions/redirect/behavior.mdx";
-import ActionConfig from "/snippets/traffic-policy/actions/redirect/config.mdx";
+
 import ActionExamples from "/snippets/traffic-policy/actions/redirect/examples/index.mdx";
-import ActionOverview from "/snippets/traffic-policy/actions/redirect/index.mdx";
-import ActionVariables from "/snippets/traffic-policy/actions/redirect/variables.mdx";
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
 import { ConfigField } from "/snippets/ConfigTable.jsx";
 import { ConfigChildren } from "/snippets/ConfigChildren.jsx";
 
+The **Redirect** Traffic Policy action enables you redirect incoming requests to
+new URLs by modifying the original URLs with regular expressions. Redirection is
+performed using the `Location` header.
 
-<ActionOverview />
-<ActionConfig />
-<ActionBehavior />
+## Configuration Reference
+
+The [Traffic Policy](/docs/traffic-policy/) configuration
+reference for this action.
+
+### Supported Phases
+
+`on_http_request`
+
+### Type
+
+`redirect`
+
+### Configuration Fields
+
+<ConfigField title="from" type="string" required={false} cel={true}>
+    <p>A regular expression pattern used to match a part of the URL.</p>
+    <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
+</ConfigField>
+
+<ConfigField title="to" type="string" required={true} cel={true}>
+    <p>A regular expression pattern used to replace the matched part of the URL.</p>
+    <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
+</ConfigField>
+
+<ConfigField title="status_code" type="integer" required={false}>
+    <p>A <code>3xx</code> status code used for redirecting. Default is <code>302</code>.</p>
+</ConfigField>
+
+<ConfigField title="headers" type="object" required={false} cel={true}>
+    <p>Map of key-value headers to be added to the response.</p>
+    <p>Maximum <code>10</code> headers can be specified.</p>
+    <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation) in header values.</p>
+</ConfigField>
+
+## Behavior
+
+If the specified `from` regular expression matches the request URL, the URL will
+be modified according to the `to` field. If no `from` field is specified, the
+entire URL will be treated as a match.
+
+When a match is found and the request URL is modified by the `to` field, the
+action will return a temporary `302` redirect by default, unless specified
+otherwise through the `status_code` field.
+
+If the request URL is not changed, the action will take no further action.
+
+### Note about CEL Interpolation
+
+All CEL interpolation will occur **before** regular expressions
+are evaluated.
+
 <ActionExamples />
 
 ## Action Result Variables
 
 <ActionVariablesDescription />
-<ActionVariables />
+
+<ConfigField title="actions.ngrok.redirect.matches" type="array of strings">
+    <p>A list of elements that were matched during redirection. These represent the request components (e.g., path or query parameters) that triggered the action and resulted in the redirect.</p>
+</ConfigField>
+
+<ConfigField title="actions.ngrok.redirect.url" type="string">
+    <p>The URL to which the traffic was redirected. This is the destination URL returned as part of the redirect response after the action was executed.</p>
+</ConfigField>
+
+<ConfigField title="actions.ngrok.redirect.error.code" type="string">
+    <p>A machine-readable code describing an error that occurred during the action's execution.</p>
+</ConfigField>
+
+<ConfigField title="actions.ngrok.redirect.error.message" type="string">
+    <p>A human-readable message providing details about an error that occurred during the action's execution.</p>
+</ConfigField>
