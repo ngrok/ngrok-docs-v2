@@ -12,19 +12,18 @@ configuration is an example configuration of the `basic-auth` action.
 on_http_request:
   - actions:
     - type: "basic-auth"
-    config:
-    realm: "sample-realm"
-    credentials:
-    - "user:password1"
-    - "admin:password2"
-    enforce: true
-
+      config:
+        realm: "sample-realm"
+        credentials:
+          - "user:password1"
+          - "admin:password2"
+        enforce: true
     - type: "custom-response"
-    config:
-    status_code: 200
-    headers:
-    content-type: "text/plain"
-    body: "Successfully Authenticated!"
+      config:
+        status_code: 200
+        headers:
+          content-type: "text/plain"
+        body: "Successfully Authenticated!"
 ```
 ```json policy.json highlight={5-51}
 {

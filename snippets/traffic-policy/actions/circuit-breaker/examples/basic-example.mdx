@@ -12,12 +12,12 @@ This example configuration sets up an endpoint (`hotdog.ngrok.app`) that allows 
 on_http_request:
   - actions:
     - type: "circuit-breaker"
-    config:
-    error_threshold: 0
-    volume_threshold: 1
-    window_duration: "60s"
-    tripped_duration: "2m"
-    enforce: true
+      config:
+        error_threshold: 0
+        volume_threshold: 1
+        window_duration: "60s"
+        tripped_duration: "2m"
+        enforce: true
 ```
 ```json policy.json highlight={5-51}
 {

@@ -11,16 +11,15 @@ This example configuration sets up an endpoint (`gitlab-webhook-example.ngrok.ap
 on_http_request:
   - actions:
     - type: "verify-webhook"
-    config:
-    provider: "gitlab"
-    secret: "secret!"
-
+      config:
+        provider: "gitlab"
+        secret: "secret!"
     - type: "custom-response"
-    config:
-    status_code: 200
-    headers:
-    content-type: "text/plain"
-    body: "GitLab webhook verified"
+      config:
+        status_code: 200
+        headers:
+          content-type: "text/plain"
+        body: "GitLab webhook verified"
 ```
 ```json policy.json highlight={5-51}
 {

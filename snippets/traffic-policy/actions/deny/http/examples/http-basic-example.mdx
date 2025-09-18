@@ -12,8 +12,8 @@ configuration will deny all inbound traffic with a `404` on your endpoint.
 on_http_request:
   - actions:
     - type: "deny"
-    config:
-    status_code: 404
+      config:
+        status_code: 404
 ```
 ```json policy.json highlight={5-10}
 {

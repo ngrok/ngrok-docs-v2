@@ -12,10 +12,10 @@ configuration will log a message with the endpoint identifier for every request.
 on_http_request:
   - actions:
     - type: "log"
-    config:
-    metadata:
-    message: "Log action executed."
-    endpoint_id: "${endpoint.id}"
+      config:
+        metadata:
+          message: "Log action executed."
+          endpoint_id: "${endpoint.id}"
 ```
 ```json policy.json highlight={5-13}
 {

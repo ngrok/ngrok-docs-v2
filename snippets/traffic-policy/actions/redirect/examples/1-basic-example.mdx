@@ -13,9 +13,9 @@ requests from `/products` to `/store/products`.
 on_http_request:
   - actions:
     - type: "redirect"
-    config:
-    from: "/products"
-    to: "/store/products"
+      config:
+        from: "/products"
+        to: "/store/products"
 ```
 ```json policy.json highlight={5-12}
 {

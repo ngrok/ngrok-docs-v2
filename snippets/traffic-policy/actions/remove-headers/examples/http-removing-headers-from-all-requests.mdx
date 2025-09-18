@@ -14,10 +14,10 @@ using the `remove-headers` action.
 on_http_request:
   - actions:
     - type: "remove-headers"
-    config:
-    headers:
-    - "x-client-version"
-    - "x-trace-id"
+      config:
+        headers:
+          - "x-client-version"
+          - "x-trace-id"
 ```
 ```json policy.json highlight={5-13}
 {

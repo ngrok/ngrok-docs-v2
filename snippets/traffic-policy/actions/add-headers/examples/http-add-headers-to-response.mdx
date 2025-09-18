@@ -12,13 +12,13 @@ the method is `GET` and the URL starts with `/status/200`.
 ```yaml policy.yml highlight={6-10}
 on_http_response:
   - expressions:
-    - "req.method == "GET" && req.url.path.startsWith("/status/200")"
+      - "req.method == \"GET\" && req.url.path.startsWith(\"/status/200\")"
     actions:
-    - type: "add-headers"
-    config:
-    headers:
-    x-custom-header: "my-custom-value"
-    x-string-interpolation-example: "started at ${conn.ts.start}"
+      - type: "add-headers"
+        config:
+          headers:
+            x-custom-header: "my-custom-value"
+            x-string-interpolation-example: "started at ${conn.ts.start}"
 ```
 ```json policy.json highlight={8-16}
 {

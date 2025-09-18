@@ -12,9 +12,9 @@ configuration will add the client IP address to all HTTP requests.
 on_http_request:
   - actions:
     - type: "add-headers"
-    config:
-    headers:
-    x-client-ip: "${conn.client_ip}"
+      config:
+        headers:
+          x-client-ip: "${conn.client_ip}"
 ```
 ```json policy.json highlight={5-12}
 {
