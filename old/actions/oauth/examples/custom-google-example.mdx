@@ -1,0 +1,37 @@
+<CodeGroup>
+```yaml policy.yml {4-11}
+on_http_request:
+  - actions:
+      - type: oauth
+        config:
+          provider: google
+          client_id: '{your app''s oauth client id}'
+          client_secret: '{your app''s oauth client secret}'
+          scopes:
+            - https://www.googleapis.com/auth/userinfo.profile
+            - https://www.googleapis.com/auth/userinfo.email
+```
+
+```json policy.json {5-16}
+{
+  "on_http_request": [
+    {
+      "actions": [
+        {
+          "type": "oauth",
+          "config": {
+            "provider": "google",
+            "client_id": "{your app's oauth client id}",
+            "client_secret": "{your app's oauth client secret}",
+            "scopes": [
+              "https://www.googleapis.com/auth/userinfo.profile",
+              "https://www.googleapis.com/auth/userinfo.email"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
