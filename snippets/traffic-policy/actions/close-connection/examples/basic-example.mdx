@@ -1,4 +1,4 @@
-
+import ConfigExample from "/snippets/ConfigExample.tsx";
 
 ### Basic Example
 
@@ -6,13 +6,12 @@ This example configuration sets up an endpoint (`hotdog.ngrok.app`) and closes c
 
 #### Example Traffic Policy Document
 
-```yaml
-on_http_request:
-  - name: DC
-    expressions:
-      - req.url.path.startsWith("/dc")
-    actions:
-      - type: close-connection
+```on_http_request:
+- name: DC
+  expressions:
+  - req.url.path.startsWith("/dc")
+  actions:
+  - type: close-connection
 ```
 
 #### Start Endpoint with Traffic Policy

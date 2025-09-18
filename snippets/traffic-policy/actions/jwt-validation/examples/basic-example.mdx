@@ -1,44 +1,43 @@
-
-
 ### Basic Example
 
-The following [Traffic Policy](/traffic-policy/)
+The following [Traffic Policy](/docs/traffic-policy/)
 configuration is an example configuration of the `jwt-validation` action. For a
-more real-world example, check out our [Auth0 guide](/integrations/jwt-validation/auth0/).
+more real-world example, check out our [Auth0 guide](/docs/integrations/auth0/jwt-action/).
 
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml highlight={4-28}
+```yaml policy.yml {4-28}
 on_http_request:
   - actions:
-    - type: "jwt-validation"
-      config:
-        issuer:
-          allow_list:
-            - value: "https://example.com/issuer"
-        audience:
-          allow_list:
-            - value: "urn:example:api"
-        http:
-          tokens:
-            - type: "access_token"
-              method: "header"
-              name: "Authorization"
-              prefix: "Bearer "
-            - type: "it+jwt"
-              method: "body"
-              name: "_id_token"
-        jws:
-          allowed_algorithms:
-            - "RS256"
-            - "ES256"
-          keys:
-            sources:
-              additional_jkus:
-                - "https://example.com/issuer/jku"
+      - type: jwt-validation
+        config:
+          issuer:
+            allow_list:
+              - value: https://example.com/issuer
+          audience:
+            allow_list:
+              - value: urn:example:api
+          http:
+            tokens:
+              - type: access_token
+                method: header
+                name: Authorization
+                prefix: 'Bearer '
+              - type: it+jwt
+                method: body
+                name: _id_token
+          jws:
+            allowed_algorithms:
+              - RS256
+              - ES256
+            keys:
+              sources:
+                additional_jkus:
+                  - https://example.com/issuer/jku
 ```
-```json policy.json highlight={5-51}
+
+```json policy.json {5-51}
 {
   "on_http_request": [
     {

@@ -1,23 +1,22 @@
-
-
 ### Redirect using Paths
 
-The following [Traffic Policy](/traffic-policy/)
+The following [Traffic Policy](/docs/traffic-policy/)
 configuration demonstrates how to use the `redirect` action to redirect incoming
 requests from `/products` to `/store/products`.
 
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml highlight={4-13}
+```yaml policy.yml {4-13}
 on_http_request:
   - actions:
-    - type: "redirect"
-      config:
-        from: "/products"
-        to: "/store/products"
+      - type: redirect
+        config:
+          from: /products
+          to: /store/products
 ```
-```json policy.json highlight={5-12}
+
+```json policy.json {5-12}
 {
   "on_http_request": [
     {
