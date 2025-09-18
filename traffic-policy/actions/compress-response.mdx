@@ -4,6 +4,7 @@ sidebarTitle: Compress Response
 description: Compress HTTP response bodies before they are returned to the client.
 ---
 import { ConfigField, ConfigEnum, ConfigEnumOption } from "/snippets/ConfigTable.jsx";
+import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
 The Compress Response Traffic Policy action enables you to improve the
 performance of your web applications by compressing HTTP response bodies returned
@@ -161,9 +162,7 @@ responsiveness for only those endpoints.
 
 ## Action Result Variables
 
-The following variables are made available for use in subsequent expressions and
-CEL interpolations after the action has run. Variable values will only apply
-to the last action execution, results are not concatenated.
+<ActionVariablesDescription />
 
 <ConfigField title="actions.ngrok.compress.already_compressed" type="boolean">
   <p>

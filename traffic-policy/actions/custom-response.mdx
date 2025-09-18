@@ -5,6 +5,7 @@ description: Return a hard-coded response back to the client that made a request
 ---
 
 import { ConfigField } from "/snippets/ConfigTable.jsx";
+import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
 
 The **Custom Response** Traffic Policy action enables you to return a hard-coded response back to the client that made a request to your endpoint.
@@ -308,7 +309,8 @@ interpolations to show the connection start time and the current time.
 
 ## Action Result Variables
 
-The following variables are made available for use in subsequent expressions and CEL interpolations after the action has run. Variable values will only apply to the last action execution, results are not concatenated.
+<ActionVariablesDescription />
+
 
 This action does not set any variables after it has been executed.
 

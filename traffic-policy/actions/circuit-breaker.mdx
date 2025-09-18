@@ -4,6 +4,7 @@ sidebarTitle: Circuit Breaker
 description: Prevent overload and maintain system reliability by rejecting requests when errors and volume exceed set thresholds.
 ---
 
+import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 import { ConfigField } from "/snippets/ConfigTable.jsx";
 
 The Circuit Breaker Traffic Policy action helps you maintain system reliability 
@@ -157,8 +158,6 @@ Circuit breaker tripped!
 
 ## Action Result Variables
 
-The following variables are made available for use in subsequent expressions and
-CEL interpolations after the action has run. Variable values will only apply
-to the last action execution, results are not concatenated.
+<ActionVariablesDescription />
 
 <Note>This action does not expose any result variables.</Note>

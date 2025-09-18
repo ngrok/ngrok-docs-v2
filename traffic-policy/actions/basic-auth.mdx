@@ -4,6 +4,7 @@ sidebarTitle: Basic Auth
 description: Enforce HTTP Basic Auth on your endpoints.
 ---
 import { ConfigField } from "/snippets/ConfigTable.jsx";
+import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
 The Basic Auth action enables you to enforce HTTP Basic Auth on your endpoints. Requests with a valid username and password will be sent to
 your upstream service, all others will be rejected with a `401 Unauthorized` response.
@@ -173,9 +174,8 @@ instead.
 
 ## Action Result Variables
 
-The following variables are made available for use in subsequent expressions and
-CEL interpolations after the action has run. Variable values will only apply
-to the last action execution, results are not concatenated.
+<ActionVariablesDescription />
+
 
 <ConfigField title="actions.ngrok.basic_auth.credentials.presented" type="bool" required={false}>
   <p>Whether there were Basic Auth credentials presented in the Authorization header.</p>

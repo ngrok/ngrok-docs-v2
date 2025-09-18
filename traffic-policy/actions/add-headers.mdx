@@ -4,6 +4,7 @@ sidebarTitle: Add Headers
 description: Add headers to an HTTP request or response before it is delivered upstream or back to the client.
 ---
 import { ConfigField } from "/snippets/ConfigTable.jsx";
+import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
 The Add Headers action enables you to add custom headers to an HTTP request or 
 response before delivery to the upstream service or client. This is useful 
@@ -186,9 +187,7 @@ x-string-interpolation-example: started at 2024-07-13T00:10:16Z
 
 ## Action Result Variables
 
-The following variables are made available for use in subsequent expressions and
-CEL interpolations after the action has run. Variable values will only apply
-to the last action execution, results are not concatenated.
+<ActionVariablesDescription />
 
 <ConfigField title="actions.ngrok.add_headers.headers_added" type="object">
   <p>Map of headers that were added by the action.</p>
