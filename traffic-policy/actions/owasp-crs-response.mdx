@@ -4,7 +4,6 @@ sidebarTitle: OWASP CRS Response
 description: The OWASP CRS Response action enables OWASP Core Rule Set (CRS) to analyze outgoing HTTP responses from your endpoint and protect against common web attacks.
 ---
 
-import ActionExamples from "/snippets/traffic-policy/actions/owasp-crs-response/examples/index.mdx";
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 import { YouTubeEmbed } from "/snippets/YouTubeEmbed.jsx";
 
@@ -99,7 +98,103 @@ If the anomaly score accumulated from matching rules exceeds the threshold, ngro
 
 If ngrok is unable to read the response body successfully, ngrok blocks the response with a `HTTP 500` response. The response from your upstream does not make it to the client.
 
-<ActionExamples />
+## Examples
+
+### Running in block mode
+
+The following configuration demonstrates how to run the `owasp-crs-response` action in block mode.
+
+#### Example Traffic Policy Document
+
+<CodeGroup>
+```yaml policy.yml {4-11}
+on_http_response:
+  - actions:
+      - type: owasp-crs-response
+        config:
+          on_error: halt
+```
+
+```json policy.json {5-11}
+{
+  "on_http_response": [
+    {
+      "actions": [
+        {
+          "type": "owasp-crs-response",
+          "config": {
+            "on_error": "halt"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
+
+### Running in test mode
+
+The following configuration demonstrates how to run the `owasp-crs-response` action in test mode where rules are evaluated but blocks are not enforced.
+
+#### Example Traffic Policy Document
+
+<CodeGroup>
+```yaml policy.yml {4-11}
+on_http_response:
+  - actions:
+      - type: owasp-crs-response
+        config:
+          on_error: continue
+      - type: log
+        config:
+          metadata:
+            message: OWASP CRS response action would be ${actions.ngrok.owasp_crs_response.decision} for ${req.url}
+            error_code: ${actions.ngrok.owasp_crs_response.error.code}
+            error_message: ${actions.ngrok.owasp_crs_response.error.message}
+            matched_rules_first_id: ${actions.ngrok.owasp_crs_response.matched_rules[0].id}
+            matched_rules_first_message: ${actions.ngrok.owasp_crs_response.matched_rules[0].message}
+            matched_rules_first_data: ${actions.ngrok.owasp_crs_response.matched_rules[0].data}
+```
+
+```json policy.json {5-11}
+{
+  "on_http_response": [
+    {
+      "actions": [
+        {
+          "type": "owasp-crs-response",
+          "config": {
+            "on_error": "continue"
+          }
+        },
+        {
+          "type": "log",
+          "config": {
+            "metadata": {
+              "message": "OWASP CRS response action would be ${actions.ngrok.owasp_crs_response.decision} for ${req.url}",
+              "error_code": "${actions.ngrok.owasp_crs_response.error.code}",
+              "error_message": "${actions.ngrok.owasp_crs_response.error.message}",
+              "matched_rules_first_id": "${actions.ngrok.owasp_crs_response.matched_rules[0].id}",
+              "matched_rules_first_message": "${actions.ngrok.owasp_crs_response.matched_rules[0].message}",
+              "matched_rules_first_data": "${actions.ngrok.owasp_crs_response.matched_rules[0].data}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
+
+### Example response from your upstream that ngrok would block
+
+A `text/plain` response like the following will result in ngrok blocking the response due to potential security leaks i.e. SQL Injection vulnerabilities.
+
+```
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT * FROM users WHERE id = 'abc'' at line 1
+```
 
 ## Action Result Variables
 
