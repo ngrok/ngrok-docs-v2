@@ -47,7 +47,7 @@ export const ConfigField = ({
   );
 };
 
-export const ConfigItem = ({
+export const OldConfigItem = ({
   title,
   type,
   cel = false,

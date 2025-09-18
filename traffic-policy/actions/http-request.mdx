@@ -6,6 +6,7 @@ import ActionVariablesDescription from "/snippets/traffic-policy/common/action-v
 
 import { YouTubeEmbed } from "/snippets/YouTubeEmbed.jsx";
 import { ConfigField } from "/snippets/ConfigTable.jsx";
+import { ConfigChildren } from "/snippets/ConfigChildren.jsx";
 
 The HTTP Request Traffic Policy action performs an outbound HTTP request to a target URL. You can use it to integrate with external services through internal endpoints or—if enabled—with external APIs.
 
@@ -30,94 +31,94 @@ reference for this action.
 
 ### Configuration Fields
 
-  <ConfigField title="url" type="string" required={true} cel={true}>
-    <p>
-      The destination URL for the HTTP request.
-    </p>
-  </ConfigField>
-  <ConfigField title="method" type="enum">
-    <p>
-      The HTTP method to use for the request.
-    </p>
-    <p>Possible Enums</p>
-    <ul>
-      <li>`GET` (default)</li>
-      <li>`PUT`</li>
-      <li>`POST`</li>
-      <li>`PATCH`</li>
-      <li>`DELETE`</li>
-      <li>`OPTIONS`</li>
-    </ul>
-  </ConfigField>
-  <ConfigField title="query_params" type="list of objects" cel={true}>
-    <p>
-      A list of query parameters to append to the URL. Each item is an object with the following structure:
-    </p>
+<ConfigField title="url" type="string" required={true} cel={true}>
+  <p>
+    The destination URL for the HTTP request.
+  </p>
+</ConfigField>
+<ConfigField title="method" type="enum">
+  <p>
+    The HTTP method to use for the request.
+  </p>
+  <p>Possible Enums</p>
+  <ul>
+    <li>`GET` (default)</li>
+    <li>`PUT`</li>
+    <li>`POST`</li>
+    <li>`PATCH`</li>
+    <li>`DELETE`</li>
+    <li>`OPTIONS`</li>
+  </ul>
+</ConfigField>
+<ConfigField title="query_params" type="list of objects" cel={true}>
+  <p>
+    A list of query parameters to append to the URL. Each item is an object with the following structure:
+  </p>
 ```yaml
-  - key: "parameter_name"
-    value: "parameter_value"
+- key: "parameter_name"
+  value: "parameter_value"
 ```
-    <p>
-      This format supports CEL interpolation in both keys and values.
-    </p>
-    <p>
-      Maximum: `32` entries. Key max length: `128` chars. Value max length: `8192` chars.
-    </p>
-  </ConfigField>
-  <ConfigField title="headers" type="object" cel={true}>
-    <p>
-      A map of HTTP headers to include in the request. Keys are header names and values are header values.
-    </p>
-    <p>
-      Maximum: `10` entries.
-    </p>
-  </ConfigField>
-  <ConfigField title="body" type="string" cel={true}>
-    <p>
-      The body of the HTTP request. Supported on methods like `POST`, `PUT`, or `PATCH`.
-    </p>
-  </ConfigField>
-  <ConfigField title="max_redirects" type="int">
-    <p>
-      The maximum number of HTTP redirects to follow.
-    </p>
-    <p>
-      Default is `10`. The minimum allowed is `0`. The maximum allowed is `100`.
-    </p>
-  </ConfigField>
-  <ConfigField title="timeout" type="duration">
-    <p>
-      The maximum duration as a duration string to wait for the entire request (including retries and redirects).
-    </p>
-    <p>
-      Default is `3s`. The minimum allowed is `1s`. The maximum allowed is `30s`.
-    </p>
-  </ConfigField>
-  <ConfigField title="retry_condition" type="string" cel={true}>
-    <p>
-      A CEL expression evaluated after each failed attempt. If `true`, the request is retried (up to `3` times).
-    </p>
-    <p>Supported retry variables</p>
-    <ul>
-      <li>`attempts` (`int`): Total number of attempts so far</li>
-      <li>`last_attempt.req`: The last request object</li>
-      <li>`last_attempt.res`: The last response object (if any)</li>
-      <li>`last_attempt.error`: The error string (if any)</li>
-    </ul>
-    <p>
-      Default: `false`
-    </p>
-  </ConfigField>
-  <ConfigField title="on_error" type="enum">
-    <p>
-      Determines how to proceed if the HTTP request fails.
-    </p>
-    <p>Possible Enums</p>
+  <p>
+    This format supports CEL interpolation in both keys and values.
+  </p>
+  <p>
+    Maximum: `32` entries. Key max length: `128` chars. Value max length: `8192` chars.
+  </p>
+</ConfigField>
+<ConfigField title="headers" type="object" cel={true}>
+  <p>
+    A map of HTTP headers to include in the request. Keys are header names and values are header values.
+  </p>
+  <p>
+    Maximum: `10` entries.
+  </p>
+</ConfigField>
+<ConfigField title="body" type="string" cel={true}>
+  <p>
+    The body of the HTTP request. Supported on methods like `POST`, `PUT`, or `PATCH`.
+  </p>
+</ConfigField>
+<ConfigField title="max_redirects" type="int">
+  <p>
+    The maximum number of HTTP redirects to follow.
+  </p>
+  <p>
+    Default is `10`. The minimum allowed is `0`. The maximum allowed is `100`.
+  </p>
+</ConfigField>
+<ConfigField title="timeout" type="duration">
+  <p>
+    The maximum duration as a duration string to wait for the entire request (including retries and redirects).
+  </p>
+  <p>
+    Default is `3s`. The minimum allowed is `1s`. The maximum allowed is `30s`.
+  </p>
+</ConfigField>
+<ConfigField title="retry_condition" type="string" cel={true}>
+  <p>
+    A CEL expression evaluated after each failed attempt. If `true`, the request is retried (up to `3` times).
+  </p>
+  <p>Supported retry variables</p>
+  <ul>
+    <li>`attempts` (`int`): Total number of attempts so far</li>
+    <li>`last_attempt.req`: The last request object</li>
+    <li>`last_attempt.res`: The last response object (if any)</li>
+    <li>`last_attempt.error`: The error string (if any)</li>
+  </ul>
+  <p>
+    Default: `false`
+  </p>
+</ConfigField>
+<ConfigField title="on_error" type="enum">
+  <p>
+    Determines how to proceed if the HTTP request fails.
+  </p>
+  <p>Possible Enums</p>
 <ul>
-      <li>`continue` (default) – Proceed with remaining actions</li>
-      <li>`halt` – Stop processing the policy</li>
-    </ul>
-  </ConfigField>
+    <li>`continue` (default) – Proceed with remaining actions</li>
+    <li>`halt` – Stop processing the policy</li>
+  </ul>
+</ConfigField>
 
 
 ## Behavior
@@ -413,96 +414,96 @@ on_http_request:
 
 <ActionVariablesDescription />
 
-	<ConfigField title="actions.ngrok.http_request.error.code" type="string">
-	</ConfigField>
-	<ConfigField title="actions.ngrok.http_request.error.message" type="string">
+	<ConfigItem title="actions.ngrok.http_request.error.code" type="string">
+	</ConfigItem>
+	<ConfigItem title="actions.ngrok.http_request.error.message" type="string">
 		<p>
 			Message for an error that occurred during the invocation of an action.
 		</p>
-	</ConfigField>
-	<ConfigField title="actions.ngrok.http_request.attempts" type="array of objects">
+	</ConfigItem>
+	<ConfigItem title="actions.ngrok.http_request.attempts" type="array of objects">
 	  <p>
 		  A list of HTTP responses for each request attempt.
 		</p>
-	  <div>
-		  <ConfigField title="attempts[i].resolved_ip" type="string">
+	  <ConfigChildren>
+		  <ConfigItem title="attempts[i].resolved_ip" type="string">
 			  <p>
 			    The IP address of the host returning the response.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="attempts[i].response_header" type="object">
+			</ConfigItem>
+		  <ConfigItem title="attempts[i].response_header" type="object">
 			  <p>
 				  A map of HTTP response headers.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="attempts[i].response_status_code" type="int">
+			</ConfigItem>
+		  <ConfigItem title="attempts[i].response_status_code" type="int">
 			  <p>
 			    The HTTP Status code for the response attempt.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="attempts[i].response_time_ms" type="string">
+			</ConfigItem>
+		  <ConfigItem title="attempts[i].response_time_ms" type="string">
 			  <p>
 				  Time it took to recieve the response.
 		    </p>	  
-			</ConfigField>
-		</div>
-	</ConfigField>
-	<ConfigField title="actions.ngrok.http_request.req" type="object">
+			</ConfigItem>
+		</ConfigChildren>
+	</ConfigItem>
+	<ConfigItem title="actions.ngrok.http_request.req" type="object">
 	  <p>
 		  The HTTP request.
 		</p>
-	  <div>
-		  <ConfigField title="req.method" type="string">
+	  <ConfigChildren>
+		  <ConfigItem title="req.method" type="string">
 		    <p>
 			    The HTTP method of the request.
 			  </p>
-			</ConfigField>
-		  <ConfigField title="req.header" type="object">
+			</ConfigItem>
+		  <ConfigItem title="req.header" type="object">
 			  <p>
 				  A map of HTTP request headers.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="req.url" type="string">
+			</ConfigItem>
+		  <ConfigItem title="req.url" type="string">
 			  <p>
 				  The request url.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="req.body" type="string">
+			</ConfigItem>
+		  <ConfigItem title="req.body" type="string">
 			  <p>
 				  The request body.
 		    </p>	  
-			</ConfigField>
-		</div>
-	</ConfigField>
-	<ConfigField title="actions.ngrok.http_request.res" type="object">
+			</ConfigItem>
+		</ConfigChildren>
+	</ConfigItem>
+	<ConfigItem title="actions.ngrok.http_request.res" type="object">
 	  <p>
 		  The last attempted HTTP response. Unlike `actions.ngrok.attempts[i]` this variable also contains the response body.
 		</p>
-	  <div>
-		  <ConfigField title="res.resolved_ip" type="string">
+	  <ConfigChildren>
+		  <ConfigItem title="res.resolved_ip" type="string">
 			  <p>
 			    The IP address of the host returning the response.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="res.header" type="object">
+			</ConfigItem>
+		  <ConfigItem title="res.header" type="object">
 			  <p>
 				  A map of HTTP response headers.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="res.status_code" type="int">
+			</ConfigItem>
+		  <ConfigItem title="res.status_code" type="int">
 			  <p>
 			    The HTTP Status code for the response.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="res.time_ms" type="string">
+			</ConfigItem>
+		  <ConfigItem title="res.time_ms" type="string">
 			  <p>
 				  Time it took to recieve the response.
 		    </p>	  
-			</ConfigField>
-		  <ConfigField title="res.body" type="string">
+			</ConfigItem>
+		  <ConfigItem title="res.body" type="string">
 			  <p>
 				  The response body
 		    </p>	  
-			</ConfigField>
-	  </div>
-	</ConfigField>
+			</ConfigItem>
+	  </ConfigChildren>
+	</ConfigItem>

@@ -4,6 +4,8 @@ title: JWT Validation
 
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 import { ConfigField } from "/snippets/ConfigTable.jsx";
+import { ConfigChildren } from "/snippets/ConfigChildren.jsx";
+
 
 The **JWT Validation** Traffic Policy action enables you to validate JSON Web
 Tokens (JWT) on your endpoints before routing traffic to your upstream service.
@@ -13,6 +15,7 @@ We have created guides for configuring this action with the following providers:
 - [Auth0](/docs/integrations/auth0/jwt-action/)
 
 A useful tool for working with JWTs is provided at [jwt.io](https://jwt.io).
+
 
 ## Configuration Reference
 
@@ -31,39 +34,39 @@ reference for this action.
 
 <ConfigField title="issuer" type="object" required={true}>
     <p>Configuration object for the Issuer(s) of the JWTs.</p>
-    <div>
+    <ConfigChildren>
         <ConfigField title="allow_list" type="array of objects" required={true}>
             <p>List of allowed issuers. Minimum `1`.</p>
-            <div>
+            <ConfigChildren>
                 <ConfigField title="allow_list[*].value" type="string" required={true} cel={true}>
                     <p>Issuer URL. This can be found in the <code>iss</code> claim after decoding the JWT or from the <code>/.well-known/openid-configuration</code> endpoint in your Identity Provider.</p>
                     <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
                 </ConfigField>
-            </div>
+            </ConfigChildren>
         </ConfigField>
-    </div>
+    </ConfigChildren>
 </ConfigField>
 
 <ConfigField title="audience" type="object" required={false}>
     <p>Configuration object for the Audience(s) of the JWTs.</p>
-    <div>
+    <ConfigChildren>
         <ConfigField title="allow_list" type="array of objects" required={false}>
             <p>List of allowed audiences. Minimum `1`.</p>
-            <div>
+            <ConfigChildren>
                 <ConfigField title="allow_list[*].value" type="string" required={false}>
                     <p>Audience claim value. This can be found in the <code>aud</code> claim after decoding the JWT or from the request used to create the token in the first place.</p>
                 </ConfigField>
-            </div>
+            </ConfigChildren>
         </ConfigField>
-    </div>
+    </ConfigChildren>
 </ConfigField>
 
 <ConfigField title="http" type="object" required={true}>
     <p>Configuration object for the HTTP requests containing JWTs.</p>
-    <div>
+    <ConfigChildren>
         <ConfigField title="tokens" type="array of objects" required={true}>
             <p>List of tokens to validate. Minimum `1`.</p>
-            <div>
+            <ConfigChildren>
                 <ConfigField title="tokens[*].type" type="enum" required={true}>
                     <p>Type of the JWT, which acts as a hint about how ngrok should parse the token.</p>
                     <ConfigEnum>
@@ -93,40 +96,40 @@ reference for this action.
                     <p>Any prefix to strip from the header or body field before parsing the JWT (Example: <code>"Bearer "</code>).</p>
                     <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
                 </ConfigField>
-            </div>
+            </ConfigChildren>
         </ConfigField>
-    </div>
+    </ConfigChildren>
 </ConfigField>
 
 <ConfigField title="jws" type="object" required={true}>
     <p>Configuration object for signed JWTs (JWS).</p>
-    <div>
+    <ConfigChildren>
         <ConfigField title="allowed_algorithms" type="array of strings" required={true}>
             <p>List of allowed signing algorithms. We do not support <code>none</code> as a value here because it is insecure. Minimum `1`.</p>
         </ConfigField>
         <ConfigField title="keys" type="array of objects" required={true}>
             <p>Configuration for the JWT signing keys.</p>
-            <div>
+            <ConfigChildren>
                 <ConfigField title="keys[*].identification" type="array of objects" required={false}>
                     <p>JWT metadata.</p>
-                    <div>
+                    <ConfigChildren>
                         <ConfigField title="keys[*].identification[*].token_claims" type="array of strings" required={false}>
                             <p>List of claims present in this token. Supported values: ['kid']</p>
                         </ConfigField>
-                    </div>
+                    </ConfigChildren>
                 </ConfigField>
                 <ConfigField title="keys[*].sources" type="array of objects" required={true}>
                     <p>Configuration for the key material used to verify the signed JWTs.</p>
-                    <div>
+                    <ConfigChildren>
                         <ConfigField title="keys[*].sources[*].additional_jkus" type="array of strings" required={true} cel={true}>
                             <p>List of URLs which serve the possible signing keys in JWKS format. These URLs are cached and refreshed roughly every 15 minutes.</p>
                             <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
                         </ConfigField>
-                    </div>
+                    </ConfigChildren>
                 </ConfigField>
-            </div>
+            </ConfigChildren>
         </ConfigField>
-    </div>
+    </ConfigChildren>
 </ConfigField>
 
 
@@ -304,7 +307,7 @@ response.
 		type="array of objects"
 	>
 		<p>The list of JSON Web Tokens (JWTs) processed by the action.</p>
-		<div>
+		<ConfigChildren>
 			<ConfigField title="tokens[i].header" type="object">
 				<p>
 					The header portion of the JWT, parsed into a key-value map containing
@@ -341,7 +344,7 @@ response.
 					<code>true</code> if verified successfully.
 				</p>
 			</ConfigField>
-		</div>
+		</ConfigChildren>
 	</ConfigField>
 	<ConfigField title="actions.ngrok.jwt_validation.error.code" type="string">
 		<p>
