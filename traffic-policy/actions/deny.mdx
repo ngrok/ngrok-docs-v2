@@ -71,13 +71,13 @@ configuration will deny all inbound traffic on your endpoint.
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-10}
+```yaml policy.yml
 on_tcp_connect:
   - actions:
       - type: deny
 ```
 
-```json policy.json {5-7}
+```json policy.json
 {
   "on_tcp_connect": [
     {
@@ -116,7 +116,7 @@ configuration will deny all inbound traffic with a `404` on your endpoint.
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-10}
+```yaml policy.yml {3-10}
 on_http_request:
   - actions:
       - type: deny
