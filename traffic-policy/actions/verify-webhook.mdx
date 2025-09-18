@@ -1,25 +1,239 @@
 ---
-title: Verify Webhook
+title: Verify Webhook Action
+sidebarTitle: Verify Webhook
+description: Validate incoming webhook signatures against a known secret to ensure authenticity.
 ---
-import ActionBehavior from "/snippets/traffic-policy/actions/verify-webhook/behavior.mdx";
-import ActionConfig from "/snippets/traffic-policy/actions/verify-webhook/config.mdx";
-import ActionExamples from "/snippets/traffic-policy/actions/verify-webhook/examples/index.mdx";
-import ActionOverview from "/snippets/traffic-policy/actions/verify-webhook/index.mdx";
-import ActionProviders from "/snippets/traffic-policy/actions/verify-webhook/providers.mdx";
-import ActionVariables from "/snippets/traffic-policy/actions/verify-webhook/variables.mdx";
+
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
 import { ConfigField } from "/snippets/ConfigTable.jsx";
 import { ConfigChildren } from "/snippets/ConfigChildren.jsx";
 
+The **Verify Webhook** Traffic Policy action enables you to validate incoming webhook signatures against a known secret to ensure authenticity. Depending on the verification result, it either forwards the request to the next action or rejects it, safeguarding your endpoints from unauthorized or tampered webhooks.
 
-<ActionOverview />
-<ActionConfig />
-<ActionBehavior />
-<ActionProviders />
-<ActionExamples />
+## Configuration Reference
+
+This is the [Traffic Policy](/docs/traffic-policy/) configuration
+reference for this action.
+
+### Supported Directions
+
+- `on_http_request`
+
+### Type
+
+`verify-webhook`
+
+### Configuration Fields
+
+    <ConfigField title="provider" type="string" required={true}>
+        <p>The name of the provider to verify webhook requests from.</p>
+        <p>Value must be a [supported provider](#supported-providers) identifier.</p>
+    </ConfigField>
+
+    <ConfigField title="secret" type="string" required={true} cel={true}>
+        <p>The secret key used to validate webhook requests from the specified provider.</p>
+        <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
+    </ConfigField>
+
+    <ConfigField title="enforce" type="bool" required={false}>
+        <p>When `true`, the request will be halted if the webhook is not valid and no further actions will run. However when `false`, subsequent actions will run even if the webhook was not valid.</p>
+        <p>Default <code>true</code>.</p>
+    </ConfigField>
+
+## Behavior
+
+The **verify-webhook** action ensures the authenticity of incoming webhook requests by validating their signatures against a known secret. Upon receiving a request, the action performs the signature verification. If verification succeeds, the request proceeds through the action chain. If it fails, the request is terminated with a `403 Forbidden` response, unless `enforce` is set to `false`, in which case the request proceeds without termination.
+
+### Verification Process
+
+- **Signature Validation**: The action validates incoming webhook signature to confirm the request originates from the configured provider and that the payload has not been tampered with.
+- **Request Handling**: If the webhook verification is successful, the request is forwarded to the next action. If the verification fails, the request chain is terminated with a `403` response.
+- **Configurable Enforcement**: By default, verification failures result in termination. However, setting `enforce: false` allows unverified requests to proceed, while logging the verification result. This option is useful for debugging, testing, and crafting your own custom responses with action result variables.
+
+### Endpoint Verification
+
+Some webhook providers require an initial endpoint verification challenge to validate that your application is legitimate before sending webhook events. The **verify-webhook** action automatically handles endpoint verification challenges for supported providers.
+
+- Supported providers:
+  - Twitter
+  - Worldline
+  - Xero
+  - Zoom
+
+#### Replay Prevention with Timestamp Tolerance
+
+To prevent replay attacks, ngrok verifies that the webhook’s timestamp falls within an acceptable range.
+
+#### Secret Handling and Encryption
+
+All secrets used for webhook verification are encrypted at config validation. When ngrok processes a requests the secret is decrypted.
+
+## Supported Providers 
+
+Currently, these integration guides refer to modules.
+
+| Provider                    | Provider Identifier     | Integration Guide                                                                                    |
+| --------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------- |
+| AfterShip                   | `aftership`             | [Documentation](/docs/integrations/aftership/webhooks/)                                              |
+| Airship                     | `airship`               | [Documentation](/docs/integrations/airship/webhooks/)                                                |
+| Alchemy                     | `alchemy`               | [Documentation](https://docs.alchemy.com/reference/notify-api-quickstart)                            |
+| Amazon SNS                  | `sns`                   | [Documentation](/docs/integrations/amazon-sns/webhooks/)                                             |
+| Autodesk Platform Services  | `autodesk`              | [Documentation](/docs/integrations/autodesk/webhooks/)                                               |
+| Bitbucket                   | `bitbucket`             | [Documentation](/docs/integrations/bitbucket/webhooks/)                                              |
+| Bolt                        | `bolt`                  | [Documentation](https://help.bolt.com/developers/guides/webhooks/hook-verification/)                 |
+| Box                         | `box`                   | [Documentation](/docs/integrations/box/webhooks/)                                                    |
+| Brex                        | `brex`                  | [Documentation](/docs/integrations/brex/webhooks/)                                                   |
+| Buildkite                   | `buildkite`             | [Documentation](/docs/integrations/buildkite/webhooks/)                                              |
+| Calendly                    | `calendly`              | [Documentation](/docs/integrations/calendly/webhooks/)                                               |
+| Castle                      | `castle`                | [Documentation](/docs/integrations/castle/webhooks/)                                                 |
+| Chargify                    | `chargify`              | [Documentation](/docs/integrations/chargify/webhooks/)                                               |
+| CircleCI                    | `circleci`              | [Documentation](/docs/integrations/circleci/webhooks/)                                               |
+| Clearbit                    | `clearbit`              | [Documentation](/docs/integrations/clearbit/webhooks/)                                               |
+| Clerk                       | `clerk`                 | [Documentation](/docs/integrations/clerk/webhooks/)                                                  |
+| Coinbase                    | `coinbase`              | [Documentation](/docs/integrations/coinbase/webhooks/)                                               |
+| Contentful                  | `contentful`            | [Documentation](/docs/integrations/contentful/webhooks/)                                             |
+| DocuSign                    | `docusign`              | [Documentation](/docs/integrations/docusign/webhooks/)                                               |
+| Dropbox                     | `dropbox`               | [Documentation](/docs/integrations/dropbox/webhooks/)                                                |
+| Facebook Graph API          | `facebook_graph_api`    | [Documentation](/docs/integrations/facebook/webhooks/)                                               |
+| Facebook Messenger          | `facebook_messenger`    | [Documentation](/docs/integrations/facebook-messenger/webhooks/)                                     |
+| Frame.io                    | `frameio`               | [Documentation](/docs/integrations/frameio/webhooks/)                                                |
+| GitHub                      | `github`                | [Documentation](/docs/integrations/github/webhooks/)                                                 |
+| GitLab                      | `gitlab`                | [Documentation](/docs/integrations/gitlab/webhooks/)                                                 |
+| Go1                         | `go1`                   | [Documentation](https://www.go1.com/developers/partners/concepts/webhook-signature-authentification) |
+| Heroku                      | `heroku`                | [Documentation](/docs/integrations/heroku/webhooks/)                                                 |
+| Hosted Hooks                | `hostedhooks`           | [Documentation](/docs/integrations/hostedhooks/webhooks/)                                            |
+| HubSpot                     | `hubspot`               | [Documentation](/docs/integrations/hubspot/webhooks/)                                                |
+| Hygraph (Formerly GraphCMS) | `graphcms`              | [Documentation](/docs/integrations/hygraph/webhooks/)                                                |
+| Instagram                   | `instagram`             | [Documentation](/docs/integrations/instagram/webhooks/)                                              |
+| Intercom                    | `intercom`              | [Documentation](/docs/integrations/intercom/webhooks/)                                               |
+| Launch Darkly               | `launch_darkly`         | [Documentation](/docs/integrations/launchdarkly/webhooks/)                                           |
+| Mailchimp                   | `mailchimp`             | [Documentation](/docs/integrations/mailchimp/webhooks/)                                              |
+| Mailgun                     | `mailgun`               | [Documentation](/docs/integrations/mailgun/webhooks/)                                                |
+| Microsoft Teams             | `microsoft_teams`       | [Documentation](/docs/integrations/teams/webhooks/)                                                  |
+| Modern Treasury             | `modern_treasury`       | [Documentation](/docs/integrations/modern-treasury/webhooks/)                                        |
+| MongoDB                     | `mongodb`               | [Documentation](/docs/integrations/mongodb/webhooks/)                                                |
+| Mux                         | `mux`                   | [Documentation](/docs/integrations/mux/webhooks/)                                                    |
+| Orb                         | `orb`                   | [Documentation](https://developer.withorb.com/docs/orb-docs/webhooks)                                |
+| Orbit                       | `orbit`                 | [Documentation](/docs/integrations/orbit/webhooks/)                                                  |
+| PagerDuty                   | `pagerduty`             | [Documentation](/docs/integrations/pagerduty/webhooks/)                                              |
+| Pinwheel                    | `pinwheel`              | [Documentation](/docs/integrations/pinwheel/webhooks/)                                               |
+| Plivo                       | `plivo`                 | [Documentation](/docs/integrations/plivo/webhooks/)                                                  |
+| Pusher                      | `pusher`                | [Documentation](/docs/integrations/pusher/webhooks/)                                                 |
+| SendGrid                    | `sendgrid`              | [Documentation](/docs/integrations/sendgrid/webhooks/)                                               |
+| Sentry                      | `sentry`                | [Documentation](/docs/integrations/sentry/webhooks/)                                                 |
+| Shopify                     | `shopify`               | [Documentation](/docs/integrations/shopify/webhooks/)                                                |
+| Signal Sciences             | `signal_sciences`       | [Documentation](/docs/integrations/signalsciences/webhooks/)                                         |
+| Slack                       | `slack`                 | [Documentation](/docs/integrations/slack/webhooks/)                                                  |
+| Sonatype Nexus              | `sonatype`              | [Documentation](/docs/integrations/sonatype-nexus/webhooks/)                                         |
+| Square                      | `square`                | [Documentation](/docs/integrations/square/webhooks/)                                                 |
+| Stripe                      | `stripe`                | [Documentation](/docs/integrations/stripe/webhooks/)                                                 |
+| Svix                        | `svix`                  | [Documentation](/docs/integrations/svix/webhooks/)                                                   |
+| Terraform                   | `terraform`             | [Documentation](/docs/integrations/terraform/webhooks/)                                              |
+| TikTok                      | `tiktok`                | [Documentation](/docs/integrations/tiktok/webhooks/)                                                 |
+| Trend Micro Conformity      | `trendmicro_conformity` | [Documentation](/docs/integrations/trendmicro/webhooks/)                                             |
+| Twilio                      | `twilio`                | [Documentation](/docs/integrations/twilio/webhooks/)                                                 |
+| Twitter                     | `twitter`               | [Documentation](/docs/integrations/twitter/webhooks/)                                                |
+| Typeform                    | `typeform`              | [Documentation](/docs/integrations/typeform/webhooks/)                                               |
+| VMware Workspace            | `vmware`                | [Documentation](/docs/integrations/vmware/webhooks/)                                                 |
+| Webex                       | `webex`                 | [Documentation](/docs/integrations/webex/webhooks/)                                                  |
+| WhatsApp                    | `whatsapp`              | [Documentation](/docs/integrations/whatsapp/webhooks/)                                               |
+| Worldline                   | `worldline`             | [Documentation](/docs/integrations/worldline/webhooks/)                                              |
+| Xero                        | `xero`                  | [Documentation](/docs/integrations/xero/webhooks/)                                                   |
+| Zendesk                     | `zendesk`               | [Documentation](/docs/integrations/zendesk/webhooks/)                                                |
+| Zoom                        | `zoom`                  | [Documentation](/docs/integrations/zoom/webhooks/)                                                   |
+
+## Examples
+
+### Basic Example
+
+This example configuration sets up an endpoint (`gitlab-webhook-example.ngrok.app`) that receives webhook requests from GitLab. The **Verify Webhook** action checks the authenticity of the request using a shared secret. If the request is verified, a custom response is sent back with a status `200 OK` and a plain text confirmation message.
+
+#### Example Traffic Policy Document
+
+<CodeGroup>
+```yaml policy.yml {4-28}
+on_http_request:
+  - actions:
+      - type: verify-webhook
+        config:
+          provider: gitlab
+          secret: secret!
+      - type: custom-response
+        config:
+          status_code: 200
+          headers:
+            content-type: text/plain
+          body: GitLab webhook verified
+```
+
+```json policy.json {5-51}
+{
+  "on_http_request": [
+    {
+      "actions": [
+        {
+          "type": "verify-webhook",
+          "config": {
+            "provider": "gitlab",
+            "secret": "secret!"
+          }
+        },
+        {
+          "type": "custom-response",
+          "config": {
+            "status_code": 200,
+            "headers": {
+              "content-type": "text/plain"
+            },
+            "body": "GitLab webhook verified"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
+
+#### Start Endpoint with Traffic Policy
+
+```bash
+ngrok http 8080 --url gitlab-webhook-example.ngrok.app --traffic-policy-file /path/to/policy.yml
+```
+
+```bash
+$ curl --location --request POST 'https://gitlab-webhook-example.ngrok.app/' \
+--header 'X-Gitlab-Token: secret!'
+> POST / HTTP/2
+> Host: gitlab-webhook-example.ngrok.app
+> User-Agent: curl/[version]
+> Accept: */*
+> X-Gitlab-Token: secret!
+...
+```
+
+This request will first be processed by the Verify Webhook action. If the GitLab webhook verification is successful, ngrok will return a `200 OK` response with the message GitLab webhook verified.
+
+```bash
+HTTP/2 200 OK
+content-type: text/plain
+GitLab webhook verified
+```
+
 
 ## Action Result Variables
 
 <ActionVariablesDescription />
-<ActionVariables />
+
+    <ConfigField title="actions.ngrok.verify_webhook.verified" type="bool">
+        <p>Indicates whether or not the request was successfully verified.</p>
+    </ConfigField>
+
+    <ConfigField title="actions.ngrok.verify_webhook.error.code" type="string">
+        <p>Code for an error that occurred during the invocation of an action.</p>
+    </ConfigField>
+
+    <ConfigField title="actions.ngrok.verify_webhook.error.message" type="string">
+        <p>Message for an error that occurred during the invocation of an action.</p>
+    </ConfigField>
