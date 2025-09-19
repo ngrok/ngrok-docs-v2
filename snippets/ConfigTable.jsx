@@ -47,6 +47,32 @@ export const ConfigField = ({
   );
 };
 
+export const ConfigEnum = ({ label, children }) => {
+  return (
+    <div className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start rounded-md border border-gray-200 p-0 dark:divide-gray-800 dark:border-gray-800 [&_li+li]:mt-0 [&_li]:py-2 list-none">
+      <div className="px-4 py-2 font-semibold list-none">
+        {label ? label : "Possible enum values"}
+      </div>
+      {children}
+    </div>
+  );
+};
+
+ConfigEnum.Option = ({ children }) => {
+  return <div className="space-y-2 px-4 py-2 list-none">{children}</div>;
+};
+
+export const ConfigEnumOption = ConfigEnum.Option;
+
+
+export const Config = ({ children }) => {
+  return (
+    <div className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start p-0 dark:divide-gray-800">
+      {children}
+    </div>
+  );
+};
+
 export const OldConfigItem = ({
   title,
   type,
@@ -114,29 +140,6 @@ export const ConfigChildren = ({
           {children}
         </div>
       )}
-    </div>
-  );
-};
-
-export const ConfigEnum = ({ label, children }) => {
-  return (
-    <div className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start rounded-md border border-gray-200 p-0 dark:divide-gray-800 dark:border-gray-800 [&_li+li]:mt-0 [&_li]:py-2 list-none">
-      <div className="px-4 py-2 font-semibold list-none">
-        {label ? label : "Possible enum values"}
-      </div>
-      {children}
-    </div>
-  );
-};
-
-export const ConfigEnumOption = ({ children }) => {
-    return <div className="space-y-2 px-4 py-2 list-none">{children}</div>;
-};
-
-export const Config = ({ children }) => {
-  return (
-    <div className="m-0 flex flex-shrink-0 list-none flex-col divide-y divide-gray-200 self-start p-0 dark:divide-gray-800">
-      {children}
     </div>
   );
 };

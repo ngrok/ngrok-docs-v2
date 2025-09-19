@@ -6,8 +6,7 @@ description: Control how TLS traffic is terminated by ngrok, including custom ce
 
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
-import { ConfigField } from "/snippets/ConfigTable.jsx";
-import { ConfigChildren } from "/snippets/ConfigChildren.jsx";
+import { ConfigField, ConfigEnum } from "/snippets/ConfigTable.jsx";
 
 The **Terminate TLS** Traffic Policy action allows you to control how TLS traffic is terminated by ngrok. This action is useful for when you need to specify a custom certificate, control which TLS versions are supported, or enable mutual TLS authentication.
 
@@ -21,32 +20,35 @@ This is the [Traffic Policy](/docs/traffic-policy/) configuration reference for 
 
 ### Configuration Fields
 
-    <ConfigField title="min_version" type="string" required={false}>
-        <p>The minimum TLS version to support. Must be one of `1.0`, `1.1`, `1.2`, or `1.3`. Defaults to `1.2`.</p>
-    </ConfigField>
+<ConfigField title="min_version" type="string" required={false} defaultValue="1.2">
+  The minimum TLS version to support. Must be one of `1.0`, `1.1`, `1.2`, or `1.3`.
+</ConfigField>
 
-    <ConfigField title="max_version" type="string" required={false}>
-        <p>The maximum TLS version to support. Must be one of `1.0`, `1.1`, `1.2`, or `1.3`. Defaults to `1.3`.</p>
-    </ConfigField>
+<ConfigField title="max_version" type="string" required={false} defaultValue="1.3">
+  The maximum TLS version to support. Must be one of `1.0`, `1.1`, `1.2`, or `1.3`.
+</ConfigField>
 
-    <ConfigField title="server_private_key" type="string" required={false} cel={true}>
-        <p>The PEM-encoded private key for the server if using a custom certificate (must be specified with `server_certificate`).</p>
-        <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
-    </ConfigField>
+<ConfigField title="server_private_key" type="string" required={false} cel={true}>
+  The PEM-encoded private key for the server if using a custom certificate (must be specified with `server_certificate`).
+</ConfigField>
 
-    <ConfigField title="server_certificate" type="string" required={false} cel={true}>
-        <p>The PEM-encoded certificate for the server if using a custom certificate (must be specified with `server_private_key`).</p>
-        <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
-    </ConfigField>
+<ConfigField title="server_certificate" type="string" required={false} cel={true}>
+  The PEM-encoded certificate for the server if using a custom certificate (must be specified with `server_private_key`).
+</ConfigField>
 
-    <ConfigField title="mutual_tls_certificate_authorities" type="array of strings" required={false} cel={true}>
-        <p>A list of PEM-encoded Certificate Authority certificates and/or Certificate Authority IDs that are trusted for mutual TLS authentication.</p>
-        <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
-    </ConfigField>
+<ConfigField title="mutual_tls_certificate_authorities" type="array of strings" required={false} cel={true}>
+  A list of PEM-encoded Certificate Authority certificates and/or Certificate Authority IDs that are trusted for mutual TLS authentication.
+</ConfigField>
 
-    <ConfigField title="mutual_tls_verification_strategy" type="string" required={false}>
-        <p>The strategy to use for mutual TLS verification. Must be one of `require-and-verify`, `require-any`, or `request`. Defaults to `require-and-verify`.</p>
-    </ConfigField>
+<ConfigField title="mutual_tls_verification_strategy" type="string" required={false} defaultValue="require-and-verify">
+  The strategy to use for mutual TLS verification.
+
+  <ConfigEnum>
+    <ConfigEnum.Option value="require-and-verify">Require and verify</ConfigEnum.Option>
+    <ConfigEnum.Option value="require-any">Require any</ConfigEnum.Option>
+    <ConfigEnum.Option value="request">Request</ConfigEnum.Option>
+  </ConfigEnum>
+</ConfigField>
 
 ### Supported Phases
 
@@ -130,27 +132,46 @@ If you want to specify a custom certificate for your endpoints instead of having
 
 #### Generate Certificates
 
-We will create a new Certificate Authority (CA) that will be used to sign the server certificate. This allows you to generate multiple server certificates that are trusted by the CA if needed. Note that this generates a self-signed certificate, so if you would like to use a custom certificate that is trusted by modern operating systems and browsers you will need to use a trusted CA (e.g. LetsEncrypt).
+We will create a new Certificate Authority (CA) that will be used to sign the 
+server certificate. This allows you to generate multiple server certificates 
+that are trusted by the CA if needed. 
 
-```bash
-# 1. Generate CA private key (ca.key)
-openssl genpkey -algorithm RSA -out ca.key -pkeyopt rsa_keygen_bits:2048
+<Note>Note that this generates a self-signed 
+certificate, so if you would like to use a custom certificate that is trusted 
+by modern operating systems and browsers you will need to use a trusted CA 
+(e.g. LetsEncrypt).</Note>
 
-# 2. Generate CA certificate (ca.crt)
-openssl req -x509 -new -nodes -key ca.key -sha256 -days 365 -out ca.crt -subj "/CN=ExampleCA"
+<Steps>
+  <Step title="Generate CA private key (ca.key)">
+    ```bash
+    openssl genpkey -algorithm RSA -out ca.key -pkeyopt rsa_keygen_bits:2048
+    ```
+  </Step>
+  <Step title="Generate CA certificate (ca.crt)">
+    ```bash
+    openssl req -x509 -new -nodes -key ca.key -sha256 -days 365 -out ca.crt -subj "/CN=ExampleCA"
+    ```
+  </Step>
+  <Step title="Generate server private key (server.key)">
+    ```bash
+    openssl genpkey -algorithm RSA -out server.key -pkeyopt rsa_keygen_bits:2048
+    ```
+  </Step>
+  <Step title="Generate server certificate signing request (CSR) (server.csr)">
+    ```bash
+    openssl req -new -key server.key -out server.csr -subj "/CN=terminate-tls-example.ngrok.app"
+    ```
+    <Note>Change `terminate-tls-example.ngrok.app` to the domain you are using with your endpoint</Note>
+  </Step>
+  <Step title="Generate server certificate (server.crt)">
+    ```bash
+    openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 365 -sha256
+    ```
+  </Step>
+</Steps>
 
-# 3. Generate server private key (server.key)
-openssl genpkey -algorithm RSA -out server.key -pkeyopt rsa_keygen_bits:2048
-
-# 4. Generate server certificate signing request (CSR) (server.csr)
-# NOTE: change terminate-tls-example.ngrok.app to the domain you are using with your endpoint
-openssl req -new -key server.key -out server.csr -subj "/CN=terminate-tls-example.ngrok.app"
-
-# 5. Generate server certificate (server.crt)
-openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 365 -sha256
-```
-
-These commands will result in five new files: `ca.key`, `ca.crt`, `server.key`, `server.csr`, and `server.key`. You will use the contents of `server.key` and `server.crt` in your traffic policy to enable your custom certificate on your endpoint and `ca.crt` in order to trust the certificate when using `curl`.
+These commands will result in five new files: `ca.key`, `ca.crt`, `server.key`, 
+`server.csr`, and `server.key`. 
 
 #### Example Traffic Policy Document
 
@@ -188,6 +209,13 @@ on_tcp_connect:
 }
 ```
 </CodeGroup>
+
+<Note>
+    Replace the contents of `server_private_key` with the contents of `server.key` and 
+    `server_certificate` with `server.crt` respectively in the traffic policy to enable your 
+    custom certificate on your endpoint and `ca.crt` to trust the 
+    certificate when using `curl`.
+</Note>
 
 #### Start an Endpoint with the Traffic Policy
 
@@ -361,6 +389,5 @@ curl --cert client.crt --key client.key https://terminate-tls-example.ngrok.app
 | `actions.ngrok.terminate_tls.warnings`                           | `[]string`    | A list of any warnings encountered during the parsing of Certificate Authority IDs.                                 |
 
 <Note>
-These variables are also available on the `conn` object (see [HTTP Variables](/traffic-policy/variables) for examples).
+  These variables are also available on the `conn` object (see [HTTP Variables](/traffic-policy/variables) for examples).
 </Note>
-
