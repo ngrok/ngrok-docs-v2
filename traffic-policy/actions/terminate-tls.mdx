@@ -6,7 +6,7 @@ description: Control how TLS traffic is terminated by ngrok, including custom ce
 
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
 
-import { ConfigField, ConfigEnum } from "/snippets/ConfigTable.jsx";
+import { ConfigField, ConfigEnum, ConfigEnumOption } from "/snippets/ConfigTable.jsx";
 
 The **Terminate TLS** Traffic Policy action allows you to control how TLS traffic is terminated by ngrok. This action is useful for when you need to specify a custom certificate, control which TLS versions are supported, or enable mutual TLS authentication.
 
@@ -44,9 +44,9 @@ This is the [Traffic Policy](/docs/traffic-policy/) configuration reference for 
   The strategy to use for mutual TLS verification.
 
   <ConfigEnum>
-    <ConfigEnum.Option value="require-and-verify">Require and verify</ConfigEnum.Option>
-    <ConfigEnum.Option value="require-any">Require any</ConfigEnum.Option>
-    <ConfigEnum.Option value="request">Request</ConfigEnum.Option>
+    <ConfigEnumOption value="require-and-verify">Require and verify</ConfigEnumOption>
+    <ConfigEnumOption value="require-any">Require any</ConfigEnumOption>
+    <ConfigEnumOption value="request">Request</ConfigEnumOption>
   </ConfigEnum>
 </ConfigField>
 

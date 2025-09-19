@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "mint build",
-    "dev": "mint dev",
+    "dev": "mint dev --port 3333",
+    "links": "mint broken-links",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

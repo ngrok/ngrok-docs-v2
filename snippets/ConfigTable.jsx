@@ -58,12 +58,9 @@ export const ConfigEnum = ({ label, children }) => {
   );
 };
 
-ConfigEnum.Option = ({ children }) => {
+export const ConfigEnumOption = ({ children }) => {
   return <div className="space-y-2 px-4 py-2 list-none">{children}</div>;
 };
-
-export const ConfigEnumOption = ConfigEnum.Option;
-
 
 export const Config = ({ children }) => {
   return (
