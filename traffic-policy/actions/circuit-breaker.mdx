@@ -76,7 +76,7 @@ only 1 request every 60 seconds and trips the circuit breaker for 2 minutes.
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml highlight={3-9}
+```yaml policy.yml
 on_http_request:
   - actions:
     - type: "circuit-breaker"
@@ -87,7 +87,7 @@ on_http_request:
         tripped_duration: "2m"
         enforce: true
 ```
-```json policy.json highlight={5-14}
+```json policy.json
 {
   "on_http_request": [
     {

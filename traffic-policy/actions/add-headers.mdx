@@ -70,7 +70,7 @@ configuration will add the client IP address to all HTTP requests.
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml highlight={3-6}
+```yaml policy.yml
 on_http_request:
   - actions:
     - type: "add-headers"
@@ -78,7 +78,7 @@ on_http_request:
         headers:
           x-client-ip: "${conn.client_ip}"
 ```
-```json policy.json highlight={5-12}
+```json policy.json
 {
   "on_http_request": [
     {
@@ -124,13 +124,12 @@ content-type: application/json
 ### Adding headers to an HTTP response
 
 The following [Traffic Policy](/traffic-policy/)
-configuration will add headers to the response from the upstream service when
-the method is `GET` and the URL starts with `/status/200`.
+configuration will add headers to the response from the upstream service when the method is `GET` and the URL starts with `/status/200`.
 
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml highlight={6-10}
+```yaml policy.yml highlight={3}
 on_http_response:
   - expressions:
       - "req.method == "GET" && req.url.path.startsWith("/status/200")"
@@ -141,7 +140,7 @@ on_http_response:
             x-custom-header: "my-custom-value"
             x-string-interpolation-example: "started at ${conn.ts.start}"
 ```
-```json policy.json highlight={8-16}
+```json policy.json highlight={5}
 {
   "on_http_response": [
     {

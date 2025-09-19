@@ -224,6 +224,63 @@ on_http_request:
 ```
 </CodeGroup>
 
+#### Send query parameters
+
+This example sends a GET request with custom query parameters to an internal endpoint.
+
+To simulate this behavior, we'll use [httpbin.org/get](https://httpbin.org/get), which echoes query parameters in the response.
+
+##### Start an Internal Agent Endpoint
+
+```bash
+ngrok http https://httpbin.org --host-header rewrite --url https://httpbin.internal
+```
+
+<CodeGroup>
+```yaml policy.yml {7-11}
+on_http_request:
+  - name: QueryParamsExample
+    actions:
+      - type: http-request
+        config:
+          url: https://httpbin.internal/get
+          query_params:
+            - key: trace
+              value: 'true'
+            - key: user
+              value: req.headers["x-user-id"]
+```
+
+```json policy.json {10-19}
+{
+  "on_http_request": [
+    {
+      "name": "QueryParamsExample",
+      "actions": [
+        {
+          "type": "http-request",
+          "config": {
+            "url": "https://httpbin.internal/get",
+            "query_params": [
+              {
+                "key": "trace",
+                "value": "true"
+              },
+              {
+                "key": "user",
+                "value": "req.headers[\"x-user-id\"]"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
+
+
 ### Make a POST request
 
 This example sends a POST request to an internal endpoint with a custom JSON body and headers.
@@ -278,64 +335,6 @@ on_http_request:
 ```
 </CodeGroup>
 
-### Send query parameters
-
-This example sends a GET request with custom query parameters to an internal endpoint.
-
-To simulate this behavior, we'll use [httpbin.org/get](https://httpbin.org/get), which echoes query parameters in the response.
-
-#### Start an Internal Agent Endpoint
-
-```bash
-ngrok http https://httpbin.org --host-header rewrite --url https://httpbin.internal
-```
-
-#### Example
-
-<CodeGroup>
-```yaml policy.yml
-on_http_request:
-  - name: QueryParamsExample
-    actions:
-      - type: http-request
-        config:
-          url: https://httpbin.internal/get
-          query_params:
-            - key: trace
-              value: 'true'
-            - key: user
-              value: req.headers["x-user-id"]
-```
-
-```json policy.json
-{
-  "on_http_request": [
-    {
-      "name": "QueryParamsExample",
-      "actions": [
-        {
-          "type": "http-request",
-          "config": {
-            "url": "https://httpbin.internal/get",
-            "query_params": [
-              {
-                "key": "trace",
-                "value": "true"
-              },
-              {
-                "key": "user",
-                "value": "req.headers[\"x-user-id\"]"
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-</CodeGroup>
-
 ### Follow redirects
 
 This example demonstrates how to follow up to 2 redirects using the `http-request` action.
@@ -353,7 +352,7 @@ ngrok http https://httpbin.org --host-header rewrite --url https://httpbin.inter
 #### Example
 
 <CodeGroup>
-```yaml policy.yml
+```yaml policy.yml {8}
 on_http_request:
   - name: FollowRedirects
     actions:
@@ -364,7 +363,7 @@ on_http_request:
           max_redirects: 2
 ```
 
-```json policy.json
+```json policy.json {11}
 {
   "on_http_request": [
     {
