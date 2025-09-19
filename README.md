@@ -6,7 +6,8 @@ Source code for [ngrok docs](https://ngrok.com/docs); feel free to suggest chang
 
 See our [Contribution Guidelines](CONTRIBUTING.md) for detailed instructions on how to help improve ngrok documentation.
 
-Our site is built with [mintlify](https://mintlify.com/docs/). Our docs content is written with [markdown](https://www.markdownguide.org/getting-started/#what-is-markdown) and [MDX](https://mdxjs.com/docs/what-is-mdx/) for content.
+- Our site is built with [mintlify](https://mintlify.com/docs/).
+- Our docs content is written with [markdown](https://www.markdownguide.org/getting-started/#what-is-markdown) and [MDX](https://mdxjs.com/docs/what-is-mdx/).
 
 ## Prerequisites
 
