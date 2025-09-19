@@ -63,7 +63,7 @@ configuration will log a message with the endpoint identifier for every request.
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-10}
+```yaml policy.yml
 on_http_request:
   - actions:
       - type: log
@@ -73,7 +73,7 @@ on_http_request:
             endpoint_id: ${endpoint.id}
 ```
 
-```json policy.json {5-13}
+```json policy.json
 {
   "on_http_request": [
     {

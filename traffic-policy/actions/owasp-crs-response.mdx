@@ -107,7 +107,7 @@ The following configuration demonstrates how to run the `owasp-crs-response` act
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-11}
+```yaml policy.yml {5}
 on_http_response:
   - actions:
       - type: owasp-crs-response
@@ -115,7 +115,7 @@ on_http_response:
           on_error: halt
 ```
 
-```json policy.json {5-11}
+```json policy.json {8}
 {
   "on_http_response": [
     {
@@ -140,7 +140,7 @@ The following configuration demonstrates how to run the `owasp-crs-response` act
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-11}
+```yaml policy.yml {5}
 on_http_response:
   - actions:
       - type: owasp-crs-response
@@ -157,7 +157,7 @@ on_http_response:
             matched_rules_first_data: ${actions.ngrok.owasp_crs_response.matched_rules[0].data}
 ```
 
-```json policy.json {5-11}
+```json policy.json {8}
 {
   "on_http_response": [
     {
