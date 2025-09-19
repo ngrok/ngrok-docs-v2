@@ -98,7 +98,7 @@ using the `restrict-ips` action.
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-10}
+```yaml policy.yml
 on_tcp_connect:
   - actions:
       - type: restrict-ips
@@ -110,7 +110,7 @@ on_tcp_connect:
             - e680:5791:be4c:5739:d959:7b94:6d54:d4b4/128
 ```
 
-```json policy.json {5-16}
+```json policy.json
 {
   "on_tcp_connect": [
     {
@@ -160,7 +160,7 @@ action with [IP Policies](/docs/api/resources/ip-policies/).
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-10}
+```yaml policy.yml
 on_tcp_connect:
   - actions:
       - type: restrict-ips
@@ -170,7 +170,7 @@ on_tcp_connect:
             - ipp_1yjqdrIBwgciY2I9zH2EelgBbJF
 ```
 
-```json policy.json {5-13}
+```json policy.json
 {
   "on_tcp_connect": [
     {
@@ -221,7 +221,7 @@ using the `restrict-ips` action.
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-10}
+```yaml policy.yml
 on_http_request:
   - actions:
       - type: restrict-ips
@@ -233,7 +233,7 @@ on_http_request:
             - e680:5791:be4c:5739:d959:7b94:6d54:d4b4/128
 ```
 
-```json policy.json {5-16}
+```json policy.json
 {
   "on_http_request": [
     {
@@ -283,7 +283,7 @@ action with [IP Policies](/docs/api/resources/ip-policies/).
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {4-10}
+```yaml policy.yml
 on_http_request:
   - actions:
       - type: restrict-ips
@@ -293,7 +293,7 @@ on_http_request:
             - ipp_1yjqdrIBwgciY2I9zH2EelgBbJF
 ```
 
-```json policy.json {5-13}
+```json policy.json
 {
   "on_http_request": [
     {
@@ -340,7 +340,7 @@ action with the `restrict-ips` action and [IP Policies](/docs/api/resources/ip-p
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml {6,9-17}
+```yaml policy.yml
 on_http_request:
   - actions:
       - type: restrict-ips
@@ -357,7 +357,7 @@ on_http_request:
             error_message: ${actions.ngrok.restrict_ips.error.message}
 ```
 
-```json policy.json {8,14-26}
+```json policy.json
 {
   "on_http_request": [
     {
