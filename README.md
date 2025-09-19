@@ -63,77 +63,16 @@ When you add a title and description to a page's frontmatter, it's automatically
 ```md
 ---
 title: Example
+sidebarTitle: Example in sidebar
 description: Example description
 ---
-```
-
-### Accessing frontmatter within a page
-
-You can access a page's frontmatter from within that page, such as the following example:
-
-```md
----
-title: Example Title
-description: Example description
----
-
-<h1>{frontmatter.title}</h1>
-
-<p>{frontmatter.description</p>
 ```
 
 ## Redirects
 
-To create a redirect quickly, add it to `pages/utils/redirects/data/general.ts`.
+To create redirects, add them to the `"redirects"` array in `docs.json`.
 
-For more structured redirects, you can:
-
-1. Create a new `.ts` file in `pages/utils/redirects/data` that exports an object containing your redirects, for example `universalGatewayRedirects.ts`:
-
- ```js
- export const universalGatewayRedirects = {
-  "/docs/source" : "/docs/destination"
- };
- ```
-
-2. Then, import that object in `pages/utils/redirects/redirectAggregator.ts`, and add it to the object exported there.
-
-  ```js
-  import { generalRedirects } from "./data/general";
-  import { universalGatewayRedirects } from "./data/universalGatewayRedirects";
-  
-  export const allRedirects = { 
-   ...generalRedirects,
-   ...universalGatewayRedirects
-  };
-  ```
-
-### Server vs Client-side redirects
-
-- Hash redirects, i.e. redirects from `/docs/starting-path/#hash` to `/docs/destination-path`, are executed on the client.
-- All route-level redirects are executed server-side.
-
-Why? Because the server doesn't have access to the hash (`#this-part`) of a URL, so only the client can execute these redirects.
-
-## Technical questions
-
-### Why is everything in the `pages` directory?
-
-Some stuff that might normally be in a `src` directory is in `pages`, such as `components`, `utils`, etc. Because of how vike works, if you want to access the [`pageContext`](https://vike.dev/pageContext#) object, your code needs to live within the `pages` directory. We could pass this data around, use some sort of context, or do other things, but for now everything lives in `pages`.
-
-## Testing
-
-We use [Vitest](https://vitest.dev/) for testing. To run the tests, use:
-
-```sh
-pnpm run test
-```
-
-To run tests in watch mode during development:
-
-```sh
-pnpm run test:watch
-```
+See mintlify docs for the nuances.
 
 ## Looking for support?
 
