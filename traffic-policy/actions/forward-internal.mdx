@@ -5,7 +5,7 @@ description: The Forward Internal action enables you to forward traffic from an 
 ---
 
 import ActionVariablesDescription from "/snippets/traffic-policy/common/action-variables-description.mdx";
-import { ConfigField } from "/snippets/ConfigTable.jsx";
+import { ConfigField, ConfigEnum, ConfigEnumOption } from "/snippets/ConfigTable.jsx";
 
 The **Forward Internal** Traffic Policy action enables you to forward traffic from an endpoint to a internal endpoint within the same ngrok account. This is useful for safely and securely routing traffic from your public endpoints to other services, giving you the ability to choose when and how your endpoints are made publicly available.
 
@@ -26,11 +26,7 @@ reference for this action.
 
 <ConfigField title="url" type="string" required={true} cel={true}>
   <p>
-    The endpoint to forward to, such as{" "}
-    <code>http://my-internal-endpoint.internal:1234</code>.
-  </p>
-  <p>
-    Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).
+    The endpoint to forward to, such as <code>http://my-internal-endpoint.internal:1234</code>.
   </p>
 </ConfigField>
 <ConfigField title="on_error" type="enum">
@@ -38,11 +34,10 @@ reference for this action.
     Whether or not further actions in the Traffic Policy should run if there
     is an error.
   </p>
-  <p>Possible Enum Values</p>
-  <ul>
-    <li>`halt` (default)</li>
-    <li>`continue`</li>
-  </ul>
+  <ConfigEnum>
+    <ConfigEnumOption>`halt` (default)</ConfigEnumOption>
+    <ConfigEnumOption>`continue`</ConfigEnumOption>
+  </ConfigEnum>
 </ConfigField>
 
 ## Behavior
@@ -155,5 +150,5 @@ Accept-Encoding: gzip
 
 <ActionVariablesDescription />
 
-This action does not set any variables after it has been executed.
+<Note>This action does not set any variables after it has been executed.</Note>
 

@@ -27,137 +27,141 @@ reference for this action.
 ### Configuration Fields
 
 <Tabs>
-	<Tab title="on_http_request" label="on_http_request">
-		
-	<ConfigField title="status_code" type="integer">
-		<p>Response status code. Default is `403`.</p>
-	</ConfigField>
-
-	</Tab>
 	<Tab title="on_tcp_connect" label="on_tcp_connect">
-  
-  This action does not have any configuration fields for TLS / TCP endpoints.
+    <Note>This action does not have any configuration fields for TLS / TCP endpoints.</Note>
+	</Tab>
 
+	<Tab title="on_http_request" label="on_http_request">
+    <ConfigField title="status_code" type="integer" defaultValue="403">
+      The response status code to return back to the client when the request is denied.
+    </ConfigField>
 	</Tab>
 </Tabs>
 
 
-## Behavior `on_tcp_connect`
+## Behavior
 
-When this action is executed, the upstream server is never reached and a
-response is immediately returned and no further actions or rules in the policy
-configuration will be executed.
+<Tabs>
+  <Tab title="on_tcp_connect" label="on_tcp_connect">
+    When this action is executed, the upstream server is never reached and a
+    response is immediately returned and no further actions or rules in the policy
+    configuration will be executed.
+  </Tab>
 
+  <Tab title="on_http_request" label="on_http_request">
+    When this action is executed, the upstream server is never reached and a
+    response is immediately returned and no further actions or rules in the policy
+    configuration will be executed.
 
-## Behavior `on_http_request`
+    ### Custom Content
 
-When this action is executed, the upstream server is never reached and a
-response is immediately returned and no further actions or rules in the policy
-configuration will be executed.
+    The deny traffic policy action will not send back a response body to the client.
+    To send back a response body, use the [`custom-response`](/docs/traffic-policy/actions/custom-response)
+    action.
+  </Tab>
+</Tabs>
 
-### Custom Content
+## Examples
 
-The deny traffic policy action will not send back a response body to the client.
-To send back a response body, use the [`custom-response`](/docs/traffic-policy/actions/custom-response)
-action.
+<Tabs>
+  <Tab title="on_tcp_connect" label="on_tcp_connect">
+    ### Deny all traffic
 
-## Examples `on_tcp_connect`
+    The following [Traffic Policy](/docs/traffic-policy/)
+    configuration will deny all inbound traffic on your endpoint.
 
-### Deny all traffic
+    #### Example Traffic Policy Document
 
-The following [Traffic Policy](/docs/traffic-policy/)
-configuration will deny all inbound traffic on your endpoint.
+    <CodeGroup>
+    ```yaml policy.yml
+    on_tcp_connect:
+      - actions:
+          - type: deny
+    ```
 
-#### Example Traffic Policy Document
-
-<CodeGroup>
-```yaml policy.yml
-on_tcp_connect:
-  - actions:
-      - type: deny
-```
-
-```json policy.json
-{
-  "on_tcp_connect": [
+    ```json policy.json
     {
-      "actions": [
+      "on_tcp_connect": [
         {
-          "type": "deny"
+          "actions": [
+            {
+              "type": "deny"
+            }
+          ]
         }
       ]
     }
-  ]
-}
-```
-</CodeGroup>
+    ```
+    </CodeGroup>
 
-#### Example Request
+    #### Example Request
 
-```bash
-$ telnet 5.tcp.ngrok.io 22984
+    ```bash
+    $ telnet 5.tcp.ngrok.io 22984
 
-Trying...
-Connected to 5.tcp.ngrok.io.
-Connection closed by foreign host.
-```
+    Trying...
+    Connected to 5.tcp.ngrok.io.
+    Connection closed by foreign host.
+    ```
 
-In this example, we attempt to connect to `5.tcp.ngrok.io:22984` using the
-`telnet` command and ngrok immediately closes the connection.
+    In this example, we attempt to connect to `5.tcp.ngrok.io:22984` using the
+    `telnet` command and ngrok immediately closes the connection.
+  </Tab>
 
+  <Tab title="on_http_request" label="on_http_request">
+    ### Deny traffic with a 404 status code
 
-## Examples `on_http_request`
+    The following [Traffic Policy](/docs/traffic-policy/)
+    configuration will deny all inbound traffic with a `404` on your endpoint.
 
-### Deny traffic with a 404 status code
+    #### Example Traffic Policy Document
 
-The following [Traffic Policy](/docs/traffic-policy/)
-configuration will deny all inbound traffic with a `404` on your endpoint.
+    <CodeGroup>
+    ```yaml policy.yml {3-10}
+    on_http_request:
+      - actions:
+          - type: deny
+            config:
+              status_code: 404
+    ```
 
-#### Example Traffic Policy Document
-
-<CodeGroup>
-```yaml policy.yml {3-10}
-on_http_request:
-  - actions:
-      - type: deny
-        config:
-          status_code: 404
-```
-
-```json policy.json {5-10}
-{
-  "on_http_request": [
+    ```json policy.json {5-10}
     {
-      "actions": [
+      "on_http_request": [
         {
-          "type": "deny",
-          "config": {
-            "status_code": 404
-          }
+          "actions": [
+            {
+              "type": "deny",
+              "config": {
+                "status_code": 404
+              }
+            }
+          ]
         }
       ]
     }
-  ]
-}
-```
-</CodeGroup>
+    ```
+    </CodeGroup>
 
-#### Example Request
+    #### Example Request
 
-```curl
-$ curl https://example.ngrok.app
-```
+    ```curl
+    $ curl https://example.ngrok.app
+    ```
 
-```http
-HTTP/2 404 Not Found
-```
+    ```http
+    HTTP/2 404 Not Found
+    ```
 
-In this example, we attempt to connect to `example.ngrok.app` using the
-`curl` command and ngrok immediately closes the connection with a `404` status
-code.
+    In this example, we attempt to connect to `example.ngrok.app` using the
+    `curl` command and ngrok immediately closes the connection with a `404` status
+    code.
+  </Tab>
+</Tabs>
+
 
 ## Action Result Variables
 
 <ActionVariablesDescription />
 
-This action does not set any variables after it has been executed.
+<Note>This action does not set any variables after it has been executed.</Note>

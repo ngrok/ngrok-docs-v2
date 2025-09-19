@@ -25,8 +25,8 @@ reference for this action.
 
 ### Configuration Fields
 
-<ConfigField title="status_code" type="integer">
-  <p>Status code of the custom response being sent back. Default is `200`.</p>
+<ConfigField title="status_code" type="integer" defaultValue="200">
+  <p>Status code of the custom response being sent back.</p>
 </ConfigField>
 <ConfigField title="body" type="string" cel={true}>
   <p>Body of the custom response being sent back.</p>
@@ -311,5 +311,5 @@ interpolations to show the connection start time and the current time.
 
 <ActionVariablesDescription />
 
-This action does not set any variables after it has been executed.
+<Note>This action does not set any variables after it has been executed.</Note>
 
