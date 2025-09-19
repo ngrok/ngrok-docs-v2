@@ -28,20 +28,19 @@ reference for this action.
 
 ### Configuration Fields
 
-	<ConfigField title="headers" type="array of strings" required={true}>
-		<p>List of header keys to remove from the request or response.</p>
-		<p>
-			Minimum <code>1</code>, Maximum <code>10</code>.
-		</p>
-	</ConfigField>
+<ConfigField title="headers" type="array of strings" required={true}>
+  List of header keys to remove from the request or response.
+
+  Minimum <code>1</code>, Maximum <code>10</code>.
+</ConfigField>
 
 ## Behavior
 
-### On `on_http_request`
+### During `on_http_request`
 
 When executed during the `on_http_request` phase, this action will remove the specified headers from incoming HTTP requests before reaching the upstream server.
 
-### On `on_http_response`
+### During `on_http_response`
 
 When executed during the `on_http_response`, the configured headers are removed from HTTP responses returned from the upstream server before reaching the client.
 
@@ -130,9 +129,6 @@ they were not present on the request that was sent upstream.
 
 <ActionVariablesDescription />
 
-	<ConfigField
-		title="actions.ngrok.remove_headers.headers_removed"
-		type="array of strings"
-	>
-		<p>A list of headers that were successfully removed by the action.</p>
-	</ConfigField>
+<ConfigField title="actions.ngrok.remove_headers.headers_removed" type="array of strings">
+  A list of headers that were successfully removed by the action.
+</ConfigField>

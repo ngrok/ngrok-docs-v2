@@ -29,23 +29,20 @@ reference for this action.
 ### Configuration Fields
 
 <ConfigField title="from" type="string" required={false} cel={true}>
-    <p>A regular expression pattern used to match a part of the URL.</p>
-    <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
+  A regular expression pattern used to match a part of the URL.
 </ConfigField>
 
 <ConfigField title="to" type="string" required={true} cel={true}>
-    <p>A regular expression pattern used to replace the matched part of the URL.</p>
-    <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
+  A regular expression pattern used to replace the matched part of the URL.
 </ConfigField>
 
 <ConfigField title="status_code" type="integer" required={false}>
-    <p>A <code>3xx</code> status code used for redirecting. Default is <code>302</code>.</p>
+  A <code>3xx</code> status code used for redirecting. Default is <code>302</code>.
 </ConfigField>
 
 <ConfigField title="headers" type="object" required={false} cel={true}>
-    <p>Map of key-value headers to be added to the response.</p>
-    <p>Maximum <code>10</code> headers can be specified.</p>
-    <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation) in header values.</p>
+  Map of key-value headers to be added to the response.
+  Maximum <code>10</code> headers can be specified.
 </ConfigField>
 
 ## Behavior
@@ -257,17 +254,17 @@ that includes the city from the connection's geolocation data.
 <ActionVariablesDescription />
 
 <ConfigField title="actions.ngrok.redirect.matches" type="array of strings">
-    <p>A list of elements that were matched during redirection. These represent the request components (e.g., path or query parameters) that triggered the action and resulted in the redirect.</p>
+  A list of elements that were matched during redirection. These represent the request components (e.g., path or query parameters) that triggered the action and resulted in the redirect.
 </ConfigField>
 
 <ConfigField title="actions.ngrok.redirect.url" type="string">
-    <p>The URL to which the traffic was redirected. This is the destination URL returned as part of the redirect response after the action was executed.</p>
+  The URL to which the traffic was redirected. This is the destination URL returned as part of the redirect response after the action was executed.
 </ConfigField>
 
 <ConfigField title="actions.ngrok.redirect.error.code" type="string">
-    <p>A machine-readable code describing an error that occurred during the action's execution.</p>
+  A machine-readable code describing an error that occurred during the action's execution.
 </ConfigField>
 
 <ConfigField title="actions.ngrok.redirect.error.message" type="string">
-    <p>A human-readable message providing details about an error that occurred during the action's execution.</p>
+  A human-readable message providing details about an error that occurred during the action's execution.
 </ConfigField>
