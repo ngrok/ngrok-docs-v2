@@ -42,7 +42,7 @@ a re-authentication flow.
 
 The following circumstances trigger refresh and authorization re-evaluation:
 
-- On a periodic interval defined by the [`userinfo_refresh_interval`](/traffic-policy/actions/oidc/#configuration-fields) parameter.
+- On a periodic interval defined by the [`userinfo_refresh_interval`](/docs/traffic-policy/actions/oidc/#configuration-fields) parameter.
 - If you update the OIDC configuration of the endpoint by restarting your
   agent with a new configuration.
 - If you update the OIDC configuration of the endpoint.
@@ -53,7 +53,7 @@ they are presented an error and are prompted to try logging in again.
 
 ### Traffic Identities
 
-ngrok's [Traffic Identities](/traffic-policy/identities/) feature can be used to observe
+ngrok's [Traffic Identities](/docs/traffic-policy/identities/) feature can be used to observe
 all of the authenticated user activity across your account in the ngrok
 dashboard or via API. Whenever a user authenticates or accesses an endpoint
 with a configured OIDC action, their Traffic Identity record is created or updated.

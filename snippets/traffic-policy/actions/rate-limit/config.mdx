@@ -1,5 +1,4 @@
 import {
-
 	Config,
 	ConfigEnum,
 	ConfigEnumOption,
@@ -26,6 +25,11 @@ reference for this action.
         <p>A name for this rate limit configuration. Must be less than <code>1024</code> characters.</p>
     </ConfigItem>
 
+    <ConfigItem title="enforce" type="boolean" required={false}>
+        <p>Controls whether the rate limit is actively applied at runtime. When enabled, requests exceeding the limit are blocked or throttled as configured. When disabled, the system evaluates the rate limit but does not enforce it, allowing you to test configurations, gather metrics, or return a custom response.</p>
+        <p>The default value is <code>true</code>.</p>
+    </ConfigItem>
+
     <ConfigItem title="algorithm" type="enum" required={true}>
         <p>The rate limit algorithm to be used.</p>
         <ConfigEnum label="Supported values">
@@ -45,7 +49,7 @@ reference for this action.
 
     <ConfigItem title="bucket_key" type="array of strings" required={true}>
         <p>The elements of this collection define the unique key of a request to track the rate at which the capacity is being met.</p>
-        <p>Each bucket key is a CEL expression which includes all valid traffic policy [variables](/traffic-policy/variables/) and [macros](/traffic-policy/macros/).</p>
+        <p>Each bucket key is a CEL expression which includes all valid traffic policy [variables](/docs/traffic-policy/variables/) and [macros](/docs/traffic-policy/macros/).</p>
         <ConfigEnum label="Sample buckets">
             <ConfigEnumOption>`req.host` - The Host of the request.</ConfigEnumOption>
             <ConfigEnumOption>`conn.client_ip` - The client IP address.</ConfigEnumOption>

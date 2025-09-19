@@ -1,16 +1,17 @@
 <CodeGroup>
-```yaml policy.yml highlight={4-10}
+```yaml policy.yml
 on_http_request:
   - actions:
-    - type: "oauth"
-    config:
-    provider: "facebook"
-    client_id: "{your app's oauth client id}"
-    client_secret: "{your app's oauth client secret}"
-    scopes:
-    - "email"
+      - type: oauth
+        config:
+          provider: facebook
+          client_id: '{your app''s oauth client id}'
+          client_secret: '{your app''s oauth client secret}'
+          scopes:
+            - email
 ```
-```json policy.json highlight={5-15}
+
+```json policy.json
 {
   "on_http_request": [
     {

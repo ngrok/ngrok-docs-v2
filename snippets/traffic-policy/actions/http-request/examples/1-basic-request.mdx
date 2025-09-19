@@ -1,5 +1,3 @@
-
-
 ### Make a GET request
 
 Performs a simple GET request to an internal endpoint.
@@ -7,12 +5,13 @@ Performs a simple GET request to an internal endpoint.
 <CodeGroup>
 ```yaml policy.yml
 on_http_request:
-  - name: "BasicInternalRequest"
+  - name: BasicInternalRequest
     actions:
-    - type: "http-request"
-    config:
-    url: "https://upstream-service.internal/ping"
+      - type: http-request
+        config:
+          url: https://upstream-service.internal/ping
 ```
+
 ```json policy.json
 {
   "on_http_request": [
