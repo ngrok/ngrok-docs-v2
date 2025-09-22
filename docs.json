@@ -199,12 +199,7 @@
                       "traffic-policy/getting-started/agent-endpoints/config-file"
                     ]
                   },
-                  {
-                    "group": "Cloud Endpoints",
-                    "pages": [
-                      "traffic-policy/getting-started/cloud-endpoints/api"
-                    ]
-                  }
+                  "traffic-policy/getting-started/cloud-endpoints/api"
                 ]
               },
               {
