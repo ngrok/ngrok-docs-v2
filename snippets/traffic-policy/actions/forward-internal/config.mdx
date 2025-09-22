@@ -2,7 +2,7 @@ import {
 	Config,
 	ConfigEnum,
 	ConfigEnumOption,
-	ConfigItem,
+	ConfigField,
 } from "/snippets/ConfigTable.jsx";
 
 ## Configuration Reference
@@ -21,7 +21,7 @@ reference for this action.
 ### Configuration Fields
 
 <Config>
-	<ConfigItem title="url" type="string" required={true} cel={true}>
+	<ConfigField title="url" type="string" required={true} cel={true}>
 		<p>
 			The endpoint to forward to, such as{" "}
 			<code>http://my-internal-endpoint.internal:1234</code>.
@@ -29,8 +29,8 @@ reference for this action.
 		<p>
 			Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).
 		</p>
-	</ConfigItem>
-	<ConfigItem title="on_error" type="enum">
+	</ConfigField>
+	<ConfigField title="on_error" type="enum">
 		<p>
 			Whether or not further actions in the Traffic Policy should run if there
 			is an error.
@@ -39,5 +39,5 @@ reference for this action.
 			<ConfigEnumOption>`halt` (default)</ConfigEnumOption>
 			<ConfigEnumOption>`continue`</ConfigEnumOption>
 		</ConfigEnum>
-	</ConfigItem>
+	</ConfigField>
 </Config>

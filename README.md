@@ -35,6 +35,10 @@ When using `pnpm run dev`, this site runs locally at `http://localhost:3333/`
 
 - `pnpm run build`: Runs build scripts and builds the site, but isn't generally necessary.
 
+### Docs search locally
+
+Search does not work in local builds of the docs site. You'll have to test search in a preview deployment when you create your pull request.
+
 ## Creating content
 
 When creating content, directories must exist at the root level of the project. To create a page that will exist at the URL path `/example/page1/`, you can create your `.mdx` file at either of the following file paths:
