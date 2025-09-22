@@ -29,7 +29,7 @@ See our [Contribution Guidelines](CONTRIBUTING.md) for detailed instructions on 
 When using `pnpm run dev`, this site runs locally at `http://localhost:3333/`
 
 - `pnpm run dev`: Runs build scripts and starts the dev server
-- `pnpm run links`: Runs mintlify's built-in broken link checker
+- `pnpm run test-links`: Runs mintlify's built-in broken link checker
 
 ### Other commands
 
