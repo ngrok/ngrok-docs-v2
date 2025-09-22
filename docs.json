@@ -476,8 +476,13 @@
                 "group": "Device Gateway",
                 "pages": [
                   "guides/device-gateway/agent",
-                  "guides/device-gateway/arm64",
-                  "guides/device-gateway/linux",
+                  {
+                    "group": "Linux",
+                    "pages": [
+                      "guides/device-gateway/linux",
+                      "guides/device-gateway/arm64"
+                    ]
+                  },
                   "guides/device-gateway/raspberry-pi",
                   "guides/device-gateway/raspbian",
                   "guides/device-gateway/sdk",
