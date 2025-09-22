@@ -4,7 +4,7 @@ Thank you for your interest in contributing to the ngrok documentation! We welco
 
 # Getting Started
 
-To get started, fork the ngrok documentation repository on GitHub and clone your fork locally. ngrok docs is built using mintlify. Use the instructions in [README.md](https://github.com/ngrok/ngrok-docs/blob/main/README.md) to set up your local environment. The documentation is written in Markdown and organized into directories by topic.
+To get started, fork the ngrok documentation repository on GitHub and clone your fork locally. ngrok docs is built using mintlify. Use the instructions in [README.md](README.md) to set up your local environment. The documentation is written in Markdown and organized into directories by topic.
 
 # Making Changes
 
@@ -16,7 +16,7 @@ Once you have finished making your changes, we recommend you run a local build w
 
 # Code of Conduct
 
-We ask that all contributors follow our [code of conduct](https://github.com/ngrok/ngrok-docs/blob/main/CODE_OF_CONDUCT.md) when contributing to the documentation. This code of conduct outlines our expectations for behavior and helps ensure that the ngrok community is a welcoming and inclusive place for everyone.
+We ask that all contributors follow our [code of conduct](CODE_OF_CONDUCT.md) when contributing to the documentation. This code of conduct outlines our expectations for behavior and helps ensure that the ngrok community is a welcoming and inclusive place for everyone.
 
 # Configuration Files:
 
