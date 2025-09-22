@@ -2,10 +2,8 @@
 title: Google OAuth
 description: Authenticate users with Google OAuth
 ---
-import Google from "/snippets/traffic-policy/actions/oauth/examples/custom-google-example.mdx";
 import UpdatePolicyInstructions from "/snippets/traffic-policy/actions/oauth/update-policy/update-policy-instructions.mdx";
-
-
+import ConfigAccessControl from "/snippets/traffic-policy/actions/oauth/update-policy/config-access-control.mdx";
 
 By default, if you use `"google"` for OAuth in your traffic policies without specifying a Google OAuth application, visitors to your endpoint will be authenticated using an ngrok managed Google OAuth instance.
 
@@ -38,13 +36,45 @@ Setting up your own Google OAuth application will allow you to customize how aut
 
 <UpdatePolicyInstructions />
 
-<Google />
+<CodeGroup>
+```yaml policy.yml
+on_http_request:
+  - actions:
+      - type: oauth
+        config:
+          provider: google
+          client_id: '{your app''s oauth client id}'
+          client_secret: '{your app''s oauth client secret}'
+          scopes:
+            - https://www.googleapis.com/auth/userinfo.profile
+            - https://www.googleapis.com/auth/userinfo.email
+```
 
-Click **Save** to validate and update your traffic policy.
+```json policy.json
+{
+  "on_http_request": [
+    {
+      "actions": [
+        {
+          "type": "oauth",
+          "config": {
+            "provider": "google",
+            "client_id": "{your app's oauth client id}",
+            "client_secret": "{your app's oauth client secret}",
+            "scopes": [
+              "https://www.googleapis.com/auth/userinfo.profile",
+              "https://www.googleapis.com/auth/userinfo.email"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</CodeGroup>
 
-#### Configure access control
-
-Optionally, configure access control to your service by only allowing specific users or domains.
+<ConfigAccessControl />
 
 ## Additional application setup information
 
