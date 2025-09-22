@@ -374,10 +374,15 @@
                   "integrations/kubernetes-ingress/azure-ad-k8s",
                   "integrations/kubernetes-ingress/azure-aks-k8s",
                   "integrations/kubernetes-ingress/consul-k8s",
-                  "integrations/kubernetes-ingress/digitalocean-k8s",
+                  {
+                    "group": "DigitalOcean",
+                    "pages": [
+                      "integrations/kubernetes-ingress/digitalocean-k8s",
+                      "integrations/kubernetes-ingress/gslb"
+                    ]
+                  },
                   "integrations/kubernetes-ingress/eks",
                   "integrations/kubernetes-ingress/google-kubernetes-engine",
-                  "integrations/kubernetes-ingress/gslb",
                   "integrations/kubernetes-ingress/k8s",
                   "integrations/kubernetes-ingress/microk8s-k8s",
                   "integrations/kubernetes-ingress/rafay-k8s",
