@@ -398,37 +398,34 @@
           {
             "item": "Secure Tunnels",
             "pages": [
+              "agent/index",
+              "agent/web-inspection-interface",
               {
-                "group": "Agent",
+                "group": "CLI",
+                "pages": ["agent/cli", "agent/cli-api"]
+              },
+              {
+                "group": "Configuration file",
                 "pages": [
-                  "agent/index",
-                  "agent/web-inspection-interface",
-                  "agent/cli",
-                  "agent/cli-api",
-                  {
-                    "group": "Configuration file",
-                    "pages": [
-                      "agent/config/index",
-                      "agent/config/v2",
-                      "agent/config/v3"
-                    ]
-                  },
-                  "agent/api",
-                  "agent/ssh-reverse-tunnel-agent",
-                  "agent/connect-url",
-                  {
-                    "group": "Agent TLS Termination",
-                    "pages": [
-                      "agent/agent-tls-termination",
-                      "agent/agent-mutual-tls-termination"
-                    ]
-                  },
-                  "agent/changelog",
-                  "agent/version-support-policy",
-                  "agent/diagnose",
-                  "agent/upgrade-v2-v3"
+                  "agent/config/index",
+                  "agent/config/v2",
+                  "agent/config/v3"
                 ]
               },
+              "agent/api",
+              "agent/ssh-reverse-tunnel-agent",
+              "agent/connect-url",
+              {
+                "group": "Agent TLS Termination",
+                "pages": [
+                  "agent/agent-tls-termination",
+                  "agent/agent-mutual-tls-termination"
+                ]
+              },
+              "agent/changelog",
+              "agent/version-support-policy",
+              "agent/diagnose",
+              "agent/upgrade-v2-v3",
               "agent-sdks/index"
             ]
           },
