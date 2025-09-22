@@ -465,6 +465,7 @@
           {
             "item": "Guides",
             "pages": [
+              "guides/index",
               {
                 "group": "API Gateway",
                 "pages": [
@@ -1049,39 +1050,15 @@
     },
     {
       "source": "/guides/upgrade-v2-v3/:slug*",
-      "destination": "/guides/other-guides/upgrade-v2-v3"
+      "destination": "/agent/upgrade-v2-v3"
     },
     {
-      "source": "/guides/securing-your-tunnels/:slug*",
-      "destination": "/guides/other-guides/securing-your-tunnels"
-    },
-    {
-      "source": "/guides/running-behind-firewalls/:slug*",
-      "destination": "/guides/other-guides/running-behind-firewalls"
-    },
-    {
-      "source": "/guides/using-tls-mutual-authentication/:slug*",
-      "destination": "/guides/other-guides/using-tls-mutual-authentication"
+      "source": "/guides/other-guides/securing-your-tunnels",
+      "destination": "/guides/securing-your-tunnels/:slug*"
     },
     {
       "source": "/guides/dashboard-sso-okta-setup/:slug*",
       "destination": "/integrations/okta/dashboard-sso-okta-setup"
-    },
-    {
-      "source": "/guides/load-balancing-with-cloud-edges/:slug*",
-      "destination": "/guides/other-guides/load-balancing-with-cloud-edges"
-    },
-    {
-      "source": "/guides/how-to-round-robin-load-balance-with-ngrok-cloud-edges/:slug*",
-      "destination": "/guides/other-guides/how-to-round-robin-load-balance-with-ngrok-cloud-edges"
-    },
-    {
-      "source": "/guides/how-to-do-weighted-load-balancing-with-ngrok-cloud-edges/:slug*",
-      "destination": "/guides/other-guides/how-to-do-weighted-load-balancing-with-ngrok-cloud-edges"
-    },
-    {
-      "source": "/guides/using-labels-within-ngrok/:slug*",
-      "destination": "/guides/other-guides/using-labels-within-ngrok"
     },
     {
       "source": "/guides/site-to-site-dbs/:slug*",
@@ -1753,15 +1730,7 @@
     },
     {
       "source": "/guides/other-guides/how-to-round-robin-load-balance-with-ngrok-cloud-edges",
-      "destination": "/guides/other-guides/load-balancing-multiple-clouds/"
-    },
-    {
-      "source": "/guides/other-guides/how-to-do-weighted-load-balancing-with-ngrok-cloud-edges/",
-      "destination": "/guides/other-guides/load-balancing-multiple-clouds/"
-    },
-    {
-      "source": "/guides/other-guides/load-balancing-with-cloud-edges/",
-      "destination": "/guides/other-guides/load-balancing-multiple-clouds/"
+      "destination": "/universal-gateway/load-balancing-multiple-clouds/"
     },
     {
       "source": "/getting-started/kubernetes/",
@@ -1773,7 +1742,7 @@
     },
     {
       "source": "/guides/other-guides/",
-      "destination": "/guides/security-dev-productivity/"
+      "destination": "/guides/"
     },
     {
       "source": "/guides/using-ngrok-with/",
@@ -1930,10 +1899,6 @@
     {
       "source": "/guides/other-guides/dashboard-sso-okta-setup/",
       "destination": "/integrations/okta/dashboard-sso-okta-setup"
-    },
-    {
-      "source": "/guides/",
-      "destination": "/guides/api-gateway/get-started/"
     },
     {
       "source": "/using-ngrok-with/docker#video-demo---using-ngrok-with-docker-desktop",

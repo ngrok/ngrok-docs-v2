@@ -1,9 +1,8 @@
 import {
-
 	Config,
 	ConfigEnum,
 	ConfigEnumOption,
-	ConfigItem,
+	ConfigField,
 } from "/snippets/ConfigTable.jsx";
 
 ## Configuration Reference
@@ -22,22 +21,22 @@ reference for this action.
 ### Configuration Fields
 
 <Config>
-    <ConfigItem title="enforce" type="boolean" required={true}>
+    <ConfigField title="enforce" type="boolean" required={true}>
         <p>Default true. If false, continue to the next action even if the IP is not permitted.</p>
-    </ConfigItem>
+    </ConfigField>
 
-    <ConfigItem title="allow" type="array of strings" required={false} cel={true}>
+    <ConfigField title="allow" type="array of strings" required={false} cel={true}>
         <p>A list of CIDRs that are allowed.</p>
         <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
-    </ConfigItem>
+    </ConfigField>
 
-    <ConfigItem title="deny" type="array of strings" required={false} cel={true}>
+    <ConfigField title="deny" type="array of strings" required={false} cel={true}>
         <p>A list of CIDRs that are denied.</p>
         <p>Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation).</p>
-    </ConfigItem>
+    </ConfigField>
 
-    <ConfigItem title="ip_policies" type="array of refs" required={false}>
-        <p>List of <a href="/api/resources/ip-policies/">IP Policy</a> identifiers to be checked if the source IP is allowed access.</p>
-    </ConfigItem>
+    <ConfigField title="ip_policies" type="array of refs" required={false}>
+        <p>List of <a href="/docs/api/resources/ip-policies/">IP Policy</a> identifiers to be checked if the source IP is allowed access.</p>
+    </ConfigField>
 
 </Config>

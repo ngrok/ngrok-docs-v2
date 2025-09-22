@@ -1,4 +1,4 @@
-import { Config, ConfigItem } from "/snippets/ConfigTable.jsx";
+
 
 ## Configuration Reference
 
@@ -12,7 +12,7 @@ reference for this action.
 ### Configuration Fields
 
 <Config>
-	<ConfigItem title="metadata" type="map[string]any" required={true} cel={true}>
+	<ConfigField title="metadata" type="map[string]any" required={true} cel={true}>
 		<p>
 			A key-value map of metadata that you would like to include in your events
 			for this action.
@@ -20,7 +20,7 @@ reference for this action.
 		<p>
 			Supports [CEL Interpolation](/traffic-policy/concepts/cel-interpolation/).
 		</p>
-	</ConfigItem>
+	</ConfigField>
 </Config>
 
 ### Supported Phases

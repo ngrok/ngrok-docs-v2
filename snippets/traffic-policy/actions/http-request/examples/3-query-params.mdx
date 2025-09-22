@@ -1,5 +1,3 @@
-
-
 ### Send query parameters
 
 This example sends a GET request with custom query parameters to an internal endpoint.
@@ -17,18 +15,18 @@ ngrok http https://httpbin.org --host-header rewrite --url https://httpbin.inter
 <CodeGroup>
 ```yaml policy.yml
 on_http_request:
-  - name: "QueryParamsExample"
+  - name: QueryParamsExample
     actions:
-    - type: "http-request"
-    config:
-    url: "https://httpbin.internal/get"
-    query_params:
-    - key: "trace"
-    value: "true"
-
-    - key: "user"
-    value: "req.headers["x-user-id"]"
+      - type: http-request
+        config:
+          url: https://httpbin.internal/get
+          query_params:
+            - key: trace
+              value: 'true'
+            - key: user
+              value: req.headers["x-user-id"]
 ```
+
 ```json policy.json
 {
   "on_http_request": [

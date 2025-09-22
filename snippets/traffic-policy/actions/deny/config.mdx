@@ -1,5 +1,3 @@
-import HTTP from "/snippets/traffic-policy/actions/deny/http/config.mdx";
-import TCP from "/snippets/traffic-policy/actions/deny/tcp/config.mdx";
 
 ## Configuration Reference
 
@@ -16,11 +14,11 @@ reference for this action.
 
 ### Configuration Fields
 
-<Tabs>
-	<Tab title="on_http_request">
+<Tabs groupId="phase" queryString="phase">
+	<Tab title="on_http_request" label="on_http_request">
 		<HTTP />
 	</Tab>
-	<Tab title="on_tcp_connect">
+	<Tab title="on_tcp_connect" label="on_tcp_connect">
 		<TCP />
 	</Tab>
 </Tabs>
