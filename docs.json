@@ -831,10 +831,20 @@
                 "group": "Traffic Policy",
                 "pages": [
                   "api/resources/certificate-authorities",
-                  "api/resources/ip-policies",
-                  "api/resources/ip-policy-rules",
-                  "api/resources/application-users",
-                  "api/resources/application-sessions"
+                  {
+                    "group": "IP",
+                    "pages": [
+                      "api/resources/ip-policies",
+                      "api/resources/ip-policy-rules"
+                    ]
+                  },
+                  {
+                    "group": "Applications",
+                    "pages": [
+                      "api/resources/application-users",
+                      "api/resources/application-sessions"
+                    ]
+                  }
                 ]
               },
               {
