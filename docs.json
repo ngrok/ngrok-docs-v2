@@ -1901,10 +1901,6 @@
       "destination": "/integrations/okta/dashboard-sso-okta-setup"
     },
     {
-      "source": "/guides/",
-      "destination": "/guides/api-gateway/get-started/"
-    },
-    {
       "source": "/using-ngrok-with/docker#video-demo---using-ngrok-with-docker-desktop",
       "destination": "/using-ngrok-with/docker/desktop/#video-demo---using-ngrok-with-docker-desktop"
     },
