@@ -1742,7 +1742,7 @@
     },
     {
       "source": "/guides/other-guides/",
-      "destination": "/guides/security-dev-productivity/"
+      "destination": "/guides/"
     },
     {
       "source": "/guides/using-ngrok-with/",
