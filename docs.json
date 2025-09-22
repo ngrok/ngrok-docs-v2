@@ -465,6 +465,7 @@
           {
             "item": "Guides",
             "pages": [
+              "guides/index",
               {
                 "group": "API Gateway",
                 "pages": [
