@@ -60,35 +60,30 @@ Learn how traffic policies work, key concepts, examples, and identity management
 
 ## Traffic Policy Building Blocks
 
-<div className="ngrok--cards ngrok--cards-flex ngrok--cards-row">
-    <Link to={`/traffic-policy/actions/`}>
-        <div className="ngrok--card hover:bg-card-hover">
-            <div className="ngrok--card-heading">
-                <h3 className="text-md sm:text-base">Actions</h3>
-            </div>
-            <p className="flex-grow text-md sm:text-sm">
+<Columns cols={3}>
+<Card href={`/traffic-policy/actions/`}>
+        <div className="flex-cols">
+                <span className="text-lg font-bold">Actions</span>
+            <p className="mt-4">
                 Utilize actions, such as `add-headers` and `rate-limit`, to transform,
                 redirect, and manage traffic flow with advanced control options.
             </p>
         </div>
-    </Link>
-
-    <Link to={`/traffic-policy/variables/`}>
-        <div className="ngrok--card hover:bg-card-hover">
-            <div className="ngrok--card-heading">
-                <h3 className="text-md sm:text-base">Variables</h3>
-            </div>
-            <p className="flex-grow text-md sm:text-sm">Use variables to filter, segment, and dynamically configure traffic rules and actions based on specific conditions.</p>
+    </Card>
+<Card href={`/traffic-policy/variables/`}>
+        <div className="flex-cols">
+                <span className="text-lg font-bold">Variables</span>
+            <p className="mt-4">
+Use variables to filter, segment, and dynamically configure traffic rules and actions based on specific conditions.
+            </p>
         </div>
-    </Link>
-
-    <Link to={`/traffic-policy/macros/`}>
-        <div className="ngrok--card hover:bg-card-hover">
-            <div className="ngrok--card-heading">
-                <h3 className="text-md sm:text-base">Macros</h3>
-            </div>
-            <p className="flex-grow text-md sm:text-sm">Apply macros in rule conditions to refine traffic segmentation and configure actions with dynamic precision.</p>
+    </Card>
+<Card href={`/traffic-policy/macros/`}>
+        <div className="flex-cols">
+                <span className="text-lg font-bold">Macros</span>
+            <p className="mt-4">
+            Apply macros in rule conditions to refine traffic segmentation and configure actions with dynamic precision.
+            </p>
         </div>
-    </Link>
-
-</div>
+    </Card>
+</Columns>
