@@ -1,5 +1,3 @@
-
-
 ### Make a POST request
 
 This example sends a POST request to an internal endpoint with a custom JSON body and headers.
@@ -17,17 +15,18 @@ ngrok http https://httpbin.org --host-header rewrite --url https://httpbin.inter
 <CodeGroup>
 ```yaml policy.yml
 on_http_request:
-  - name: "PostWithBody"
+  - name: PostWithBody
     actions:
-    - type: "http-request"
-    config:
-    url: "https://httpbin.internal/post"
-    method: "POST"
-    headers:
-    content-type: "application/json"
-    x-custom-header: "abc123"
-    body: "{ "user": "${req.headers[\"x-user-id\"]}" }"
+      - type: http-request
+        config:
+          url: https://httpbin.internal/post
+          method: POST
+          headers:
+            content-type: application/json
+            x-custom-header: abc123
+          body: '{ "user": "${req.headers[\"x-user-id\"]}" }'
 ```
+
 ```json policy.json
 {
   "on_http_request": [

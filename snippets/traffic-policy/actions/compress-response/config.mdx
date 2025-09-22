@@ -1,9 +1,8 @@
 import {
-
 	Config,
 	ConfigEnum,
 	ConfigEnumOption,
-	ConfigItem,
+	ConfigField,
 } from "/snippets/ConfigTable.jsx";
 
 ## Configuration Reference
@@ -22,7 +21,7 @@ reference for this action.
 ### Configuration Fields
 
 <Config>
-	<ConfigItem title="algorithms" type="array of strings">
+	<ConfigField title="algorithms" type="array of strings">
 		<p>
 			A list of allowed compression algorithms to be considered during encoding
 			type negotiation. Each element must be unique.
@@ -34,5 +33,5 @@ reference for this action.
 			<ConfigEnumOption>`deflate`</ConfigEnumOption>
 			<ConfigEnumOption>`gzip`</ConfigEnumOption>
 		</ConfigEnum>
-	</ConfigItem>
+	</ConfigField>
 </Config>

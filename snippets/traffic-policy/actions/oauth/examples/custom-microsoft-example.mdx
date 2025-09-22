@@ -1,20 +1,19 @@
-
-
 <CodeGroup>
-```yaml policy.yml highlight={4-12}
+```yaml policy.yml
 on_http_request:
   - actions:
-    - type: "oauth"
-    config:
-    provider: "microsoft"
-    client_id: "{your app's oauth client id}"
-    client_secret: "{your app's oauth client secret}"
-    scopes:
-    - "openid"
-    - "email"
-    - "profile"
+      - type: oauth
+        config:
+          provider: microsoft
+          client_id: '{your app''s oauth client id}'
+          client_secret: '{your app''s oauth client secret}'
+          scopes:
+            - openid
+            - email
+            - profile
 ```
-```json policy.json highlight={5-17}
+
+```json policy.json
 {
   "on_http_request": [
     {

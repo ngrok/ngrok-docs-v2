@@ -1,6 +1,3 @@
----
-title: 1. Generate CA private key (ca.key)
----
 ### Using a Custom Certificate
 
 If you want to specify a custom certificate for your endpoints instead of having ngrok manage the certificate for you, you can use the `server_private_key` and `server_certificate` fields in the configuration. This will allow you to have full control over which certificate is used for your endpoint.
@@ -10,20 +7,20 @@ If you want to specify a custom certificate for your endpoints instead of having
 We will create a new Certificate Authority (CA) that will be used to sign the server certificate. This allows you to generate multiple server certificates that are trusted by the CA if needed. Note that this generates a self-signed certificate, so if you would like to use a custom certificate that is trusted by modern operating systems and browsers you will need to use a trusted CA (e.g. LetsEncrypt).
 
 ```bash
-
+# 1. Generate CA private key (ca.key)
 openssl genpkey -algorithm RSA -out ca.key -pkeyopt rsa_keygen_bits:2048
 
-
+# 2. Generate CA certificate (ca.crt)
 openssl req -x509 -new -nodes -key ca.key -sha256 -days 365 -out ca.crt -subj "/CN=ExampleCA"
 
-
+# 3. Generate server private key (server.key)
 openssl genpkey -algorithm RSA -out server.key -pkeyopt rsa_keygen_bits:2048
 
-
-
+# 4. Generate server certificate signing request (CSR) (server.csr)
+# NOTE: change terminate-tls-example.ngrok.app to the domain you are using with your endpoint
 openssl req -new -key server.key -out server.csr -subj "/CN=terminate-tls-example.ngrok.app"
 
-
+# 5. Generate server certificate (server.crt)
 openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 365 -sha256
 ```
 
@@ -32,19 +29,22 @@ These commands will result in five new files: `ca.key`, `ca.crt`, `server.key`, 
 #### Example Traffic Policy Document
 
 <CodeGroup>
-```yaml policy.yml highlight={4-13}
+```yaml policy.yml {4-13}
 on_tcp_connect:
   - actions:
-    - type: "terminate-tls"
-    config:
-    server_private_key: "-----BEGIN PRIVATE KEY-----
-    ... private key ...
-    -----END PRIVATE KEY-----"
-    server_certificate: "-----BEGIN CERTIFICATE-----
-    ... certificate ...
-    -----END CERTIFICATE-----"
+      - type: terminate-tls
+        config:
+          server_private_key: |-
+            -----BEGIN PRIVATE KEY-----
+            ... private key ...
+            -----END PRIVATE KEY-----
+          server_certificate: |-
+            -----BEGIN CERTIFICATE-----
+            ... certificate ...
+            -----END CERTIFICATE-----
 ```
-```json policy.json highlight={5-11}
+
+```json policy.json {5-11}
 {
   "on_tcp_connect": [
     {
