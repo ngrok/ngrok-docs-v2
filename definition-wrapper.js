@@ -198,6 +198,11 @@ function wrapTermsOnLoad() {
             return;
           }
           
+          // Skip if we're already on the page that this term links to
+          if (termObj.link && window.location.pathname.includes(termObj.link)) {
+            return;
+          }
+          
           // Create regex for term matching (no global flag to replace only first occurrence)
           const flags = termObj.caseSensitive ? '' : 'i';
           const regex = new RegExp(`\\b${escapeRegex(termTitle)}\\b`, flags);
