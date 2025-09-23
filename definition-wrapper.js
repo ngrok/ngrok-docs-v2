@@ -427,19 +427,23 @@ function addTooltipBehavior(button) {
       tooltipElement.appendChild(learnMoreDiv);
     }
     
+    // Determine if we're on a mobile device
+    const isMobile = window.innerWidth <= 768;
+    const maxWidth = isMobile ? 'calc(100vw - 32px)' : 'min(320px, 90vw)';
+    
     // Style to match the image - dark rounded rectangle with white text
     tooltipElement.style.cssText = `
       position: fixed !important;
       z-index: 999999 !important;
       background-color: #000000 !important;
       color: white !important;
-      padding: 14px !important;
+      padding: ${isMobile ? '12px' : '12px'} !important;
       border-radius: 8px !important;
-      font-size: 15px !important;
+      font-size: 16px !important;
       font-weight: 400 !important;
       line-height: 1.3 !important;
       width: auto !important;
-      max-width: min(280px, 25vw) !important;
+      max-width: ${maxWidth} !important;
       min-width: 0 !important;
       word-wrap: break-word !important;
       overflow-wrap: break-word !important;
