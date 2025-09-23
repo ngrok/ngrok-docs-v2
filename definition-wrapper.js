@@ -120,7 +120,7 @@ const terms = [
 			"TCP Keep Alive",
 		],
 		meaning:
-			"TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints. TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints. TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints.",
+			"TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints.",
 		link: "https://en.wikipedia.org/wiki/Keepalive",
 	},
 	{
@@ -264,9 +264,9 @@ function addTooltipBehavior(button) {
       z-index: 999999 !important;
       background-color: #000000 !important;
       color: white !important;
-      padding: 8px 12px !important;
+      padding: 14px !important;
       border-radius: 8px !important;
-      font-size: 13px !important;
+      font-size: 15px !important;
       font-weight: 400 !important;
       line-height: 1.3 !important;
       width: auto !important;
