@@ -15,6 +15,7 @@ See our [Contribution Guidelines](CONTRIBUTING.md) for detailed instructions on 
 - [pnpm 10](https://pnpm.io/installation#using-npm)
 - [nvm](https://github.com/nvm-sh/nvm)
 - `corepack` is included with node by default, no need to install
+- `pnpm add -g mint`
 
 ## Setup
 
