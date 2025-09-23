@@ -57,3 +57,31 @@
     border-bottom-color: rgba(255, 255, 255, 0.8);
   }
 }
+
+/* Word wrap for code and pre elements in table cells */
+td pre,
+td code {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+td pre {
+  white-space: pre-wrap;
+}
+
+/* Increase width of table cells containing code to reduce aggressive wrapping */
+td:has(pre),
+td:has(code) {
+  min-width: 240px;
+  width: auto;
+}
+
+/* Alternative fallback for browsers without :has() support */
+td pre {
+  min-width: 200px;
+}
+
+td code {
+  min-width: 150px;
+}
