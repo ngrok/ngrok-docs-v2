@@ -2,6 +2,8 @@
 title: mTLS Termination
 description: Learn how to enable Mutual TLS (mTLS) termination with your ngrok agents.
 ---
+
+
 Mutual TLS Authentication (mTLS) is a network security protocol that ensures both the client _and_ server authenticate each other using digital certificates, providing encrypted and trusted communication between both parties. This is in contrast to standard TLS, where only the server is authenticated by the client.
 
 By verifying the clients, the server owner is able to restrict access only to verified clients, strengthening security.
@@ -95,7 +97,7 @@ You may also optionally [upload the CA certificate](https://dashboard.ngrok.com/
 ## 3. Start an endpoint with the traffic policy
 
 ```bash
-ngrok http 8080 --url $YOUR_RESERVED_DOMAIN --traffic-policy-file /path/to/policy.yml
+ngrok http 8080 --url $YOUR_DOMAIN --traffic-policy-file /path/to/policy.yml
 ```
 
 ## 4. Test your endpoint
