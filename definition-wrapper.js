@@ -120,7 +120,7 @@ const terms = [
 			"TCP Keep Alive",
 		],
 		meaning:
-			"TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints.",
+			"TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints. TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints. TCP KeepAlive enables TCP connections to remain active even when no data is exchanged between the connected endpoints.",
 		link: "https://en.wikipedia.org/wiki/Keepalive",
 	},
 	{
@@ -164,42 +164,27 @@ const terms = [
 ];
 
 
-console.log("Hi");
+
 
 function wrapTermsOnLoad() {
-  console.log("Hello - starting term wrapping");
-  console.log("Terms loaded:", terms.length);
-  
   // Get page title to check against
   const pageTitle = document.getElementById('page-title');
   const pageTitleText = pageTitle ? pageTitle.textContent.toLowerCase() : '';
-  console.log("Page title text:", pageTitleText);
   
   // Get all mdx-content containers
   const mdxContainers = document.querySelectorAll('div[class*="mdx-content"]');
-  console.log("Found mdx containers:", mdxContainers.length);
   
   // Track which terms have been wrapped to only wrap the first instance
   const wrappedTerms = new Set();
   
   mdxContainers.forEach((container, containerIndex) => {
-    console.log(`Processing container ${containerIndex}`);
-    
     // Find all p spans and li elements within this container
     const pSpans = container.querySelectorAll('span[data-as="p"]');
     const listItems = container.querySelectorAll('li');
     const elementsToProcess = [...pSpans, ...listItems];
     
-    console.log(`Found ${pSpans.length} p spans and ${listItems.length} li elements`);
-    
     elementsToProcess.forEach((element, elementIndex) => {
       const elementText = element.textContent;
-      console.log(`Processing element ${elementIndex}: "${elementText.substring(0, 50)}..."`);
-      
-      // Check specifically for TCP-KeepAlive
-      if (elementText.includes('TCP-KeepAlive')) {
-        console.log("Found TCP-KeepAlive in element:", elementText);
-      }
       
       terms.forEach(termObj => {
         termObj.titles.forEach(termTitle => {
@@ -208,23 +193,15 @@ function wrapTermsOnLoad() {
             return;
           }
           
-          // Check specifically for TCP-KeepAlive
-          if (termTitle === 'TCP-KeepAlive' && elementText.includes('TCP-KeepAlive')) {
-            console.log("Processing TCP-KeepAlive term");
-          }
-          
           // Create regex for term matching (no global flag to replace only first occurrence)
           const flags = termObj.caseSensitive ? '' : 'i';
           const regex = new RegExp(`\\b${escapeRegex(termTitle)}\\b`, flags);
           
           // Check if term exists in this element
           if (regex.test(element.textContent)) {
-            console.log(`Found match for term: ${termTitle} in element:`, element.textContent.substring(0, 100));
-            
             // Replace only the first occurrence
             const originalHTML = element.innerHTML;
             const wrappedHTML = originalHTML.replace(regex, (match) => {
-              console.log(`Wrapping term: ${match}`);
               const definition = termObj.meaning || 'Definition not available';
               const link = termObj.link || '';
               
@@ -233,10 +210,6 @@ function wrapTermsOnLoad() {
             
             // Only update if something changed
             if (originalHTML !== wrappedHTML) {
-              console.log(`Updating innerHTML for term: ${termTitle}`);
-              console.log(`Original:`, originalHTML);
-              console.log(`New:`, wrappedHTML);
-              
               // Try multiple approaches to update DOM
               element.innerHTML = wrappedHTML;
               
@@ -248,17 +221,6 @@ function wrapTermsOnLoad() {
               tooltipButtons.forEach(button => {
                 addTooltipBehavior(button);
               });
-              
-              // Check if the change stuck
-              setTimeout(() => {
-                const currentHTML = element.innerHTML;
-                console.log(`Check after timeout - Current HTML:`, currentHTML);
-                console.log(`Did change persist?`, currentHTML.includes('data-state="closed"'));
-                
-                if (!currentHTML.includes('data-state="closed"')) {
-                  console.warn(`DOM change was reverted for term: ${termTitle}`);
-                }
-              }, 100);
               
               wrappedTerms.add(termTitle);
               return; // Exit early since we only want first instance
@@ -289,8 +251,6 @@ function addTooltipBehavior(button) {
   let tooltipElement = null;
   
   function showTooltip(e) {
-    console.log('Showing tooltip for:', tooltip);
-    
     // Remove any existing tooltip
     hideTooltip();
     
@@ -309,8 +269,9 @@ function addTooltipBehavior(button) {
       font-size: 13px !important;
       font-weight: 400 !important;
       line-height: 1.3 !important;
-      max-width: 320px !important;
-      min-width: fit-content !important;
+      width: auto !important;
+      max-width: min(280px, 25vw) !important;
+      min-width: 0 !important;
       word-wrap: break-word !important;
       overflow-wrap: break-word !important;
       white-space: normal !important;
@@ -320,6 +281,7 @@ function addTooltipBehavior(button) {
       visibility: visible !important;
       opacity: 1 !important;
       box-sizing: border-box !important;
+      overflow: hidden !important;
     `;
     
     // Position tooltip above the element like in the image
@@ -347,18 +309,6 @@ function addTooltipBehavior(button) {
     tooltipElement.style.left = left + 'px';
     tooltipElement.style.top = top + 'px';
     
-    console.log('Tooltip positioned at:', left, top);
-    console.log('ScrollX/ScrollY:', scrollX, scrollY);
-    console.log('Button rect:', rect);
-    console.log('Tooltip rect:', tooltipRect);
-    console.log('Calculation: rect.top + scrollY - tooltipHeight - 8 =', rect.top, '+', scrollY, '-', tooltipRect.height, '- 8 =', top);
-    
-    // Force a check after a frame
-    requestAnimationFrame(() => {
-      console.log('After frame - Tooltip still in DOM:', document.body.contains(tooltipElement));
-      console.log('After frame - Tooltip bounding rect:', tooltipElement.getBoundingClientRect());
-    });
-    
     // Add click behavior if there's a link
     if (link) {
       button.style.cursor = 'pointer';
@@ -374,7 +324,6 @@ function addTooltipBehavior(button) {
   
   function hideTooltip() {
     if (tooltipElement) {
-      console.log('Hiding tooltip');
       tooltipElement.remove();
       tooltipElement = null;
     }
@@ -394,7 +343,6 @@ function setupContentObserver() {
   function throttledWrapTerms() {
     if (timeout) clearTimeout(timeout);
     timeout = setTimeout(() => {
-      console.log("Content changed - re-wrapping terms");
       wrapTermsOnLoad();
     }, 100);
   }
@@ -455,29 +403,24 @@ function setupContentObserver() {
 // Run on page load with multiple timing attempts and set up observer
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOMContentLoaded - trying immediately");
     wrapTermsOnLoad();
     setupContentObserver();
     
     // Also try after a delay in case framework re-renders
     setTimeout(() => {
-      console.log("Trying again after 500ms delay");
       wrapTermsOnLoad();
     }, 500);
     
     setTimeout(() => {
-      console.log("Trying again after 1s delay");
       wrapTermsOnLoad();
     }, 1000);
   });
 } else {
-  console.log("Document already loaded - trying immediately");
   wrapTermsOnLoad();
   setupContentObserver();
   
   // Also try after delays
   setTimeout(() => {
-    console.log("Trying again after 500ms delay");
     wrapTermsOnLoad();
   }, 500);
 }
