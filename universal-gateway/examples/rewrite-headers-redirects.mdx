@@ -7,7 +7,7 @@ description: By routing to internal services and editing headers, you can manipu
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
+
 
 Many of our customers use ngrok for [site-to-site connectivity](/guides/site-to-site-connectivity/).
 This is usually pretty straightforward, but occasionally a service requires a specific `Host` header or uses internal DNS names or redirect flows that break in an outbound tunneled environment (e.g., `302` redirects to `internal.corp.local`).

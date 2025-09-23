@@ -5,7 +5,7 @@ description: Show users content based on their region, comply with regulations, 
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
+
 
 To route traffic to specific regions, you can use ngrok’s Cloud Endpoints, internal Agent Endpoints, and Traffic Policy engine to match incoming traffic based on the [client's IP geolocation data](/traffic-policy/variables/connection/#conngeocountry_code) using [ISO 3166 country codes](https://www.iso.org/iso-3166-country-codes.html), then forward requests to the appropriate regional endpoints.
 
@@ -85,4 +85,4 @@ If the traffic comes from any other country, ngrok forwards it to a "default" se
 - View your traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector).
 - Check out [Endpoint Pools](/universal-gateway/endpoint-pooling/) for dead-simple load balancing.
 
-<Back />
+
