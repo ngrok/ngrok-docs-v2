@@ -387,11 +387,77 @@ function addTooltipBehavior(button) {
   button.addEventListener('blur', hideTooltip);
 }
 
-// Run on page load with multiple timing attempts
+// Set up MutationObserver to handle theme changes and re-renders
+function setupContentObserver() {
+  // Throttle function to avoid excessive re-runs
+  let timeout = null;
+  function throttledWrapTerms() {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      console.log("Content changed - re-wrapping terms");
+      wrapTermsOnLoad();
+    }, 100);
+  }
+  
+  // Watch for changes to the main content area
+  const observer = new MutationObserver((mutations) => {
+    let shouldRerun = false;
+    
+    mutations.forEach((mutation) => {
+      // Check if mdx-content or main content areas changed
+      if (mutation.type === 'childList') {
+        const target = mutation.target;
+        if (target.classList && (
+          target.classList.contains('mdx-content') ||
+          target.id === 'content' ||
+          target.id === 'content-area'
+        )) {
+          shouldRerun = true;
+        }
+        
+        // Also check if added nodes contain mdx-content
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            if (node.classList && node.classList.contains('mdx-content')) {
+              shouldRerun = true;
+            }
+            // Check if added node contains mdx-content
+            if (node.querySelector && node.querySelector('.mdx-content')) {
+              shouldRerun = true;
+            }
+          }
+        });
+      }
+      
+      // Also watch for attribute changes that might indicate theme changes
+      if (mutation.type === 'attributes' && 
+          (mutation.attributeName === 'class' || mutation.attributeName === 'data-theme')) {
+        shouldRerun = true;
+      }
+    });
+    
+    if (shouldRerun) {
+      throttledWrapTerms();
+    }
+  });
+  
+  // Start observing
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class', 'data-theme']
+  });
+  
+  return observer;
+}
+
+// Run on page load with multiple timing attempts and set up observer
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     console.log("DOMContentLoaded - trying immediately");
     wrapTermsOnLoad();
+    setupContentObserver();
     
     // Also try after a delay in case framework re-renders
     setTimeout(() => {
@@ -407,6 +473,7 @@ if (document.readyState === 'loading') {
 } else {
   console.log("Document already loaded - trying immediately");
   wrapTermsOnLoad();
+  setupContentObserver();
   
   // Also try after delays
   setTimeout(() => {
