@@ -373,14 +373,59 @@ function addTooltipBehavior(button) {
   if (!tooltip) return;
   
   let tooltipElement = null;
+  let hideTimeout = null;
   
   function showTooltip(e) {
+    // Clear any pending hide timeout
+    if (hideTimeout) {
+      clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+    
     // Remove any existing tooltip
     hideTooltip();
     
     // Create tooltip element
     tooltipElement = document.createElement('div');
-    tooltipElement.textContent = tooltip;
+    
+    // Create the main content
+    const contentDiv = document.createElement('div');
+    contentDiv.textContent = tooltip;
+    tooltipElement.appendChild(contentDiv);
+    
+    // Add "Learn More" link if there's a link
+    if (link) {
+      const learnMoreDiv = document.createElement('div');
+      learnMoreDiv.style.cssText = `
+        margin-top: 8px !important;
+        padding-top: 8px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+      `;
+      
+      const learnMoreLink = document.createElement('a');
+      learnMoreLink.textContent = 'Learn More';
+      learnMoreLink.href = link;
+      learnMoreLink.style.cssText = `
+        color: #60a5fa !important;
+        text-decoration: underline !important;
+        cursor: pointer !important;
+        font-size: 14px !important;
+      `;
+      
+      // Handle link clicks
+      learnMoreLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (link.startsWith('http')) {
+          window.open(link, '_blank');
+        } else {
+          window.location.href = link;
+        }
+        hideTooltip();
+      });
+      
+      learnMoreDiv.appendChild(learnMoreLink);
+      tooltipElement.appendChild(learnMoreDiv);
+    }
     
     // Style to match the image - dark rounded rectangle with white text
     tooltipElement.style.cssText = `
@@ -399,7 +444,7 @@ function addTooltipBehavior(button) {
       word-wrap: break-word !important;
       overflow-wrap: break-word !important;
       white-space: normal !important;
-      pointer-events: none !important;
+      pointer-events: auto !important;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
       display: block !important;
       visibility: visible !important;
@@ -433,17 +478,17 @@ function addTooltipBehavior(button) {
     tooltipElement.style.left = left + 'px';
     tooltipElement.style.top = top + 'px';
     
-    // Add click behavior if there's a link
-    if (link) {
-      button.style.cursor = 'pointer';
-      button.onclick = () => {
-        if (link.startsWith('http')) {
-          window.open(link, '_blank');
-        } else {
-          window.location.href = link;
-        }
-      };
-    }
+    // Add hover behavior to tooltip to keep it open
+    tooltipElement.addEventListener('mouseenter', () => {
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+    });
+    
+    tooltipElement.addEventListener('mouseleave', () => {
+      hideTimeout = setTimeout(hideTooltip, 100);
+    });
   }
   
   function hideTooltip() {
@@ -451,13 +496,21 @@ function addTooltipBehavior(button) {
       tooltipElement.remove();
       tooltipElement = null;
     }
+    if (hideTimeout) {
+      clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+  }
+  
+  function scheduleHide() {
+    hideTimeout = setTimeout(hideTooltip, 100);
   }
   
   // Add event listeners
   button.addEventListener('mouseenter', showTooltip);
-  button.addEventListener('mouseleave', hideTooltip);
+  button.addEventListener('mouseleave', scheduleHide);
   button.addEventListener('focus', showTooltip);
-  button.addEventListener('blur', hideTooltip);
+  button.addEventListener('blur', scheduleHide);
 }
 
 // Set up MutationObserver to handle theme changes and re-renders
