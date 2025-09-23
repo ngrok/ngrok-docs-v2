@@ -19,14 +19,14 @@ const terms = [
 		caseSensitive: true,
 		meaning:
 			"CustomResourceDefinitions allow users to extend the Kubernetes API by defining their own resource types.",
-		link: "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/",
+		link: "https://kubernetes.io//tasks/extend-kubernetes/custom-resources/custom-resource-definitions/",
 		pluralEnding: "s",
 	},
 	{
 		titles: ["Endpoint Pooling", "Endpoint pool"],
 		meaning:
 			'When your create two ngrok endpoints with the same URL (and binding), those endpoints automatically form a "pool" and share incoming traffic.',
-		link: "/docs/universal-gateway/endpoint-pooling/",
+		link: "/universal-gateway/endpoint-pooling/",
 		pluralEnding: "s",
 	},
 	{
@@ -134,25 +134,25 @@ const terms = [
 		titles: ["TLS Termination"],
 		meaning:
 			"TLS (Transport Layer Security) termination is the process of decrypting incoming TLS traffic at a server or load balancer before passing the unencrypted traffic to internal systems.",
-		link: "/docs/universal-gateway/tls-termination/",
+		link: "/universal-gateway/tls-termination/",
 	},
 	{
 		titles: ["Traffic Policy", "Traffic Policies"],
 		meaning:
 			"Traffic Policy is a configuration language that enables you to filter, match, manage and orchestrate traffic to your endpoints. For example, you can add authentication, send custom response, rate limit traffic, and more.",
-		link: "/docs/traffic-policy/",
+		link: "/traffic-policy/",
 	},
 	{
 		titles: ["v2"],
 		caseSensitive: true,
 		meaning: "v2 is shorthand for the second major version of the ngrok Agent.",
-		link: "/docs/agent/config/v2",
+		link: "/agent/config/v2",
 	},
 	{
 		titles: ["v3"],
 		caseSensitive: true,
 		meaning: "v3 is shorthand for the third major version of the ngrok Agent.",
-		link: "/docs/agent/config/v3",
+		link: "/agent/config/v3",
 	},
 	{
 		titles: ["WAF"],
@@ -186,6 +186,11 @@ function wrapTermsOnLoad() {
     elementsToProcess.forEach((element, elementIndex) => {
       const elementText = element.textContent;
       
+      // Skip if element is inside a link, heading, or code block
+      if (isInsideExcludedElement(element)) {
+        return;
+      }
+      
       terms.forEach(termObj => {
         termObj.titles.forEach(termTitle => {
           // Skip if this term is already wrapped or if it appears in the page title
@@ -199,29 +204,8 @@ function wrapTermsOnLoad() {
           
           // Check if term exists in this element
           if (regex.test(element.textContent)) {
-            // Replace only the first occurrence
-            const originalHTML = element.innerHTML;
-            const wrappedHTML = originalHTML.replace(regex, (match) => {
-              const definition = termObj.meaning || 'Definition not available';
-              const link = termObj.link || '';
-              
-              return `<button data-state="closed" data-tooltip="${escapeHtml(definition)}" ${link ? `data-link="${link}"` : ''}><span class="tooltip underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500">${match}</span></button>`;
-            });
-            
-            // Only update if something changed
-            if (originalHTML !== wrappedHTML) {
-              // Try multiple approaches to update DOM
-              element.innerHTML = wrappedHTML;
-              
-              // Force a reflow
-              element.offsetHeight;
-              
-              // Add tooltip event listeners to the newly created buttons
-              const tooltipButtons = element.querySelectorAll('button[data-tooltip]');
-              tooltipButtons.forEach(button => {
-                addTooltipBehavior(button);
-              });
-              
+            // Use text node replacement instead of innerHTML replacement
+            if (replaceInTextNodes(element, regex, termTitle, termObj)) {
               wrappedTerms.add(termTitle);
               return; // Exit early since we only want first instance
             }
@@ -240,6 +224,94 @@ function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+function isInsideExcludedElement(element) {
+  // List of tag names to exclude
+  const excludedTags = ['A', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'PRE', 'CODE'];
+  
+  // Check current element and all ancestors
+  let current = element;
+  while (current && current !== document.body) {
+    if (excludedTags.includes(current.tagName)) {
+      return true;
+    }
+    current = current.parentElement;
+  }
+  
+  return false;
+}
+
+function replaceInTextNodes(element, regex, termTitle, termObj) {
+  // Get all text nodes within the element
+  const textNodes = [];
+  const walker = document.createTreeWalker(
+    element,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: function(node) {
+        // Skip text nodes that are inside excluded elements
+        if (isInsideExcludedElement(node.parentElement)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    }
+  );
+  
+  let currentNode;
+  while (currentNode = walker.nextNode()) {
+    textNodes.push(currentNode);
+  }
+  
+  // Find the first text node that contains our term
+  for (let textNode of textNodes) {
+    const text = textNode.textContent;
+    if (regex.test(text)) {
+      // Create the replacement elements
+      const definition = termObj.meaning || 'Definition not available';
+      const link = termObj.link || '';
+      
+      const button = document.createElement('button');
+      button.setAttribute('data-state', 'closed');
+      button.setAttribute('data-tooltip', definition);
+      if (link) {
+        button.setAttribute('data-link', link);
+      }
+      
+      const span = document.createElement('span');
+      span.className = 'tooltip underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500';
+      
+      // Split the text and create new nodes
+      const match = text.match(regex);
+      if (match) {
+        const matchText = match[0];
+        const beforeText = text.substring(0, match.index);
+        const afterText = text.substring(match.index + matchText.length);
+        
+        span.textContent = matchText;
+        button.appendChild(span);
+        
+        // Replace the text node with the new structure
+        const parent = textNode.parentNode;
+        if (beforeText) {
+          parent.insertBefore(document.createTextNode(beforeText), textNode);
+        }
+        parent.insertBefore(button, textNode);
+        if (afterText) {
+          parent.insertBefore(document.createTextNode(afterText), textNode);
+        }
+        parent.removeChild(textNode);
+        
+        // Add tooltip behavior
+        addTooltipBehavior(button);
+        
+        return true; // Successfully replaced
+      }
+    }
+  }
+  
+  return false; // No replacement made
 }
 
 function addTooltipBehavior(button) {
