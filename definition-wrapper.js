@@ -282,6 +282,9 @@ function replaceInTextNodes(element, regex, termTitle, termObj) {
       const span = document.createElement('span');
       span.className = 'tooltip underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500';
       
+      // Preserve styling from parent elements (italics, bold, etc.)
+      copyParentStyles(textNode.parentElement, span);
+      
       // Split the text and create new nodes
       const match = text.match(regex);
       if (match) {
@@ -312,6 +315,50 @@ function replaceInTextNodes(element, regex, termTitle, termObj) {
   }
   
   return false; // No replacement made
+}
+
+function copyParentStyles(sourceElement, targetElement) {
+  // Walk up the DOM tree to find styling elements
+  let current = sourceElement;
+  const stylesToPreserve = {
+    fontStyle: '',
+    fontWeight: '',
+    textDecoration: ''
+  };
+  
+  while (current && current !== document.body) {
+    const computedStyle = window.getComputedStyle(current);
+    
+    // Preserve italic styling from <em>, <i>, or CSS
+    if (computedStyle.fontStyle === 'italic' && !stylesToPreserve.fontStyle) {
+      stylesToPreserve.fontStyle = 'italic';
+    }
+    
+    // Preserve bold styling from <strong>, <b>, or CSS
+    const fontWeight = computedStyle.fontWeight;
+    if ((fontWeight === 'bold' || parseInt(fontWeight) >= 600) && !stylesToPreserve.fontWeight) {
+      stylesToPreserve.fontWeight = fontWeight;
+    }
+    
+    // Preserve underline styling from <u> or CSS (but not our tooltip underline)
+    const textDecoration = computedStyle.textDecoration;
+    if (textDecoration && textDecoration !== 'none' && !current.classList.contains('tooltip')) {
+      stylesToPreserve.textDecoration = textDecoration;
+    }
+    
+    current = current.parentElement;
+  }
+  
+  // Apply the preserved styles to the target element
+  if (stylesToPreserve.fontStyle) {
+    targetElement.style.fontStyle = stylesToPreserve.fontStyle;
+  }
+  if (stylesToPreserve.fontWeight) {
+    targetElement.style.fontWeight = stylesToPreserve.fontWeight;
+  }
+  if (stylesToPreserve.textDecoration) {
+    targetElement.style.textDecoration = stylesToPreserve.textDecoration;
+  }
 }
 
 function addTooltipBehavior(button) {
