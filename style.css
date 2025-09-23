@@ -1,0 +1,30 @@
+/* Custom CSS for tooltip styling */
+.tooltip {
+  font-weight: bold;
+}
+
+/* Light mode - black text with 80% opacity */
+:root .tooltip,
+[data-theme="light"] .tooltip,
+.light .tooltip {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dark mode - white text with 80% opacity */
+[data-theme="dark"] .tooltip,
+.dark .tooltip {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Alternative selectors for different theme implementations */
+@media (prefers-color-scheme: light) {
+  .tooltip {
+    color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tooltip {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
