@@ -8,7 +8,7 @@ import ActionVariablesDescription from "/snippets/traffic-policy/common/action-v
 import { ConfigField } from "/snippets/ConfigTable.jsx";
 
 The **Log** Traffic Policy action enables you to leverage ngrok's
-[eventing system](/docs/obs) to introduce observability into your traffic policy
+[eventing system](/obs) to introduce observability into your traffic policy
 documents.
 
 ## Configuration Reference
@@ -40,7 +40,7 @@ reference for this action.
     ### Event logs
 
     When this action is executed, the specified metadata will be collected on the
-    [tcp_connection_closed.v0](/docs/obs/events/reference/#tcp_connection_closedv0) event
+    [tcp_connection_closed.v0](/obs/events/reference/#tcp_connection_closedv0) event
     under the `traffic_policy.logs` key.
   </Tab>
 
@@ -57,7 +57,7 @@ reference for this action.
 
 ### Logging with CEL Interpolation
 
-The following [Traffic Policy](/docs/traffic-policy/)
+The following [Traffic Policy](/traffic-policy/)
 configuration will log a message with the endpoint identifier for every request.
 
 #### Example Traffic Policy Document

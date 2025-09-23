@@ -118,14 +118,14 @@ development, but when you move into production, we recommend using your own cust
 
 | Provider  | Provider Identifier | Managed App Available | Integration Guide                                    |
 | --------- | ------------------- | --------------------- | ---------------------------------------------------- |
-| Amazon    | `amazon`            | no                    | [Documentation](/docs/integrations/amazon/oauth/)    |
-| Facebook  | `facebook`          | no                    | [Documentation](/docs/integrations/facebook/oauth/)  |
-| GitHub    | `github`            | yes                   | [Documentation](/docs/integrations/github/oauth/)    |
-| GitLab    | `gitlab`            | yes                   | [Documentation](/docs/integrations/gitlab/oauth/)    |
-| Google    | `google`            | yes                   | [Documentation](/docs/integrations/google/oauth/)    |
-| LinkedIn  | `linkedin`          | yes                   | [Documentation](/docs/integrations/linkedin/oauth/)  |
-| Microsoft | `microsoft`         | yes                   | [Documentation](/docs/integrations/microsoft/oauth/) |
-| Twitch    | `twitch`            | yes                   | [Documentation](/docs/integrations/twitch/oauth/)    |
+| Amazon    | `amazon`            | no                    | [Documentation](/integrations/amazon/oauth/)    |
+| Facebook  | `facebook`          | no                    | [Documentation](/integrations/facebook/oauth/)  |
+| GitHub    | `github`            | yes                   | [Documentation](/integrations/github/oauth/)    |
+| GitLab    | `gitlab`            | yes                   | [Documentation](/integrations/gitlab/oauth/)    |
+| Google    | `google`            | yes                   | [Documentation](/integrations/google/oauth/)    |
+| LinkedIn  | `linkedin`          | yes                   | [Documentation](/integrations/linkedin/oauth/)  |
+| Microsoft | `microsoft`         | yes                   | [Documentation](/integrations/microsoft/oauth/) |
+| Twitch    | `twitch`            | yes                   | [Documentation](/integrations/twitch/oauth/)    |
 
 ### Required Scopes
 
@@ -190,7 +190,7 @@ a re-authentication flow.
 
 The following circumstances trigger refresh and authorization re-evaluation:
 
-- On a periodic interval defined by the [`userinfo_refresh_interval`](/docs/traffic-policy/actions/oauth/#configuration-fields) parameter.
+- On a periodic interval defined by the [`userinfo_refresh_interval`](/traffic-policy/actions/oauth/#configuration-fields) parameter.
 - If you update the OAuth configuration of the endpoint either in the agent or through the dashboard.
 - If you update the OAuth configuration of the endpoint.
 
@@ -214,7 +214,7 @@ limitations.
 
 ### Traffic Identities
 
-ngrok's [Traffic Identities](/docs/traffic-policy/identities/) feature can be used to observe
+ngrok's [Traffic Identities](/traffic-policy/identities/) feature can be used to observe
 all of the authenticated user activity across your account in the ngrok
 dashboard or via the API. Whenever a user authenticates or accesses an endpoint
 with a configured OAuth action, their Traffic Identity record is created or updated.
@@ -236,7 +236,7 @@ upstream service and must not be modified.
 
 ### Using a Managed Provider
 
-The following [Traffic Policy](/docs/traffic-policy/)
+The following [Traffic Policy](/traffic-policy/)
 configuration will provide your app with a google authentication step.
 
 <CodeGroup>
@@ -266,13 +266,13 @@ on_http_request:
 ```
 </CodeGroup>
 
-The `provider` value can be replaced with any of the [Supported Providers](/docs/traffic-policy/actions/oauth/#supported-providers) that have an
+The `provider` value can be replaced with any of the [Supported Providers](/traffic-policy/actions/oauth/#supported-providers) that have an
 a managed app available.
 
 
 ### Restricting access to certain users
 
-See [here](/docs/traffic-policy/examples/add-authentication/#conditional-access-using-oauth-variables) for an example of conditional access based on OAuth result variables.
+See [here](/traffic-policy/examples/add-authentication/#conditional-access-using-oauth-variables) for an example of conditional access based on OAuth result variables.
 
 <CustomProviders />
 

@@ -1,7 +1,7 @@
 
 You can configure the
 [`jwt-validation` Traffic Policy
-action](/docs/traffic-policy/actions/jwt-validation/) to validate tokens you
+action](/traffic-policy/actions/jwt-validation/) to validate tokens you
 issue directly from Auth0 on an ngrok-managed domain we'll call
 `<YOUR_NGROK_DOMAIN>` from here on out.
 
@@ -9,10 +9,10 @@ Let's walk through the steps to wire up this integration and secure your APIs,
 assuming you already have a cloud or agent endpoint running and have applied a
 Traffic Policy rule before. If not, check out these docs:
 
-- [Quickstart](/docs/getting-started/)
+- [Quickstart](/getting-started/)
 - [Cloud Endpoints
-  Quickstart](/docs/getting-started/cloud-endpoints-quickstart/)
-- [Traffic Policy](/docs/traffic-policy/)
+  Quickstart](/getting-started/cloud-endpoints-quickstart/)
+- [Traffic Policy](/traffic-policy/)
 
 ## Define your API in Auth0
 
@@ -58,7 +58,7 @@ app and select your new API when prompted.
 
 You now have everything you need to configure JWT validation in Traffic Policy.
 
-This is an example [Traffic Policy](/docs/traffic-policy/) configuration
+This is an example [Traffic Policy](/traffic-policy/) configuration
 for enabling the action with your settings from Auth0—you'll need to customize the
 variables in the `issuer.allow_list.value`, `audience.allow_list.value`, and
 `jws.keys.sources.additonal_jkus` fields below.
