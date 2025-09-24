@@ -1,26 +1,23 @@
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 ## Install the Gateway API custom resource definitions
 
 You can select either the [standard or experimental](https://gateway-api.sigs.k8s.io/guides/) set of Gateway API CRDs depending on your preference.
 Either version will work with the ngrok Kubernetes Operator.
 
-<Tabs groupId="gwapi-crds" queryString="gwapi-crds">
-  <TabItem value="standard" label="Standard" default>
+<Tabs>
+  <Tab title="Standard">
 
 ```bash
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml
 ```
 
-  </TabItem>
-  <TabItem value="experimental" label="Experimental">
+  </Tab>
+  <Tab title="Experimental">
 
 ```
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/experimental-install.yaml
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 After installing the Gateway API CRDs, create the following `GatewayClass` so that you can mark which Gateway API resources the ngrok Operator should handle:

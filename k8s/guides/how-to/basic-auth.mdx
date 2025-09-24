@@ -35,8 +35,8 @@ All other requests will be denied with a `401` response code.
 
 Check out the [basic auth traffic policy action](/traffic-policy/actions/basic-auth/) page for more details about how it functions and the parameters it accepts.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -58,8 +58,8 @@ Check out the [basic auth traffic policy action](/traffic-policy/actions/basic-a
                 - admin:password2
               enforce: true
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -85,8 +85,8 @@ Check out the [basic auth traffic policy action](/traffic-policy/actions/basic-a
                 content-type: text/plain
               body: Successfully Authenticated!
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not natively support Basic Authentication, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -134,8 +134,8 @@ Check out the [basic auth traffic policy action](/traffic-policy/actions/basic-a
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	💡 Gateway API resources do not natively support Basic Authentication, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -180,5 +180,5 @@ Check out the [basic auth traffic policy action](/traffic-policy/actions/basic-a
         port: 443
         protocol: HTTPS
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

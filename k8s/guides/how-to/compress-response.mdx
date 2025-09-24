@@ -41,8 +41,8 @@ The traffic policy includes an expression to only run the compression on paths t
 
 Check out the [compress response traffic policy action](/traffic-policy/actions/compress-response/) page for more details about how it functions and the parameters it accepts.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -66,8 +66,8 @@ Check out the [compress response traffic policy action](/traffic-policy/actions/
                     - deflate
                     - compress
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -89,8 +89,8 @@ Check out the [compress response traffic policy action](/traffic-policy/actions/
                     - deflate
                     - compress
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not natively support response compression, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -140,8 +140,8 @@ Check out the [compress response traffic policy action](/traffic-policy/actions/
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	💡 Gateway API resources do not natively support response compression, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -188,5 +188,5 @@ Check out the [compress response traffic policy action](/traffic-policy/actions/
         port: 443
         protocol: HTTPS
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

@@ -35,8 +35,8 @@ The following examples show how to set up an endpoint that allows only 1 request
 
 Check out the [circuit breaking traffic policy action](/traffic-policy/actions/circuit-breaker/) page for more details about how it functions and the parameters it accepts.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -58,8 +58,8 @@ Check out the [circuit breaking traffic policy action](/traffic-policy/actions/c
                   tripped_duration: 2m
                   enforce: true
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -79,8 +79,8 @@ Check out the [circuit breaking traffic policy action](/traffic-policy/actions/c
                   tripped_duration: 2m
                   enforce: true
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not natively support circuit breaking, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -128,8 +128,8 @@ Check out the [circuit breaking traffic policy action](/traffic-policy/actions/c
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	💡 Gateway API resources do not natively support circuit breaking, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -174,5 +174,5 @@ Check out the [circuit breaking traffic policy action](/traffic-policy/actions/c
         port: 443
         protocol: HTTPS
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

@@ -45,7 +45,7 @@ ngrok http $PORT --url https://service-green.internal
 While still viewing your new Cloud Endpoint in the dashboard, copy and paste the policy below into the Traffic Policy editor, depending on how you architected your services and deploy them.
 
 <Tabs>
-  <TabItem value="single" label="Single service/whole-environment" default>
+  <Tab title="Single service/whole-environment">
     ```yaml
     on_http_request:
       - actions:
@@ -78,8 +78,8 @@ While still viewing your new Cloud Endpoint in the dashboard, copy and paste the
 
       The policy then sends all other requests to your current live environment.
 
-    </TabItem>
-    <TabItem value="multiple" label="Microservices/scoped deployment">
+    </Tab>
+    <Tab title="Microservices/scoped deployment">
       In this example, you have `auth` and `accounts` microservices at the `/api/auth` and `/api/accounts` paths, respectively.
       You're blue-green deploying just the auth service at two internal endpoints: `https://auth-blue.internal` and `https://auth-green.internal`.
 
@@ -127,7 +127,7 @@ While still viewing your new Cloud Endpoint in the dashboard, copy and paste the
 
       Finally, it routes requests to the `/api/accounts` path to that service independent of your ongoing blue-green rollout.
 
-    </TabItem>
+    </Tab>
 
 </Tabs>
 

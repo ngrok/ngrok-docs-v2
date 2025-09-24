@@ -37,8 +37,8 @@ You must first create a [TCP Address](/docs/universal-gateway/tcp-addresses/).
 When you create a TCP address, a random hostname and port will be assigned to you, e.g. `1.tcp.ngrok.io:12345`.
 See the [TCP Endpoints page](/docs/universal-gateway/tcp/) for more details on how ngrok handles TCP endpoints.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agentendpoint" label="AgentEndpoint">
+<Tabs>
+	<Tab title="AgentEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -50,8 +50,8 @@ See the [TCP Endpoints page](/docs/universal-gateway/tcp/) for more details on h
     upstream:
       url: tcp://example-service.example-namespace:8443
 	```
-	</TabItem>
-	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint with AgentEndpoint">
 
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
@@ -83,8 +83,8 @@ See the [TCP Endpoints page](/docs/universal-gateway/tcp/) for more details on h
             config:
               url: tcp://example-service.internal:8443
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 
 	For TLS and TCP Routes, you must put the domain in the `Gateway.Spec.Addresses` field as the ngrok operator needs to know what domains to use when creating endpoints for you and Gateway API forbids using the hostname field
 	on Gateway listeners for TCP/TLS protocols.
@@ -130,5 +130,5 @@ See the [TCP Endpoints page](/docs/universal-gateway/tcp/) for more details on h
           - name: example-service
             port: 9000
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

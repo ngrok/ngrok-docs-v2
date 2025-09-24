@@ -44,8 +44,8 @@ You can set up any HTTP server to run on this port locally, and it the endpoint 
 Next, let's create the domain that the cloud endpoint will reside on.
 For the purpose of this guide, we will create an ngrok HTTP domain.
 
-<Tabs groupId="guide">
-<TabItem value="cli" label="ngrok CLI" default>
+<Tabs>
+<Tab title="ngrok CLI">
 
 ```bash
 ngrok api reserved-domains create \
@@ -64,8 +64,8 @@ After running, you should see the following:
 }
 ```
 
-</TabItem>
-<TabItem value="curl" label="CURL">
+</Tab>
+<Tab title="CURL">
 
 ```bash
 curl \
@@ -93,11 +93,11 @@ Running this command should give you the following output:
 }
 ```
 
-</TabItem>
-<TabItem value="dash" label="ngrok Dashboard">
+</Tab>
+<Tab title="ngrok Dashboard">
 You can reserve a subdomain via [ngrok dashboard](https://dashboard.ngrok.com/domains/new). 
 After successfully reserving a domain, you should see it listed in the domains table.
-</TabItem>
+</Tab>
 </Tabs>
 
 When you have completed this step, you can move on to the next step.
@@ -145,8 +145,8 @@ Now we can create an ngrok Cloud Endpoint that points to our
 newly created internal endpoint. Cloud Endpoints can be created
 via the API or ngrok dashboard.
 
-<Tabs groupId="guide">
-<TabItem value="api" label="API" default>
+<Tabs>
+<Tab title="API">
 We use the URL from Step 2 as the `url` value in the traffic policy, and the traffic policy from Step 3 as the `traffic-policy` value.
 The binding is set to public so anyone can access our cloud endpoint.
 
@@ -162,10 +162,10 @@ ngrok api endpoints create \
 
 - Replace NGROK_SUBDOMAIN with the value used in step 2.
 
-</TabItem>
-<TabItem value="dash" label="ngrok Dashboard">
+</Tab>
+<Tab title="ngrok Dashboard">
 Coming soon!
-</TabItem>
+</Tab>
 </Tabs>
 
 ## **Step 5** — Load Balancing with Endpoint Pools

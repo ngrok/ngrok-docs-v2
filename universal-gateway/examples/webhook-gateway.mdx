@@ -8,9 +8,6 @@ import ReserveDomain from "./snippets/_reserve-domain.mdx";
 import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
 import TryOut from "./snippets/_try-out.mdx";
 import Back from "./snippets/_back-to-examples.mdx";
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-
 Instead of implementing webhook validation and routing logic separately in every service, a webhook gateway provides a single, secure entry point for all third-party webhooks from providers like Stripe, Twilio, Slack, and GitHub. This centralized approach validates webhook signatures, prevents tampering, and routes authenticated requests to the appropriate internal services in production environments.
 
 With this setup, you can:
@@ -89,7 +86,7 @@ ngrok api secrets create \
 While still viewing your new cloud endpoint in the dashboard, copy and paste one of the policies below into the Traffic Policy editor.
 
 <Tabs>
-<TabItem value="secrets" label="Using Secrets (Recommended)" default>
+<Tab title="Using Secrets (Recommended)">
 
 ```yaml
 on_http_request:
@@ -132,8 +129,8 @@ on_http_request:
 
 **What's happening here?** This policy routes incoming webhook requests based on their URL path. Each route first validates the webhook signature using secrets stored in your encrypted vault, then forwards authenticated requests to the appropriate internal service. If signature verification fails, the request is automatically rejected, protecting your services from spoofed or tampered webhooks.
 
-</TabItem>
-<TabItem value="plaintext" label="Using plaintext secrets">
+</Tab>
+<Tab title="Using plaintext secrets">
 
 ```yaml
 on_http_request:
@@ -176,7 +173,7 @@ on_http_request:
 
 **What's happening here?** This policy routes incoming webhook requests based on their URL path. Each route first validates the webhook signature using plaintext secrets, then forwards authenticated requests to the appropriate internal service. If signature verification fails, the request is automatically rejected, protecting your services from spoofed or tampered webhooks.
 
-</TabItem>
+</Tab>
 </Tabs>
 
 ## 6. Try out your endpoint

@@ -84,8 +84,8 @@ These commands will generate the following files:
 
 ### 2. Create an Endpoint with Custom TLS Termination
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	Check out the [terminate TLS traffic policy action](/traffic-policy/actions/terminate-tls/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -119,8 +119,8 @@ These commands will generate the following files:
                       ... certificate ...
                       -----END CERTIFICATE-----
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	Check out the [terminate TLS traffic policy action](/traffic-policy/actions/terminate-tls/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -152,8 +152,8 @@ These commands will generate the following files:
                       ... certificate ...
                       -----END CERTIFICATE-----
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 `Ingress` resources do not natively support advanced TLS termination options, but they can be extended using a traffic policy.
 
 	Check out the [terminate TLS traffic policy action](/traffic-policy/actions/terminate-tls/) page for more details about how it functions and the parameters it accepts.
@@ -213,8 +213,8 @@ These commands will generate the following files:
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports TLS termination, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 3. Create a `Secret` to Terminate TLS
@@ -294,7 +294,7 @@ These commands will generate the following files:
           port: 80
           weight: 1
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 

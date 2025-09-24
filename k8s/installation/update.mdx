@@ -56,20 +56,20 @@ export OPERATOR_NAME=ngrok-operator
 export OPERATOR_NAMESPACE=ngrok-operator
 ```
 
-<Tabs groupId="k8s" queryString="version">
-	<TabItem value="latest" label="Latest Release" default>
+<Tabs>
+	<Tab title="Latest Release">
 	```bash
 	helm upgrade $OPERATOR_NAME ngrok/ngrok-operator \
 	--reuse-values
 	```
-	</TabItem>
-	<TabItem value="specific" label="Specific Release">
+	</Tab>
+	<Tab title="Specific Release">
 	```bash
 	helm upgrade $OPERATOR_NAME ngrok/ngrok-operator \
 	--version $OPERATOR_CHART_VERSION \
 	--reuse-values
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 

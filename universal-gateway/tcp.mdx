@@ -64,35 +64,35 @@ of the process and forwards traffic to a port or URL of your choosing.
 This example creates a TCP endpoint on a randomly-assigned URL - e.g.
 `tcp://1.tcp.ngrok.io:12345` and forwards its traffic to a local port.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<RandomAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<RandomAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh-r" label="SSH -R">
+	</Tab>
+	<Tab title="SSH -R">
 		<RandomSshExample />
 
     	:::tip
     	See [the guide on using ngrok with SSH](/using-ngrok-with/ssh) to use simple SSH instead of SSH -R.
     	:::
-    </TabItem>
-    <TabItem value="go-sdk" label="Go">
+    </Tab>
+    <Tab title="Go">
     	<RandomGoSdkExample />
-    </TabItem>
-    <TabItem value="javascript-sdk" label="Javascript">
+    </Tab>
+    <Tab title="Javascript">
     	<RandomJavascriptSdkExample />
-    </TabItem>
-    <TabItem value="python-sdk" label="Python">
+    </Tab>
+    <Tab title="Python">
     	<RandomPythonSdkExample />
-    </TabItem>
-    <TabItem value="rust-sdk" label="Rust">
+    </Tab>
+    <Tab title="Rust">
     	<RandomRustSdkExample />
-    </TabItem>
-    <TabItem value="k8s" label="Kubernetes Controller">
+    </Tab>
+    <Tab title="Kubernetes Controller">
     	<RandomKubernetesExample />
-    </TabItem>
+    </Tab>
 
 </Tabs>
 
@@ -122,31 +122,31 @@ They are not needed for TCP endpoints on other bindings, like `internal` or
 After you have created a TCP Address, specify the address (e.g.
 `1.tcp.eu.ngrok.io:12345`) in the URL when you create the endpoint.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<FixedAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<FixedAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<FixedSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<FixedGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<FixedJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<FixedPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<FixedRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<FixedKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### Custom domains
@@ -202,31 +202,31 @@ to any address or URL reachable from the agent. For example, if you want to
 forward traffic to a Postgres server running on your network at
 `192.168.1.2:5432`:
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<NonLocalAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<NonLocalAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<NonLocalSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<NonLocalGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<NonLocalJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<NonLocalPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<NonLocalRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<NonLocalKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ### PROXY Protocol
@@ -239,31 +239,31 @@ on connections to your upstream service to send connection information like the
 original client IP address to your upstream service. You will need to configure
 your upstream service to handle the PROXY protocol header.
 
-<Tabs groupId="connectivity" queryString="cty">
-	<TabItem value="agent-cli" label="Agent CLI" default>
+<Tabs>
+	<Tab title="Agent CLI">
 		<ProxyProtoAgentCliExample />
-	</TabItem>
-	<TabItem value="agent-config" label="Agent Config">
+	</Tab>
+	<Tab title="Agent Config">
 		<ProxyProtoAgentConfigExample />
-	</TabItem>
-	<TabItem value="ssh" label="SSH Reverse Tunnel">
+	</Tab>
+	<Tab title="SSH Reverse Tunnel">
 		<ProxyProtoSshExample />
-	</TabItem>
-	<TabItem value="go-sdk" label="Go">
+	</Tab>
+	<Tab title="Go">
 		<ProxyProtoGoSdkExample />
-	</TabItem>
-	<TabItem value="javascript-sdk" label="Javascript">
+	</Tab>
+	<Tab title="Javascript">
 		<ProxyProtoJavascriptSdkExample />
-	</TabItem>
-	<TabItem value="python-sdk" label="Python">
+	</Tab>
+	<Tab title="Python">
 		<ProxyProtoPythonSdkExample />
-	</TabItem>
-	<TabItem value="rust-sdk" label="Rust">
+	</Tab>
+	<Tab title="Rust">
 		<ProxyProtoRustSdkExample />
-	</TabItem>
-	<TabItem value="k8s" label="Kubernetes Controller">
+	</Tab>
+	<Tab title="Kubernetes Controller">
 		<ProxyProtoKubernetesExample />
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## Observability

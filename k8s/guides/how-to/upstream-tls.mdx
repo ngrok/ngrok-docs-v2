@@ -91,8 +91,8 @@ kubectl create secret tls client-cert-secret \
 
 The following examples showcase using the client certificate when connecting to the upstream.
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	### 4. Create an `AgentEndpoint` that uses the Client Certificate
 
 	```yaml
@@ -108,8 +108,8 @@ The following examples showcase using the client certificate when connecting to 
     - name: client-cert-secret
       namespace: default
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	❌ `Ingress` resources do not natively support advanced upstream TLS options, so this option requires using Gateway API or the `AgentEndpoint` resources directly.
 
 	You can still use TLS upstream services with `Ingress` resources although you will not be able to configure mutual TLS between the operator and the upstream service.
@@ -137,8 +137,8 @@ The following examples showcase using the client certificate when connecting to 
     selector:
       app: example-app
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports upstream TLS configuration, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 4. Create a `Gateway` that uses the client certificate `Secret`
@@ -216,5 +216,5 @@ The following examples showcase using the client certificate when connecting to 
     selector:
       app: example-app
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

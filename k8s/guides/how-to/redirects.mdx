@@ -32,8 +32,8 @@ The following examples showcase how to create an endpoint that redirects request
 - Requests to `https://example-hostname.ngrok.io/example` will be redirected to `https://example-hostname.ngrok.io/redirect`
 - Requests to `https://example-hostname.ngrok.io/example/foo` will be redirected to `https://example-hostname.ngrok.io/redirect`
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -54,8 +54,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: /.*
                   to: /redirect
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -74,8 +74,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: /.*
                   to: /redirect
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 Ingress resources do not have native redirect capabilities, but they can be extended using a traffic policy.
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more information about how to customize the parameters.
 
@@ -121,8 +121,8 @@ The following examples showcase how to create an endpoint that redirects request
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports redirect configuration, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -172,7 +172,7 @@ The following examples showcase how to create an endpoint that redirects request
             type: ReplaceFullPath
             replaceFullPath: "/redirect"
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 
@@ -182,8 +182,8 @@ The following examples showcase how to create an endpoint that redirects request
 - Requests to `https://example-hostname.ngrok.io/example` will be redirected to `https://example-hostname.ngrok.io/redirect`
 - Requests to `https://example-hostname.ngrok.io/example/foo` will be redirected to `https://example-hostname.ngrok.io/redirect/foo`
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -204,8 +204,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: /example(.*)
                   to: /redirect$1
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -224,8 +224,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: /example(.*)
                   to: /redirect$1
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 Ingress resources do not have native redirect capabilities, but they can be extended using a traffic policy.
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more information about how to customize the parameters.
 
@@ -271,8 +271,8 @@ The following examples showcase how to create an endpoint that redirects request
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports redirect configuration, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -322,7 +322,7 @@ The following examples showcase how to create an endpoint that redirects request
             type: ReplacePrefixMatch
             replacePrefixMatch: "/redirect"
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 
@@ -331,8 +331,8 @@ The following examples showcase how to create an endpoint that redirects request
 The following examples showcase how to create an endpoint that redirects requests. The hostname, scheme, and path are kept the same, but only the port is changed.
 - Requests to `http://example-hostname.ngrok.io:8080` will be redirected to `http://example-hostname.ngrok.io:9090`
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -353,8 +353,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: :8080
                   to: :9090
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -373,8 +373,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: :8080
                   to: :9090
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 Ingress resources do not have native redirect capabilities, but they can be extended using a traffic policy.
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more information about how to customize the parameters.
 
@@ -420,8 +420,8 @@ The following examples showcase how to create an endpoint that redirects request
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports redirect configuration, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -469,7 +469,7 @@ The following examples showcase how to create an endpoint that redirects request
         requestRedirect:
           port: 9090
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## Redirect Hostname
@@ -477,8 +477,8 @@ The following examples showcase how to create an endpoint that redirects request
 The following examples showcase how to create an endpoint that redirects requests. The scheme, port, and path are kept the same, but only the hostname is changed.
 - Requests to `https://example-hostname.ngrok.io` will be redirected to `https://other-example-hostname.ngrok.io`
 
-<Tabs groupId="kind" queryString="kind">
-	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
+<Tabs>
+	<Tab title="AgentEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -499,8 +499,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: example-hostname.ngrok.io
                   to: other-example-hostname.ngrok.io
 	```
-	</TabItem>
-	<TabItem value="cloud-endpoint" label="CloudEndpoint">
+	</Tab>
+	<Tab title="CloudEndpoint">
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -519,8 +519,8 @@ The following examples showcase how to create an endpoint that redirects request
                   from: example-hostname.ngrok.io
                   to: other-example-hostname.ngrok.io
 	```
-	</TabItem>
-	<TabItem value="ingress" label="Ingress">
+	</Tab>
+	<Tab title="Ingress">
 	💡 Ingress resources do not have native redirect capabilities, but they can be extended using a traffic policy.
 	Check out the [redirect traffic policy action](/traffic-policy/actions/redirect/) page for more information about how to customize the parameters.
 
@@ -566,8 +566,8 @@ The following examples showcase how to create an endpoint that redirects request
                   port:
                     number: 80
 	```
-	</TabItem>
-	<TabItem value="gateway-api" label="Gateway API">
+	</Tab>
+	<Tab title="Gateway API">
 	✅ Gateway API natively supports redirect configuration, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -615,5 +615,5 @@ The following examples showcase how to create an endpoint that redirects request
         requestRedirect:
           hostname: other-example-hostname.ngrok.io
 	```
-	</TabItem>
+	</Tab>
 </Tabs>

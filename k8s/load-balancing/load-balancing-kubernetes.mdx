@@ -43,8 +43,8 @@ you've already implemented. Same goes for `$NGROK_DOMAIN.ngrok.app`—you can
 reserve a domain in the [dashboard](https://dashboard.ngrok.com/domains) if you
 don't have one already.
 
-<Tabs groupId="k8s" queryString="k8s">
-	<TabItem value="AgentEndpoint" label="Agent Endpoint" default>
+<Tabs>
+	<Tab title="Agent Endpoint">
 	```yaml
 		apiVersion: ngrok.k8s.ngrok.com/v1alpha1
 		kind: AgentEndpoint
@@ -56,8 +56,8 @@ don't have one already.
 				url: http://example.default:80
 			url: https://$NGROK_DOMAIN.ngrok.app
 	```
-	</TabItem>
-	<TabItem value="Ingress" label="Ingress" default>
+	</Tab>
+	<Tab title="Ingress">
 	```yaml
 	apiVersion: networking.k8s.io/v1
 	kind: Ingress
@@ -80,8 +80,8 @@ don't have one already.
 									port:
 										number: 80
 	```
-	</TabItem>
-	<TabItem value="GWAPI" label="Gateway API" default>
+	</Tab>
+	<Tab title="Gateway API">
 	```yaml
 	apiVersion: gateway.networking.k8s.io/v1
 	kind: Gateway
@@ -120,7 +120,7 @@ don't have one already.
 			  - name: example
 				  port: 80
 	```
-	</TabItem>
+	</Tab>
 </Tabs>
 
 ## 3. Create a second Agent Endpoint to enable pooling

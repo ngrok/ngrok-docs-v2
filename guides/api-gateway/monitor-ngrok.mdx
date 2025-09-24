@@ -19,16 +19,16 @@ This guide explains how to monitor your API gateway and the traffic passing thro
 
 You can monitor API services in two ways in ngrok: with the [Traffic Inspector](/docs/obs/traffic-inspection/) and with [Logs](/docs/obs/events).
 
-<Tabs groupId="monitoring" queryString="type">
-	<TabItem value="traffic-inspector" label="Traffic Inspector">
+<Tabs>
+	<Tab title="Traffic Inspector">
 	
 The Traffic Inspector is a filterable list of your API's requests and responses, like structured logs in a human-readable format, available on the ngrok dashboard.
 The Traffic Inspector is useful for viewing error details and for replaying requests to test new policies and bug fixes.
 
 ngrok keeps this request data for three days (or for 90 days as a paid extra).
 
-</TabItem>
-<TabItem value="logs" label="Logs">
+</Tab>
+<Tab title="Logs">
 
 A traffic log is the data that ngrok aggregates about a request, which you can then export to a dedicated monitoring platform.
 Traffic logs offer an automated means of monitoring your API. They are also the only way for your team to get automatic error alerts (notifications) instead of manually checking for errors on a dashboard.
@@ -37,7 +37,7 @@ At the time of writing, ngrok allows you to export logs to AWS, Azure, and Datad
 While this guide focuses on exporting to Datadog, we also have quickstarts for [AWS CloudWatch](/docs/integrations/amazon-cloudwatch/event-destination/), [AWS Firehose](/docs/integrations/amazon-firehose/event-destination/), [AWS Kinesis](/docs/integrations/amazon-kinesis/event-destination/), and [Azure Logs](/docs/integrations/azure-logs-ingestion/event-destination/).
 Check out the [pricing page](https://ngrok.com/pricing) for information about pricing and availability of log exporting.
 
-</TabItem>
+</Tab>
 
 </Tabs>
 

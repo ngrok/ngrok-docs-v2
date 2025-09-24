@@ -57,8 +57,8 @@ You can remove the interstitial by upgrading to [any paid plan](https://ngrok.co
 
 From the client accessing the ngrok endpoint, add a header value of `ngrok-skip-browser-warning` and set it to any value. These requests will bypass the interstitial.
 
-  <Tabs groupId="headers" queryString="library">
-    <TabItem value="axios" label="Axios">
+  <Tabs>
+    <Tab title="Axios">
       ```js
       axios.get(url, { 'headers': { 'ngrok-skip-browser-warning': '1' } })
         .then((response => {
@@ -68,8 +68,8 @@ From the client accessing the ngrok endpoint, add a header value of `ngrok-skip-
           console.log(error);
         });
       ```
-    </TabItem>
-    <TabItem value="fetch" label="Fetch" default>    
+    </Tab>
+    <Tab title="Fetch">    
       ```js
       const response = await fetch(URL, {
         headers: {
@@ -78,23 +78,23 @@ From the client accessing the ngrok endpoint, add a header value of `ngrok-skip-
         // ...
       });
       ```
-    </TabItem>
-    <TabItem value="superagent" label="Super Agent" default>
+    </Tab>
+    <Tab title="Super Agent">
       ```js
       request
             .get('/endpoint')
             .set('ngrok-skip-browser-warning', '1')
             .then(callback);
       ```
-    </TabItem>
-    <TabItem value="jquery" label="JQuery">
+    </Tab>
+    <Tab title="JQuery">
       ```js
       request
             .get('/endpoint')
             .set('ngrok-skip-browser-warning', '1')
             .then(callback);
       ```
-    </TabItem>
+    </Tab>
   </Tabs>
 
 ### Using a custom user agent

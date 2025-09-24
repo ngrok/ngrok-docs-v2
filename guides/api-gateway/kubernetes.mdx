@@ -47,7 +47,7 @@ are configured slightly differently to demonstrate that requests are actually
 being routed to different destinations.
 
 <Tabs>
-  <TabItem value="Deployment+service: abc">
+  <Tab>
 
 ```yaml title="abc.yaml" mode=file
 ---
@@ -85,8 +85,8 @@ spec:
       targetPort: 4000
 ```
 
-  </TabItem>
-  <TabItem value="Deployment+service: xyz">
+  </Tab>
+  <Tab>
 
 ```yaml title="xyz-.yaml" mode=file
 ---
@@ -124,7 +124,7 @@ spec:
       targetPort: 5000
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 Apply these with `kubectl apply -f ...` into your cluster.
@@ -177,7 +177,7 @@ If you're bringing your own API services instead of using the demo API, you'll
 need to change the `url` and `upstream.url` fields based on your architecture.
 
 <Tabs>
-  <TabItem value="abc">
+  <Tab>
 
 ```yaml title="abc-endpoint.yaml" mode=file
 apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -191,8 +191,8 @@ spec:
     url: http://abc-service.default:4000
 ```
 
-  </TabItem>
-  <TabItem value="xyz">
+  </Tab>
+  <Tab>
 
 ```yaml title="xyz-endpoint.yaml" mode=file
 apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -206,7 +206,7 @@ spec:
     url: http://xyz-service.default:5000
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 Apply these with `kubectl apply -f ...` to your cluster.
@@ -223,7 +223,7 @@ than synchronizing policies using cloud-specific tools, since they're all
 configured and managed in different ways.
 
 <Tabs>
-	<TabItem value="Dashboard">
+	<Tab>
 
     		Hop over to the [**Endpoints**
     		section](https://dashboard.ngrok.com/endpoints) of the ngrok dashboard and
@@ -232,8 +232,8 @@ configured and managed in different ways.
     		Leave the **Binding** value **Public**, then enter the domain name you
     		reserved earlier. Select **Create Cloud Endpoint**.
 
-    </TabItem>
-    <TabItem value="API">
+    </Tab>
+    <Tab>
 
     		The `ngrok` CLI provides a helpful wrapper around the [ngrok
     		API](/docs/api), which you can use to create a cloud endpoint and
@@ -266,7 +266,7 @@ configured and managed in different ways.
     		again later to continue configuring the Traffic Policy applied to your
     		cloud endpoint. We'll refer to it as `<CLOUD_ENDPOINT_ID>`.
 
-    </TabItem>
+    </Tab>
 
 </Tabs>
 
@@ -300,7 +300,7 @@ properties](/docs/traffic-policy/examples/route-requests), like subdomains and
 headers.
 
 <Tabs>
-	<TabItem value="Dashboard">
+	<Tab>
 
     	Copy and paste the rules below into your cloud endpoint's Traffic Policy editor
     	in the dashboard. If you're bringing your own API services instead of using the
@@ -325,8 +325,8 @@ headers.
 
     	Hit **Save** to lock in the new policy.
 
-    </TabItem>
-    <TabItem value="API">
+    </Tab>
+    <Tab>
 
     	Update your existing `policy.yaml` file with the YAML below. If you're
     	bringing your own API services instead of using the demo API, you'll need to
@@ -356,7 +356,7 @@ headers.
     		--traffic-policy "$(cat policy.yaml)"
     	```
 
-    </TabItem>
+    </Tab>
 
 </Tabs>
 
