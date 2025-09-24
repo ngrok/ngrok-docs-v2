@@ -1,7 +1,7 @@
 
 You can configure the
 [`jwt-validation` Traffic Policy
-action](/docs/traffic-policy/actions/jwt-validation/) to validate tokens you
+action](/traffic-policy/actions/jwt-validation/) to validate tokens you
 issue directly from Auth0 on an ngrok-managed domain we'll call
 `<YOUR_NGROK_DOMAIN>` from here on out.
 
@@ -9,10 +9,10 @@ Let's walk through the steps to wire up this integration and secure your APIs,
 assuming you already have a cloud or agent endpoint running and have applied a
 Traffic Policy rule before. If not, check out these docs:
 
-- [Quickstart](/docs/getting-started/)
+- [Quickstart](/getting-started/)
 - [Cloud Endpoints
-  Quickstart](/docs/getting-started/cloud-endpoints-quickstart/)
-- [Traffic Policy](/docs/traffic-policy/)
+  Quickstart](/getting-started/cloud-endpoints-quickstart/)
+- [Traffic Policy](/traffic-policy/)
 
 ## Define your API in Auth0
 
@@ -25,7 +25,7 @@ If you've already done this, skip to the next section.
 5. Leave the default values for **JSON Web Token (JWT) Profile** and **JSON Web Token Signing Algorithm**.
 6. Click **Create**.
 
-![Create your API in Auth0](img/jwt-create-new-api.png)
+![Create your API in Auth0](./img/jwt-create-new-api.png)
 
 After creating your API, you can define and add scopes needed in the
 `Permissions` tab. These values will be populated in the `scope` claim of your
@@ -40,7 +40,7 @@ Navigate to your application, and click on the **Test** tab. Here, you will
 find a signed, fully functional JWT, as well as examples of how to programmatically
 generate others.
 
-![Auth0 Test JWT](img/auth0-test.png)
+![Auth0 Test JWT](./img/auth0-test.png)
 
 ## Create a Machine to Machine application
 
@@ -49,7 +49,7 @@ Machine Application and authorize it to use your new API. If you added
 additional scopes for your API, you will need to manually add them to the new
 application in the `Machine to Machine Applications` tab of your new API.
 
-![Auth0 API Permissions](img/jwt-machine-to-machine.png)
+![Auth0 API Permissions](./img/jwt-machine-to-machine.png)
 
 If it did not create one automatically, you can create a new Machine to Machine
 app and select your new API when prompted.
@@ -58,7 +58,7 @@ app and select your new API when prompted.
 
 You now have everything you need to configure JWT validation in Traffic Policy.
 
-This is an example [Traffic Policy](/docs/traffic-policy/) configuration
+This is an example [Traffic Policy](/traffic-policy/) configuration
 for enabling the action with your settings from Auth0—you'll need to customize the
 variables in the `issuer.allow_list.value`, `audience.allow_list.value`, and
 `jws.keys.sources.additonal_jkus` fields below.

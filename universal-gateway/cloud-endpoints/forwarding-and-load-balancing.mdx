@@ -4,6 +4,8 @@ sidebarTitle: Forwarding Traffic and Load Balancing
 description: How to use ngrok cloud endpoints to do round-robin load balancing.
 ---
 
+
+
 This guide provides an example of using an ngrok Cloud Endpoint to route traffic between multiple internal endpoints.
 
 ## Core Concepts
@@ -40,7 +42,7 @@ You can set up any HTTP server to run on this port locally, and it the endpoint 
 ## **Step 2** - Create a Domain
 
 Next, let's create the domain that the cloud endpoint will reside on.
-For the purpose of this guide, we will create a ngrok HTTP domain.
+For the purpose of this guide, we will create an ngrok HTTP domain.
 
 <Tabs>
 <Tab title="ngrok CLI">
@@ -109,13 +111,15 @@ and most common use cases: forwarding traffic to other endpoints
 (the internal endpoint we created in Step 1) via the forward action.
 
 <CodeGroup>
+
 ```yaml policy.yml
 on_http_request:
-  - actions:
-    - type: "forward-internal"
-    config:
-    url: "https://your-domain-name.internal"
+  -     actions:
+      -         type: forward-internal
+        config:
+          url: https://your-domain-name.internal
 ```
+
 ```json policy.json
 {
   "on_http_request": [
@@ -132,11 +136,12 @@ on_http_request:
   ]
 }
 ```
+
 </CodeGroup>
 
 ## **Step 4** — Create an ngrok Cloud Endpoint
 
-Now we can create a ngrok Cloud Endpoint that points to our
+Now we can create an ngrok Cloud Endpoint that points to our
 newly created internal endpoint. Cloud Endpoints can be created
 via the API or ngrok dashboard.
 

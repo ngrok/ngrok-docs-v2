@@ -7,7 +7,8 @@ description: Support multiple ways for your users to connect to upstream service
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
+
+
 
 Some services need to support different groups of users with different types of credentials.
 Internal teams might use static IPs, but external users authenticate using Basic Auth.
@@ -42,7 +43,7 @@ You will need to change:
 
 ```yaml
 on_http_request:
-# Enforce IP Restrictions or Basic Auth
+  # Check whether a request's IP matches your allow list.
   - actions:
       - type: restrict-ips
         config:
@@ -104,7 +105,7 @@ Instead, the expression that follows the first action checks whether the [`restr
 
 If it's false—the request didn't match the IP `allow` list—then the policy then validates whether it contains a valid Basic Auth header.
 
-Next, the policy checks whether either IP restrictions `OR` Basic Auth were successful, and if so, farwards to your upstream service.
+Next, the policy checks whether either IP restrictions `OR` Basic Auth were successful, and if so, forwards to your upstream service.
 
 A catch-all rule then sends a custom error response to all other requests.
 

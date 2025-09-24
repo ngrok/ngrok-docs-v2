@@ -1,10 +1,11 @@
 ---
-title: Twitch
+title: Twitch OAuth
+sidebarTitle: Twitch
 description: Authenticate users with Twitch OAuth
 ---
 import Twitch from "/snippets/traffic-policy/actions/oauth/examples/custom-twitch-example.mdx";
 import UpdatePolicyInstructions from "/snippets/traffic-policy/actions/oauth/update-policy/update-policy-instructions.mdx";
-
+import ConfigAccessControl from "/snippets/traffic-policy/actions/oauth/update-policy/config-access-control.mdx";
 
 
 ## Creating a custom Twitch OAuth application
@@ -31,11 +32,7 @@ The step-by-step instructions below follow Twitch's documentation on [Using OAut
 
 <Twitch />
 
-Click **Save** to validate and update your traffic policy.
-
-#### Configure access control
-
-Optionally, configure access control to your service by only allowing specific users or domains.
+<ConfigAccessControl />
 
 ### Additional application setup information
 

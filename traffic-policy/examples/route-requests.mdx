@@ -3,6 +3,8 @@ title: Route Request Examples
 sidebarTitle: Route Requests
 ---
 
+
+
 With Traffic Policy, you can use [CEL interpolation](/traffic-policy/concepts/cel-interpolation) to dynamically forward requests to different internal endpoints based on URL request attributes, including but not limited to:
 
 - URL
@@ -21,14 +23,16 @@ See [the `forward-internal` Traffic Policy action docs](/traffic-policy/actions/
 This rule forwards requests from `https://*.example.com` to `https://<SUBDOMAIN>.internal`.
 
 <CodeGroup>
+
 ```yaml policy.yml
 on_http_request:
-  - name: "Route requests based on URL"
+  -     name: Route requests based on URL
     actions:
-    - type: "forward-internal"
-    config:
-    url: "https://${req.host.split(".example.com")[0]}.internal"
+      -         type: forward-internal
+        config:
+          url: https://${req.host.split(".example.com")[0]}.internal
 ```
+
 ```json policy.json
 {
   "on_http_request": [
@@ -46,6 +50,7 @@ on_http_request:
   ]
 }
 ```
+
 </CodeGroup>
 
 ## Based on headers
@@ -53,13 +58,15 @@ on_http_request:
 This rule forwards requests containing a `X-Customer-Value: {CUSTOMER}` header to `https://{CUSTOMER}.internal`.
 
 <CodeGroup>
+
 ```yaml policy.yml
 on_http_request:
   actions:
-    - type: "forward-internal"
+    -       type: forward-internal
       config:
-      url: "https://${getReqHeader('X-Customer-Value')[0]}.internal"
+        url: https://${getReqHeader('X-Customer-Value')[0]}.internal
 ```
+
 ```json policy.json
 {
   "on_http_request": {
@@ -74,4 +81,5 @@ on_http_request:
   }
 }
 ```
+
 </CodeGroup>

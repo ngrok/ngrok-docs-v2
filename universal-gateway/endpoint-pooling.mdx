@@ -1,9 +1,12 @@
 ---
 title: Endpoint Pooling
+sidebarTitle: Overview
 description: Learn how ngrok enables you to load balance traffic to endpoints with endpoint pooling.
 ---
 
 import { YouTubeEmbed } from "/snippets/YouTubeEmbed.jsx";
+
+
 
 Endpoint pooling makes load balancing dead simple. Load balancing helps you
 scale traffic across multiple replicas of your app to increase capacity,
@@ -24,10 +27,7 @@ systems:
   with the Traffic Policies themselves. This helps you dramatically mitigate the
   risk of gateway changes that so often cause site-wide outages.
 
-
-<YouTubeEmbed videoId="qlLBdKCzGeE"
-  title="Load balance anything, anywhere with ngrok's Endpoint Pools"
-/>
+<YouTubeEmbed videoId="qlLBdKCzGeE" title="Load balance anything, anywhere with ngrok's Endpoint Pools" />
 
 ## When to use Endpoint Pooling
 
@@ -173,7 +173,7 @@ If multiple endpoints in a pool have different `on_tcp_connect` phases in their
 Traffic Policy, load balancing is instead done on a per-connection basis (layer
 4).
 
-### Heterogenous Endpoints
+### Heterogeneous Endpoints
 
 Endpoints in a pool may have different Traffic Policies. This lets you run old
 and new Traffic Policies side-by-side during a transition. It also enables you
@@ -217,7 +217,7 @@ When balancing traffic to internal endpoints you may define your own balancing
 strategy by setting the `endpoint_selectors` and `endpoint_weights` fields on
 the `forward-internal` Traffic Policy action configuration.
 
-<Info>
+<Info title="Coming Soon">
 
 Custom load balancing strategies are not yet generally available, but you can
 request early access to the developer preview in your [ngrok

@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Mintlify
 .mintlify/
+
+# Generated reports
+REDIRECT_CONFLICTS.md

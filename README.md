@@ -13,16 +13,16 @@ See our [Contribution Guidelines](CONTRIBUTING.md) for detailed instructions on 
 
 - [Node 22](https://nodejs.org/en/download)
 - [pnpm 10](https://pnpm.io/installation#using-npm)
-- [nvm](https://github.com/nvm-sh/nvm)
+- [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 - `corepack` is included with node by default, no need to install
+- [Mintlify](https://www.mintlify.com/docs/installation): `pnpm add -g mint`
 
 ## Setup
 
-1. Install [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) or your node version manager of choice.
-2. Ensure that `node 22` is installed. With `nvm`, run `nvm install`.
-3. Enable `pnpm` with `corepack`: `corepack enable pnpm`
-4. Install `pnpm` with `corepack`: `corepack install`
-5. Install project dependencies with `pnpm`: `pnpm install`
+1. Ensure that `node 22` is installed. With `nvm`, run `nvm install`.
+1. Enable `pnpm` with `corepack`: `corepack enable pnpm`
+1. Install `pnpm` with `corepack`: `corepack install`
+1. Install project dependencies with `pnpm`: `pnpm install`
 
 ## Running the site locally
 

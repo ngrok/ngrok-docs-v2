@@ -1,6 +1,8 @@
 ---
 title: Kubernetes Endpoints
 ---
+
+
 Kubernetes endpoints are secure, private endpoints that are only addressable
 inside of Kubernetes clusters where you install the [Kubernetes
 operator](/k8s/). They enable you to connect to ngrok endpoints without making
@@ -50,7 +52,7 @@ connect to the bound endpoint.
 
 ```bash
 $ kubectl run -i --tty --rm debug --restart=Never --image=appropriate/curl -- /bin/sh
-
+# curl http://customer-2.prod
 ```
 
 Now your application is connected via a private Kubernetes endpoint.
@@ -157,7 +159,7 @@ This feature is in developer preview—more documentation is coming soon.
 
 ## API
 
-Kubernetes endpoints can be created programatically. Consult the documentation
+Kubernetes endpoints can be created programmatically. Consult the documentation
 on [Endpoint APIs](/api/resources/endpoints/).
 
 ## Pricing

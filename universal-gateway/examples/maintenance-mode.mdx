@@ -3,10 +3,12 @@ title: Deploy a Consistent Maintenance Message with Traffic Policy
 sidebarTitle: Maintenance Mode
 description: Learn how to use Traffic Policy to immediately deploy a consistent maintenance message without needing to spin up a new backend service or change DNS records.
 ---
+
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
+
+
 
 Whenever you're making infrastructure changes, a major upgrade to your services during planned downtime, or experiencing an incident, you still want to maintain a public-facing presence on your endpoints to tell customers what's going on.
 
@@ -51,7 +53,7 @@ When your maintenance window is over and you're ready to route traffic to your u
 ```yaml
 on_http_request:
   - actions:
-# Deploy a Zero-Code Maintenance Mode for Your Services
+  #    - type: custom-response
   #      config:
   #        body: "We're currently undergoing maintenance. Please check back later!"
       - type: forward-internal
@@ -68,4 +70,3 @@ on_http_request:
 - Learn more about using Traffic Policy to return custom responses by [trying out our examples](/traffic-policy/actions/custom-response/#examples).
 - View your traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector).
 
-<Back />

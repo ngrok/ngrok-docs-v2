@@ -1,6 +1,7 @@
 ---
 title: HTTP/S Endpoints
 ---
+
 import TlsLimits from '/snippets/http/_tls_limits.mdx';
 import RandomAgentCliExample from '/snippets/examples/agent-cli/http-random.mdx';
 import RandomGoSdkExample from '/snippets/examples/go-sdk/http-random.mdx';
@@ -85,6 +86,21 @@ import WindowsFileserverKubernetesExample from '/snippets/examples/k8s/http-file
 import WindowsFileserverPythonSdkExample from '/snippets/examples/python-sdk/http-fileserver-windows.mdx';
 import WindowsFileserverRustSdkExample from '/snippets/examples/rust-sdk/http-fileserver-windows.mdx';
 import WindowsFileserverSshExample from '/snippets/examples/ssh/http-fileserver-windows.mdx';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 HTTP/S endpoints enable you to serve web services like REST APIs, web
 applications, websites and websocket servers. Serving a web application is as
@@ -749,12 +765,12 @@ ngrok dashboard of the HTTP traffic flowing through your HTTP/S endpoints. You
 can choose whether Traffic Inspector captures only request metadata or full
 request and response bodies.
 
-### Log Export Events
+### Log Export Logs
 
 You can export logs of traffic to HTTP/S endpoints with [ngrok's events
 system](/obs/). The following events are published for log exporting:
 
-| Event                                                                    | When                                                              |
+| Log                                                                      | When                                                              |
 | ------------------------------------------------------------------------ | ----------------------------------------------------------------- |
 | [http_request_complete.v0](/obs/events/reference/#http-request-complete) | Published when an HTTP request to an HTTP/S endpoints completes.  |
 | [tcp_connection_closed.v0](/obs/events/reference/#tcp-connection-closed) | Published when a TCP connection to an HTTP/S endpoints completes. |
@@ -908,7 +924,7 @@ ngrok may return an error under the following conditions:
 
 ## API
 
-HTTP/S Endpoints can be created programatically. Consult the documentation on
+HTTP/S Endpoints can be created programmatically. Consult the documentation on
 [Endpoint APIs](/api/resources/endpoints/).
 
 ## Pricing

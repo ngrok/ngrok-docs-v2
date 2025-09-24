@@ -7,7 +7,8 @@ description: Use a shared wildcard domain to control how your developers expose 
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
+
+
 
 Developers often need to expose local services—whether for testing webhooks, integrating with a SaaS, or demoing in-progress features—but you don't want them poking holes in your firewall or deploying shadow IT to get the job done.
 ngrok lets you define exactly how your peers can create these public developer environments, then apply policies like authentication across them consistently.
@@ -67,4 +68,3 @@ For example, if someone sends a request to `bob.devtest.example.com`, this polic
 - Read our [best practices for developer productivity](/guides/security-dev-productivity/) guide for ways to improve this example with developer-specific authtokens and custom connect URLs.
 - Explore other examples of using the [`forward-internal`](/traffic-policy/actions/forward-internal/#examples) Traffic Policy actions.
 
-<Back />

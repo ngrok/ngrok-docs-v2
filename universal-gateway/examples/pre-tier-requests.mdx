@@ -7,7 +7,8 @@ description: Use existing customer data and your service's pricing model to appl
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
+
+
 
 If you have a public API that your customers integrate into their software or services, you'll want to implement a rate limiting policy to prevent misuse, ensure fair access for all users, and prevent heavy load from slowing down your entire infrastructure.
 Based on your packaging and pricing model, you may also need to implement different rate limit limits for customers based on their "tier" and how much they pay.
@@ -59,7 +60,7 @@ on_http_request:
           body: |
             { "token": "${req.headers['Authorization']}" }
 
-# Apply Rate Limits (Pre-Tiering) Based on Identity or CRM Services
+  # If the request failed, short-circuit the request with an error response.
   - expressions:
       - "actions.ngrok.http_request.res.status_code < '200' &&
         actions.ngrok.http_request.res.status_code >= '300'"
@@ -71,7 +72,7 @@ on_http_request:
           body: |
             { "message": "Request failed: ${actions.ngrok.http_request.res.status_code}" }
 
-  # If the request was successful, capture the value of the user's tier for re-use.
+  # If the request was successful, capture the value of the user's tier for reuse.
   - expressions:
       - "actions.ngrok.http_request.res.status_code == 200"
     actions:

@@ -7,7 +7,8 @@ description: Instead of a blank page or HTTP error code, ensure your services au
 import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
 import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
 import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-import Back from "/snippets/universal-gateway/_back-to-examples.mdx";
+
+
 
 When your upstream nodes or services go offline, you don't want your users to see a blank page, a standalone HTTP error code, or an ngrok-branded error page.
 A custom error page gives you the chance to communicate clearly and reinforce your brand even during downtime.
@@ -91,4 +92,3 @@ If you take down either your upstream service or the internal Agent Endpoint, yo
 - View your traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) to see who and when users hit your custom error page.
 - Add the [`log` action](/traffic-policy/actions/log) before the `custom-response` to send error events over to your observability platform for enriched debugging.
 
-<Back />

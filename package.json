@@ -6,6 +6,7 @@
   "scripts": {
     "build": "mint build",
     "dev": "mint dev --port 3333",
+    "verify-redirects": "node snippets/custom-scripts/check-redirect-conflicts.js",
     "test-links": "mint broken-links",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,8 +17,8 @@
   "dependencies": {
     "@babel/parser": "^7.28.4",
     "@babel/traverse": "^7.28.4",
-    "@ngrok/mantle": "^0.52.7",
-    "@types/react": "^19.1.12",
+    "@ngrok/mantle": "^0.52.9",
+    "@types/react": "^19.1.13",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "react": "^19.1.1",

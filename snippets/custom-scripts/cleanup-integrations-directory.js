@@ -39,7 +39,7 @@ for (const item of allItems) {
   const itemPath = path.join(integrationsDir, item);
   const stat = fs.statSync(itemPath);
   
-  // Skip files (like index.mdx)
+  // Skip files (like index)
   if (!stat.isDirectory()) {
     console.log(`  ⏭️  Skipping file: ${item}`);
     skippedCount++;
