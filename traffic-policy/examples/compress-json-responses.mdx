@@ -13,22 +13,44 @@ This rule compresses JSON responses using the `gzip`, `br`, `deflate`, and `comp
 If your upstream service already handles compression, ngrok skips this step.
 :::
 
-<ConfigExample
-	config={{
-		on_http_response: [
-			{
-				name: "Add compression",
-				actions: [
-					{
-						type: "compress-response",
-						config: {
-							algorithms: ["gzip", "br", "deflate", "compress"],
-						},
-					},
-				],
-			},
-		],
-	}}
-/>
+<CodeGroup>
+
+```yaml policy.yml
+on_http_response:
+  -     name: Add compression
+    actions:
+      -         type: compress-response
+        config:
+          algorithms:
+            - gzip
+            - br
+            - deflate
+            - compress
+```
+
+```json policy.json
+{
+  "on_http_response": [
+    {
+      "name": "Add compression",
+      "actions": [
+        {
+          "type": "compress-response",
+          "config": {
+            "algorithms": [
+              "gzip",
+              "br",
+              "deflate",
+              "compress"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+</CodeGroup>
 
 See [the `compress-response` Traffic Policy action docs](/traffic-policy/actions/compress-response/) for more information.

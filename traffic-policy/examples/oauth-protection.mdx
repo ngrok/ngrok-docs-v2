@@ -33,8 +33,18 @@ The following is an example Traffic Policy file that executes the ['oauth' traff
 
 Create this traffic policy file in the same directory where you run your ngrok agent, or add its contents to your `ngrok.yml` agent config file as shown below.
 
-<ConfigExample
-	config={{
+<CodeGroup>
+
+```yaml policy.yml
+on_http_request:
+  -     actions:
+      -         type: oauth
+        config:
+          provider: google
+```
+
+```json policy.json
+{
   "on_http_request": [
     {
       "actions": [
@@ -44,11 +54,13 @@ Create this traffic policy file in the same directory where you run your ngrok a
             "provider": "google"
           }
         }
-			]
+      ]
     }
   ]
-}}
-/>
+}
+```
+
+</CodeGroup>
 
 ## 3. Restart your endpoint with the policy attached
 
@@ -115,36 +127,59 @@ This section includes two examples of how to apply these additional auth lifecyc
 - Any session inactive for 15 minutes or longer will auto-expire and trigger a re-login flow when the user returns.
 - After an hour (regardless of activity), users are forced to re-authenticate (`max_session_duration`).
 
-<ConfigExample
-	config={{
-	"on_http_request": [
-		{
-			"expressions": ["req.url.path == '/ngrok/logout'"],
-			"actions": [
-				{
-					"type": "redirect",
-					"config": {
-						"location": "/ngrok/login?auth_id=my-login"
-					}
-				}
-			]
-		},
-		{
-			"actions": [
-				{
-					"type": "oauth",
-					"config": {
-						"provider": "google",
-						"auth_id": "my-login",
-						"idle_session_timeout": "15m",
-						"max_session_duration": "1h"
-					}
-				}
-			]
-		}
-	]
-}}
-/>
+<CodeGroup>
+
+```yaml policy.yml
+on_http_request:
+  -     expressions:
+      - req.url.path == '/ngrok/logout'
+    actions:
+      -         type: redirect
+        config:
+          location: /ngrok/login?auth_id=my-login
+  -     actions:
+      -         type: oauth
+        config:
+          provider: google
+          auth_id: my-login
+          idle_session_timeout: 15m
+          max_session_duration: 1h
+```
+
+```json policy.json
+{
+  "on_http_request": [
+    {
+      "expressions": [
+        "req.url.path == '/ngrok/logout'"
+      ],
+      "actions": [
+        {
+          "type": "redirect",
+          "config": {
+            "location": "/ngrok/login?auth_id=my-login"
+          }
+        }
+      ]
+    },
+    {
+      "actions": [
+        {
+          "type": "oauth",
+          "config": {
+            "provider": "google",
+            "auth_id": "my-login",
+            "idle_session_timeout": "15m",
+            "max_session_duration": "1h"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+</CodeGroup>
 
 Now you can restart your endpoint with the updated traffic policy file or config.
 
