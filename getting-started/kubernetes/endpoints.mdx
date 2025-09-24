@@ -4,11 +4,11 @@ sidebarTitle: Endpoints
 description: Connect any API or app to your Kubernetes clusters for local service projection, cross-cluster communication, and much more.
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
+import K8sSetup from "/snippets/k8s/_setup.mdx";
+import K8sInstallBindings from "/snippets/k8s/_install-bindings.mdx";
 
-import K8sSetup from "./_setup.mdx";
-import K8sInstallBindings from "./_install-bindings.mdx";
+
+
 
 This quickstart uses the [ngrok Kubernetes Operator](/docs/k8s) and the ngrok agent to create a [Kubernetes-bound Endpoint](/docs/universal-gateway/kubernetes-endpoints/), which is accessible to other pods in your cluster as a native Service. ngrok then handles all routing to the upstream service, which can be running anywhere, like your development laptop or a cloud-based developer environment.
 
