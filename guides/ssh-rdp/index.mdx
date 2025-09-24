@@ -1,6 +1,6 @@
 ---
 title: Secure Remote Access with ngrok for SSH and RDP
-sidebarTitle: SSH & RDP Remote Access
+sidebar_label: SSH & RDP Remote Access
 description: Learn how to use ngrok to access remote devices via SSH or RDP
 ---
 
@@ -232,9 +232,9 @@ ngrok service install --config /etc/ngrok.yml
 ngrok service start
 ```
 
-<Note>
+:::note
 In most cases, installing ngrok as a service requires administrator privileges.
-</Note>
+:::
 
 This will start all tunnels defined in the configuration file, ensure ngrok runs persistently in the background, and integrate with native OS service tooling.
 
@@ -245,4 +245,4 @@ You officially made it! You have now integrated a system that allows you to seam
 1. One ngrok agent per remote network and no need for multiple installs.
 2. Always-online devices and servers, securely available via cloud and internal endpoints.
 3. Granular access with a composable traffic policy offering refined and robust security measures for our endpoints.
-4. Not sure how to explain ngrok to your end users? Check out [this guide which details ngrok's standards on security, trust, compliance, and privacy](/guides/site-to-site-connectivity/).
+4. Not sure how to explain ngrok to your end users? Check out [this guide which details ngrok's standards on security, trust, compliance, and privacy](/docs/guides/site-to-site-connectivity/).

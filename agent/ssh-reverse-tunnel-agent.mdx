@@ -2,14 +2,19 @@
 title: SSH Reverse Tunnel
 ---
 
-import BasicAuthSshExample from "/snippets/examples/ssh/http-basic-auth.mdx";
-import NonLocalSshExample from "/snippets/examples/ssh/http-nonlocal.mdx";
-import OAuthSshExample from "/snippets/examples/ssh/http-oauth-authn.mdx";
-import RandomHttpSshExample from "/snippets/examples/ssh/http-random.mdx";
-import StaticDomainSshExample from "/snippets/examples/ssh/http-static-domain.mdx";
-import FixedTcpSshExample from "/snippets/examples/ssh/tcp-fixed.mdx";
-import RandomTcpSshExample from "/snippets/examples/ssh/tcp-random.mdx";
-import RandomTlsSshExample from "/snippets/examples/ssh/tls-terminate-at-upstream.mdx";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+import BasicAuthSshExample from "/examples/ssh/http-basic-auth.mdx";
+import NonLocalSshExample from "/examples/ssh/http-nonlocal.mdx";
+import OAuthSshExample from "/examples/ssh/http-oauth-authn.mdx";
+import RandomHttpSshExample from "/examples/ssh/http-random.mdx";
+import StaticDomainSshExample from "/examples/ssh/http-static-domain.mdx";
+import FixedTcpSshExample from "/examples/ssh/tcp-fixed.mdx";
+import RandomTcpSshExample from "/examples/ssh/tcp-random.mdx";
+import RandomTlsSshExample from "/examples/ssh/tls-terminate-at-upstream.mdx";
+
+# SSH Reverse Tunnel Agent
 
 ## Overview
 
@@ -79,8 +84,8 @@ dashboard](https://dashboard.ngrok.com/tunnels/ssh-keys).
 
 Copy your default SSH public key with:
 
-<Tabs>
-<Tab title="Mac OS">
+<Tabs groupId="os" queryString="os">
+<TabItem value="macos" label="Mac OS" default>
 
 ```bash
 cat ~/.ssh/id_rsa.pub | pbcopy
@@ -92,8 +97,8 @@ or:
 cat ~/.ssh/id_ed25519.pub | pbcopy
 ```
 
-</Tab>
-<Tab title="Linux">
+</TabItem>
+<TabItem value="linux" label="Linux">
 
 ```bash
 cat ~/.ssh/id_rsa.pub
@@ -105,7 +110,7 @@ or:
 cat ~/.ssh/id_ed25519.pub
 ```
 
-</Tab>
+</TabItem>
 </Tabs>
 
 ## ngrok's SSH public key fingerprints
@@ -184,4 +189,4 @@ differences from the ngrok agent includes:
 
 The SSH reverse tunnel agent is available to all ngrok users at no additional
 charge. You only incur costs if resources you provision via its usage incur a
-cost.
+cost. For more information, see the [ngrok Pricing page](https://ngrok.com/pricing).

@@ -1,10 +1,21 @@
 ---
+sidebar_position: 1
 title: Agent SDKs
+sidebar_label: Overview
+pagination_next: k8s/index
 ---
-import RandomGoSdkExample from "/snippets/examples/go-sdk/http-random.mdx";
-import RandomJavascriptSdkExample from "/snippets/examples/javascript-sdk/http-random.mdx";
-import RandomPythonSdkExample from "/snippets/examples/python-sdk/http-random.mdx";
-import RandomRustSdkExample from "/snippets/examples/rust-sdk/http-random.mdx";
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+import RandomGoSdkExample from "/examples/go-sdk/http-random.mdx";
+import RandomJavascriptSdkExample from "/examples/javascript-sdk/http-random.mdx";
+import RandomPythonSdkExample from "/examples/python-sdk/http-random.mdx";
+import RandomRustSdkExample from "/examples/rust-sdk/http-random.mdx";
+
+# Agent SDKs
+
+## Overview
 
 Agent SDKs enable you to embed ngrok directly into your application. They allow
 you to programmatically create ngrok endpoints. You handle connections from
@@ -12,7 +23,7 @@ ngrok's cloud service just as if you opened a socket to listen on a port.
 
 ## Example Usage
 
-<CodeGroup>
+<LangSwitcher>
 ```go
 import (
 	"context"
@@ -24,7 +35,7 @@ func ngrokListener(ctx context.Context) (net.Listener, error) {
 return ngrok.Listen(ctx)
 }
 
-```
+````
 
 ```javascript
 const ngrok = require("@ngrok/ngrok");
@@ -37,7 +48,7 @@ const ngrok = require("@ngrok/ngrok");
 
 	console.log(`Ingress established at: ${listener.url()}`);
 })();
-```
+````
 
 ```python
 import ngrok
@@ -67,7 +78,7 @@ async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
 }
 ```
 
-</CodeGroup>
+</LangSwitcher>
 
 ## Supported Languages
 

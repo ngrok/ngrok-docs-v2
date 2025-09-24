@@ -1,5 +1,6 @@
 ---
 title: Security Quick Wins
+sidebar_label: Security Quick Wins
 description: Learn some quick wins that will help you use ngrok more securely.
 ---
 
@@ -22,9 +23,9 @@ This guide will walk you through recommendations to ensure you're using ngrok se
 - If your local service is not running on the same machine as the ngrok agent, we recommend you set up TLS encryption for the ngrok agent to the upstream service leg of the tunnel using our [local HTTPS feature](/universal-gateway/http/#https-forwarding).
 - For custom domains, use ngrok's [Automated TLS certificates](/universal-gateway/tls-certificates/#automated) to have ngrok automatically provision a TLS certificate for your endpoint from [Let's Encrypt](https://letsencrypt.org/about/).
 
-<Tip>
+:::tip
 Certificates automatically provisioned from Let's Encrypt are securely managed, and their private keys are not accessible to the requester. This ensures the security and integrity of the certificate by preventing key exposure.
-</Tip>
+:::
 
 ### Using a custom Connect URL
 
@@ -39,7 +40,7 @@ See [Terminating TLS Connections](/universal-gateway/tls-termination/) for more 
 
 ### Minimum TLS version
 
-It is possible to specify the minimum TLS version that clients are required to use to talk to the ngrok cloud service for your endpoint. See [the mTLS guide](/agent/agent-mutual-tls-termination/) for more details.
+It is possible to specify the minimum TLS version that clients are required to use to talk to the ngrok cloud service for your endpoint. See [the mTLS guide](/docs/agent/agent-mutual-tls-termination/) for more details.
 
 ### Observability
 
@@ -68,7 +69,7 @@ For a tighter security policy, most administrators will want to block ngrok acco
 
 ## API Configuration
 
-You need an API key to authenticate with [the ngrok REST API](/api/). API keys are Base64 encoded strings that you can find [in the dashboard](https://dashboard.ngrok.com/get-started/your-authtoken) or from [an API endpoint](/api/resources/api-keys/#list-api-keys), which makes it easy to rotate your API keys.
+You need an API key to authenticate with [the ngrok REST API](/docs/api/). API keys are Base64 encoded strings that you can find [in the dashboard](https://dashboard.ngrok.com/get-started/your-authtoken) or from [an API endpoint](/docs/api/resources/api-keys/#list-api-keys), which makes it easy to rotate your API keys.
 
 Consider restricting the IPs permitted to access the API. You can do so [in the ngrok Dashboard](https://dashboard.ngrok.com/ip-restrictions).
 

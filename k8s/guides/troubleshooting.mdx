@@ -1,7 +1,8 @@
 ---
-title: Troubleshooting the ngrok Kubernetes Operator
-sidebarTitle: Troubleshooting
+title: Troubleshooting
 ---
+
+# Troubleshooting Operator Issues
 
 ## Describe Resources
 
@@ -45,9 +46,9 @@ LAST SEEN   TYPE     REASON              OBJECT                                 
 2m55s       Normal   Updated             kubernetesoperator/ngrok-operator                          Updated KubernetesOperator/ngrok-operator
 ```
 
-<Tip>
+:::tip
 Kubernetes events usually expire after an hour, so you might want to restart the operator to re-create the events while troubleshooting if the events happened more than an hour ago.
-</Tip>
+:::
 
 ## Check Operator Errors
 

@@ -1,7 +1,11 @@
 ---
-title: Customizing Request Routing with URL Rewriting
-sidebarTitle: Rewrite URL
+title: Rewrite URL
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Customizing Request Routing with URL Rewriting
 
 URL rewriting allows you to modify request URLs before forwarding them to your upstream service.
 This includes changing the hostname, path, or query parameters to ensure that requests are correctly formatted before reaching their destination.
@@ -34,8 +38,8 @@ The following examples showcase how to create an endpoint that rewrites requests
 - Requests to `https://example-hostname.ngrok.io/example` will be rewritten to `https://example-hostname.ngrok.io/rewrite`
 - Requests to `https://example-hostname.ngrok.io/example/foo` will be rewritten to `https://example-hostname.ngrok.io/rewrite`
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -56,8 +60,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: /.*
                   to: /rewrite
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -76,8 +80,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: /.*
                   to: /rewrite
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 Ingress resources do not have native URL rewriting capabilities, but they can be extended using a traffic policy.
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
@@ -123,8 +127,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	✅ Gateway API natively supports URL rewriting, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -180,7 +184,7 @@ The following examples showcase how to create an endpoint that rewrites requests
             type: ReplaceFullPath
             replaceFullPath: "/rewrite"
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 
@@ -190,8 +194,8 @@ The following examples showcase how to create an endpoint that rewrites requests
 - Requests to `https://example-hostname.ngrok.io/example` will be rewritten to `https://example-hostname.ngrok.io/rewrite`
 - Requests to `https://example-hostname.ngrok.io/example/foo` will be rewritten to `https://example-hostname.ngrok.io/rewrite/foo`
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -212,8 +216,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: /example(.*)
                   to: /rewrite$1
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -232,8 +236,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: /example(.*)
                   to: /rewrite$1
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 Ingress resources do not have native URL rewriting capabilities, but they can be extended using a traffic policy.
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
@@ -279,8 +283,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	✅ Gateway API natively supports URL rewriting, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -330,7 +334,7 @@ The following examples showcase how to create an endpoint that rewrites requests
             type: ReplacePrefixMatch
             replacePrefixMatch: "/rewrite"
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 
@@ -339,8 +343,8 @@ The following examples showcase how to create an endpoint that rewrites requests
 The following examples showcase how to create an endpoint that rewrites requests. The hostname, scheme, and path are kept the same, but only the port is changed.
 - Requests to `https://example-hostname.ngrok.io:8080` will be rewritten to `https://example-hostname.ngrok.io:9000`
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -361,8 +365,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: :8080
                   to: :9090
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -381,8 +385,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: :8080
                   to: :9090
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 Ingress resources do not have native URL rewriting capabilities, but they can be extended using a traffic policy.
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
@@ -428,8 +432,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	✅ Gateway API natively supports URL rewriting, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -477,7 +481,7 @@ The following examples showcase how to create an endpoint that rewrites requests
         urlRewrite:
           port: 9090
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 
@@ -487,8 +491,8 @@ The following examples showcase how to create an endpoint that rewrites requests
 - Requests to `https://example-hostname.ngrok.io` will be rewritten to `https://other-example-hostname.ngrok.io`
 
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -509,8 +513,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: example-hostname.ngrok.io
                   to: other-example-hostname.ngrok.io
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -529,8 +533,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   from: example-hostname.ngrok.io
                   to: other-example-hostname.ngrok.io
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 Ingress resources do not have native URL rewriting capabilities, but they can be extended using a traffic policy.
 	Check out the [URL rewrite traffic policy action](/traffic-policy/actions/url-rewrite/) page for more details about how it functions and the parameters it accepts.
 
@@ -576,8 +580,8 @@ The following examples showcase how to create an endpoint that rewrites requests
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	✅ Gateway API natively supports URL rewriting, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 1. Create a `Gateway`
@@ -625,5 +629,5 @@ The following examples showcase how to create an endpoint that rewrites requests
         urlRewrite:
           hostname: other-example-hostname.ngrok.io
 	```
-	</Tab>
+	</TabItem>
 </Tabs>

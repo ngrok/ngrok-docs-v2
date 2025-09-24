@@ -1,11 +1,14 @@
----
-title: TLS Certificates
----
+# TLS Certificates
+
 ngrok automatically handles TLS (SSL) certificate management and termination
 for you. There is typically nothing to setup, configure or manage.
 
 You can manage TLS certificates on your [ngrok
-dashboard](https://dashboard.ngrok.com/tls-certs) or via the [ngrok API](#api).TLS certificates are a tuple of a private key and certificate that are
+dashboard](https://dashboard.ngrok.com/tls-certs) or via the [ngrok API](#api).
+
+## Overview
+
+TLS certificates are a tuple of a private key and certificate that are
 presented by the ngrok cloud service during a TLS handshakes to terminate TLS
 connections to [HTTPS endpoints](/universal-gateway/http) and [TLS
 endpoints](/universal-gateway/tls). TLS certificates are attached to
@@ -173,11 +176,11 @@ ngrok encrypts your uploaded private keys at rest with
 
 ## API
 
-TLS certificates are managed programatically via:
+TLS certificates are managed programmatically via:
 
 - [`/tls_certificates` API Resource](/api/resources/tls-certificates/)
 
 ## Pricing
 
 TLS certificates are available on all plans. Bringing your own certificates is
-available on the Enterprise plan.
+available on the Pay-as-you-go plan.

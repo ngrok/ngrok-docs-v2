@@ -1,10 +1,13 @@
 ---
-title: Get Started
+sidebar_position: 1
+slug: /
+title: Overview
 description: ngrok documentation
 ---
 
-import { Link } from "/snippets/Link.jsx";
+import Link from "@docusaurus/Link";
 
+# Overview
 
 <p>
 	ngrok is your app's front door. ngrok is a globally distributed reverse proxy
@@ -19,6 +22,9 @@ import { Link } from "/snippets/Link.jsx";
 	or on your devices in the field.{" "}
 	<a href="/what-is-ngrok">More about what you can do with ngrok →</a>
 </p>
+
+## Get Started
+
 <Link
 	className="mb-4 block text-inherit no-underline hover:text-inherit hover:no-underline focus:text-inherit focus:no-underline"
 	to="/getting-started"
@@ -74,7 +80,7 @@ Or instead of the ngrok agent, get started another way:
 			</div>
 		</div>
 	</Link>
-	<Link to={`/getting-started/javascript/`}>
+	<Link to={`/docs/getting-started/javascript/`}>
 		<div className="ngrok--card ngrok--card-sm">
 			<div className="ngrok--card-heading jc-space-between">
 				<h4 className="fw-600">JavaScript SDK</h4>
@@ -289,7 +295,7 @@ Once ngrok is in front of your app, you can add authentication, acceleration, tr
 	<Link to={`/obs/events/reference/`}>
 		<div className="ngrok--card">
 			<div className="ngrok--card-heading">
-				<h3>Events</h3>
+				<h3>Logs</h3>
 			</div>
 			<p>All observable events and event payload shapes</p>
 			<a>Read more →</a>
@@ -413,5 +419,5 @@ Follow tutorials for common tasks when working with ngrok.
 
 <p style={{ textAlign: "right" }}>
 	{" "}
-	<a href="/guides/">All Guides →</a>
+	<a href="/docs/guides/">All Guides →</a>
 </p>

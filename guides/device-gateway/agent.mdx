@@ -1,6 +1,15 @@
 ---
+sidebar_position: 6
 title: Configure Secure Access to Remote IoT Devices
-description: Learn how to use ngrok to remotely access IoT devices and services. Connect remotely without VPN or SSH.
+description: Learn how to use ngrok to remotely access IoT devices and services. Connect remotely without VPN or SSH. 
+tags:
+  - guides
+  - devices
+  - gateway
+  - security
+  - fleet
+  - iot
+  - remote access
 ---
 
 ngrok is a universal gateway, which means it allows you to connect to any app, IoT device, or service without networking expertise.
@@ -10,7 +19,7 @@ This guide will walk you through an example scenario using ngrok to set up a sec
 ## What you'll need
 
 - An ngrok account. If you don't have one, [sign up](https://dashboard.ngrok.com/signup).
-- An ngrok agent configured on your local machine. See the [getting started guide](/getting-started/) for instructions on how to install the ngrok agent.
+- An ngrok agent configured on your local machine. See the [getting started guide](/docs/getting-started/) for instructions on how to install the ngrok agent.
 - [An ngrok API Key](https://dashboard.ngrok.com/api/new). You'll need an account first.
 
 ## Example scenario
@@ -123,9 +132,9 @@ ngrok service install --config /etc/ngrok.yml
 ngrok service start
 ```
 
-<Tip>
+:::tip
 In most cases, installing ngrok as a service requires administrator privileges.
-</Tip>
+:::
 
 This will start all tunnels defined in the configuration file, ensure ngrok runs persistently in the background,
 and integrate with native OS service tooling.
@@ -233,9 +242,9 @@ curl -X POST \
   https://agent.factory1.com/api/tunnel
 ```
 
-<Note>
+:::note
 Ensure your chosen domain has the proper TLS/SSL certs provisioned in order to create a secure, working connection.
-</Note>
+:::
 
 Now, `app.factory.com` is live—only for this session.
 

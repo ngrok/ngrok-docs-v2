@@ -1,25 +1,28 @@
 ---
-title: Support Multiple Authentication Methods with Traffic Policy
-sidebarTitle: IP Restrictions or Basic Auth
-description: Support multiple ways for your users to connect to upstream services with a flexible OR operator pattern.
+title: "Enforce IP Restrictions or Basic Auth"
+description: "Support multiple ways for your users to connect to upstream services with a flexible OR operator pattern."
+sidebar_label: "IP Restrictions or Basic Auth"
+categories:
+  - authn-authz
+  - traffic-control
 ---
 
-import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
-import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
-import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-
+import ReserveDomain from "./snippets/_reserve-domain.mdx";
+import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
+import TryOut from "./snippets/_try-out.mdx";
+import Back from "./snippets/_back-to-examples.mdx";
 
 Some services need to support different groups of users with different types of credentials.
 Internal teams might use static IPs, but external users authenticate using Basic Auth.
 With ngrok’s Traffic Policy engine, you can let both types of users through safely without making any changes to your upstream service.
 
-This example walks you through how to apply multiple authentication layers to a single endpoint using [action result variables](/traffic-policy/variables/action/) and expressions that mimic an `OR` operator.
+This example walks you through how to apply multiple authentication layers to a single endpoint using [action result variables](/docs/traffic-policy/variables/action/) and expressions that mimic an `OR` operator.
 You'll allow requests from trusted IPs `OR` those with valid Basic Auth credentials, and then reject all others.
 
 ## 1. Start an endpoint for your service
 
-Start an internal [Agent Endpoint](/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your service listens.
-You can also use one of our [SDKs](/agent-sdks) or the [Kubernetes Operator](/k8s).
+Start an internal [Agent Endpoint](/docs/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your service listens.
+You can also use one of our [SDKs](/docs/agent-sdks) or the [Kubernetes Operator](/docs/k8s).
 
 ```bash
 ngrok http $PORT --url https://service.internal
@@ -42,7 +45,7 @@ You will need to change:
 
 ```yaml
 on_http_request:
-# Enforce IP Restrictions or Basic Auth
+  # Check whether a request's IP matches your allow list.
   - actions:
       - type: restrict-ips
         config:
@@ -100,11 +103,11 @@ on_http_request:
 
 **What's happening here?**
 The first section of this policy checks every HTTP request to see if its source IP matches one on your `allow` list for `restrict-ips`, but doesn't actually enforce the restriction there.
-Instead, the expression that follows the first action checks whether the [`restrict-ips` action result variable](/traffic-policy/actions/restrict-ips/#action-result-variables) `actions.ngrok.restrict_ips.action` is set to `allow`, which means that it would've allowed the request directly if you had set `enforce: true`.
+Instead, the expression that follows the first action checks whether the [`restrict-ips` action result variable](/docs/traffic-policy/actions/restrict-ips/#action-result-variables) `actions.ngrok.restrict_ips.action` is set to `allow`, which means that it would've allowed the request directly if you had set `enforce: true`.
 
 If it's false—the request didn't match the IP `allow` list—then the policy then validates whether it contains a valid Basic Auth header.
 
-Next, the policy checks whether either IP restrictions `OR` Basic Auth were successful, and if so, farwards to your upstream service.
+Next, the policy checks whether either IP restrictions `OR` Basic Auth were successful, and if so, forwards to your upstream service.
 
 A catch-all rule then sends a custom error response to all other requests.
 
@@ -121,6 +124,6 @@ curl https://$NGROK_DOMAIN \
 
 ## What's next?
 
-- Layer in more authentication mechanisms, like the [`oauth`](/traffic-policy/actions/oauth) or [`basic-auth`](/traffic-policy/actions/basic-auth) actions using the same pattern of checking the subsequent action result variables with an expression.
-- Use the action result variables and [CEL interpolation](/traffic-policy/concepts/cel-interpolation) to add specific error messages to your catch-all `custom-response` action.
+- Layer in more authentication mechanisms, like the [`oauth`](/docs/traffic-policy/actions/oauth) or [`basic-auth`](/docs/traffic-policy/actions/basic-auth) actions using the same pattern of checking the subsequent action result variables with an expression.
+- Use the action result variables and [CEL interpolation](/docs/traffic-policy/concepts/cel-interpolation) to add specific error messages to your catch-all `custom-response` action.
 - View your traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) to see requests that failed to authenticate but should have—for example, maybe a specific IP address is missing from your `restrict-ips` allow list or a user who doesn't realize they're using an invalid JWT token.

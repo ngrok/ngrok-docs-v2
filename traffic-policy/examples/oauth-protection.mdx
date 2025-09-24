@@ -1,12 +1,16 @@
 ---
+sidebar_label: OAuth Protection
 title: Using OAuth Traffic Policy on Endpoints
-sidebarTitle: OAuth Protection
 description: Learn how to add OAuth authentication to your ngrok endpoints using Traffic Policy.
 ---
 
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+import ConfigExample from "/src/components/ConfigExample.tsx";
+
 Sometimes you don't want everyone to be able to access the app at your [Endpoints](/universal-gateway/endpoints).
 
-This guide will walk you through protecting your apps with OAuth authentication via [Traffic Policy](/traffic-policy). All you need is [the ngrok agent CLI](/agent/cli).
+This guide will walk you through protecting your apps with OAuth authentication via [Traffic Policy](/traffic-policy). All you need is [the ngrok agent CLI](/docs/agent/cli).
 
 ## 1. Pick your provider
 
@@ -21,26 +25,18 @@ Decide which OAuth identity provider you want to use. If you don't have an OAuth
 
 This guide will use Google OAuth.
 
-<Note>
+:::note
 If you use any of the above providers without configuring your own OAuth application, your endpoint will use ngrok's managed OAuth application. This means you won't be able to customize the provider's authentication behavior.
-</Note>
+:::
 
 ## 2. Create a traffic policy file
 
-The following is an example Traffic Policy file that executes the ['oauth' traffic policy action](/traffic-policy/actions/oauth/) on every request to your endpoint.
+The following is an example Traffic Policy file that executes the ['oauth' traffic policy action](/docs/traffic-policy/actions/oauth/) on every request to your endpoint.
 
 Create this traffic policy file in the same directory where you run your ngrok agent, or add its contents to your `ngrok.yml` agent config file as shown below.
 
-<CodeGroup>
-```yaml policy.yml
-on_http_request:
-  - actions:
-    - type: "oauth"
-    config:
-    provider: "google"
-```
-```json policy.json
-{
+<ConfigExample
+	config={{
   "on_http_request": [
     {
       "actions": [
@@ -50,17 +46,16 @@ on_http_request:
             "provider": "google"
           }
         }
-      ]
+			]
     }
   ]
-}
-```
-</CodeGroup>
+}}
+/>
 
 ## 3. Restart your endpoint with the policy attached
 
-<Tabs>
-<Tab title="Using a local file">
+<Tabs groupId="start-location" queryString="start-location">
+<TabItem value="policy" label="Using a local file" default>
 
 If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--traffic-policy-file` flag to your ngrok command when starting your agent as shown in the following example.
 
@@ -68,8 +63,8 @@ If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--tr
 ngrok http 3000 --traffic-policy-file oauth.yml
 ```
 
-</Tab>
-<Tab title="Using an Agent Config file">
+</TabItem>
+<TabItem value="config" label="Using an Agent Config file">
 
 If you've added the traffic policy to your agent config, run the following command in your terminal.
 
@@ -77,7 +72,7 @@ If you've added the traffic policy to your agent config, run the following comma
 ngrok start endpoint-name-here
 ```
 
-</Tab>
+</TabItem>
 </Tabs>
 
 ## 4. Verify in a browser
@@ -88,7 +83,7 @@ You should be immediately redirected to the Google sign-in page, and after authe
 
 ## Explore more and fine-tune with Traffic Policy
 
-[Traffic Policy](/traffic-policy/) is a composable CEL-based configuration language that lets you match, filter, and control traffic to your endpoints without touching your app code. [Learn more about the building blocks of Traffic Policy](/traffic-policy/#traffic-policy-building-blocks).
+[Traffic Policy](/docs/traffic-policy/) is a composable CEL-based configuration language that lets you match, filter, and control traffic to your endpoints without touching your app code. [Learn more about the building blocks of Traffic Policy](/docs/traffic-policy/#traffic-policy-building-blocks).
 
 Now that you've added auth to your endpoint, here are some optional ways to fine tune other parts of your auth setup aside from strictly how to handle logins. Depending on your goal, you’ll either configure session behavior in your traffic policy YAML, or trigger runtime behavior in your app using special `/ngrok/*` URLs. See the following tables for details.
 
@@ -122,63 +117,41 @@ This section includes two examples of how to apply these additional auth lifecyc
 - Any session inactive for 15 minutes or longer will auto-expire and trigger a re-login flow when the user returns.
 - After an hour (regardless of activity), users are forced to re-authenticate (`max_session_duration`).
 
-<CodeGroup>
-```yaml policy.yml
-on_http_request:
-  - expressions:
-    - "req.url.path == '/ngrok/logout'"
-    actions:
-    - type: "redirect"
-    config:
-    location: "/ngrok/login?auth_id=my-login"
-
-
-  - actions:
-    - type: "oauth"
-    config:
-    provider: "google"
-    auth_id: "my-login"
-    idle_session_timeout: "15m"
-    max_session_duration: "1h"
-```
-```json policy.json
-{
-  "on_http_request": [
-    {
-      "expressions": [
-        "req.url.path == '/ngrok/logout'"
-      ],
-      "actions": [
-        {
-          "type": "redirect",
-          "config": {
-            "location": "/ngrok/login?auth_id=my-login"
-          }
-        }
-      ]
-    },
-    {
-      "actions": [
-        {
-          "type": "oauth",
-          "config": {
-            "provider": "google",
-            "auth_id": "my-login",
-            "idle_session_timeout": "15m",
-            "max_session_duration": "1h"
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+	"on_http_request": [
+		{
+			"expressions": ["req.url.path == '/ngrok/logout'"],
+			"actions": [
+				{
+					"type": "redirect",
+					"config": {
+						"location": "/ngrok/login?auth_id=my-login"
+					}
+				}
+			]
+		},
+		{
+			"actions": [
+				{
+					"type": "oauth",
+					"config": {
+						"provider": "google",
+						"auth_id": "my-login",
+						"idle_session_timeout": "15m",
+						"max_session_duration": "1h"
+					}
+				}
+			]
+		}
+	]
+}}
+/>
 
 Now you can restart your endpoint with the updated traffic policy file or config.
 
-<Tabs>
-<Tab title="Using a local file">
+<Tabs groupId="start-location" queryString="start-location">
+<TabItem value="policy" label="Using a local file" default>
 
 If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--traffic-policy-file` flag to your ngrok command when starting your agent as shown in the following example.
 
@@ -186,8 +159,8 @@ If you saved your Traffic Policy in a local file like `oauth.yml`, add the `--tr
 ngrok http 3000 --traffic-policy-file oauth.yml
 ```
 
-</Tab>
-<Tab title="Using an Agent Config file">
+</TabItem>
+<TabItem value="config" label="Using an Agent Config file">
 
 If you've added the traffic policy to your agent config, run the following command in your terminal.
 
@@ -195,7 +168,7 @@ If you've added the traffic policy to your agent config, run the following comma
 ngrok start endpoint-name-here
 ```
 
-</Tab>
+</TabItem>
 </Tabs>
 
 If you need assistance with specific configurations or further customization, feel free to ask our Support team at [support@ngrok.com](mailto:support@ngrok.com).

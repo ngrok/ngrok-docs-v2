@@ -1,7 +1,8 @@
 ---
-title: Gateway API with the ngrok Kubernetes Operator
-sidebarTitle: Using Gateway API
+title: Using Gateway API
 ---
+
+# Gateway API with the ngrok Operator
 
 The following guide will help give an overview of using Gateway API resources to configure the ngrok Kubernetes operator.
 This guide aims to offer a few high-level examples and explanations about how the operator uses Gateway API resources, but more specific examples of using the Gateway API resources can be found in the various other guides for the specific actions you are looking to perform.
@@ -9,11 +10,11 @@ This guide aims to offer a few high-level examples and explanations about how th
 This guide assumes that you have already installed the operator and the Gateway API CRDs following the [installation guide](/k8s/installation/helm).
 If you've already installed the operator without Gateway API support and would like to enable it, simply install the Gateway API CRDs and ngrok `GatewayClass` following the installation guide and restart the ngrok Kubernetes operator so that it can detect the newly installed Gateway API CRDs.
 
-<Note>
+:::note
 
 Request mirror filters are not yet supported with the ngrok Kubernetes Operator.
 
-</Note>
+:::
 
 ## How does the ngrok Operator Use Gateway API?
 
@@ -191,7 +192,7 @@ infra       shared-gateway                 ngrok   gateway.my-sub-domain.ngrok.i
 ```
 
 In this example, you can see that 2 gateways have been successfully programmed in ngrok. The first one, `custom-gateway`, is using
-a [Custom Domain](./custom-domain) and shows the ngrok CNAME assigned to it. The last one, `shared-gateway`, is using a ngrok
+a [Custom Domain](./custom-domain.mdx) and shows the ngrok CNAME assigned to it. The last one, `shared-gateway`, is using an ngrok
 managed domain and has also been programmed. The other Gateways you see here are invalid and not able to be programmed.
 
 We can check the reason why a gateway is invalid, by checking the status condition on the gateway and the listener status conditions

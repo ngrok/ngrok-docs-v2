@@ -1,8 +1,9 @@
 ---
-title: Using ngrok Custom Resources
-sidebarTitle: Using CRDs
-description: Learn how to use ngrok's custom resources with the ngrok Kubernetes Operator.
+title: Using Ngrok CRDs
+pagination_next: k8s/guides/using-gwapi
 ---
+
+# Using ngrok Custom Resources
 
 The following sections offer a brief guide on how using each of ngrok's custom resources work.
 You can also head to the [Custom Resource Definition docs](/k8s/crds) for more detailed information about the structure of each resource and all of their fields.
@@ -211,7 +212,7 @@ spec:
 
 ### `CloudEndpoint` Routing
 
-For a more in-depth guide on using `CloudEndpoints` to forward requests to other endpoints using the `forward-internal` action, see the [request routing guide](/k8s/guides/how-to/request-routing)
+For a more in-depth guide on using `CloudEndpoints` to forward requests to other endpoints using the `forward-internal` action, see the [request routing guide](/docs/k8s/guides/how-to/request-routing)
 
 ## Using `NgrokTrafficPolicy`
 
@@ -220,7 +221,7 @@ For a more in-depth guide on using `CloudEndpoints` to forward requests to other
 On their own, `NgrokTrafficPolicy` resources do not do anything unless attached to a `CloudEndpoint`, `Ingress`, etc.
 
 The `CloudEndpoint` and `AgentEndpoint` custom resources allow you to choose whether you would like to supply traffic policy configuration in-line or as a reference to an `NgrokTrafficPolicy` resource.
-This makes it easy to create common `NgrokTrafficPolicy` resources and re-use them on multiple different resources.
+This makes it easy to create common `NgrokTrafficPolicy` resources and reuse them on multiple different resources.
 
 `Ingress` and Gateway API resources have several methods of accepting `NgrokTrafficPolicy` resources outlined in the [using ingresses](/k8s/guides/using-ingresses) and [using Gateway API](/k8s/guides/using-gwapi) pages.
 
@@ -269,7 +270,7 @@ You can use `kubectl describe` on any of them to check their status and conditio
   - [BoundEndpoint Reference](/k8s/crds/boundendpoint)
 - **KubernetesOperators**:
   - KubernetesOperators are used to synchronize the state of any instances of the ngrok Kubernetes operator with your ngrok account.
-  - [KubernetesOperator Reference](/k8s/crds/kubernetesoperator)
+  - [KubernetesOperator Reference](/docs/k8s/crds/kubernetesoperator)
 
 ## Using Edges
 

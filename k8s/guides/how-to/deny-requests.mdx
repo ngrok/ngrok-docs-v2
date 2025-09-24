@@ -1,7 +1,11 @@
 ---
-title: Protecting Your Endpoints by Denying Unwanted Traffic
-sidebarTitle: Deny Requests
+title: Deny Requests
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Protecting Your Endpoints by Denying Unwanted Traffic
 
 Whenever your endpoints are exposed to the internet, they will inevitably receive unwanted or malicious traffic. This can include bot activity, unauthorized access attempts, abusive requests, or even potential security threats.
 
@@ -33,8 +37,8 @@ The following examples set up an endpoint that will deny all traffic unless the 
 See the [IP Intelligence](/traffic-policy/variables/ip-intel) page for more ways you can check properties of the connecting IP address.
 Check out the [deny request traffic policy action](/traffic-policy/actions/deny/) page for more details about how it functions and the parameters it accepts.
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -54,8 +58,8 @@ Check out the [deny request traffic policy action](/traffic-policy/actions/deny/
                 config:
                   status_code: 403
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -73,8 +77,8 @@ Check out the [deny request traffic policy action](/traffic-policy/actions/deny/
                 config:
                   status_code: 403
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 `Ingress` resources do not natively support request denial configuration, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -120,8 +124,8 @@ Check out the [deny request traffic policy action](/traffic-policy/actions/deny/
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	💡 Gateway API resources do not natively support request denial configuration, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -164,5 +168,5 @@ Check out the [deny request traffic policy action](/traffic-policy/actions/deny/
         port: 443
         protocol: HTTPS
 	```
-	</Tab>
+	</TabItem>
 </Tabs>

@@ -1,6 +1,6 @@
 ---
 title: Configure Site-to-Site Connectivity
-sidebarTitle: Get Started
+sidebar_label: Site-to-Site Connectivity
 description: Configure site-to-site connectivity to grant trusted parties access to critical systems without exposing those systems to the public internet.
 ---
 
@@ -355,9 +355,9 @@ ngrok service install --config /etc/ngrok.yml
 ngrok service start
 ```
 
-<Note>
+:::note
 In most cases, installing ngrok as a service requires administrator privileges.
-</Note>
+:::
 
 This will start all tunnels defined in the configuration file, ensure ngrok runs persistently in the background, and integrate with native OS service tooling.
 
@@ -370,4 +370,4 @@ You officially made it! You have now integrated a system that allows you to seam
 3. ngrok runs as a background service, which means it's reliable and will always auto-restart.
 4. Granular access with a composable traffic policy offering refined and robust security measures for our endpoints.
 
-Not sure how to explain ngrok to your end users? Check out [the guide on ngrok's standards on security, trust, compliance, and privacy](/guides/site-to-site-connectivity/end-customers/).
+Not sure how to explain ngrok to your end users? Check out [the guide on ngrok's standards on security, trust, compliance, and privacy](/docs/guides/site-to-site-connectivity/end-customers/).

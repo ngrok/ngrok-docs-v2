@@ -1,10 +1,12 @@
 ---
 title: Load Balancing Between Multiple Kubernetes Clusters
-sidebarTitle: For Kubernetes Clusters
-description: Use Endpoint Pooling to split traffic between any number of clusters without needing to deploy external services.
+sidebar_label: For Kubernetes Clusters
+description: Use Endpoint Pooling to split traffic between any number of clusters without needing to deploy external services. 
 ---
 
-import { YouTubeEmbed } from "/snippets/YouTubeEmbed.jsx";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+import { YouTubeEmbed } from "@components/youtube-embed";
 
 Let's say you have three services, `foo`, `bar`, and `baz`, deployed in a single
 Kubernetes cluster, but eventually decide you need to extend to multiple
@@ -19,25 +21,25 @@ clusters for reasons like:
 
 With ngrok, you don't need to provision new load balancers or other complex
 networking tools—[Endpoint
-Pooling](/universal-gateway/endpoint-pooling/) lets you share traffic between
+Pooling](/docs/universal-gateway/endpoint-pooling/) lets you share traffic between
 replicas of your services on any number of clusters by deploying them on the same
-[internal](/universal-gateway/internal-endpoints/) URL. With the addition
-of a [Cloud Endpoint](/universal-gateway/cloud-endpoints) and [Traffic
-Policy](/traffic-policy), you'll have a single "front door" for all your
+[internal](/docs/universal-gateway/internal-endpoints/) URL. With the addition
+of a [Cloud Endpoint](/docs/universal-gateway/cloud-endpoints) and [Traffic
+Policy](/docs/traffic-policy), you'll have a single "front door" for all your
 load-balanced K8s services behind a single hostname, like
 `https://api.example.com`.
 
-<Tip>
+:::tip
 We have another guide for load balancing to
 [individual K8s
-services](/k8s/load-balancing/load-balancing-kubernetes) with
+services](/docs/k8s/load-balancing/load-balancing-kubernetes) with
 ngrok custom resources, Ingress objects, or Gateway API resources. This guide uses our [custom
-resources](/k8s/guides/using-crds) to create endpoints for your services.
-</Tip>
+resources](/docs/k8s/guides/using-crds) to create endpoints for your services.
+:::
 
 ## 1. Install the ngrok Kubernetes Operator
 
-Check out our [installation instructions](/k8s/installation/helm/) for
+Check out our [installation instructions](/docs/k8s/installation/helm/) for
 details on how to use Helm to deploy the open-source Operator to each cluster
 you'd like to load-balance between.
 
@@ -46,7 +48,7 @@ you'd like to load-balance between.
 The following YAML manifest creates three internal agent endpoints, each of which
 will proxy traffic to your `foo`, `bar`, and `baz` pods, respectively. When you
 use our custom resources to create agent endpoints, pooling is [enabled
-automatically](/k8s/guides/pooling/#endpoint-pooling-with-agentendpoints).
+automatically](/docs/k8s/guides/pooling/#endpoint-pooling-with-agentendpoints).
 
 ```yaml
 apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -105,7 +107,7 @@ Endpoint**.
 The following traffic policy example:
 
 1. Uses the [`forward-internal`
-   action](/traffic-policy/actions/forward-internal/) to route all requests to
+   action](/docs/traffic-policy/actions/forward-internal/) to route all requests to
    the `/foo` path to the pool you created at `https://foo.internal`. - The pooled endpoints then proxy requests proxies the request to the `foo`
    Service/Deployment in your cluster.
 2. Does the same for the paths `/bar` and `/baz`.
@@ -153,18 +155,18 @@ Speaking of traffic policy, here are a few common ways folks filter, manage, and
 orchestrate requests:
 
 - [Route requests by subdomain or
-  header](/traffic-policy/examples/route-requests/) instead of paths.
+  header](/docs/traffic-policy/examples/route-requests/) instead of paths.
 - Add authentication with the
-  [`basic-auth`](/traffic-policy/actions/basic-auth/),
-  [`oauth`](/traffic-policy/actions/oauth/), or
-  [`jwt-validation`](/traffic-policy/actions/jwt-validation/) Traffic
+  [`basic-auth`](/docs/traffic-policy/actions/basic-auth/),
+  [`oauth`](/docs/traffic-policy/actions/oauth/), or
+  [`jwt-validation`](/docs/traffic-policy/actions/jwt-validation/) Traffic
   Policy actions.
-- [Rate limit requests](/traffic-policy/actions/rate-limit/) to prevent
+- [Rate limit requests](/docs/traffic-policy/actions/rate-limit/) to prevent
   abuse and ensure fairness.
 
 Or, if you're looking for a more step-by-step experience for deploying ngrok as
 an API gateway, check out our guides:
 
-- [Deploy an API gateway with Kubernetes](/guides/api-gateway/kubernetes/)
+- [Deploy an API gateway with Kubernetes](/docs/guides/api-gateway/kubernetes/)
 - [Deploy a multicloud API
-  gateway](/k8s/load-balancing/load-balancing-kubernetes-clusters/)
+  gateway](/docs/k8s/load-balancing/load-balancing-kubernetes-clusters/)

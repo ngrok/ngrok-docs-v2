@@ -1,7 +1,9 @@
 ---
-title: How to update the ngrok Kubernetes Operator
-sidebarTitle: Updates & Upgrades
+title: Updates & Upgrades
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 Updating the ngrok Kubernetes operator is a very simple and straight-forward process.
 Before updating, it is always best to check which version of the ngrok Kubernetes operator you are running
@@ -54,23 +56,23 @@ export OPERATOR_NAME=ngrok-operator
 export OPERATOR_NAMESPACE=ngrok-operator
 ```
 
-<Tabs>
-	<Tab title="Latest Release">
+<Tabs groupId="k8s" queryString="version">
+	<TabItem value="latest" label="Latest Release" default>
 	```bash
 	helm upgrade $OPERATOR_NAME ngrok/ngrok-operator \
 	--reuse-values
 	```
-	</Tab>
-	<Tab title="Specific Release">
+	</TabItem>
+	<TabItem value="specific" label="Specific Release">
 	```bash
 	helm upgrade $OPERATOR_NAME ngrok/ngrok-operator \
 	--version $OPERATOR_CHART_VERSION \
 	--reuse-values
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 
-<Note>
+:::note
 The --reuse-values flag will tell Helm to reuse any values you used in your last install/upgrade. You can change them or add new values by chaining --set flags just like when installing the operator.
-</Note>
+:::

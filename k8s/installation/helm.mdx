@@ -1,9 +1,9 @@
 ---
-title: Kubernetes Operator Helm Configuration
-sidebarTitle: Helm Configuration
+title: Helm Configuration
 ---
 
-import HelmValues from "/snippets/k8s/_helm-config.mdx";
+import RemoteYamlBlock from "@site/src/components/RemoteYamlBlock";
+
 
 The following YAML block contains the default `values.yaml` used when installing the ngrok Kubernetes Operator. You can reference these values and change them individually with `--set` flags while installing/upgrading the ngrok Kubernetes operator.
 
@@ -11,7 +11,10 @@ You can also see these values in [the ngrok operator repo](https://github.com/ng
 
 ## Helm values
 
-<HelmValues />
+<RemoteYamlBlock
+	url="https://raw.githubusercontent.com/ngrok/ngrok-operator/main/helm/ngrok-operator/values.yaml"
+	title="values.yaml"
+/>
 
 ## Common configurations
 

@@ -1,9 +1,16 @@
 ---
-title: Traffic Policy Macros
-sidebarTitle: Macros
+title: Macros
+sidebar_position: 0
 ---
 
+import ConfigExample from "/src/components/ConfigExample.tsx";
+
+# Macros
+
+ngrok offers a variety of CEL macros that can be used within the Traffic Policy engine to simplify [traffic management](../concepts/expressions) and [dynamic configuration](../concepts/cel-interpolation).  
 These macros help you streamline traffic handling by referencing common values and conditions, making it easier to manage complex logic in your traffic policies.
+
+You can use these macros in combination with [expressions](../concepts/expressions) and [actions](../actions) to create dynamic, condition-based traffic flows.
 
 ## Base64
 
@@ -53,19 +60,13 @@ basic_auth.encode('username', 'password1')  // Basic dXNlcm5hbWU6cGFzc3dvcmQx
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "basic_auth.encode('username', 'password1') == 'Basic dXNlcm5hbWU6cGFzc3dvcmQx'"
-```
-```json policy.json
-{
-  "expressions": [
-    "basic_auth.encode('username', 'password1') == 'Basic dXNlcm5hbWU6cGFzc3dvcmQx'"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: [
+			"basic_auth.encode('username', 'password1') == 'Basic dXNlcm5hbWU6cGFzc3dvcmQx'",
+		],
+	}}
+/>
 
 ## Bytes
 
@@ -87,7 +88,7 @@ size(b'world!') // 6
 
 ## HTTP Requests
 
-Available in [`on_http_request`](/traffic-policy/concepts/phases/#on_http_request) and [`on_http_response`](/traffic-policy/concepts/phases/#on_http_response) phases.
+Available in [`on_http_request`](/docs/traffic-policy/concepts/phases/#on_http_request) and [`on_http_response`](/docs/traffic-policy/concepts/phases/#on_http_response) phases.
 
 ### `getReqCookie(string) -> cookie`
 
@@ -102,19 +103,11 @@ getReqCookie('session')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "getReqCookie('session').secure"
-```
-```json policy.json
-{
-  "expressions": [
-    "getReqCookie('session').secure"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["getReqCookie('session').secure"],
+	}}
+/>
 
 ### `getReqHeader(string) -> list`
 
@@ -130,19 +123,13 @@ getReqHeader('User-Agent')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "getReqHeader('User-Agent').exists(v, v.matches('(?i)google-images'))"
-```
-```json policy.json
-{
-  "expressions": [
-    "getReqHeader('User-Agent').exists(v, v.matches('(?i)google-images'))"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: [
+			"getReqHeader('User-Agent').exists(v, v.matches('(?i)google-images'))",
+		],
+	}}
+/>
 
 ### `getQueryParam(string) -> list`
 
@@ -157,19 +144,11 @@ getQueryParam('search')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "size(getQueryParam('q')) == 0"
-```
-```json policy.json
-{
-  "expressions": [
-    "size(getQueryParam('q')) == 0"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["size(getQueryParam('q')) == 0"],
+	}}
+/>
 
 ### `hasQueryParam(string) -> bool`
 
@@ -183,19 +162,11 @@ hasQueryParam('query')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "hasQueryParam('q')"
-```
-```json policy.json
-{
-  "expressions": [
-    "hasQueryParam('q')"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["hasQueryParam('q')"],
+	}}
+/>
 
 ### `hasReqCookie(string) -> bool`
 
@@ -209,19 +180,11 @@ hasReqCookie('session')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "hasReqCookie('session')"
-```
-```json policy.json
-{
-  "expressions": [
-    "hasReqCookie('session')"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["hasReqCookie('session')"],
+	}}
+/>
 
 ### `hasReqHeader(string) -> bool`
 
@@ -236,23 +199,15 @@ hasReqHeader('Authorization')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "hasReqHeader('X-Version-Id')"
-```
-```json policy.json
-{
-  "expressions": [
-    "hasReqHeader('X-Version-Id')"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["hasReqHeader('X-Version-Id')"],
+	}}
+/>
 
 ## HTTP Responses
 
-Available in [`on_http_response`](/traffic-policy/concepts/phases/#on_http_response) phase only.
+Available in [`on_http_response`](/docs/traffic-policy/concepts/phases/#on_http_response) phase only.
 
 ### `getResCookie(string) -> cookie`
 
@@ -267,19 +222,11 @@ getResCookie('_device_id')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "getResCookie('_device_id').value == 'mobile-phone-14'"
-```
-```json policy.json
-{
-  "expressions": [
-    "getResCookie('_device_id').value == 'mobile-phone-14'"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["getResCookie('_device_id').value == 'mobile-phone-14'"],
+	}}
+/>
 
 ### `getResHeader(string) -> list`
 
@@ -294,19 +241,13 @@ getResHeader('Content-Type')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "size(getResHeader('Content-Type').filter(v, v.matches('application/json'))) > 0"
-```
-```json policy.json
-{
-  "expressions": [
-    "size(getResHeader('Content-Type').filter(v, v.matches('application/json'))) > 0"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: [
+			"size(getResHeader('Content-Type').filter(v, v.matches('application/json'))) > 0",
+		],
+	}}
+/>
 
 ### `hasResCookie(string) -> bool`
 
@@ -320,19 +261,11 @@ hasResCookie('_device_id')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "hasResCookie('_device_id')"
-```
-```json policy.json
-{
-  "expressions": [
-    "hasResCookie('_device_id')"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["hasResCookie('_device_id')"],
+	}}
+/>
 
 ### `hasResHeader(string) -> bool`
 
@@ -348,19 +281,11 @@ hasResHeader('Content-Type')
 
 #### Example (Expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "hasResHeader('Content-Type')"
-```
-```json policy.json
-{
-  "expressions": [
-    "hasResHeader('Content-Type')"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["hasResHeader('Content-Type')"],
+	}}
+/>
 
 ## Hash
 
@@ -402,10 +327,10 @@ hash.crc64('hello', 'base64') // 'PD7u4tgQAAA='
 
 ### `hash.md5(string) -> string`
 
-<Warning>
+:::warning Security Notice
 MD5 is considered cryptographically broken and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
-</Warning>
+:::
 
 Computes the MD5 hash of a string.  
 Returns the hash in hexadecimal format by default.
@@ -425,10 +350,10 @@ hash.md5('hello', 'base64') // 'XUFAKrxLKna5cZ2REBfFkg=='
 
 ### `hash.sha1(string) -> string`
 
-<Warning>
+:::warning Security Notice
 SHA-1 is considered cryptographically weak and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
-</Warning>
+:::
 
 Computes the SHA-1 hash of a string.  
 Returns the hash in hexadecimal format by default.
@@ -516,19 +441,13 @@ json.decode('["a","b","c"]')  // string["a","b","c"]
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "json.decode(getReqHeader('x-json-array')[0])[0] == "first entry""
-```
-```json policy.json
-{
-  "expressions": [
-    "json.decode(getReqHeader('x-json-array')[0])[0] == \"first entry\""
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: [
+			"json.decode(getReqHeader('x-json-array')[0])[0] == \"first entry\"",
+		],
+	}}
+/>
 
 ### `json.encode(list | map) -> string`
 
@@ -543,19 +462,13 @@ json.encode(["a","b","c"])  // ["a","b","c"]
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "json.encode(req.content_type.parameters) == '{"charset":"UTF-8"}'"
-```
-```json policy.json
-{
-  "expressions": [
-    "json.encode(req.content_type.parameters) == '{\"charset\":\"UTF-8\"}'"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: [
+			'json.encode(req.content_type.parameters) == \'{"charset":"UTF-8"}\'',
+		],
+	}}
+/>
 
 ## Lists
 
@@ -790,19 +703,11 @@ queryString.decode("a=b&c=d")  // {a:b,c:d}
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "queryString.decode(req.url.query)["q"] == "hello""
-```
-```json policy.json
-{
-  "expressions": [
-    "queryString.decode(req.url.query)[\"q\"] == \"hello\""
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ['queryString.decode(req.url.query)["q"] == "hello"'],
+	}}
+/>
 
 ### `queryString.encode(map) -> string`
 
@@ -816,19 +721,11 @@ queryString.encode({a:b,c:d})  // a=b&c=d
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "queryString.encode({"q":"policy"}) == req.url.query"
-```
-```json policy.json
-{
-  "expressions": [
-    "queryString.encode({\"q\":\"policy\"}) == req.url.query"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ['queryString.encode({"q":"policy"}) == req.url.query'],
+	}}
+/>
 
 ## Random
 
@@ -844,19 +741,11 @@ rand.double() >= 0.5
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "rand.double() >= 0.5"
-```
-```json policy.json
-{
-  "expressions": [
-    "rand.double() >= 0.5"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["rand.double() >= 0.5"],
+	}}
+/>
 
 ### `rand.int(min,max) -> int`
 
@@ -875,35 +764,19 @@ rand.int(0, 10) >= 5
 
 The following is an example of using `rand.int` with the default values:
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "rand.int() == 1"
-```
-```json policy.json
-{
-  "expressions": [
-    "rand.int() == 1"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["rand.int() == 1"],
+	}}
+/>
 
 The following is an example of using `rand.int` with custom values:
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "rand.int(0, 10) >= 5"
-```
-```json policy.json
-{
-  "expressions": [
-    "rand.int(0, 10) >= 5"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["rand.int(0, 10) >= 5"],
+	}}
+/>
 
 ## Secrets
 
@@ -1226,10 +1099,10 @@ Decodes a percent-encoded string back to its original form.
 
 ### `string.md5() -> string`
 
-<Warning>
+:::warning Security Notice
 MD5 is considered cryptographically broken and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
-</Warning>
+:::
 
 Computes the MD5 hash of the string.  
 Returns the hash in hexadecimal format by default.
@@ -1249,10 +1122,10 @@ Returns the hash in hexadecimal format by default.
 
 ### `string.sha1() -> string`
 
-<Warning>
+:::warning Security Notice
 SHA-1 is considered cryptographically weak and should not be used for security purposes.
 Use SHA-256 or higher for security-sensitive applications.
-</Warning>
+:::
 
 Computes the SHA-1 hash of the string.  
 Returns the hash in hexadecimal format by default.
@@ -1540,19 +1413,11 @@ url.escape("i;md/r/$y")
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "url.escape(req.raw) == '%2Ffoo'"
-```
-```json policy.json
-{
-  "expressions": [
-    "url.escape(req.raw) == '%2Ffoo'"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["url.escape(req.raw) == '%2Ffoo'"],
+	}}
+/>
 
 ### `url.parse(string) -> URL`
 
@@ -1567,19 +1432,11 @@ url.parse("https://ngrok.com")
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "url.parse(req.url).host == 'ngrok.com'"
-```
-```json policy.json
-{
-  "expressions": [
-    "url.parse(req.url).host == 'ngrok.com'"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["url.parse(req.url).host == 'ngrok.com'"],
+	}}
+/>
 
 ### `url.unescape(string) -> string`
 
@@ -1594,19 +1451,11 @@ url.unescape("i%3Bmd%2Fr%2F%24y")
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "url.unescape('%2Ffoo') == '/foo'"
-```
-```json policy.json
-{
-  "expressions": [
-    "url.unescape('%2Ffoo') == '/foo'"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["url.unescape('%2Ffoo') == '/foo'"],
+	}}
+/>
 
 ## Utility
 
@@ -1634,19 +1483,11 @@ inCidrRange('192.168.1.100', '192.168.1.0/24')  // true
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "inCidrRange(conn.client_ip, '66.249.66.1/24')"
-```
-```json policy.json
-{
-  "expressions": [
-    "inCidrRange(conn.client_ip, '66.249.66.1/24')"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: ["inCidrRange(conn.client_ip, '66.249.66.1/24')"],
+	}}
+/>
 
 ### `inCidrRanges(ip,cidrs) -> bool`
 
@@ -1663,16 +1504,10 @@ inCidrRanges('192.168.1.100', ['192.168.1.0/24', '10.0.0.0/8']) // true
 
 #### Example (in expression)
 
-<CodeGroup>
-```yaml policy.yml
-expressions:
-  - "inCidrRanges(conn.client_ip, ['66.249.66.1/24', '2001:4860::/32'])"
-```
-```json policy.json
-{
-  "expressions": [
-    "inCidrRanges(conn.client_ip, ['66.249.66.1/24', '2001:4860::/32'])"
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	config={{
+		expressions: [
+			"inCidrRanges(conn.client_ip, ['66.249.66.1/24', '2001:4860::/32'])",
+		],
+	}}
+/>

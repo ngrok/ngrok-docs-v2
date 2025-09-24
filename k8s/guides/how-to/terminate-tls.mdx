@@ -1,7 +1,11 @@
 ---
-title: Managing TLS Termination for Secure Connections
-sidebarTitle: Terminate TLS
+title: Terminate TLS
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Managing TLS Termination for Secure Connections
 
 When using Ingress and Gateway API resources with the ngrok Kubernetes operator, HTTPS endpoints are created by default, and ngrok automatically terminates TLS for secure traffic handling.
 
@@ -81,8 +85,8 @@ These commands will generate the following files:
 
 ### 2. Create an Endpoint with Custom TLS Termination
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	Check out the [terminate TLS traffic policy action](/traffic-policy/actions/terminate-tls/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -116,8 +120,8 @@ These commands will generate the following files:
                       ... certificate ...
                       -----END CERTIFICATE-----
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	Check out the [terminate TLS traffic policy action](/traffic-policy/actions/terminate-tls/) page for more details about how it functions and the parameters it accepts.
 
 	```yaml
@@ -149,8 +153,8 @@ These commands will generate the following files:
                       ... certificate ...
                       -----END CERTIFICATE-----
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 `Ingress` resources do not natively support advanced TLS termination options, but they can be extended using a traffic policy.
 
 	Check out the [terminate TLS traffic policy action](/traffic-policy/actions/terminate-tls/) page for more details about how it functions and the parameters it accepts.
@@ -210,8 +214,8 @@ These commands will generate the following files:
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	✅ Gateway API natively supports TLS termination, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 3. Create a `Secret` to Terminate TLS
@@ -291,7 +295,7 @@ These commands will generate the following files:
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 

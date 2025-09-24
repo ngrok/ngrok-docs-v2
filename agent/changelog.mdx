@@ -1,9 +1,24 @@
 ---
-title: ngrok Agent Changelog
-sidebarTitle: Changelog
+title: Changelog
 ---
 
+# ngrok Agent Changelog
+
 ## v3
+
+### ngrok agent 3.30.0 \[2025-09-23\]
+
+- A new agent HTTP API, `/api/endpoints`, has been introduced that corresponds to the [agent config version 3 format](https://ngrok.com/docs/agent/config/v3/)
+- Endpoints and tunnels deleted via the agent API will be properly reflected in the Dashboard
+
+### ngrok agent 3.29.0 \[2025-09-17\]
+
+- Blocked creating tunnels with duplicate names via the agent HTTP API
+
+### ngrok agent 3.28.0 \[2025-09-11\]
+
+- Updated Docker build base
+- Restored support for `PROXY` in TCP/TLS tunnels
 
 ### ngrok agent 3.27.0 \[2025-08-28\]
 
@@ -229,7 +244,7 @@ mTLS to upgrade immediately.
 
 ### ngrok Agent 3.3.2 - \[2023-07-27\]
 
-- Added support for the [Datadog event destination](/integrations/event-destinations/datadog-event-destination) in `ngrok api`
+- Added support for the [Datadog event destination](/integrations/datadog/event-destination/) in `ngrok api`
 
 ### ngrok Agent 3.3.1 - \[2023-06-05\]
 
@@ -238,7 +253,7 @@ mTLS to upgrade immediately.
 
 ### ngrok Agent 3.3.0 - \[2023-05-09\]
 
-- Added new default tunnel ingress names: the agent now connects to [`connect.ngrok-agent.com`](/guides/security-dev-productivity/securing-your-tunnels/#blocking-non-corporate-accounts) when starting a session
+- Added new default tunnel ingress names: the agent now connects to [`connect.ngrok-agent.com`](/docs/guides/security-dev-productivity/securing-your-tunnels/#blocking-non-corporate-accounts) when starting a session
 - Improved `ngrok diagnose` output to check that the DNS entry for `localhost` resolves
 - Added the command `ngrok config add-server-addr` for configuring custom Connect URLs
 - Re-wrote the tunnel and session backend to use the `ngrok-go` library
@@ -307,7 +322,7 @@ mTLS to upgrade immediately.
 
 ### ngrok Agent 3.0.0 - \[2022-03-28\]
 
-For more information about upgrading from previous versions of the agent to v3.0, see our [upgrade guide](/agent/upgrade-v2-v3/).
+For more information about upgrading from previous versions of the agent to v3.0, see our [upgrade guide](/docs/agent/upgrade-v2-v3/).
 
 - Fixed an issue where an agent would not reconnect after removing a reserved domain from your account.
 - Added `ngrok completion` to enable autocomplete for the cli.

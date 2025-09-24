@@ -1,7 +1,11 @@
 ---
-title: Controlling Access with IP Restrictions
-sidebarTitle: Restrict IPs
+title: Restrict IPs
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Controlling Access with IP Restrictions
 
 Instead of denying requests based on request properties like headers or paths, you may need to restrict access based on the request's source IP address.
 
@@ -30,8 +34,8 @@ The following examples restrict access to specific IP addresses using the restri
 
 Check out the [IP restriction policy action](/traffic-policy/actions/restrict-ips/) page for more details about how it functions and the parameters it accepts.
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -53,8 +57,8 @@ Check out the [IP restriction policy action](/traffic-policy/actions/restrict-ip
                   deny:
                     - e680:5791:be4c:5739:d959:7b94:6d54:d4b4/128
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -74,8 +78,8 @@ Check out the [IP restriction policy action](/traffic-policy/actions/restrict-ip
                   deny:
                     - e680:5791:be4c:5739:d959:7b94:6d54:d4b4/128
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 `Ingress` resources do not natively support IP-based restrictions, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -123,8 +127,8 @@ Check out the [IP restriction policy action](/traffic-policy/actions/restrict-ip
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	💡 Gateway API resources do not natively support IP-based restrictions, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -169,5 +173,5 @@ Check out the [IP restriction policy action](/traffic-policy/actions/restrict-ip
         port: 443
         protocol: HTTPS
 	```
-	</Tab>
+	</TabItem>
 </Tabs>

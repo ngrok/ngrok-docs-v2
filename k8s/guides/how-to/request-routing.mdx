@@ -1,7 +1,11 @@
 ---
-title: Controlling Traffic Flow with Request Routing
-sidebarTitle: Request Routing
+title: Request Routing
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Controlling Traffic Flow with Request Routing
 
 Request routing is the core capability of an API Gateway, enabling it to direct incoming traffic to the appropriate backend service.
 By defining routing rules, you can control how requests are handled, which services they reach, and under what conditions.
@@ -97,17 +101,17 @@ spec:
 `CloudEndpoint` and `AgentEndpoint` resources offer a lot of flexibility in determining when to run traffic policy actions.
 Check out the [traffic policy expressions](/traffic-policy/concepts/expressions/) page for more information about the expressions you can write.
 
-<Tip>
+:::tip
 You can also include traffic policy configuration on your internal AgentEndpoint resources that will run after the CloudEndpoint forwards the request to them
-</Tip>
+:::
 
 ## Exact Path Matching
 
 The following examples showcase how you can match on an exact path.
 The request will not be routed unless it has the exact path `/example`, so `/example/foo` will not be routed.
 
-<Tabs>
-	<Tab title="CloudEndpoint with AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
 
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
@@ -145,8 +149,8 @@ The request will not be routed unless it has the exact path `/example`, so `/exa
             config:
               url: http://example-service.internal:80
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	```yaml
   apiVersion: networking.k8s.io/v1
   kind: Ingress
@@ -167,8 +171,8 @@ The request will not be routed unless it has the exact path `/example`, so `/exa
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	Check out the [Gateway API HTTPRoute matching docs](https://gateway-api.sigs.k8s.io/api-types/httproute/#matches) for more information on matching requests.
 
 	### 1. Create a `Gateway`
@@ -218,7 +222,7 @@ The request will not be routed unless it has the exact path `/example`, so `/exa
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 
@@ -227,8 +231,8 @@ The request will not be routed unless it has the exact path `/example`, so `/exa
 The following examples showcase how you can match using a path prefix.
 Any request that has a path starting with `/example` will be routed, so `/example/foo` will be routed as well.
 
-<Tabs>
-	<Tab title="CloudEndpoint with AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -265,8 +269,8 @@ Any request that has a path starting with `/example` will be routed, so `/exampl
             config:
               url: http://example-service.internal:80
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	```yaml
   apiVersion: networking.k8s.io/v1
   kind: Ingress
@@ -287,8 +291,8 @@ Any request that has a path starting with `/example` will be routed, so `/exampl
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	Check out the [Gateway API HTTPRoute matching docs](https://gateway-api.sigs.k8s.io/api-types/httproute/#matches) for more information on matching requests.
 
 	### 1. Create a `Gateway`
@@ -338,7 +342,7 @@ Any request that has a path starting with `/example` will be routed, so `/exampl
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 
@@ -346,8 +350,8 @@ Any request that has a path starting with `/example` will be routed, so `/exampl
 
 The following examples showcase how to create an endpoint that only routes requests with the `POST` method.
 
-<Tabs>
-	<Tab title="CloudEndpoint with AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -384,11 +388,11 @@ The following examples showcase how to create an endpoint that only routes reque
             config:
               url: http://example-service.internal:80
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	❌ `Ingress` resources do not natively support request method matching, so this option requires using Gateway API or the `CloudEndpoint`/`AgentEndpoint` resources directly.
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	Check out the [Gateway API HTTPRoute matching docs](https://gateway-api.sigs.k8s.io/api-types/httproute/#matches) for more information on matching requests.
 
 	### 1. Create a `Gateway`
@@ -436,15 +440,15 @@ The following examples showcase how to create an endpoint that only routes reque
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## Exact Header Matching
 
 The following examples showcase how to create an endpoint that only routes requests if the header `x-request-header` is present with value `foo`.
 
-<Tabs>
-	<Tab title="CloudEndpoint with AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -483,11 +487,11 @@ The following examples showcase how to create an endpoint that only routes reque
             config:
               url: http://example-service.internal:80
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	❌ `Ingress` resources do not natively support header matching, so this option requires using Gateway API or the `CloudEndpoint`/`AgentEndpoint` resources directly.
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	Check out the [Gateway API HTTPRoute matching docs](https://gateway-api.sigs.k8s.io/api-types/httproute/#matches) for more information on matching requests.
 
 	### 1. Create a `Gateway`
@@ -538,15 +542,15 @@ The following examples showcase how to create an endpoint that only routes reque
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## Regex Header Matching
 
 The following examples showcase how to create an endpoint that only routes requests if the header `x-request-header` is present and the value matches the regex `x-value-.*`
 
-<Tabs>
-	<Tab title="CloudEndpoint with AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -583,11 +587,11 @@ The following examples showcase how to create an endpoint that only routes reque
             config:
               url: http://example-service.internal:80
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	❌ `Ingress` resources do not natively support header matching, so this option requires using Gateway API or the `CloudEndpoint`/`AgentEndpoint` resources directly.
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	Check out the [Gateway API HTTPRoute matching docs](https://gateway-api.sigs.k8s.io/api-types/httproute/#matches) for more information on matching requests.
 
 	### 1. Create a `Gateway`
@@ -638,15 +642,15 @@ The following examples showcase how to create an endpoint that only routes reque
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## Exact Query Parameter Matching
 
 The following examples showcase how to create an endpoint that only routes requests if the query parameter `my-query-param` is present with value `foo`.
 
-<Tabs>
-	<Tab title="CloudEndpoint with AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -683,11 +687,11 @@ The following examples showcase how to create an endpoint that only routes reque
             config:
               url: http://example-service.internal:80
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	❌ `Ingress` resources do not natively support header matching, so this option requires using Gateway API or the `CloudEndpoint`/`AgentEndpoint` resources directly.
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	Check out the [Gateway API HTTPRoute matching docs](https://gateway-api.sigs.k8s.io/api-types/httproute/#matches) for more information on matching requests.
 
 	### 1. Create a `Gateway`
@@ -738,15 +742,15 @@ The following examples showcase how to create an endpoint that only routes reque
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## Regex Query Parameter Matching
 
 The following examples showcase how to create an endpoint that only routes requests if the query parameter `my-query-param` is present and its value matches the regex `value-.*`.
 
-<Tabs>
-	<Tab title="CloudEndpoint with AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="endpoints" label="CloudEndpoint with AgentEndpoint">
 	### 1. Create an `AgentEndpoint` for your upstream `Service`
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -783,11 +787,11 @@ The following examples showcase how to create an endpoint that only routes reque
             config:
               url: http://example-service.internal:80
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	❌ `Ingress` resources do not natively support query parameter matching, so this option requires using Gateway API or the `CloudEndpoint`/`AgentEndpoint` resources directly.
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	Check out the [Gateway API HTTPRoute matching docs](https://gateway-api.sigs.k8s.io/api-types/httproute/#matches) for more information on matching requests.
 
 	### 1. Create a `Gateway`
@@ -838,5 +842,5 @@ The following examples showcase how to create an endpoint that only routes reque
           port: 80
           weight: 1
 	```
-	</Tab>
+	</TabItem>
 </Tabs>

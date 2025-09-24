@@ -1,7 +1,11 @@
 ---
-title: Serving Static Responses with Custom Response Policies
-sidebarTitle: Custom/Static Response
+title: Custom/Static Response
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Serving Static Responses with Custom Response Policies
 
 There are scenarios where you may want to issue static responses directly from the API Gateway rather than forwarding requests to an upstream service.
 This allows you to handle specific request patterns efficiently without consuming backend resources.
@@ -30,8 +34,8 @@ The following examples create an endpoint that returns a custom HTML maintenance
 
 Check out the [custom response traffic policy action](/traffic-policy/actions/custom-response/) page for more details about how it functions and the parameters it accepts.
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -53,8 +57,8 @@ Check out the [custom response traffic policy action](/traffic-policy/actions/cu
                   headers:
                     content-type: text/html
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -74,8 +78,8 @@ Check out the [custom response traffic policy action](/traffic-policy/actions/cu
                   headers:
                     content-type: text/html
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	💡 `Ingress` resources do not natively support serving custom responses, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -123,8 +127,8 @@ Check out the [custom response traffic policy action](/traffic-policy/actions/cu
                   port:
                     number: 80
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	💡 Gateway API resources do not natively support serving custom responses, but they can be extended using a traffic policy.
 
 	### 1. Create an `NgrokTrafficPolicy`
@@ -169,5 +173,5 @@ Check out the [custom response traffic policy action](/traffic-policy/actions/cu
         port: 443
         protocol: HTTPS
 	```
-	</Tab>
+	</TabItem>
 </Tabs>

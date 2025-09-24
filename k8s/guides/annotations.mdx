@@ -1,7 +1,8 @@
 ---
-title: Custom ngrok Annotations
-sidebarTitle: Custom Annotations
+title: Custom Annotations
 ---
+
+# Custom ngrok Annotations
 
 The following custom annotations can be used with the ngrok Kubernetes operator to extend the functionality of various resources.
 
@@ -128,11 +129,11 @@ spec:
                   number: 80
 ```
 
-<Note>
+:::note
 
 Due to how Kubernetes handles annotation values, the value of k8s.ngrok.com/pooling-enabled must be a string ("true"). Setting the value to true without surrounding it with quotes will not work.
 
-</Note>
+:::
 
 ## `k8s.ngrok.com/bindings`
 

@@ -1,7 +1,11 @@
 ---
-title: Agent CLI Quickstart
-sidebarTitle: Agent CLI
+title: ngrok Agent CLI Quickstart
+pagination_next: getting-started/cloud-endpoints-quickstart
 ---
+
+import { LangSwitcher } from "/src/components/LangSwitcher";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 ngrok's core functionality is built around [Agent Endpoints](/universal-gateway/agent-endpoints/): endpoints that connect your locally running apps to the internet through the ngrok cloud service and are only available as long as the agent is running somewhere.
 Common use cases include granting remote access to IoT devices, enabling your Kubernetes clusters to communicate with each other, and allowing external connections to a local gaming server.
@@ -18,15 +22,15 @@ This quickstart walks you through that process, as well as how to implement basi
 
 Run the command that corresponds to your operating system to install the Agent CLI:
 
-<Tabs>
-<Tab title="Mac OS">
+<Tabs groupId="os" queryString="os">
+<TabItem value="macos" label="Mac OS" default>
 
 ```bash
 brew install ngrok
 ```
 
-</Tab>
-<Tab title="Debian Linux">
+</TabItem>
+<TabItem value="linux" label="Debian Linux">
 
 ```bash
 curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
@@ -37,12 +41,12 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
   && sudo apt install ngrok
 ```
 
-</Tab>
-<Tab title="Windows">
+</TabItem>
+<TabItem value="windows" label="Windows">
 
 Install via the <a href="ms-windows-store://pdp/?ProductId=9mvs1j51gmk6">Windows App Store</a>
 
-</Tab>
+</TabItem>
 </Tabs>
 
 Or [follow the direct installation guide](https://download.ngrok.com?tab=download) if you can't use one of the options above.
@@ -51,14 +55,6 @@ To test that it's been installed correctly, run the following command in your te
 
 ```bash
 ngrok help
-```
-
-## 3. Connect your account
-
-Connect your agent to your ngrok account by providing your auth token as shown below—replace `$YOUR_TOKEN` with the string given to you [in the dashboard](https://dashboard.ngrok.com/get-started/your-authtoken).
-
-```bash
-ngrok config add-authtoken $YOUR_TOKEN
 ```
 
 ## 2. Connect your account
@@ -76,7 +72,7 @@ This is the app that your agent endpoint will forward online traffic to.
 
 If you don't have an app to work with, you can create a minimal app in your language of choice using the following code to set up a basic HTTP server at port `8080`.
 
-<CodeGroup>
+<LangSwitcher>
 
 ```javascript title="service.js"
 const http = require('http');
@@ -101,7 +97,7 @@ server.listen(port, () => {
 ```go title="service.go"
 package main
 
-{/* import ( */}
+import (
 	"fmt"
 	"net/http"
 )
@@ -140,14 +136,14 @@ class MyHandler(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=MyHandler, port=8080):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-{/*     print(f"Serving custom HTML at http://localhost:{port}") */}
+    print(f"Serving custom HTML at http://localhost:{port}")
     httpd.serve_forever()
 
 if __name__ == "__main__":
-{/*     run() */}
+    run()
 ```
 
-</CodeGroup>
+</LangSwitcher>
 
 Navigate to the directory where this file is located and start the server.
 
@@ -159,10 +155,9 @@ Start the ngrok agent by running the following command (replace `8080` if your a
 ngrok http 8080
 ```
 
-<Note>
+:::note
 All accounts come with a free dev domain that is automatically chosen when you start an endpoint. You can add the optional `--url` flag to customize this domain on paid plans.
-</Note>
-
+:::
 
 The agent should print a console UI to your terminal to confirm that it's online and forwarding as intended.
 Open the forwarding URL in your browser to see your web application, which is now available over HTTPS with a valid certificate that ngrok automatically manages for you.
@@ -197,10 +192,10 @@ endpoints:
       protocol: http1
 ```
 
-<Note>
+:::note
 This example uses ngrok's default Google OAuth application.
-To use your own, see [the OAuth Traffic Policy Action documentation](/traffic-policy/actions/oauth/#google-example).
-</Note>
+To use your own, see [the OAuth Traffic Policy Action documentation](/docs/traffic-policy/actions/oauth/#google-example).
+:::
 
 Now you can start up your endpoint using its name:
 

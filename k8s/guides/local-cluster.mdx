@@ -1,7 +1,11 @@
 ---
-title: Running a Local Kubernetes Cluster
-sidebarTitle: Local Cluster Options
+title: Local Cluster Options
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Run a local Kubernetes Cluster
 
 You can install the ngrok Kubernetes operator in a locally running Kubernetes cluster rather than paying for one from a cloud provider.
 
@@ -42,8 +46,8 @@ Select one of the following options for running Kubernetes inside containers on 
 
 ### Basic commands
 
-<Tabs>
-	<Tab title="k3d">
+<Tabs groupId="k8s-provider" queryString="k8s-provider">
+	<TabItem value="k3d" label="k3d" default>
 
     #### Create a k3d cluster
     ```bash
@@ -61,8 +65,8 @@ Select one of the following options for running Kubernetes inside containers on 
     ```bash
     k3d cluster delete my-cluster
     ```
-    </Tab>
-    <Tab title="Minikube">
+    </TabItem>
+    <TabItem value="minikube" label="Minikube" default>
 
     #### Create a Minikube cluster
     ```bash
@@ -80,8 +84,8 @@ Select one of the following options for running Kubernetes inside containers on 
     ```bash
     minikube delete
     ```
-    </Tab>
-    <Tab title="Kind">
+    </TabItem>
+    <TabItem value="kind" label="Kind" default>
 
     #### Create a kind cluster
     ```bash
@@ -100,8 +104,8 @@ Select one of the following options for running Kubernetes inside containers on 
     kind delete cluster --name my-cluster
     ```
 
-    </Tab>
-    <Tab title="Microk8s">
+    </TabItem>
+    <TabItem value="microk8s" label="Microk8s" default>
 
     #### Create a Microk8s cluster
     ```bash
@@ -124,10 +128,10 @@ Select one of the following options for running Kubernetes inside containers on 
     ```bash
     microk8s reset
     ```
-    </Tab>
-    <Tab title="Docker Desktop">
+    </TabItem>
+    <TabItem value="docker-desktop" label="Docker Desktop" default>
     [Docker Desktop](https://www.docker.com/products/docker-desktop/) offers a simple to use interface that includes support for running Kubernetes in docker with [its Kubernetes feature](https://docs.docker.com/desktop/features/k8s/)
-    </Tab>
+    </TabItem>
 
 </Tabs>
 
@@ -141,7 +145,7 @@ A **context** in Kubernetes determines:
 - **Which namespace** is the default for commands.
 
 Kubernetes stores this information in the **kubeconfig file** (default location: `~/.kube/config`).
-The `$KUBECONFIG` environment variable is used by `kubectl` to know where your configuraiton file is.
+The `$KUBECONFIG` environment variable is used by `kubectl` to know where your configuration file is.
 If you would like to store it somewhere else, or use different files for different clusters, you can modify the `$KUBECONFIG` variable.
 
 ### Viewing the Current Context

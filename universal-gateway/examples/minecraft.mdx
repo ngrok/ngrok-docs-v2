@@ -1,21 +1,22 @@
 ---
-title: Secure Your Public Minecraft Server
-sidebarTitle: Secure Minecraft Server
-description: Unwanted players can quickly destroy your hard work, but you can restrict access by letting in a specific set of IP addresses.
+title: "Secure Your Public Minecraft Server"
+description: "Unwanted players can quickly destroy your hard work, but you can restrict access by letting in a specific set of IP addresses."
+sidebar_label: "Secure Minecraft Server"
+sidebar_position: 9
 ---
 
-import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
-import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
-import TryOut from "/snippets/universal-gateway/_try-out.mdx";
-
+import ReserveDomain from "./snippets/_reserve-domain.mdx";
+import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
+import TryOut from "./snippets/_try-out.mdx";
+import Back from "./snippets/_back-to-examples.mdx";
 
 Unwanted players joining your Minecraft server can quickly destroy your hard work before you have a chance to kick them out.
 The good news is since you're using ngrok, you can restrict access to your Minecraft server by only letting in a specific set of IP addresses.
 
-<Tip>
+:::tip
 This example is focused on securing your Minecraft server using Traffic Policy.
-For more general instructions on using ngrok with Minecraft, including limitations of our [free plan](/pricing-limits/free-plan-limits/) and troubleshooting common issues, see our [using ngrok with Minecraft](/using-ngrok-with/minecraft/) guide.
-</Tip>
+For more general instructions on using ngrok with Minecraft, including limitations of our [free plan](/docs/pricing-limits/free-plan-limits/) and troubleshooting common issues, see our [using ngrok with Minecraft](/docs/using-ngrok-with/minecraft/) guide.
+:::
 
 ## 1. Create a Traffic Policy file
 
@@ -52,7 +53,7 @@ As long as your IPs match those in the `allow` list, you'll be able to connect.
 
 ## Optional: Get a permanent TCP address
 
-With a production [pay-as-you-go account](/pricing-limits/), you can reserve a permanent TCP addresss for your Minecraft server, which means you and others won't need to change the URL after restartng the server or its host machine.
+With a production [pay-as-you-go account](/docs/pricing-limits/), you can reserve a permanent TCP address for your Minecraft server, which means you and others won't need to change the URL after restartng the server or its host machine.
 
 Navigate to the [**Domains** section](https://dashboard.ngrok.com/domains) of the ngrok dashboard and click **New +** to reserve the TCP address.
 Next, restart your agent, replacing `tcp://1.tcp.ngrok.io:12345` with the TCP address you reserved.
@@ -63,7 +64,7 @@ ngrok tcp 25565 --url tcp://1.tcp.ngrok.io:12345 --traffic-policy-file minecraft
 
 ## What's next?
 
-- Read our [Minecraft guide](/using-ngrok-with/minecraft/) for details on free plan limitations and troubleshooting.
+- Read our [Minecraft guide](/docs/using-ngrok-with/minecraft/) for details on free plan limitations and troubleshooting.
 - View your Minecraft traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) to verify that your IP restrictions are working.
-- Track your monthly bandwidth and Traffic Policy executions on your [usage page](https://dashboard.ngrok.com/usage) to stay aware of any limitations you might reach, particularly on ngrok's [free plan](/pricing-limits/free-plan-limits/).
-- Read more about [Traffic Policy](/traffic-policy), [core concepts](/traffic-policy/concepts), and [actions](/traffic-policy/actions) you might want to implement next.
+- Track your monthly bandwidth and Traffic Policy executions on your [usage page](https://dashboard.ngrok.com/usage) to stay aware of any limitations you might reach, particularly on ngrok's [free plan](/docs/pricing-limits/free-plan-limits/).
+- Read more about [Traffic Policy](/docs/traffic-policy), [core concepts](/docs/traffic-policy/concepts), and [actions](/docs/traffic-policy/actions) you might want to implement next.

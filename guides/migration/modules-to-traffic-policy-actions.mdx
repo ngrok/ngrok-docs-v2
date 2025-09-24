@@ -1,20 +1,18 @@
----
-title: Migrate from Modules to Traffic Policy Actions
----
+# Migrate from Modules to Traffic Policy Actions
 
 ## ✨ Modules to Traffic Policy Actions Ref
 
 | Endpoint Module                    | Traffic Policy Action                                                                                                                                                  | Phase                                                                        | Notes                                   |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------- |
-| `oauth`                            | [`set-vars`](/traffic-policy/actions/set-vars/), [`oauth`](/traffic-policy/actions/oauth), [`custom-response`](/traffic-policy/actions/custom-response) | [`on_http_request`](/traffic-policy/concepts/phases/#on_http_request)   | Maps OAuth provider and settings.       |
-| `oidc`                             | [`oidc`](/traffic-policy/actions/oidc)                                                                                                                            | [`on_http_request`](/traffic-policy/concepts/phases/#on_http_request)   | Maps OpenID Connect settings.           |
-| `ip_policy`                        | [`restrict-ips`](/traffic-policy/actions/restrict-ips)                                                                                                            | [`on_tcp_connect`](/traffic-policy/concepts/phases/#on_tcp_connect)     | Maps allowed IPs or policies.           |
-| `mutual_tls` and `tls_termination` | [`terminate-tls`](/traffic-policy/actions/terminate-tls)                                                                                                          | [`on_tcp_connect`](/traffic-policy/concepts/phases/#on_tcp_connect)     | Maps mTLS and TLS termination settings. |
-| `request_headers`                  | [`add-headers`](/traffic-policy/actions/add-headers), [`remove-headers`](/traffic-policy/actions/remove-headers)                                             | [`on_http_request`](/traffic-policy/concepts/phases/#on_http_request)   | Modify request headers.                 |
-| `response_headers`                 | [`add-headers`](/traffic-policy/actions/add-headers), [`remove-headers`](/traffic-policy/actions/remove-headers)                                             | [`on_http_response`](/traffic-policy/concepts/phases/#on_http_response) | Modify response headers.                |
-| `compression`                      | [`compress-response`](/traffic-policy/actions/compress-response)                                                                                                  | [`on_http_response`](/traffic-policy/concepts/phases/#on_http_response) | Enable response compression.            |
-| `webhook_validation`               | [`verify-webhook`](/traffic-policy/actions/verify-webhook)                                                                                                        | [`on_http_request`](/traffic-policy/concepts/phases/#on_http_request)   | Validate webhook secrets.               |
-| `circuit_breaker`                  | [`circuit-breaker`](/traffic-policy/actions/circuit-breaker)                                                                                                      | [`on_http_request`](/traffic-policy/concepts/phases/#on_http_request)   | Define circuit breaking thresholds.     |
+| `oauth`                            | [`set-vars`](/docs/traffic-policy/actions/set-vars/), [`oauth`](/docs/traffic-policy/actions/oauth), [`custom-response`](/docs/traffic-policy/actions/custom-response) | [`on_http_request`](/docs/traffic-policy/concepts/phases/#on_http_request)   | Maps OAuth provider and settings.       |
+| `oidc`                             | [`oidc`](/docs/traffic-policy/actions/oidc)                                                                                                                            | [`on_http_request`](/docs/traffic-policy/concepts/phases/#on_http_request)   | Maps OpenID Connect settings.           |
+| `ip_policy`                        | [`restrict-ips`](/docs/traffic-policy/actions/restrict-ips)                                                                                                            | [`on_tcp_connect`](/docs/traffic-policy/concepts/phases/#on_tcp_connect)     | Maps allowed IPs or policies.           |
+| `mutual_tls` and `tls_termination` | [`terminate-tls`](/docs/traffic-policy/actions/terminate-tls)                                                                                                          | [`on_tcp_connect`](/docs/traffic-policy/concepts/phases/#on_tcp_connect)     | Maps mTLS and TLS termination settings. |
+| `request_headers`                  | [`add-headers`](/docs/traffic-policy/actions/add-headers), [`remove-headers`](/docs/traffic-policy/actions/remove-headers)                                             | [`on_http_request`](/docs/traffic-policy/concepts/phases/#on_http_request)   | Modify request headers.                 |
+| `response_headers`                 | [`add-headers`](/docs/traffic-policy/actions/add-headers), [`remove-headers`](/docs/traffic-policy/actions/remove-headers)                                             | [`on_http_response`](/docs/traffic-policy/concepts/phases/#on_http_response) | Modify response headers.                |
+| `compression`                      | [`compress-response`](/docs/traffic-policy/actions/compress-response)                                                                                                  | [`on_http_response`](/docs/traffic-policy/concepts/phases/#on_http_response) | Enable response compression.            |
+| `webhook_validation`               | [`verify-webhook`](/docs/traffic-policy/actions/verify-webhook)                                                                                                        | [`on_http_request`](/docs/traffic-policy/concepts/phases/#on_http_request)   | Validate webhook secrets.               |
+| `circuit_breaker`                  | [`circuit-breaker`](/docs/traffic-policy/actions/circuit-breaker)                                                                                                      | [`on_http_request`](/docs/traffic-policy/concepts/phases/#on_http_request)   | Define circuit breaking thresholds.     |
 | `saml`                             | (⚠️ Not supported)                                                                                                                                                     | N/A                                                                          | Try OIDC or contact support for help.   |
 
 ## 🛠️ Migration Instructions Per Module
@@ -41,9 +39,9 @@ title: Migrate from Modules to Traffic Policy Actions
 
 Leverages the following actions:
 
-- [`set-vars`](/traffic-policy/actions/set-vars)
-- [`oauth`](/traffic-policy/actions/oauth)
-- [`custom-response`](/traffic-policy/actions/custom-response)
+- [`set-vars`](/docs/traffic-policy/actions/set-vars)
+- [`oauth`](/docs/traffic-policy/actions/oauth)
+- [`custom-response`](/docs/traffic-policy/actions/custom-response)
 
 ```yaml
 on_http_request:
@@ -114,7 +112,7 @@ on_http_request:
 
 Leverages the following actions:
 
-- [`oidc`](/traffic-policy/actions/oidc)
+- [`oidc`](/docs/traffic-policy/actions/oidc)
 
 ```yaml
 on_http_request:
@@ -152,7 +150,7 @@ on_http_request:
 
 Leverages the following actions:
 
-- [`restrict-ips`](/traffic-policy/actions/restrict-ips)
+- [`restrict-ips`](/docs/traffic-policy/actions/restrict-ips)
 
 ```yaml
 on_tcp_connect:
@@ -185,7 +183,7 @@ on_tcp_connect:
 
 Leverages the following actions:
 
-- [`terminate-tls`](/traffic-policy/actions/terminate-tls)
+- [`terminate-tls`](/docs/traffic-policy/actions/terminate-tls)
 
 ```yaml
 on_tcp_connect:
@@ -216,8 +214,8 @@ on_tcp_connect:
 
 Leverages the following actions:
 
-- [`add-headers`](/traffic-policy/actions/add-headers)
-- [`remove-headers`](/traffic-policy/actions/remove-headers)
+- [`add-headers`](/docs/traffic-policy/actions/add-headers)
+- [`remove-headers`](/docs/traffic-policy/actions/remove-headers)
 
 ```yaml
 on_http_request:
@@ -252,8 +250,8 @@ on_http_request:
 
 Leverages the following actions:
 
-- [`add-headers`](/traffic-policy/actions/add-headers)
-- [`remove-headers`](/traffic-policy/actions/remove-headers)
+- [`add-headers`](/docs/traffic-policy/actions/add-headers)
+- [`remove-headers`](/docs/traffic-policy/actions/remove-headers)
 
 ```yaml
 on_http_response:
@@ -286,7 +284,7 @@ on_http_response:
 
 Leverages the following actions:
 
-- [`compress-response`](/traffic-policy/actions/compress-response)
+- [`compress-response`](/docs/traffic-policy/actions/compress-response)
 
 ```yaml
 on_http_response:
@@ -311,7 +309,7 @@ on_http_response:
 
 Leverages the following actions:
 
-- [`verify-webhook`](/traffic-policy/actions/verify-webhook)
+- [`verify-webhook`](/docs/traffic-policy/actions/verify-webhook)
 
 ```yaml
 on_http_request:
@@ -342,7 +340,7 @@ on_http_request:
 
 Leverages the following actions:
 
-- [`circuit-breaker`](/traffic-policy/actions/circuit-breaker)
+- [`circuit-breaker`](/docs/traffic-policy/actions/circuit-breaker)
 
 ```yaml
 on_http_request:
@@ -359,7 +357,7 @@ on_http_request:
 ### SAML Authentication (`saml`)
 
 - Traffic Policy **does not currently** natively support SAML.
-- You may want to try out the [OIDC](/traffic-policy/actions/oidc) action or reach out to ngrok support.
+- You may want to try out the [OIDC](/docs/traffic-policy/actions/oidc) action or reach out to ngrok support.
 
 ## ✅ Quick Checklist
 

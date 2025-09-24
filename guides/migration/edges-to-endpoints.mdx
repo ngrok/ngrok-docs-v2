@@ -1,14 +1,12 @@
----
-title: Migrating ngrok Edges to Cloud Endpoints
----
+# Migrating ngrok Edges to Cloud Endpoints
 
 This guide walks you through manually migrating ngrok **Edge configurations** (HTTPS, TLS, TCP) to **Cloud Endpoints** using **Traffic Policies**.
 
 ## 📋 Prerequisites
 
 - An **[ngrok account](https://dashboard.ngrok.com)** with an **[ngrok API key](https://dashboard.ngrok.com/api-keys)**.
-- The [ngrok API documentation](/api).
-- Tools like `curl` or Postman (or [ngrok's own API libraries](/api/#client-libraries)).
+- The [ngrok API documentation](/docs/api).
+- Tools like `curl` or Postman (or [ngrok's own API libraries](/docs/api/#client-libraries)).
 - Understanding of your existing **edge configurations**.
 - YAML formatting skills for creating traffic policies.
 - A text editor to prepare YAML payloads.
@@ -45,7 +43,7 @@ GET /edges/tls
 GET /edges/tcp
 ```
 
-If a response includes a non-empty [`next_page_uri`](/api/#pagination) you’ll want to follow it until it is `null`:
+If a response includes a non-empty [`next_page_uri`](/docs/api/#pagination) you’ll want to follow it until it is `null`:
 
 ```yaml
 {
@@ -54,7 +52,7 @@ If a response includes a non-empty [`next_page_uri`](/api/#pagination) you’ll 
 }
 ```
 
-Just make sure to keep your [API rate limits](/api/#rate-limits) in mind! Repeat this process for:
+Just make sure to keep your [API rate limits](/docs/api/#rate-limits) in mind! Repeat this process for:
 
 - `/edges/tls`
 - `/edges/tcp`
@@ -117,7 +115,7 @@ Each module on the edge or its routes maps to one or more policy actions:
 
 You’ll want to translate each Module configuration to Action Configuration:
 
-- [📚 Guide: How to Migrate Each Endpoint Configuration Module to Traffic Policy Actions](/guides/migration/modules-to-traffic-policy-actions)
+- [📚 Guide: How to Migrate Each Endpoint Configuration Module to Traffic Policy Actions](/docs/guides/migration/modules-to-traffic-policy-actions)
 
 Add these actions under the correct phase (with matching route expressions when the endpoint is HTTP or HTTPS).
 
@@ -267,19 +265,19 @@ urls = [
   {"weight": 4,  "url": "https://j.internal"},
 ]
 
-
+# Compute cumulative weights
 cumulative = []
 total = 0
 for u in urls:
   total += u["weight"]
   cumulative.append(total)
 
-
+# Build the CEL YAML block with correct string interpolation
 index_expr = "[{0}].filter(i, vars.cumulative_weights[i] > vars.weighted_chance)[0]".format(
   ', '.join(map(str, range(len(urls))))
 )
 
-
+# Generate the configuration for set-vars
 config = {
   "type": "set-vars",
   "config": {
@@ -293,7 +291,7 @@ config = {
   }
 }
 
-
+# Output the config
 yaml_output = yaml.dump([config], sort_keys=False)
 print(yaml_output)
 ```

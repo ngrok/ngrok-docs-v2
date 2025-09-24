@@ -1,8 +1,18 @@
 ---
+sidebar_label: Path-based Forwarding
 title: Path-based Routing and Policy Decentralization with Cloud Endpoints
-sidebarTitle: Path-based Forwarding
 description: How to use ngrok cloud endpoints to route by path, and have different traffic policies for each endpoint.
+tags:
+  - guides
+  - cloud-endpoints
+  - path-based-routing
+  - policy-decentralization
 ---
+
+import ConfigExample from "/src/components/ConfigExample.tsx";
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 This guide provides an example on how to forward traffic to internal endpoints based on path using ngrok Cloud Endpoints. The cloud endpoint will have a traffic policy to route traffic to one of two internal endpoints depending on the path, but each internal endpoint will also have its own traffic policy to independently handle incoming traffic.
 
@@ -41,59 +51,40 @@ Next, let's create the another internal endpoint, this one for all traffic to th
 
 We will use a traffic policy to simulate accessing an API endpoint.
 
-<CodeGroup>
-```yaml policy.yml
-on_http_request:
-  - expressions:
-    - "!(hasReqHeader('Api-Key'))"
-    actions:
-    - type: "deny"
-    config:
-    status_code: 404
-
-
-  - actions:
-    - type: "custom-response"
-    config:
-    status_code: 200
-    body: "<html><body><h1>Hello world</h1><p>The quick brown fox jumps over the lazy dog.</p></body></html>"
-    headers:
-    content-type: "text/html"
-```
-```json policy.json
-{
-  "on_http_request": [
-    {
-      "expressions": [
-        "!(hasReqHeader('Api-Key'))"
-      ],
-      "actions": [
-        {
-          "type": "deny",
-          "config": {
-            "status_code": 404
-          }
-        }
-      ]
-    },
-    {
-      "actions": [
-        {
-          "type": "custom-response",
-          "config": {
-            "status_code": 200,
-            "body": "<html><body><h1>Hello world</h1><p>The quick brown fox jumps over the lazy dog.</p></body></html>",
-            "headers": {
-              "content-type": "text/html"
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	snippetText={null}
+	showLineNumbers={true}
+	config={{
+		on_http_request: [
+			{
+				expressions: ["!(hasReqHeader('Api-Key'))"],
+				actions: [
+					{
+						type: "deny",
+						config: {
+							status_code: 404,
+						},
+					},
+				],
+			},
+			{
+				actions: [
+					{
+						type: "custom-response",
+						config: {
+							status_code: 200,
+							body:
+								"<html><body><h1>Hello world</h1><p>The quick brown fox jumps over the lazy dog.</p></body></html>",
+							headers: {
+								"content-type": "text/html",
+							},
+						},
+					},
+				],
+			},
+		],
+	}}
+/>
 
 The above traffic policy will deny all requests that do not have an `API-Key` header, and return a 200 status code with a custom response for all other requests.
 
@@ -110,10 +101,10 @@ After running, you should see the endpoint with an "online" status for your endp
 ## **Step 3** - Create a Domain for the Cloud Endpoint
 
 Next, let's create the domain or TCP address that the cloud endpoint will reside on.
-For the purpose of this guide, we will create a ngrok HTTP domain.
+For the purpose of this guide, we will create an ngrok HTTP domain.
 
-<Tabs>
-<Tab title="ngrok CLI">
+<Tabs groupId="guide">
+<TabItem value="cli" label="ngrok CLI" default>
 
 ```bash
 ngrok api reserved-domains create \
@@ -132,8 +123,8 @@ After running, you should see the following:
 }
 ```
 
-</Tab>
-<Tab title="CURL">
+</TabItem>
+<TabItem value="curl" label="CURL">
 
 ```bash
 curl \
@@ -161,11 +152,11 @@ After running, you should see the following:
 }
 ```
 
-</Tab>
-<Tab title="ngrok Dashboard">
+</TabItem>
+<TabItem value="dash" label="ngrok Dashboard">
 You can reserve a subdomain via [ngrok dashboard](https://dashboard.ngrok.com/domains/new). 
 After successfully reserving a domain, you should see it listed in the domains table.
-</Tab>
+</TabItem>
 </Tabs>
 
 When you have completed this step, you can move on to the next step.
@@ -178,68 +169,49 @@ being forwarded to the internal endpoints which may or may not have their
 own independent traffic policies. This separation allows for granularity and
 full control over how traffic is handled.
 
-<CodeGroup>
-```yaml policy.yml
-on_http_request:
-  - expressions:
-    - "req.url.path.startsWith('/api/')"
-    actions:
-    - type: "forward-internal"
-    config:
-    url: "https://api.internal"
-    binding: "internal"
-
-
-  - actions:
-    - type: "forward-internal"
-    config:
-    url: "https://homepage.internal"
-    binding: "internal"
-```
-```json policy.json
-{
-  "on_http_request": [
-    {
-      "expressions": [
-        "req.url.path.startsWith('/api/')"
-      ],
-      "actions": [
-        {
-          "type": "forward-internal",
-          "config": {
-            "url": "https://api.internal",
-            "binding": "internal"
-          }
-        }
-      ]
-    },
-    {
-      "actions": [
-        {
-          "type": "forward-internal",
-          "config": {
-            "url": "https://homepage.internal",
-            "binding": "internal"
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-</CodeGroup>
+<ConfigExample
+	snippetText={null}
+	showLineNumbers={true}
+	config={{
+		on_http_request: [
+			{
+				expressions: ["req.url.path.startsWith('/api/')"],
+				actions: [
+					{
+						type: "forward-internal",
+						config: {
+							url: "https://api.internal",
+							binding: "internal",
+						},
+					},
+				],
+			},
+			{
+				actions: [
+					{
+						type: "forward-internal",
+						config: {
+							url: "https://homepage.internal",
+							binding: "internal",
+						},
+					},
+				],
+			},
+		],
+	}}
+/>
 
 Our traffic policy simply forwards traffic to one of our two internal endpoints based on the path.
 More complex traffic handling can be created at your discretion.
 
-## **Step 5** — Create a ngrok Cloud Endpoint
+## **Step 5** — Create an ngrok Cloud Endpoint
 
-Now we can create a ngrok Cloud Endpoint that points to our
+Now we can create an ngrok Cloud Endpoint that points to our
 newly created internal endpoint. Cloud Endpoints can be created
 via the API or ngrok dashboard.
 
-<Tabs>
-<Tab title="API">
+<Tabs groupId="guide">
+<TabItem value="api" label="API" default>
 We use the URL from Step 2 as the `url` value in the traffic policy, and the traffic policy from Step 3 as the `traffic-policy` value.
 The binding is set to public so anyone can access our cloud endpoint.
 
@@ -272,10 +244,10 @@ send a POST request to the ngrok API instead of using the `ngrok api` command.
 
 For more details on using the API to create a cloud endpoint, see the [API documentation for endpoints](/api/resources/endpoints/).
 
-</Tab>
-<Tab title="ngrok Dashboard">
+</TabItem>
+<TabItem value="dash" label="ngrok Dashboard">
 Coming soon!
-</Tab>
+</TabItem>
 </Tabs>
 
 ## Conclusion

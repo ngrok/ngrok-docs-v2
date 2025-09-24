@@ -1,34 +1,49 @@
 ---
 title: TCP Endpoints
 ---
-import RandomAgentCliExample from '/snippets/examples/agent-cli/tcp-random.mdx';
-import RandomGoSdkExample from '/snippets/examples/go-sdk/tcp-random.mdx';
-import RandomJavascriptSdkExample from '/snippets/examples/javascript-sdk/tcp-random.mdx';
-import RandomKubernetesExample from '/snippets/examples/k8s/tcp-random.mdx';
-import RandomPythonSdkExample from '/snippets/examples/python-sdk/tcp-random.mdx';
-import RandomRustSdkExample from '/snippets/examples/rust-sdk/tcp-random.mdx';
-import RandomSshExample from '/snippets/examples/ssh/tcp-random.mdx';
-import FixedAgentCliExample from '/snippets/examples/agent-cli/tcp-fixed.mdx';
-import FixedGoSdkExample from '/snippets/examples/go-sdk/tcp-fixed.mdx';
-import FixedJavascriptSdkExample from '/snippets/examples/javascript-sdk/tcp-fixed.mdx';
-import FixedKubernetesExample from '/snippets/examples/k8s/tcp-fixed.mdx';
-import FixedPythonSdkExample from '/snippets/examples/python-sdk/tcp-fixed.mdx';
-import FixedRustSdkExample from '/snippets/examples/rust-sdk/tcp-fixed.mdx';
-import FixedSshExample from '/snippets/examples/ssh/tcp-fixed.mdx';
-import NonLocalAgentCliExample from '/snippets/examples/agent-cli/tcp-nonlocal.mdx';
-import NonLocalGoSdkExample from '/snippets/examples/go-sdk/tcp-nonlocal.mdx';
-import NonLocalJavascriptSdkExample from '/snippets/examples/javascript-sdk/tcp-nonlocal.mdx';
-import NonLocalKubernetesExample from '/snippets/examples/k8s/tcp-nonlocal.mdx';
-import NonLocalPythonSdkExample from '/snippets/examples/python-sdk/tcp-nonlocal.mdx';
-import NonLocalRustSdkExample from '/snippets/examples/rust-sdk/tcp-nonlocal.mdx';
-import NonLocalSshExample from '/snippets/examples/ssh/tcp-nonlocal.mdx';
-import ProxyProtoAgentCliExample from '/snippets/examples/agent-cli/tcp-proxyproto.mdx';
-import ProxyProtoGoSdkExample from '/snippets/examples/go-sdk/tcp-proxyproto.mdx';
-import ProxyProtoJavascriptSdkExample from '/snippets/examples/javascript-sdk/tcp-proxyproto.mdx';
-import ProxyProtoKubernetesExample from '/snippets/examples/k8s/tcp-proxyproto.mdx';
-import ProxyProtoPythonSdkExample from '/snippets/examples/python-sdk/tcp-proxyproto.mdx';
-import ProxyProtoRustSdkExample from '/snippets/examples/rust-sdk/tcp-proxyproto.mdx';
-import ProxyProtoSshExample from '/snippets/examples/ssh/tcp-proxyproto.mdx';
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+import RandomAgentCliExample from "/examples/agent-cli/tcp-random.mdx";
+import RandomAgentConfigExample from "/examples/agent-config/tcp-random.mdx";
+import RandomGoSdkExample from "/examples/go-sdk/tcp-random.mdx";
+import RandomJavascriptSdkExample from "/examples/javascript-sdk/tcp-random.mdx";
+import RandomKubernetesExample from "/examples/k8s/tcp-random.mdx";
+import RandomPythonSdkExample from "/examples/python-sdk/tcp-random.mdx";
+import RandomRustSdkExample from "/examples/rust-sdk/tcp-random.mdx";
+import RandomSshExample from "/examples/ssh/tcp-random.mdx";
+
+import FixedAgentCliExample from "/examples/agent-cli/tcp-fixed.mdx";
+import FixedAgentConfigExample from "/examples/agent-config/tcp-fixed.mdx";
+import FixedGoSdkExample from "/examples/go-sdk/tcp-fixed.mdx";
+import FixedJavascriptSdkExample from "/examples/javascript-sdk/tcp-fixed.mdx";
+import FixedKubernetesExample from "/examples/k8s/tcp-fixed.mdx";
+import FixedPythonSdkExample from "/examples/python-sdk/tcp-fixed.mdx";
+import FixedRustSdkExample from "/examples/rust-sdk/tcp-fixed.mdx";
+import FixedSshExample from "/examples/ssh/tcp-fixed.mdx";
+
+import NonLocalAgentCliExample from "/examples/agent-cli/tcp-nonlocal.mdx";
+import NonLocalAgentConfigExample from "/examples/agent-config/tcp-nonlocal.mdx";
+import NonLocalGoSdkExample from "/examples/go-sdk/tcp-nonlocal.mdx";
+import NonLocalJavascriptSdkExample from "/examples/javascript-sdk/tcp-nonlocal.mdx";
+import NonLocalKubernetesExample from "/examples/k8s/tcp-nonlocal.mdx";
+import NonLocalPythonSdkExample from "/examples/python-sdk/tcp-nonlocal.mdx";
+import NonLocalRustSdkExample from "/examples/rust-sdk/tcp-nonlocal.mdx";
+import NonLocalSshExample from "/examples/ssh/tcp-nonlocal.mdx";
+
+import ProxyProtoAgentCliExample from "/examples/agent-cli/tcp-proxyproto.mdx";
+import ProxyProtoAgentConfigExample from "/examples/agent-config/tcp-proxyproto.mdx";
+import ProxyProtoGoSdkExample from "/examples/go-sdk/tcp-proxyproto.mdx";
+import ProxyProtoJavascriptSdkExample from "/examples/javascript-sdk/tcp-proxyproto.mdx";
+import ProxyProtoKubernetesExample from "/examples/k8s/tcp-proxyproto.mdx";
+import ProxyProtoPythonSdkExample from "/examples/python-sdk/tcp-proxyproto.mdx";
+import ProxyProtoRustSdkExample from "/examples/rust-sdk/tcp-proxyproto.mdx";
+import ProxyProtoSshExample from "/examples/ssh/tcp-proxyproto.mdx";
+
+# TCP Endpoints
+
+## Overview
 
 TCP endpoints enable you to deliver any network service with a TCP-based
 protocol. They are commonly used to create connectivity for:
@@ -40,10 +55,9 @@ protocol. They are commonly used to create connectivity for:
 
 If you are accepting TLS traffic, you may prefer to create a [TLS Endpoint](/universal-gateway/tls/).
 
-<Info>
-
+::::info Free Plan Usage
 TCP endpoints are only available on a free plan after [adding a valid payment method](https://dashboard.ngrok.com/settings#id-verification) to your account.
-</Info>
+::::
 
 ## Quickstart
 
@@ -55,35 +69,35 @@ of the process and forwards traffic to a port or URL of your choosing.
 This example creates a TCP endpoint on a randomly-assigned URL - e.g.
 `tcp://1.tcp.ngrok.io:12345` and forwards its traffic to a local port.
 
-<Tabs>
-	<Tab title="Agent CLI">
+<Tabs groupId="connectivity" queryString="cty">
+	<TabItem value="agent-cli" label="Agent CLI" default>
 		<RandomAgentCliExample />
-	</Tab>
-	<Tab title="Agent Config">
+	</TabItem>
+	<TabItem value="agent-config" label="Agent Config">
 		<RandomAgentConfigExample />
-	</Tab>
-	<Tab title="SSH -R">
+	</TabItem>
+	<TabItem value="ssh-r" label="SSH -R">
 		<RandomSshExample />
 
-    	<Tip>
+    	:::tip
     	See [the guide on using ngrok with SSH](/using-ngrok-with/ssh) to use simple SSH instead of SSH -R.
-    	</Tip>
-    </Tab>
-    <Tab title="Go">
+    	:::
+    </TabItem>
+    <TabItem value="go-sdk" label="Go">
     	<RandomGoSdkExample />
-    </Tab>
-    <Tab title="Javascript">
+    </TabItem>
+    <TabItem value="javascript-sdk" label="Javascript">
     	<RandomJavascriptSdkExample />
-    </Tab>
-    <Tab title="Python">
+    </TabItem>
+    <TabItem value="python-sdk" label="Python">
     	<RandomPythonSdkExample />
-    </Tab>
-    <Tab title="Rust">
+    </TabItem>
+    <TabItem value="rust-sdk" label="Rust">
     	<RandomRustSdkExample />
-    </Tab>
-    <Tab title="Kubernetes Controller">
+    </TabItem>
+    <TabItem value="k8s" label="Kubernetes Controller">
     	<RandomKubernetesExample />
-    </Tab>
+    </TabItem>
 
 </Tabs>
 
@@ -113,31 +127,31 @@ They are not needed for TCP endpoints on other bindings, like `internal` or
 After you have created a TCP Address, specify the address (e.g.
 `1.tcp.eu.ngrok.io:12345`) in the URL when you create the endpoint.
 
-<Tabs>
-	<Tab title="Agent CLI">
+<Tabs groupId="connectivity" queryString="cty">
+	<TabItem value="agent-cli" label="Agent CLI" default>
 		<FixedAgentCliExample />
-	</Tab>
-	<Tab title="Agent Config">
+	</TabItem>
+	<TabItem value="agent-config" label="Agent Config">
 		<FixedAgentConfigExample />
-	</Tab>
-	<Tab title="SSH Reverse Tunnel">
+	</TabItem>
+	<TabItem value="ssh" label="SSH Reverse Tunnel">
 		<FixedSshExample />
-	</Tab>
-	<Tab title="Go">
+	</TabItem>
+	<TabItem value="go-sdk" label="Go">
 		<FixedGoSdkExample />
-	</Tab>
-	<Tab title="Javascript">
+	</TabItem>
+	<TabItem value="javascript-sdk" label="Javascript">
 		<FixedJavascriptSdkExample />
-	</Tab>
-	<Tab title="Python">
+	</TabItem>
+	<TabItem value="python-sdk" label="Python">
 		<FixedPythonSdkExample />
-	</Tab>
-	<Tab title="Rust">
+	</TabItem>
+	<TabItem value="rust-sdk" label="Rust">
 		<FixedRustSdkExample />
-	</Tab>
-	<Tab title="Kubernetes Controller">
+	</TabItem>
+	<TabItem value="k8s" label="Kubernetes Controller">
 		<FixedKubernetesExample />
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ### Custom domains
@@ -193,36 +207,36 @@ to any address or URL reachable from the agent. For example, if you want to
 forward traffic to a Postgres server running on your network at
 `192.168.1.2:5432`:
 
-<Tabs>
-	<Tab title="Agent CLI">
+<Tabs groupId="connectivity" queryString="cty">
+	<TabItem value="agent-cli" label="Agent CLI" default>
 		<NonLocalAgentCliExample />
-	</Tab>
-	<Tab title="Agent Config">
+	</TabItem>
+	<TabItem value="agent-config" label="Agent Config">
 		<NonLocalAgentConfigExample />
-	</Tab>
-	<Tab title="SSH Reverse Tunnel">
+	</TabItem>
+	<TabItem value="ssh" label="SSH Reverse Tunnel">
 		<NonLocalSshExample />
-	</Tab>
-	<Tab title="Go">
+	</TabItem>
+	<TabItem value="go-sdk" label="Go">
 		<NonLocalGoSdkExample />
-	</Tab>
-	<Tab title="Javascript">
+	</TabItem>
+	<TabItem value="javascript-sdk" label="Javascript">
 		<NonLocalJavascriptSdkExample />
-	</Tab>
-	<Tab title="Python">
+	</TabItem>
+	<TabItem value="python-sdk" label="Python">
 		<NonLocalPythonSdkExample />
-	</Tab>
-	<Tab title="Rust">
+	</TabItem>
+	<TabItem value="rust-sdk" label="Rust">
 		<NonLocalRustSdkExample />
-	</Tab>
-	<Tab title="Kubernetes Controller">
+	</TabItem>
+	<TabItem value="k8s" label="Kubernetes Controller">
 		<NonLocalKubernetesExample />
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ### PROXY Protocol
 
-When you forward traffic to an upstream TCP service, becuase traffic is coming
+When you forward traffic to an upstream TCP service, because traffic is coming
 from the ngrok agent, it won't know the client's original IP address. You can
 add the [PROXY
 protocol](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) header
@@ -230,31 +244,31 @@ on connections to your upstream service to send connection information like the
 original client IP address to your upstream service. You will need to configure
 your upstream service to handle the PROXY protocol header.
 
-<Tabs>
-	<Tab title="Agent CLI">
+<Tabs groupId="connectivity" queryString="cty">
+	<TabItem value="agent-cli" label="Agent CLI" default>
 		<ProxyProtoAgentCliExample />
-	</Tab>
-	<Tab title="Agent Config">
+	</TabItem>
+	<TabItem value="agent-config" label="Agent Config">
 		<ProxyProtoAgentConfigExample />
-	</Tab>
-	<Tab title="SSH Reverse Tunnel">
+	</TabItem>
+	<TabItem value="ssh" label="SSH Reverse Tunnel">
 		<ProxyProtoSshExample />
-	</Tab>
-	<Tab title="Go">
+	</TabItem>
+	<TabItem value="go-sdk" label="Go">
 		<ProxyProtoGoSdkExample />
-	</Tab>
-	<Tab title="Javascript">
+	</TabItem>
+	<TabItem value="javascript-sdk" label="Javascript">
 		<ProxyProtoJavascriptSdkExample />
-	</Tab>
-	<Tab title="Python">
+	</TabItem>
+	<TabItem value="python-sdk" label="Python">
 		<ProxyProtoPythonSdkExample />
-	</Tab>
-	<Tab title="Rust">
+	</TabItem>
+	<TabItem value="rust-sdk" label="Rust">
 		<ProxyProtoRustSdkExample />
-	</Tab>
-	<Tab title="Kubernetes Controller">
+	</TabItem>
+	<TabItem value="k8s" label="Kubernetes Controller">
 		<ProxyProtoKubernetesExample />
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## Observability
@@ -263,12 +277,12 @@ your upstream service to handle the PROXY protocol header.
 
 [Traffic Inspector](/obs/traffic-inspection) does not support TCP endpoints.
 
-### Log Export Events
+### Log Exports
 
 You can export logs of traffic to TCP endpoints with [ngrok's events
 system](/obs/events/). The following events are published for log exporting:
 
-| Event                                                                    | When                                                         |
+| Log                                                                      | When                                                         |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------ |
 | [tcp_connection_closed.v0](/obs/events/reference/#tcp-connection-closed) | Published when a TCP connection to a TCP endpoint completes. |
 
@@ -286,7 +300,7 @@ connections to TCP endpoints.
 ## Errors
 
 If an error is encountered while handling connections to a TCP endpoint for any
-{/* reason (e.g. traffic policy action error, internal server error), the */}
+reason (e.g. traffic policy action error, internal server error), the
 connection will be closed. Because of the low-level nature of the TCP protocol,
 there is no mechanism used to transmit information about what error code was
 encountered.
@@ -296,7 +310,7 @@ handling errors.
 
 ## API
 
-TCP Endpoints can be created programatically. Consult the documentation on
+TCP Endpoints can be created programmatically. Consult the documentation on
 [Endpoint APIs](/api/resources/endpoints/).
 
 ## Pricing

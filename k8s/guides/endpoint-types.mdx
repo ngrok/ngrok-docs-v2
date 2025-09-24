@@ -1,8 +1,9 @@
 ---
-title: How to create endpoints in the ngrok Kubernetes Operator
-sidebarTitle: Endpoint Types
-description: Learn how to create endpoints that accept `http://`, `https://`, `tcp://`, and `tls://` requests using the ngrok Kubernetes Operator.
+title: Endpoint Types
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 The ngrok Kubernetes operator offers `CloudEndpoint` and `AgentEndpoint` as custom resource types that let you create endpoints in ngrok.
 The [using CRDs guide](/k8s/guides/using-crds) goes over the details and differences about how to configure each one.
@@ -12,8 +13,8 @@ This page covers the different types of endpoints that can be created using eith
 
 The following examples showcase how you can create endpoints that accept `http://` cleartext requests.
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="http" queryString="http">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	The example showcases an upstream that accepts `http://` requests, but you can also use `https://` for the upstream.
 	For `AgentEndpoints`, the `upstream.url` scheme does not need to match the scheme of the public URL.
 	
@@ -30,8 +31,8 @@ The following examples showcase how you can create endpoints that accept `http:/
     bindings:
     - public
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -49,7 +50,7 @@ The following examples showcase how you can create endpoints that accept `http:/
             config:
               url: http://example-service.internal:8080
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## HTTPS Endpoints
@@ -58,8 +59,8 @@ The following examples showcase how you can create endpoints that accept `https:
 For HTTPS endpoints, ngrok will automatically terminate TLS connections for your HTTPS endpoints.
 If you would like to control TLS termination yourself, you can use the [terminate-tls traffic policy action](/traffic-policy/actions/terminate-tls/).
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="https" queryString="https">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	The example showcases an upstream that accepts `https://` requests, but you can also use `http://` for the upstream.
 	For `AgentEndpoints`, the `upstream.url` scheme does not need to match the scheme of the public URL.
 
@@ -76,8 +77,8 @@ If you would like to control TLS termination yourself, you can use the [terminat
     bindings: 
     - public
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -95,7 +96,7 @@ If you would like to control TLS termination yourself, you can use the [terminat
             config:
               url: https://example-service.internal:8443
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## TCP Endpoints
@@ -105,8 +106,8 @@ TCP Endpoints can be used to forward raw TCP traffic.
 In order to create a TCP Endpoint, you must first [reserve a TCP address through the ngrok dashboard](https://dashboard.ngrok.com/tcp-addresses).
 This step is not necessary for internal endpoints. See [the bindings page](/k8s/guides/bindings) for more information about public/internal/k8s endpoints.
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="tcp" queryString="tcp">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	The example showcases an upstream that accepts `tcp://` requests, but you can also use `tls://` for the upstream.
 	For `AgentEndpoints`, the `upstream.url` scheme does not need to match the scheme of the public URL.
 
@@ -123,8 +124,8 @@ This step is not necessary for internal endpoints. See [the bindings page](/k8s/
     bindings: 
     - public
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -144,7 +145,7 @@ This step is not necessary for internal endpoints. See [the bindings page](/k8s/
     bindings: 
     - public
 	```
-	</Tab>
+	</TabItem>
 </Tabs>
 
 ## TLS Endpoints
@@ -155,8 +156,8 @@ TLS endpoints make no assumptions about the wrapped protocol being transported.
 
 For TLS endpoints, ngrok will not terminate the TLS connection by default and it is up to you to handle TLS termination in your upstream service.
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="tls" queryString="tls">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	```yaml
 apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: AgentEndpoint
@@ -170,8 +171,8 @@ apiVersion: ngrok.k8s.ngrok.com/v1alpha1
     bindings:
     - public
 	```
-	</Tab>
-	<Tab title="CloudEndpoint">
+	</TabItem>
+	<TabItem value="cloud-endpoint" label="CloudEndpoint">
 	```yaml
   apiVersion: ngrok.k8s.ngrok.com/v1alpha1
   kind: CloudEndpoint
@@ -191,5 +192,5 @@ apiVersion: ngrok.k8s.ngrok.com/v1alpha1
     bindings:
     - public
 	```
-	</Tab>
+	</TabItem>
 </Tabs>

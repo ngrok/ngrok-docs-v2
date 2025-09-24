@@ -1,13 +1,16 @@
 ---
-title: Distribute Traffic Between Canary Deployments
-sidebarTitle: Canary Deployments
-description: Use ngrok to validate how features or versions of your services behave by distributing production traffic randomly or via a specific header.
+title: "Distribute Traffic Between Canary Deployments"
+description: "Use ngrok to validate how features or versions of your services behave by distributing production traffic randomly or via a specific header."
+sidebar_label: "Canary Deployments"
+sidebar_position: 4
 ---
 
-import ReserveDomain from '/snippets/universal-gateway/_reserve-domain.mdx';
-import CloudEndpoint from '/snippets/universal-gateway/_cloud-endpoint.mdx';
-import TryOut from '/snippets/universal-gateway/_try-out.mdx';
-
+import ReserveDomain from "./snippets/_reserve-domain.mdx";
+import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
+import TryOut from "./snippets/_try-out.mdx";
+import Back from "./snippets/_back-to-examples.mdx";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 Canary deployments are a trusted method for rolling out new features or major versions of your services.
 By controlling who accesses the new version, either through the random distribution of traffic or a specific header attached to requests from certain customers, you can see exactly if and where something breaks before releasing it to all your users.
@@ -20,8 +23,8 @@ With ngrok, you can handle ingress to canary deployments by:
 
 ## 1. Create endpoints for your services
 
-Start internal [Agent Endpoints](/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your service listens, for each of your services on the systems where they run.
-You can also use one of our [SDKs](/agent-sdks/#example-usage) or the [Kubernetes Operator](/getting-started/kubernetes/ingress/).
+Start internal [Agent Endpoints](/docs/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your service listens, for each of your services on the systems where they run.
+You can also use one of our [SDKs](/docs/agent-sdks/#example-usage) or the [Kubernetes Operator](/docs/getting-started/kubernetes/ingress/).
 
 ```bash
 ngrok http $PORT --url https://service.internal
@@ -41,7 +44,7 @@ ngrok http $PORT --url https://service-canary.internal
 While still viewing your new Cloud Endpoint in the dashboard, copy and paste one of the two policies below into the Traffic Policy editor, depending on whether you want to distribute traffic randomly or by a header like `x-canary`.
 
 <Tabs>
-  <Tab title="Random distribution">
+  <TabItem value="random" label="Random distribution" default>
     ```yaml
     on_http_request:
       - expressions:
@@ -63,8 +66,8 @@ While still viewing your new Cloud Endpoint in the dashboard, copy and paste one
 
       The policy then routes the remaining 80% of traffic to your stable version.
 
-    </Tab>
-    <Tab title="By header">
+    </TabItem>
+    <TabItem value="header" label="By header">
       ```yaml
       on_http_request:
         - expressions:
@@ -87,7 +90,7 @@ While still viewing your new Cloud Endpoint in the dashboard, copy and paste one
 
       In the absence of an `x-canary: true` header, the policy route traffic to your stable version.
 
-    </Tab>
+    </TabItem>
 
 </Tabs>
 
@@ -139,7 +142,7 @@ If you want to maintain `https://service.internal` as the canonical name for the
 
 - View your [Traffic
   Inspector](https://dashboard.ngrok.com/traffic-inspector) to see how your canary behaves with production traffic, which may signal that you pause or roll back the deployment entirely.
-- Learn how to implement [blue-green deployments](/universal-gateway/examples/blue-green-deployments) if you prefer faster rollouts at the expense of maintaining two production environments.
+- Learn how to implement [blue-green deployments](/docs/universal-gateway/examples/blue-green-deployments) if you prefer faster rollouts at the expense of maintaining two production environments.
 - Explore other common gateway setups, like [multiplexing to many
-  services](/universal-gateway/examples/multiplex) or shipping a [custom "maintenance mode"](/universal-gateway/examples/maintenance-mode/) during an outage or planned downtime.
-- Start automating your deployment strategies with the ngrok [API](/api/) or our [Kubernetes Operator](/k8s/).
+  services](/docs/universal-gateway/examples/multiplex) or shipping a [custom "maintenance mode"](/docs/universal-gateway/examples/maintenance-mode/) during an outage or planned downtime.
+- Start automating your deployment strategies with the ngrok [API](/docs/api/) or our [Kubernetes Operator](/docs/k8s/).

@@ -1,29 +1,34 @@
 ---
-title: Kubernetes Ingress Quickstart
-sidebarTitle: Ingress
-description: Set up an ngrok Ingress Controller to expose Kubernetes services using standard Ingress resources for simple, drop-in HTTP routing.
+title: "Quickstart: Kubernetes Ingress"
+description: "Set up an ngrok Ingress Controller to expose Kubernetes services using standard Ingress resources for simple, drop-in HTTP routing."
+sidebar_label: Ingress
+pagination_next: k8s/guides/using-ingresses
 ---
 
-import K8sPrereq from "/snippets/k8s/_prereq.mdx";
-import K8sSetup from "/snippets/k8s/_setup.mdx";
-import K8sInstall from "/snippets/k8s/_install.mdx";
-import Domain from "/snippets/k8s/_domain.mdx";
-import K8sSample from "/snippets/k8s/_sample.mdx";
-import Request from "/snippets/k8s/_request.mdx";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+import ConfigExample from "/src/components/ConfigExample.tsx";
 
-This quickstart uses the [ngrok Kubernetes Operator](/k8s) and a [Kubernetes Ingress object](https://kubernetes.io/docs/concepts/services-networking/ingress/) to make the services you've deployed to Kubernetes available on the public internet.
+import K8sPrereq from "./_prereq.mdx";
+import K8sSetup from "./_setup.mdx";
+import K8sInstall from "./_install.mdx";
+import Domain from "./_domain.mdx";
+import K8sSample from "./_sample.mdx";
+import Request from "./_request.mdx";
+
+This quickstart uses the [ngrok Kubernetes Operator](/docs/k8s) and a [Kubernetes Ingress object](https://kubernetes.io/docs/concepts/services-networking/ingress/) to make the services you've deployed to Kubernetes available on the public internet.
 
 Use this method if you:
 
 - Want a drop-in, familiar ingress experience for your K8s apps.
 - Already using `Ingress` resources across your clusters and don't want to adopt new APIs.
-- You're looking for basic L7 routing and don't need the sophistication of [Gateway API](/getting-started/kubernetes/gateway-api) or customization of [custom resources](/getting-started/kubernetes/crds).
+- You're looking for basic L7 routing and don't need the sophistication of [Gateway API](/docs/getting-started/kubernetes/gateway-api) or customization of [custom resources](/docs/getting-started/kubernetes/crds).
 
-<Note>
+:::note
 The ngrok Kubernetes Operator is available to all ngrok users at no additional charge.
 You only incur costs if the resources provisioned by the controller incur a cost.
-Find more details on our [pricing page](https://ngrok.com/pricing), or, if you're a free user, the [free plan limits](/pricing-limits/free-plan-limits/).
-</Note>
+Find more details on our [pricing page](https://ngrok.com/pricing), or, if you're a free user, the [free plan limits](/docs/pricing-limits/free-plan-limits/).
+:::
 
 ## What you'll need
 
@@ -77,7 +82,7 @@ Your Kubernetes service is now available to anyone on the public internet.
 
 ## 4. Secure your app with Traffic Policy
 
-In cases where you need to restrict access to your API or app, [Traffic Policy](/traffic-policy) and the [`restrict-ips`](/traffic-policy/actions/restrict-ips) let you quickly allow only certain addresses to access your endpoint.
+In cases where you need to restrict access to your API or app, [Traffic Policy](/docs/traffic-policy) and the [`restrict-ips`](/docs/traffic-policy/actions/restrict-ips) let you quickly allow only certain addresses to access your endpoint.
 
 First, copy your public IP address via our [`ip4v.ngrok.com` mini-app](https://ipv4.ngrok.com/).
 
@@ -125,7 +130,7 @@ spec:
 Re-apply the manifest with `kubectl apply -f ingress.yaml`.
 
 You can also choose to add it as the backend for a specific rule or the default backend.
-See our [Ingresses doc](/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress) for details and why you would choose option over another.
+See our [Ingresses doc](/docs/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-with-ingress) for details and why you would choose option over another.
 
 ## 5. Start sending requests
 
@@ -135,14 +140,14 @@ See our [Ingresses doc](/k8s/guides/using-ingresses/#using-ngroktrafficpolicy-wi
 
 Learn more about using ngrok with your Kubernetes deployments:
 
-- Read the [guide to using Ingress](/k8s/guides/using-ingresses) with ngrok
-- [Route requests to many upstream services](/k8s/guides/how-to/request-routing/) based on the path, headers, and query parameters
-- Deploy an [API gateway](/guides/api-gateway/kubernetes/) in one or [multiple clouds](/guides/api-gateway/multicloud/)
+- Read the [guide to using Ingress](/docs/k8s/guides/using-ingresses) with ngrok
+- [Route requests to many upstream services](/docs/k8s/guides/how-to/request-routing/) based on the path, headers, and query parameters
+- Deploy an [API gateway](/docs/guides/api-gateway/kubernetes/) in one or [multiple clouds](/docs/guides/api-gateway/multicloud/)
 
 For more ways to filter and manage traffic:
 
-- [Traffic Policy overview](/traffic-policy)
-- [Traffic Policy concepts](/traffic-policy/concepts/)
-- All our [available actions](/traffic-policy/actions/)
+- [Traffic Policy overview](/docs/traffic-policy)
+- [Traffic Policy concepts](/docs/traffic-policy/concepts/)
+- All our [available actions](/docs/traffic-policy/actions/)
 
 Finally, explore the [Traffic Inspector in your dashboard](https://dashboard.ngrok.com/traffic-inspector) for real-time observability of traffic flowing through your endpoint.

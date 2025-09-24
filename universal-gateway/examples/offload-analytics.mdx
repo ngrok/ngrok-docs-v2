@@ -1,17 +1,17 @@
 ---
-title: Offload Analytics to a Self-Hosted Service
-sidebarTitle: Offload Analytics
-description: With http-request, you can capture observability data from your gateway and send it to a self-hosted analytics service securely and without instrumenting your code.
+title: "Offload Analytics to a Secondary Service"
+description: "With http-request, you can capture observability data from your gateway and send it to a self-hosted analytics service securely and without instrumenting your code."
+sidebar_label: "Offload Analytics"
 ---
 
-import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
-import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
-import TryOut from "/snippets/universal-gateway/_try-out.mdx";
+import ReserveDomain from "./snippets/_reserve-domain.mdx";
+import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
+import TryOut from "./snippets/_try-out.mdx";
+import Back from "./snippets/_back-to-examples.mdx";
 
+ngrok and Traffic Policy let you integrate your ["front door" gateway](/docs/universal-gateway/examples/front-door-pattern) with an analytics service you host within your network to capture vital information about your traffic as a part of the request-response lifecycle.
 
-ngrok and Traffic Policy let you integrate your ["front door" gateway](/universal-gateway/examples/front-door-pattern) with an analytics service you host within your network to capture vital information about your traffic as a part of the request-response lifecycle.
-
-With this gateway setup and the [`http-request` action](/traffic-policy/actions/http-request), you can:
+With this gateway setup and the [`http-request` action](/docs/traffic-policy/actions/http-request), you can:
 
 - Host your analytics service in any network, region, or cloud.
 - Leave your analytics service completely unexposed to the public internet.
@@ -20,8 +20,8 @@ With this gateway setup and the [`http-request` action](/traffic-policy/actions/
 
 ## 1. Create endpoints for your services
 
-Start an internal [Agent Endpoint](/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your upstream service listens.
-You can also use one of our [SDKs](/agent-sdks) or the [Kubernetes Operator](/k8s).
+Start an internal [Agent Endpoint](/docs/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your upstream service listens.
+You can also use one of our [SDKs](/docs/agent-sdks) or the [Kubernetes Operator](/docs/k8s).
 
 ```bash
 ngrok http $PORT --url https://service.internal
@@ -54,7 +54,7 @@ on_http_request:
 
 on_http_response:
   - actions:
-# Offload Analytics to a Secondary Service
+      # Send authenticated request to analytics service
       - type: http-request
         config:
           url: https://analytics.internal/api/request
@@ -84,8 +84,8 @@ The `http-request` action is purposely given a short timeout and no retry logic 
 
 ## What's next?
 
-- Explore our other examples of using the [`http-request`](/traffic-policy/actions/http-request/#examples) and [`forward-internal`](/traffic-policy/actions/forward-internal/#examples) Traffic Policy actions.
+- Explore our other examples of using the [`http-request`](/docs/traffic-policy/actions/http-request/#examples) and [`forward-internal`](/docs/traffic-policy/actions/forward-internal/#examples) Traffic Policy actions.
 - View your traffic in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector).
-- Add even more logging flexibility, plus access to our entire [eventing system](/obs/), with the [`logs` action](/traffic-policy/actions/log/).
+- Add even more logging flexibility, plus access to our entire [eventing system](/docs/obs/), with the [`logs` action](/docs/traffic-policy/actions/log/).
 
-
+<Back />

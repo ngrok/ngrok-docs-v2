@@ -1,7 +1,11 @@
 ---
-title: Securing Upstream Connections with TLS & Mutual TLS (mTLS)
-sidebarTitle: Upstream TLS
+title: Upstream TLS
 ---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Securing Upstream Connections with TLS & Mutual TLS (mTLS)
 
 If your upstream service requires encrypted TLS connections, you need to ensure that requests forwarded from the API Gateway are properly secured using TLS.
 Additionally, if your upstream service requires mutual TLS (mTLS), you can configure client certificates to authenticate both the API Gateway and the upstream service.
@@ -87,8 +91,8 @@ kubectl create secret tls client-cert-secret \
 
 The following examples showcase using the client certificate when connecting to the upstream.
 
-<Tabs>
-	<Tab title="AgentEndpoint">
+<Tabs groupId="kind" queryString="kind">
+	<TabItem value="agent-endpoint" label="AgentEndpoint" default>
 	### 4. Create an `AgentEndpoint` that uses the Client Certificate
 
 	```yaml
@@ -104,8 +108,8 @@ The following examples showcase using the client certificate when connecting to 
     - name: client-cert-secret
       namespace: default
 	```
-	</Tab>
-	<Tab title="Ingress">
+	</TabItem>
+	<TabItem value="ingress" label="Ingress">
 	❌ `Ingress` resources do not natively support advanced upstream TLS options, so this option requires using Gateway API or the `AgentEndpoint` resources directly.
 
 	You can still use TLS upstream services with `Ingress` resources although you will not be able to configure mutual TLS between the operator and the upstream service.
@@ -133,8 +137,8 @@ The following examples showcase using the client certificate when connecting to 
     selector:
       app: example-app
 	```
-	</Tab>
-	<Tab title="Gateway API">
+	</TabItem>
+	<TabItem value="gateway-api" label="Gateway API">
 	✅ Gateway API natively supports upstream TLS configuration, and this feature is fully supported by the ngrok Kubernetes operator.
 
 	### 4. Create a `Gateway` that uses the client certificate `Secret`
@@ -212,5 +216,5 @@ The following examples showcase using the client certificate when connecting to 
     selector:
       app: example-app
 	```
-	</Tab>
+	</TabItem>
 </Tabs>

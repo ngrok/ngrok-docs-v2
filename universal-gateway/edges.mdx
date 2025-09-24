@@ -1,14 +1,14 @@
 ---
 title: Edges (Deprecated)
-sidebarTitle: Edges
-tag: Deprecated
 ---
+
+# Edges
 
 ## Deprecation
 
-<Warning>
+::::warning
 Edges, Routes, Modules, Backends and Labeled Tunnels are deprecated and will be sunset on December 31st, 2025. See the [Migration Guide](#migration-guide).
-</Warning>
+::::
 
 ### Sunset Date
 
@@ -84,7 +84,7 @@ Backends, each with different behaviors.
 
 Tunnel Group backends allow you to load balance traffic equally among multiple
 ngrok agents. Tunnel Group backends define a _label selector_. A Tunnel Group
-backend will balance traffic among all ngrok tunnels whose labels match its
+backend will balance traffic among all ngrok endpoints whose labels match its
 label selector.
 
 For example, if your Tunnel Group has a label selector of `app=dashboard, version=1`:
