@@ -4,10 +4,9 @@ description: "Coordinate ingress traffic for microservices without a full servic
 sidebar_label: "Microservices Gateway"
 ---
 
-import ReserveDomain from "./snippets/_reserve-domain.mdx";
-import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
-import TryOut from "./snippets/_try-out.mdx";
-import Back from "./snippets/_back-to-examples.mdx";
+import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
+import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
+import TryOut from "/snippets/universal-gateway/_try-out.mdx";
 
 A microservices gateway coordinates ingress traffic for distributed services without requiring a full service mesh.
 It handles north-south traffic (public internet to your services) with JWT authentication and intelligent routing, providing a central place to route, secure, and monitor distributed microservices.
@@ -234,4 +233,3 @@ curl -H "Authorization: Bearer $JWT_TOKEN" \
 - Configure [endpoint pooling](/k8s/guides/pooling) for high availability across multiple service replicas
 - Set up [rate limiting](/traffic-policy/actions/rate-limit) with different bucket keys for fine-grained control
 
-<Back />

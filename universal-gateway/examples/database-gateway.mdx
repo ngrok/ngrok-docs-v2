@@ -4,10 +4,10 @@ description: "Securely expose databases to external clients with strict authenti
 sidebar_label: "Database Gateway"
 ---
 
-import ReserveDomain from "./snippets/_reserve-domain.mdx";
-import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
-import TryOut from "./snippets/_try-out.mdx";
-import Back from "./snippets/_back-to-examples.mdx";
+import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
+import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
+import TryOut from "/snippets/universal-gateway/_try-out.mdx";
+
 
 A database gateway provides secure access to databases exposed to external clients. It enforces authentication, rate limiting, and logging before requests reach your database, while optionally transforming queries to prevent costly operations or data exposure.
 
@@ -153,4 +153,3 @@ done
 - Use [URL rewriting](/traffic-policy/actions/url-rewrite) to transform database queries or add security constraints
 - View database access patterns in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) to identify potential security issues
 
-<Back />

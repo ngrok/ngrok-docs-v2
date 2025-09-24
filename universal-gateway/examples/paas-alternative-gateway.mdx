@@ -4,10 +4,10 @@ description: "Get the polish of managed platforms like Heroku or Vercel while ma
 sidebar_label: "Self-Hosted PaaS Alternative"
 ---
 
-import ReserveDomain from "./snippets/_reserve-domain.mdx";
-import CloudEndpoint from "./snippets/_cloud-endpoint.mdx";
-import TryOut from "./snippets/_try-out.mdx";
-import Back from "./snippets/_back-to-examples.mdx";
+import ReserveDomain from "/snippets/universal-gateway/_reserve-domain.mdx";
+import CloudEndpoint from "/snippets/universal-gateway/_cloud-endpoint.mdx";
+import TryOut from "/snippets/universal-gateway/_try-out.mdx";
+
 
 A self-hosted PaaS alternative gateway provides the developer experience and features of managed platforms without surrendering control of your infrastructure.
 It handles TLS termination, custom domains, load balancing, authentication, observability, and security—perfect for teams migrating from Heroku or Vercel while keeping the operational polish.
@@ -227,4 +227,3 @@ curl -H "User-Agent: GPTBot" \
 - Use [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) to monitor performance and debug issues
 - Add [circuit breaker protection](/traffic-policy/actions/circuit-breaker) to handle upstream failures gracefully
 
-<Back />
