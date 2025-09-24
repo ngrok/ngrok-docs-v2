@@ -16,6 +16,6 @@ Once the ngrok agent starts, you can use the TCP endpoint in your configuration 
 rtmp://your-ngrok-tcp-address:ngrok-port/live/<some stream name>
 ```
 
-::::note
+<Note>
 Streaming data can eat up a lot of bandwidth quickly. If you are on a free plan, you may run into the [data transfer limits](/pricing-limits/free-plan-limits#limits-and-licensing) and need to upgrade to a paid plan.
-::::
+</Note>

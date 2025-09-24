@@ -8,10 +8,10 @@ You can think of it as the [ngrok Agent CLI](/getting-started/) packaged as a JS
 
 This quickstart uses the ngrok JavaScript SDK to create an agent endpoint that forwards traffic from the internet to a Node.js app running on your local device, then secure it by requiring visitors to log in with a Google account to access it.
 
-:::info
+<Info>
 If you'd prefer to skip the boilerplate setup, you can clone the complete example from the [ngrok-samples collection](https://github.com/ngrok-samples/javascript-quickstart).
 In that case, you'll just need to reserve a domain and add your auth token as described below to get started.
-:::
+</Info>
 
 ## What you'll need
 
@@ -84,11 +84,11 @@ Finally, you'll need to install [the `dotenv` package](https://www.npmjs.com/pac
 npm install dotenv
 ```
 
-:::tip
+<Tip>
 If you don't want to use a `.env` file, you can instead [export your auth token as an environment variable](https://support.apple.com/en-il/guide/terminal/apd382cc5fa-4f58-4449-b20a-41c53c006f8f/mac) in your terminal session, or [pass the auth token directly to the forward method](https://ngrok.github.io/ngrok-javascript/#authorization) in your code.
 
 You can set your reserved domain directly in your endpoint file below.
-:::
+</Tip>
 
 ## 4. Create your endpoint
 
@@ -100,10 +100,10 @@ This example:
 - Starts an agent endpoint that forwards from your reserved domain to your service running on port `8080`.
 - Secures the endpoint with Google OAuth authentication.
 
-:::note
+<Note>
 This example uses ngrok's default Google OAuth application.
 To use your own, see [the OAuth Traffic Policy Action documentation](/traffic-policy/actions/oauth/#google-example).
-:::
+</Note>
 
 ```javascript title="endpoint.js"
 require('dotenv').config();

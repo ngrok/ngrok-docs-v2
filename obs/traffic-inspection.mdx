@@ -28,11 +28,11 @@ Everyone gets three days of traffic retention, after which the traffic events ar
 By default, the ngrok Traffic Inspector will only store the metadata about each request and response. Full Capture mode is an opt-in setting on your ngrok account that will store the full request and response parameters, headers, and bodies for each traffic event that flows through your endpoints.
 This can be enabled by account admins by visiting the Observability section in the [ngrok Settings Page](https://dashboard.ngrok.com/settings#observability) after logging in.
 
-:::warning
+<Warning>
 
 Storing the full request and response data may mean you and your team members have access to sensitive data flowing through your endpoints.
 
-:::
+</Warning>
 
 Once full capture mode is enabled, ngrok will begin capturing and storing the full requests and responses up to a maximum of 10KB, after which the data will be truncated. Header values will be truncated after 1KB for each value.
 Data that is truncated will be indicated in the Traffic Inspector through the number of bytes that were captured as well as the number of headers.
