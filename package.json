@@ -6,6 +6,7 @@
   "scripts": {
     "build": "mint build",
     "dev": "mint dev --port 3333",
+    "verify-redirects": "node snippets/custom-scripts/check-redirect-conflicts.js",
     "test-links": "mint broken-links",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

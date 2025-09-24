@@ -929,235 +929,227 @@
   },
   "redirects": [
     {
-      "source": "/1/:slug*",
+      "source": "/1",
       "destination": "/"
     },
     {
-      "source": "/2/:slug*",
+      "source": "/2",
       "destination": "/"
     },
     {
-      "source": "/overview/:slug*",
+      "source": "/overview",
       "destination": "/"
     },
     {
-      "source": "/ngrok-link/:slug*",
+      "source": "/ngrok-link",
       "destination": "/universal-gateway/overview/"
     },
     {
-      "source": "/api/api-clients/:slug*",
+      "source": "/api/api-clients",
       "destination": "/api/#client-libraries"
     },
     {
-      "source": "/api/client-libraries/:slug*",
+      "source": "/api/client-libraries",
       "destination": "/api/#client-libraries"
     },
     {
-      "source": "/api/terraform/:slug*",
+      "source": "/api/terraform",
       "destination": "/api/#terraform-provider"
     },
     {
-      "source": "/platform/api/:slug*",
+      "source": "/platform/api",
       "destination": "/api/"
     },
     {
-      "source": "/platform/events/:slug*",
+      "source": "/platform/events",
       "destination": "/events/"
     },
     {
-      "source": "/events/filtering/:slug*",
+      "source": "/events/filtering",
       "destination": "/events/#filters"
     },
     {
-      "source": "/http-header-templates/:slug*",
+      "source": "/http-header-templates",
       "destination": "/traffic-policy/actions/add-headers/"
     },
     {
-      "source": "/network-edge/pops/:slug*",
+      "source": "/network-edge/pops",
       "destination": "/universal-gateway/points-of-presence/"
     },
     {
-      "source": "/platform/pops/:slug*",
+      "source": "/platform/pops",
       "destination": "/universal-gateway/points-of-presence/"
     },
     {
-      "source": "/best-practices/security-dev-productivity/:slug*",
+      "source": "/best-practices/security-dev-productivity",
       "destination": "/guides/security-dev-productivity/"
     },
     {
-      "source": "/platform/botusers/:slug*",
+      "source": "/platform/botusers",
       "destination": "/iam/service-users/"
     },
     {
-      "source": "/platform/dashboard/:slug*",
+      "source": "/platform/dashboard",
       "destination": "/user-management/#sso"
     },
     {
-      "source": "/cloud-edge/modules/webhook/:slug*",
+      "source": "/cloud-edge/modules/webhook",
       "destination": "/api/resources/edge-route-webhook-verification-module"
     },
     {
-      "source": "/cloud-edge/modules/oauth/amazon/:slug*",
+      "source": "/cloud-edge/modules/oauth/amazon",
       "destination": "/integrations/amazon/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/oauth/facebook/:slug*",
+      "source": "/cloud-edge/modules/oauth/facebook",
       "destination": "/integrations/facebook/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/oauth/github/:slug*",
+      "source": "/cloud-edge/modules/oauth/github",
       "destination": "/integrations/github/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/oauth/gitlab/:slug*",
+      "source": "/cloud-edge/modules/oauth/gitlab",
       "destination": "/integrations/gitlab/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/oauth/google/:slug*",
+      "source": "/cloud-edge/modules/oauth/google",
       "destination": "/integrations/google/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/oauth/linkedin/:slug*",
+      "source": "/cloud-edge/modules/oauth/linkedin",
       "destination": "/integrations/linkedin/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/oauth/microsoft/:slug*",
+      "source": "/cloud-edge/modules/oauth/microsoft",
       "destination": "/integrations/microsoft/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/oauth/twitch/:slug*",
+      "source": "/cloud-edge/modules/oauth/twitch",
       "destination": "/integrations/twitch/oauth/"
     },
     {
-      "source": "/cloud-edge/http-header-templates/:slug*",
+      "source": "/cloud-edge/http-header-templates",
       "destination": "/traffic-policy/actions/add-headers/"
     },
     {
-      "source": "/integrations/awscloudwatch/:slug*",
+      "source": "/integrations/awscloudwatch",
       "destination": "/integrations/amazon-cloudwatch/"
     },
     {
-      "source": "/integrations/awsfirehose/:slug*",
+      "source": "/integrations/awsfirehose",
       "destination": "/integrations/amazon-firehose/"
     },
     {
-      "source": "/integrations/awskinesis/:slug*",
+      "source": "/integrations/awskinesis",
       "destination": "/integrations/amazon-kinesis/"
     },
     {
-      "source": "/guides/how-to-set-up-a-custom-domain/:slug*",
+      "source": "/guides/how-to-set-up-a-custom-domain",
       "destination": "/universal-gateway/custom-domains/"
     },
     {
-      "source": "/guides/other-guides/how-to-set-up-a-custom-domain/:slug*",
-      "destination": "/universal-gateway/custom-domains/"
-    },
-    {
-      "source": "/guides/limits/:slug*",
+      "source": "/guides/limits",
       "destination": "/pricing-limits"
     },
     {
-      "source": "/guides/licensing/:slug*",
+      "source": "/guides/licensing",
       "destination": "/pricing-limits/"
     },
     {
-      "source": "/guides/upgrade-v2-v3/:slug*",
+      "source": "/guides/upgrade-v2-v3",
       "destination": "/agent/upgrade-v2-v3"
     },
     {
-      "source": "/guides/other-guides/securing-your-tunnels",
-      "destination": "/guides/securing-your-tunnels/:slug*"
-    },
-    {
-      "source": "/guides/dashboard-sso-okta-setup/:slug*",
+      "source": "/guides/dashboard-sso-okta-setup",
       "destination": "/integrations/okta/dashboard-sso-okta-setup"
     },
     {
-      "source": "/guides/site-to-site-dbs/:slug*",
+      "source": "/guides/site-to-site-dbs",
       "destination": "/guides/site-to-site-connectivity/"
     },
     {
-      "source": "/guides/site-to-site-apis/:slug*",
+      "source": "/guides/site-to-site-apis",
       "destination": "/guides/site-to-site-connectivity/"
     },
     {
-      "source": "/guides/site-to-site-apis-mtls/:slug*",
+      "source": "/guides/site-to-site-apis-mtls",
       "destination": "/guides/site-to-site-connectivity/"
     },
     {
-      "source": "/guides/site-to-site-dbs-mtls/:slug*",
+      "source": "/guides/site-to-site-dbs-mtls",
       "destination": "/guides/site-to-site-connectivity/"
     },
     {
-      "source": "/guides/securing-with-oauth/:slug*",
+      "source": "/guides/securing-with-oauth",
       "destination": "/guides/identity-aware-proxy/securing-with-oauth"
     },
     {
-      "source": "/guides/getting-started/:slug*",
+      "source": "/guides/getting-started",
       "destination": "/guides/developer-preview/getting-started"
     },
     {
-      "source": "/events/:slug*",
+      "source": "/events",
       "destination": "/obs/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/reference/api/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/reference/api",
       "destination": "/agent/api/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/reference/changelog/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/reference/changelog",
       "destination": "/agent/changelog/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/reference/config/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/reference/config",
       "destination": "/agent/config/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/reference/ngrok/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/reference/ngrok",
       "destination": "/agent/cli/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/remote-management/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/remote-management",
       "destination": "/agent/#remote-management"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/shell-autocompletion/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/shell-autocompletion",
       "destination": "/agent/#tab-completion"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/supported-platforms/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/supported-platforms",
       "destination": "/agent/#system-requirements"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/tunnel-authtokens/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/tunnel-authtokens",
       "destination": "/agent/#authtokens"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/web-inspection-interface/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/web-inspection-interface",
       "destination": "/agent/web-inspection-interface/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/api-access/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/api-access",
       "destination": "/agent/api/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/automatic-updates/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/automatic-updates",
       "destination": "/agent/#updates"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/configuration-file/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/configuration-file",
       "destination": "/agent/config/"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/diagnose-command/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/diagnose-command",
       "destination": "/agent/#troubleshooting-connectivity"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/installing-as-a-service/:slug*",
+      "source": "/secure-tunnels/ngrok-agent/installing-as-a-service",
       "destination": "/agent/#background-service"
     },
     {
-      "source": "/secure-tunnels/ngrok-agent/:slug*",
+      "source": "/secure-tunnels/ngrok-agent",
       "destination": "/agent/"
     },
     {
@@ -1169,131 +1161,119 @@
       "destination": "/agent/connect-url/"
     },
     {
-      "source": "/secure-tunnels/agentless/:slug*",
+      "source": "/secure-tunnels/agentless",
       "destination": "/agent/#using-ngrok-without-the-agent"
     },
     {
-      "source": "/secure-tunnels/non-local/:slug*",
+      "source": "/secure-tunnels/non-local",
       "destination": "/http/#forward-to-non-local"
     },
     {
-      "source": "/secure-tunnels/tunnels/:slug*",
+      "source": "/secure-tunnels/tunnels",
       "destination": "/agent/"
     },
     {
-      "source": "/secure-tunnels/tunnels/http-tunnels/:slug*",
-      "destination": "/universal-gateway/http/"
-    },
-    {
-      "source": "/secure-tunnels/tunnels/ssh-reverse-tunnel-agent/:slug*",
-      "destination": "/agent/ssh-reverse-tunnel-agent/"
-    },
-    {
-      "source": "/secure-tunnels/tunnels/tcp-tunnels/:slug*",
+      "source": "/secure-tunnels/tunnels/tcp-tunnels",
       "destination": "/universal-gateway/tcp/"
     },
     {
-      "source": "/secure-tunnels/tunnels/tls-tunnels/:slug*",
+      "source": "/secure-tunnels/tunnels/tls-tunnels",
       "destination": "/universal-gateway/tls/"
     },
     {
-      "source": "/secure-tunnels/:slug*",
-      "destination": "/agent/"
-    },
-    {
-      "source": "/cloud-edge/app-users/:slug*",
+      "source": "/cloud-edge/app-users",
       "destination": "/traffic-policy/identities/"
     },
     {
-      "source": "/cloud-edge/edges/:slug*",
+      "source": "/cloud-edge/edges",
       "destination": "/universal-gateway/edges/"
     },
     {
-      "source": "/cloud-edge/edges/https/:slug*",
+      "source": "/cloud-edge/edges/https",
       "destination": "/universal-gateway/http/"
     },
     {
-      "source": "/cloud-edge/edges/tcp/:slug*",
+      "source": "/cloud-edge/edges/tcp",
       "destination": "/universal-gateway/tcp/"
     },
     {
-      "source": "/cloud-edge/edges/tls/:slug*",
+      "source": "/cloud-edge/edges/tls",
       "destination": "/universal-gateway/tls/"
     },
     {
-      "source": "/cloud-edge/endpoints/:slug*",
+      "source": "/cloud-edge/endpoints",
       "destination": "/universal-gateway/http/"
     },
     {
-      "source": "/cloud-edge/ip-policies/:slug*",
+      "source": "/cloud-edge/ip-policies",
       "destination": "/http/#ip-restrictions"
     },
     {
-      "source": "/cloud-edge/modules/circuit-breaker/:slug*",
+      "source": "/cloud-edge/modules/circuit-breaker",
       "destination": "/traffic-policy/actions/circuit-breaker/"
     },
     {
-      "source": "/cloud-edge/modules/compression/:slug*",
+      "source": "/cloud-edge/modules/compression",
       "destination": "/traffic-policy/actions/compress-response/"
     },
     {
-      "source": "/cloud-edge/modules/ip-restrictions/:slug*",
+      "source": "/cloud-edge/modules/ip-restrictions",
       "destination": "/traffic-policy/actions/restrict-ips/"
     },
     {
-      "source": "/cloud-edge/modules/mutual-tls/:slug*",
+      "source": "/cloud-edge/modules/mutual-tls",
       "destination": "/traffic-policy/actions/terminate-tls/#enabling-mutual-tls"
     },
     {
-      "source": "/cloud-edge/modules/oauth/:slug*",
+      "source": "/cloud-edge/modules/oauth",
       "destination": "/traffic-policy/actions/oauth/"
     },
     {
-      "source": "/cloud-edge/modules/openid-connect/:slug*",
+      "source": "/cloud-edge/modules/openid-connect",
       "destination": "/traffic-policy/actions/oidc/"
     },
     {
-      "source": "/cloud-edge/modules/request-headers/:slug*",
+      "source": "/cloud-edge/modules/request-headers",
       "destination": "/traffic-policy/actions/add-headers/"
     },
     {
-      "source": "/cloud-edge/modules/response-headers/:slug*",
+      "source": "/cloud-edge/modules/response-headers",
       "destination": "/traffic-policy/actions/custom-response/"
     },
     {
-      "source": "/cloud-edge/modules/saml/:slug*",
+      "source": "/cloud-edge/modules/saml",
       "destination": "/traffic-policy/actions/saml"
     },
     {
-      "source": "/cloud-edge/modules/tls-termination/:slug*",
+      "source": "/cloud-edge/modules/tls-termination",
       "destination": "/http/tls-termination/"
     },
     {
-      "source": "/cloud-edge/modules/webhook-verification/:slug*",
+      "source": "/cloud-edge/modules/webhook-verification",
       "destination": "/http/webhook-verification/"
     },
     {
-      "source": "/cloud-edge/modules/:slug*",
+      "source": "/cloud-edge/modules",
       "destination": "/http/#modules"
     },
     {
-      "source": "/cloud-edge/observability/:slug*",
+      "source": "/cloud-edge/observability",
       "destination": "/http/#observability"
     },
     {
-      "source": "/cloud-edge/pops/:slug*",
+      "source": "/cloud-edge/pops",
       "destination": "/universal-gateway/points-of-presence/"
     },
     {
-      "source": "/cloud-edge/zero-knowledge-tls/:slug*",
+      "source": "/cloud-edge/zero-knowledge-tls",
       "destination": "/traffic-policy/actions/terminate-tls/"
     },
     {
-      "source": "/tls/tls/termination/:slug*",
+      "source": "/tls/tls/termination",
       "destination": "/traffic-policy/actions/terminate-tls/"
     },
     {
-      "source": "/cloud-edge/:slug*",
+      "source": "/cloud-edge",
       "destination": "/universal-gateway/overview/"
     },
     {
@@ -1301,243 +1281,243 @@
       "destination": "/integrations/home-assistant/home-assistant-with-ngrok"
     },
     {
-      "source": "/http/traffic-policy/expressions/#connection-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/#connection-variables",
       "destination": "/http/traffic-policy/expressions/variables#connection-variables"
     },
     {
-      "source": "/http/traffic-policy/expressions/#request-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/#request-variables",
       "destination": "/http/traffic-policy/expressions/variables#request-variables"
     },
     {
-      "source": "/http/traffic-policy/expressions/#response-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/#response-variables",
       "destination": "/http/traffic-policy/expressions/variables#response-variables"
     },
     {
-      "source": "/http/traffic-policy/expressions/#macros/:slug*",
+      "source": "/http/traffic-policy/expressions/#macros",
       "destination": "/http/traffic-policy/expressions/macros"
     },
     {
-      "source": "/tls/traffic-policy/expressions/#connection-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/#connection-variables",
       "destination": "/tls/traffic-policy/expressions/variables#connection-variables"
     },
     {
-      "source": "/tls/traffic-policy/expressions/#macros/:slug*",
+      "source": "/tls/traffic-policy/expressions/#macros",
       "destination": "/tls/traffic-policy/expressions/macros"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/#connection-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/#connection-variables",
       "destination": "/traffic-policy/variables/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/#macros/:slug*",
+      "source": "/tcp/traffic-policy/expressions/#macros",
       "destination": "/traffic-policy/macros/"
     },
     {
-      "source": "/user-management/#bot-users/:slug*",
+      "source": "/user-management/#bot-users",
       "destination": "/iam/service-users/"
     },
     {
-      "source": "/user-management/#sso/:slug*",
+      "source": "/user-management/#sso",
       "destination": "/iam/users/#dashboard-access"
     },
     {
-      "source": "/user-management/#rbac/:slug*",
+      "source": "/user-management/#rbac",
       "destination": "/iam/rbac/"
     },
     {
-      "source": "/user-management/:slug*",
+      "source": "/user-management",
       "destination": "/iam/"
     },
     {
-      "source": "/api/resources/edge-route-policy-module/:slug*",
+      "source": "/api/resources/edge-route-policy-module",
       "destination": "/api/resources/edge-route-traffic-policy-module/"
     },
     {
-      "source": "/api/resources/tcp-edge-policy-module/:slug*",
+      "source": "/api/resources/tcp-edge-policy-module",
       "destination": "/api/resources/tcp-edge-traffic-policy-module/"
     },
     {
-      "source": "/api/resources/tls-edge-policy-module/:slug*",
+      "source": "/api/resources/tls-edge-policy-module",
       "destination": "/api/resources/tls-edge-traffic-policy-module/"
     },
     {
-      "source": "/ngrok-agent/ngrok/:slug*",
+      "source": "/ngrok-agent/ngrok",
       "destination": "/agent/"
     },
     {
-      "source": "/network-edge/modules/webhook-verification/:slug*",
+      "source": "/network-edge/modules/webhook-verification",
       "destination": "/api/resources/edge-route-webhook-verification-module/"
     },
     {
-      "source": "/platform/ip-policies/:slug*",
+      "source": "/platform/ip-policies",
       "destination": "/api/resources/ip-policies/"
     },
     {
-      "source": "/traffic-policy/gallery/:slug*",
+      "source": "/traffic-policy/gallery",
       "destination": "/traffic-policy/examples/a-b-tests/"
     },
     {
-      "source": "/http/traffic-policy/gallery/:slug*",
+      "source": "/http/traffic-policy/gallery",
       "destination": "/traffic-policy/examples/a-b-tests/"
     },
     {
-      "source": "/tls/traffic-policy/gallery/:slug*",
+      "source": "/tls/traffic-policy/gallery",
       "destination": "/traffic-policy/examples/a-b-tests/"
     },
     {
-      "source": "/tcp/traffic-policy/gallery/:slug*",
+      "source": "/tcp/traffic-policy/gallery",
       "destination": "/traffic-policy/examples/a-b-tests/"
     },
     {
-      "source": "/http/traffic-policy/expressions/writing-guide/:slug*",
+      "source": "/http/traffic-policy/expressions/writing-guide",
       "destination": "/traffic-policy/concepts/expressions/#writing-expressions"
     },
     {
-      "source": "/tls/traffic-policy/expressions/writing-guide/:slug*",
+      "source": "/tls/traffic-policy/expressions/writing-guide",
       "destination": "/traffic-policy/concepts/expressions/#writing-expressions"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/writing-guide/:slug*",
+      "source": "/tcp/traffic-policy/expressions/writing-guide",
       "destination": "/traffic-policy/concepts/expressions/#writing-expressions"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#action-result-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#action-result-variables",
       "destination": "/traffic-policy/variables/action/"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#connection-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#connection-variables",
       "destination": "/traffic-policy/variables/connection/"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#connection-geo-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#connection-geo-variables",
       "destination": "/traffic-policy/variables/connection/#connection-geo-variables"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#connection-tls-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#connection-tls-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-variables"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#connection-tls-client-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#connection-tls-client-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-client-variables"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#connection-tls-server-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#connection-tls-server-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-server-variables"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#endpoint-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#endpoint-variables",
       "destination": "/traffic-policy/variables/endpoint/"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/#time-variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables/#time-variables",
       "destination": "/traffic-policy/variables/time/"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#action-result-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#action-result-variables",
       "destination": "/traffic-policy/variables/action/"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#connection-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#connection-variables",
       "destination": "/traffic-policy/variables/connection/"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#connection-geo-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#connection-geo-variables",
       "destination": "/traffic-policy/variables/connection/#connection-geo-variables"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#connection-tls-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#connection-tls-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-variables"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#connection-tls-client-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#connection-tls-client-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-client-variables"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#connection-tls-server-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#connection-tls-server-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-server-variables"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#endpoint-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#endpoint-variables",
       "destination": "/traffic-policy/variables/endpoint/"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/#time-variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables/#time-variables",
       "destination": "/traffic-policy/variables/time/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#action-result-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#action-result-variables",
       "destination": "/traffic-policy/variables/action/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#connection-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#connection-variables",
       "destination": "/traffic-policy/variables/connection/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#connection-geo-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#connection-geo-variables",
       "destination": "/traffic-policy/variables/connection/#connection-geo-variables"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#connection-tls-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#connection-tls-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-variables"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#connection-tls-client-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#connection-tls-client-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-client-variables"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#connection-tls-server-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#connection-tls-server-variables",
       "destination": "/traffic-policy/variables/connection/#connection-tls-server-variables"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#endpoint-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#endpoint-variables",
       "destination": "/traffic-policy/variables/endpoint/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/#time-variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables/#time-variables",
       "destination": "/traffic-policy/variables/time/"
     },
     {
-      "source": "/http/traffic-policy/expressions/variables/:slug*",
+      "source": "/http/traffic-policy/expressions/variables",
       "destination": "/traffic-policy/variables/"
     },
     {
-      "source": "/tls/traffic-policy/expressions/variables/:slug*",
+      "source": "/tls/traffic-policy/expressions/variables",
       "destination": "/traffic-policy/variables/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/variables/:slug*",
+      "source": "/tcp/traffic-policy/expressions/variables",
       "destination": "/traffic-policy/variables/"
     },
     {
-      "source": "/http/traffic-policy/expressions/macros/:slug*",
+      "source": "/http/traffic-policy/expressions/macros",
       "destination": "/traffic-policy/macros/"
     },
     {
-      "source": "/tls/traffic-policy/expressions/macros/:slug*",
+      "source": "/tls/traffic-policy/expressions/macros",
       "destination": "/traffic-policy/macros/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/macros/:slug*",
+      "source": "/tcp/traffic-policy/expressions/macros",
       "destination": "/traffic-policy/macros/"
     },
     {
-      "source": "/http/traffic-policy/expressions/:slug*",
+      "source": "/http/traffic-policy/expressions",
       "destination": "/traffic-policy/concepts/expressions/"
     },
     {
-      "source": "/tls/traffic-policy/expressions/:slug*",
+      "source": "/tls/traffic-policy/expressions",
       "destination": "/traffic-policy/concepts/expressions/"
     },
     {
-      "source": "/tcp/traffic-policy/expressions/:slug*",
+      "source": "/tcp/traffic-policy/expressions",
       "destination": "/traffic-policy/concepts/expressions/"
     },
     {
-      "source": "/http/traffic-policy/:slug*",
+      "source": "/http/traffic-policy",
       "destination": "/traffic-policy/"
     },
     {
-      "source": "/tls/traffic-policy/:slug*",
+      "source": "/tls/traffic-policy",
       "destination": "/traffic-policy/"
     },
     {
@@ -1545,115 +1525,115 @@
       "destination": "/traffic-policy/getting-started/agent-endpoints/cli"
     },
     {
-      "source": "/tls/tls-termination/:slug*",
+      "source": "/tls/tls-termination",
       "destination": "/traffic-policy/actions/terminate-tls/"
     },
     {
-      "source": "/traffic-policy/templates/:slug*",
+      "source": "/traffic-policy/templates",
       "destination": "/traffic-policy/examples/a-b-tests/"
     },
     {
-      "source": "/tls/termination/agent-tls-termination/:slug*",
+      "source": "/tls/termination/agent-tls-termination",
       "destination": "/agent/agent-tls-termination/"
     },
     {
-      "source": "/concepts/:slug*",
+      "source": "/concepts",
       "destination": "/"
     },
     {
-      "source": "/http/basic-auth/:slug*",
+      "source": "/http/basic-auth",
       "destination": "/traffic-policy/actions/basic-auth/"
     },
     {
-      "source": "/http/circuit-breaker/:slug*",
+      "source": "/http/circuit-breaker",
       "destination": "/traffic-policy/actions/circuit-breaker/"
     },
     {
-      "source": "/http/compression/:slug*",
+      "source": "/http/compression",
       "destination": "/traffic-policy/actions/compress-response/"
     },
     {
-      "source": "/http/ip-restrictions/:slug*",
+      "source": "/http/ip-restrictions",
       "destination": "/traffic-policy/actions/restrict-ips/"
     },
     {
-      "source": "/http/mutual-tls/:slug*",
+      "source": "/http/mutual-tls",
       "destination": "/traffic-policy/actions/terminate-tls/#enabling-mutual-tls"
     },
     {
-      "source": "/http/oauth/:slug*",
+      "source": "/http/oauth",
       "destination": "/traffic-policy/actions/oauth"
     },
     {
-      "source": "/http/openid-connect/:slug*",
+      "source": "/http/openid-connect",
       "destination": "/traffic-policy/actions/oidc"
     },
     {
-      "source": "/http/request-headers/:slug*",
+      "source": "/http/request-headers",
       "destination": "/traffic-policy/actions/add-headers"
     },
     {
-      "source": "/http/response-headers/:slug*",
+      "source": "/http/response-headers",
       "destination": "/traffic-policy/actions/custom-response"
     },
     {
-      "source": "/http/saml/:slug*",
+      "source": "/http/saml",
       "destination": "/traffic-policy/actions/saml"
     },
     {
-      "source": "/network-edge/edges/:slug*",
+      "source": "/network-edge/edges",
       "destination": "/universal-gateway/edges"
     },
     {
-      "source": "/network-edge/cloud-endpoints/:slug*",
+      "source": "/network-edge/cloud-endpoints",
       "destination": "/universal-gateway/cloud-endpoints"
     },
     {
-      "source": "/network-edge/domains-and-tcp-addresses/:slug*",
+      "source": "/network-edge/domains-and-tcp-addresses",
       "destination": "/universal-gateway/domains"
     },
     {
-      "source": "/network-edge/internal-endpoints/:slug*",
+      "source": "/network-edge/internal-endpoints",
       "destination": "/universal-gateway/internal-endpoints"
     },
     {
-      "source": "/network-edge/tls-certificates/:slug*",
+      "source": "/network-edge/tls-certificates",
       "destination": "/universal-gateway/tls-certificates"
     },
     {
-      "source": "/network-edge/app-users/:slug*",
+      "source": "/network-edge/app-users",
       "destination": "/traffic-policy/identities/"
     },
     {
-      "source": "/network-edge/gslb/:slug*",
+      "source": "/network-edge/gslb",
       "destination": "/universal-gateway/global-load-balancer/"
     },
     {
-      "source": "/network-edge/:slug*",
+      "source": "/network-edge",
       "destination": "/universal-gateway/edges"
     },
     {
-      "source": "/obs/reference/:slug*",
+      "source": "/obs/reference",
       "destination": "/obs/events/reference"
     },
     {
-      "source": "/tcp/ip-restrictions/:slug*",
+      "source": "/tcp/ip-restrictions",
       "destination": "/traffic-policy/actions/restrict-ips/"
     },
     {
-      "source": "/tcp/traffic-policy/actions/deny/:slug*",
+      "source": "/tcp/traffic-policy/actions/deny",
       "destination": "/traffic-policy/actions/deny/"
     },
     {
-      "source": "/tcp/traffic-policy/actions/log/:slug*",
+      "source": "/tcp/traffic-policy/actions/log",
       "destination": "/traffic-policy/actions/log"
     },
     {
-      "source": "/tcp/traffic-policy/actions/restrict-ips/:slug*",
+      "source": "/tcp/traffic-policy/actions/restrict-ips",
       "destination": "/traffic-policy/actions/restrict-ips"
     },
     {
-      "source": "/tcp/traffic-policy/actions/:slug*",
+      "source": "/tcp/traffic-policy/actions",
       "destination": "/traffic-policy/actions/"
     },
     {
@@ -1765,7 +1745,7 @@
       "destination": "/guides/device-gateway/agent/"
     },
     {
-      "source": "/guides/developer-preview/:slug*",
+      "source": "/guides/developer-preview",
       "destination": "/"
     },
     {
@@ -1917,7 +1897,7 @@
       "destination": "/using-ngrok-with/docker/desktop/#video-demo---using-ngrok-with-docker-desktop"
     },
     {
-      "source": "/iam/bot-users/:slug*",
+      "source": "/iam/bot-users",
       "destination": "/iam/service-users/"
     }
   ]
