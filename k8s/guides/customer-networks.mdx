@@ -5,7 +5,7 @@ description: Learn how to use the ngrok Kubernetes Operator to establish secure,
 
 ngrok is a universal gateway, which means it allows you to securely connect to any app, IoT device, or service running in a private environment.
 
-This guide walks you through a practical example of using the [**ngrok Kubernetes Operator**](/docs/k8s/) to establish secure, remote access to services running inside a protected customer network which is not k8s native — all managed seamlessly from within your Kubernetes cluster in your cloud instance. 
+This guide walks you through a practical example of using the [**ngrok Kubernetes Operator**](/k8s/) to establish secure, remote access to services running inside a protected customer network which is not k8s native — all managed seamlessly from within your Kubernetes cluster in your cloud instance. 
 
 While a traditional site-to-site VPN topology can achieve similar connectivity, this approach takes ngrok's secure ingress capabilities to the next level. Connect critical systems without any risk of public addressability or wrestling with the complexity, fragility, and operational overhead of conventional VPN solutions. The result is a privatized, streamlined way to enable secure access.
 
@@ -53,7 +53,7 @@ Create an authtoken for that service user and assign it an ACL rule. By assignin
 
 You're now going to configure the agent to create internal agent endpoints that point to the services you want to remotely access. This will connect the services to your ngrok account but nothing will be able to connect to them until we complete the subsequent steps. Additionally, for our TLS  endpoint, we need to configure it so that mTLS is terminated at the ngrok agent and data remains encrypted through the ngrok cloud edge. The configuration to achieve this is shown below in the example agent configuration file.
 
-**Internal Endpoints** are private endpoints that only receive traffic when forwarded through the [forward-internal traffic policy action](/docs/traffic-policy/actions/forward-internal/). This allows you to route traffic to an application through ngrok without making it publicly addressable. Internal endpoint URL hostnames must end with  .internal.
+**Internal Endpoints** are private endpoints that only receive traffic when forwarded through the [forward-internal traffic policy action](/traffic-policy/actions/forward-internal/). This allows you to route traffic to an application through ngrok without making it publicly addressable. Internal endpoint URL hostnames must end with  .internal.
 
 After installing the ngrok agent, define internal endpoints for each service you want to remotely access inside the ngrok configuration file. You can install ngrok and its configuration file in `/path/to/ngrok/ngrok.yml` and the executable in `/path/to/ngrok/ngrok`.
 
@@ -108,7 +108,7 @@ kubectl create ns acme-customers
 
 ### 4. Create Kubernetes bound cloud endpoints and attach traffic policy
 
-We are going to create a **Cloud Endpoint** with a [**Kubernetes binding](/docs/universal-gateway/bindings/).** This will create a privately addressable way to access the remote services. These endpoints will only be accessible within Kubernetes clusters where you install the ngrok operator.
+We are going to create a **Cloud Endpoint** with a [**Kubernetes binding](/universal-gateway/bindings/).** This will create a privately addressable way to access the remote services. These endpoints will only be accessible within Kubernetes clusters where you install the ngrok operator.
 
 Endpoints with a kubernetes binding are secure, private endpoints that are only addressable inside of Kubernetes clusters where you install the ngrok operator. They enable you to connect to ngrok endpoints without making them publicly addressable. In this case, we will create cloud endpoints with a binding of kubernetes.
 
@@ -152,7 +152,7 @@ on_tcp_connect:
           url: tcp://database.cust1.internal:5432
 ```
 
-The [CloudEndpoint Kubernetes custom resource](/docs/k8s/crds/cloudendpoint/) offers another way to create cluster-addressable endpoints. This infrastructure-as-code approach integrates naturally with Kubernetes workflows while maintaining the same automation capabilities as the ngrok API. By using custom resources, you can manage cloud endpoints declaratively—making them accessible only within your cluster while leveraging standard Kubernetes tooling for deployment and lifecycle management. Here's the CloudEndpoint custom resource config with the required traffic policy for the web app cloud endpoint:
+The [CloudEndpoint Kubernetes custom resource](/k8s/crds/cloudendpoint/) offers another way to create cluster-addressable endpoints. This infrastructure-as-code approach integrates naturally with Kubernetes workflows while maintaining the same automation capabilities as the ngrok API. By using custom resources, you can manage cloud endpoints declaratively—making them accessible only within your cluster while leveraging standard Kubernetes tooling for deployment and lifecycle management. Here's the CloudEndpoint custom resource config with the required traffic policy for the web app cloud endpoint:
 
 ```yaml
 apiVersion: ngrok.k8s.ngrok.com/v1alpha1
@@ -177,7 +177,7 @@ bindings:
 
 ### Set up a custom connect URL
 
-When the ngrok agent starts, it makes an outbound connection via TLS over port 443 to the ngrok cloud service. This connection is made to the “agent connect URL”. By default, [this connect URL](/docs/agent/connect-url/) is *connect.ngrok-agent.com*, but it can be white-labeled so that your ngrok agents will connect to *connect.acme.com* instead of the default connection hostname. 
+When the ngrok agent starts, it makes an outbound connection via TLS over port 443 to the ngrok cloud service. This connection is made to the “agent connect URL”. By default, [this connect URL](/agent/connect-url/) is *connect.ngrok-agent.com*, but it can be white-labeled so that your ngrok agents will connect to *connect.acme.com* instead of the default connection hostname. 
 
 This is highly recommended because your customers may need to whitelist egress traffic out of their networks and customers will see this traffic in their network logs. You can also request dedicated IPs for your connect URL that are unique to your account.
 

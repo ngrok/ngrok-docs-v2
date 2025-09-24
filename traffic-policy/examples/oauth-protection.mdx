@@ -8,7 +8,7 @@ description: Learn how to add OAuth authentication to your ngrok endpoints using
 
 Sometimes you don't want everyone to be able to access the app at your [Endpoints](/universal-gateway/endpoints).
 
-This guide will walk you through protecting your apps with OAuth authentication via [Traffic Policy](/traffic-policy). All you need is [the ngrok agent CLI](/docs/agent/cli).
+This guide will walk you through protecting your apps with OAuth authentication via [Traffic Policy](/traffic-policy). All you need is [the ngrok agent CLI](/agent/cli).
 
 ## 1. Pick your provider
 
@@ -29,7 +29,7 @@ If you use any of the above providers without configuring your own OAuth applica
 
 ## 2. Create a traffic policy file
 
-The following is an example Traffic Policy file that executes the ['oauth' traffic policy action](/docs/traffic-policy/actions/oauth/) on every request to your endpoint.
+The following is an example Traffic Policy file that executes the ['oauth' traffic policy action](/traffic-policy/actions/oauth/) on every request to your endpoint.
 
 Create this traffic policy file in the same directory where you run your ngrok agent, or add its contents to your `ngrok.yml` agent config file as shown below.
 
@@ -93,7 +93,7 @@ You should be immediately redirected to the Google sign-in page, and after authe
 
 ## Explore more and fine-tune with Traffic Policy
 
-[Traffic Policy](/docs/traffic-policy/) is a composable CEL-based configuration language that lets you match, filter, and control traffic to your endpoints without touching your app code. [Learn more about the building blocks of Traffic Policy](/docs/traffic-policy/#traffic-policy-building-blocks).
+[Traffic Policy](/traffic-policy/) is a composable CEL-based configuration language that lets you match, filter, and control traffic to your endpoints without touching your app code. [Learn more about the building blocks of Traffic Policy](/traffic-policy/#traffic-policy-building-blocks).
 
 Now that you've added auth to your endpoint, here are some optional ways to fine tune other parts of your auth setup aside from strictly how to handle logins. Depending on your goal, you’ll either configure session behavior in your traffic policy YAML, or trigger runtime behavior in your app using special `/ngrok/*` URLs. See the following tables for details.
 

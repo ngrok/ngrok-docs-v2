@@ -20,8 +20,8 @@ With this setup, you can:
 
 ## 1. Create an endpoint for your database service
 
-Start an internal [Agent Endpoint](/docs/universal-gateway/agent-endpoints/) for your database proxy or HTTP database interface, replacing `$PORT` based on where it listens.
-You can also use one of our [SDKs](/docs/agent-sdks) or the [Kubernetes Operator](/docs/k8s).
+Start an internal [Agent Endpoint](/universal-gateway/agent-endpoints/) for your database proxy or HTTP database interface, replacing `$PORT` based on where it listens.
+You can also use one of our [SDKs](/agent-sdks) or the [Kubernetes Operator](/k8s).
 
 ```bash
 ngrok http $DATABASE_PROXY_PORT --url https://database-service.internal
@@ -41,7 +41,7 @@ For databases that don't natively support HTTP, consider using a database proxy 
 
 ## 4. (Optional) Create a vault and secrets
 
-For production environments, store your CA certificate securely using [Traffic Policy Secrets](/docs/traffic-policy/secrets). This step is optional—you can also include the certificate directly in your policy.
+For production environments, store your CA certificate securely using [Traffic Policy Secrets](/traffic-policy/secrets). This step is optional—you can also include the certificate directly in your policy.
 
 Create a vault to store your CA certificate:
 
@@ -110,7 +110,7 @@ on_http_request:
 **What's happening here?** This policy enforces mTLS certificate authentication where clients must present valid certificates signed by your trusted CA. Clients are rate limited based on their certificate identity, dangerous SQL operations are blocked, and authenticated requests are forwarded to your database service.
 
 :::tip Generate certificates for testing
-If you don't have certificates, you can generate them using the steps in the [mTLS example documentation](/docs/traffic-policy/actions/terminate-tls/#enabling-mutual-tls):
+If you don't have certificates, you can generate them using the steps in the [mTLS example documentation](/traffic-policy/actions/terminate-tls/#enabling-mutual-tls):
 
 ```bash
 # Generate CA private key and certificate
@@ -147,10 +147,10 @@ done
 ## What's next?
 
 - Read about [other gateway shapes](https://ngrok.com/blog-post/api-gateway-shapes-patterns-2025) you can build with ngrok
-- Learn more about [mTLS certificate authentication](/docs/traffic-policy/actions/terminate-tls) for high-security environments
-- For token-based authentication, explore [JWT validation](/docs/traffic-policy/actions/jwt-validation) as a scalable alternative to basic authentication
-- Set up [comprehensive logging](/docs/traffic-policy/actions/log) to send database access events to your SIEM or monitoring platform
-- Use [URL rewriting](/docs/traffic-policy/actions/url-rewrite) to transform database queries or add security constraints
+- Learn more about [mTLS certificate authentication](/traffic-policy/actions/terminate-tls) for high-security environments
+- For token-based authentication, explore [JWT validation](/traffic-policy/actions/jwt-validation) as a scalable alternative to basic authentication
+- Set up [comprehensive logging](/traffic-policy/actions/log) to send database access events to your SIEM or monitoring platform
+- Use [URL rewriting](/traffic-policy/actions/url-rewrite) to transform database queries or add security constraints
 - View database access patterns in [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) to identify potential security issues
 
 <Back />

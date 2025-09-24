@@ -13,7 +13,7 @@ for a solution that allows you to:
 
 - Consistently apply security and traffic management policy in one place
 - Observe all your API requests and responses from a single dashboard with [Traffic
-  Inspector](/docs/obs/traffic-inspection/#ngrok-traffic-inspector)
+  Inspector](/obs/traffic-inspection/#ngrok-traffic-inspector)
 - Add ingress to your APIs in any environment with the same agent configuration
   and Traffic Policy rules
 
@@ -31,8 +31,8 @@ these broad steps:
 
 - **A domain**: This can be your free dev domain, or if you're on a paid plan, one that you choose [in the ngrok
   dashboard](https://dashboard.ngrok.com/domains) or with the [ngrok
-  API](/docs/api/resources/reserved-domains/#create-reserved-domain). Pay-as-you-go plans allow you to bring your own [custom branded
-  domain](/docs/universal-gateway/custom-domains), like
+  API](/api/resources/reserved-domains/#create-reserved-domain). Pay-as-you-go plans allow you to bring your own [custom branded
+  domain](/universal-gateway/custom-domains), like
   `https://api.example.com`.
   - We'll refer to this domain as `$YOUR_DOMAIN`.
 - (optional) **An API key**: [Create an ngrok API
@@ -108,7 +108,7 @@ sync to ward off configuration drift.
     </Tab>
     <Tab>
 
-    	The `ngrok` CLI provides a helpful wrapper around the [ngrok API](/docs/api/index), which you can use to create a cloud endpoint and apply a file containing Traffic Policy rules.
+    	The `ngrok` CLI provides a helpful wrapper around the [ngrok API](/api/index), which you can use to create a cloud endpoint and apply a file containing Traffic Policy rules.
 
     		Create a new file named `policy.yaml` on your local workstation with the following YAML.
 
@@ -173,15 +173,15 @@ ngrok http 5000 --url https://xyz.internal
 
 :::
 
-Enter our [Traffic Policy system](/docs/traffic-policy), which lets you filter
+Enter our [Traffic Policy system](/traffic-policy), which lets you filter
 traffic based on its properties and take action as it passes through ngrok's
 global network. Two important concepts of Traffic Policy to note:
 
-- [Phases](/docs/traffic-policy/concepts/phases) are the distinct points in the lifecycle of
+- [Phases](/traffic-policy/concepts/phases) are the distinct points in the lifecycle of
   a request where you can filter and take action. For this use case, we're using
   `on_http_request`, which activates when ngrok receives an HTTP request over an
   established connection.
-- [Expressions](/docs/traffic-policy/concepts/expressions) define when to run
+- [Expressions](/traffic-policy/concepts/expressions) define when to run
   your actions. They're written in [Common Expression
   Language](https://github.com/google/cel-spec), and must evaluate to `true` to
   run the corresponding action.
@@ -194,7 +194,7 @@ The rules below:
    forward them to your internal agent endpoint at `https://xyz.internal`.
 
 You can also [route by other
-properties](/docs/traffic-policy/examples/route-requests), like subdomains and
+properties](/traffic-policy/examples/route-requests), like subdomains and
 headers.
 
 <Tabs>
@@ -295,7 +295,7 @@ rules onto specific services.
 API authentication is too important not to apply consistently across all your
 APIs and requests. That's where the always-on, _front door to all your routes_
 quality of a cloud endpoint comes in handy—you can apply the [`jwt-validation`
-action](/docs/traffic-policy/actions/jwt-validation) once for dependable AuthN
+action](/traffic-policy/actions/jwt-validation) once for dependable AuthN
 no matter how many services you end up deploying behind your multicloud API
 gateway.
 
@@ -334,7 +334,7 @@ The rule below builds on top of the previous cloud endpoint policy to:
 
 You'll need to change the variables accordingly—if you're not sure where to find
 this information, we have a full [integration
-guide](/docs/integrations/auth0/jwt-action) with more details.
+guide](/integrations/auth0/jwt-action) with more details.
 
 ```yaml mode="traffic-policy" title="policy.yaml"
 on_http_request:
@@ -383,7 +383,7 @@ along with the demo service), needs additional protection from unintentional
 misuse and malicious attacks.
 
 The [`rate-limit` Traffic Policy
-action](/docs/traffic-policy/actions/rate-limit) allows you to reject requests
+action](/traffic-policy/actions/rate-limit) allows you to reject requests
 with a `429` error code once a user or group have exceeded your customizable
 threshold.
 
@@ -441,9 +441,9 @@ with ngrok's API gateway is just beginning. Next up, we recommend you:
 
 1. Check out your [Traffic
    Inspector](https://dashboard.ngrok.com/observability/traffic-inspector)
-   ([documentation](/docs/obs/traffic-inspection#ngrok-traffic-inspector)) to
+   ([documentation](/obs/traffic-inspection#ngrok-traffic-inspector)) to
    observe, modify, and replay requests across your API gateway.
 2. Explore other opportunities to manage and take action on API traffic in our
-   [Traffic Policy documentation](/docs/traffic-policy).
-3. Learn [how to monitor your API traffic](/docs/guides/api-gateway/other-guides/monitor-ngrok), so you'll
+   [Traffic Policy documentation](/traffic-policy).
+3. Learn [how to monitor your API traffic](/guides/api-gateway/other-guides/monitor-ngrok), so you'll
    know how your service is performing at all times, and be alerted to errors.

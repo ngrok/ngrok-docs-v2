@@ -359,7 +359,7 @@ will receive traffic for `https://foo.example.com` and
 
 ### Use multiple endpoints with wildcard subdomains
 
-With the [Agent CLI](/agent/cli), you can create separate public endpoints for subdomains of a wildcard domain no matter where the upstream services are running. See [the Domains docs](/docs/universal-gateway/domains/#wildcard-domains) for more information.
+With the [Agent CLI](/agent/cli), you can create separate public endpoints for subdomains of a wildcard domain no matter where the upstream services are running. See [the Domains docs](/universal-gateway/domains/#wildcard-domains) for more information.
 
 For example, if you reserve `*.example.com` and want to route requests to `api1.example.com` and `api2.example.com`, you can specify subdomains via the CLI. ngrok will handle routing requests to the correct endpoint, even if they're on different ports.
 

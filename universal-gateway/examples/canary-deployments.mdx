@@ -21,8 +21,8 @@ With ngrok, you can handle ingress to canary deployments by:
 
 ## 1. Create endpoints for your services
 
-Start internal [Agent Endpoints](/docs/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your service listens, for each of your services on the systems where they run.
-You can also use one of our [SDKs](/docs/agent-sdks/#example-usage) or the [Kubernetes Operator](/docs/getting-started/kubernetes/ingress/).
+Start internal [Agent Endpoints](/universal-gateway/agent-endpoints/), replacing `$PORT` based on where your service listens, for each of your services on the systems where they run.
+You can also use one of our [SDKs](/agent-sdks/#example-usage) or the [Kubernetes Operator](/getting-started/kubernetes/ingress/).
 
 ```bash
 ngrok http $PORT --url https://service.internal
@@ -140,7 +140,7 @@ If you want to maintain `https://service.internal` as the canonical name for the
 
 - View your [Traffic
   Inspector](https://dashboard.ngrok.com/traffic-inspector) to see how your canary behaves with production traffic, which may signal that you pause or roll back the deployment entirely.
-- Learn how to implement [blue-green deployments](/docs/universal-gateway/examples/blue-green-deployments) if you prefer faster rollouts at the expense of maintaining two production environments.
+- Learn how to implement [blue-green deployments](/universal-gateway/examples/blue-green-deployments) if you prefer faster rollouts at the expense of maintaining two production environments.
 - Explore other common gateway setups, like [multiplexing to many
-  services](/docs/universal-gateway/examples/multiplex) or shipping a [custom "maintenance mode"](/docs/universal-gateway/examples/maintenance-mode/) during an outage or planned downtime.
-- Start automating your deployment strategies with the ngrok [API](/docs/api/) or our [Kubernetes Operator](/docs/k8s/).
+  services](/universal-gateway/examples/multiplex) or shipping a [custom "maintenance mode"](/universal-gateway/examples/maintenance-mode/) during an outage or planned downtime.
+- Start automating your deployment strategies with the ngrok [API](/api/) or our [Kubernetes Operator](/k8s/).
