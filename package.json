@@ -8,7 +8,9 @@
     "dev": "mint dev --port 3333",
     "verify-redirects": "node snippets/custom-scripts/check-redirect-conflicts.js",
     "test-links": "mint broken-links",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fmt:check": "biome check . --diagnostic-level=error && prettier --check .",
+    "fmt": "biome check . --write --diagnostic-level=error --organize-imports-enabled=true && prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -19,8 +21,10 @@
     "@babel/traverse": "^7.28.4",
     "@ngrok/mantle": "^0.52.9",
     "@types/react": "^19.1.13",
+    "biome": "^0.3.3",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
+    "prettier": "^3.6.2",
     "react": "^19.1.1",
     "react-markdown": "^10.1.0"
   }
